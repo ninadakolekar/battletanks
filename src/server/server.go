@@ -59,7 +59,7 @@ func (s *Server) Listen() {
 
 		log.Println("Added new client. Now", len(s.Clients), "clients connected.")
 
-		go cl.ReadFromWebSocket()
+		go cl.Listen()
 
 	}
 

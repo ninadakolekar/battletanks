@@ -28,8 +28,14 @@ func (c *Client) Conn() *websocket.Conn {
 	return c.Ws
 }
 
-//ReadFromWebSocket ... To read messages sent by client over the websocket
-func (c *Client) ReadFromWebSocket() {
+//Listen ... Make Client Listen
+func (c *Client) Listen() {
+	go c.listenWrite()
+	c.listenRead()
+}
+
+//listenRead ... To read messages sent by client over the websocket
+func (c *Client) listenRead() {
 	log.Println("ReadFromWebSocket() called...")
 	for {
 		_, data, err := c.Ws.ReadMessage()
@@ -39,12 +45,21 @@ func (c *Client) ReadFromWebSocket() {
 			return
 		}
 
-		c.ProcessClientData(data)
+		c.processClientData(data)
 	}
 }
 
-//ProcessClientData ...
-func (c *Client) ProcessClientData(msg []byte) {
+//processClientData ...
+func (c *Client) processClientData(msg []byte) {
 	s := string(msg[:])
 	fmt.Println("Message Received from Client: ", s)
+}
+
+func (c *Client) listenWrite() {
+	log.Println("Writing to Websocket now...")
+	msg := []byte("Hi Client. I'm the server.")
+	err := c.Ws.WriteMessage(websocket.TextMessage, msg)
+	if err != nil {
+		log.Println("listenWrite :", err)
+	}
 }

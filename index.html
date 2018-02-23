@@ -16,7 +16,10 @@
         var sendBtn = document.getElementById("send");
     sendBtn.addEventListener("click",sendMsg());
     }
-    
+    socket.onmessage = function (evt) { 
+                  var received_msg = evt.data;
+                  alert("Message is received..."+received_msg);
+    };
     var sendMsg = function(){
         socket.send("Message to send");
     }
