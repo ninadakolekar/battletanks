@@ -5,6 +5,8 @@ import (
 	"log"
 
 	"github.com/gorilla/websocket"
+
+	"../message"
 )
 
 //Client ...
@@ -57,8 +59,13 @@ func (c *Client) processClientData(msg []byte) {
 
 func (c *Client) listenWrite() {
 	log.Println("Writing to Websocket now...")
-	msg := []byte("Hi Client. I'm the server.")
-	err := c.Ws.WriteMessage(websocket.TextMessage, msg)
+	// msg := []byte("Hi Client. I'm the server.")
+	// err := c.Ws.WriteMessage(websocket.TextMessage, msg)
+	msg := message.Message{
+		Username: "gorilla",
+		Message:  "Hi Client. I'm the gorilla server.",
+	}
+	err := c.Ws.WriteJSON(&msg)
 	if err != nil {
 		log.Println("listenWrite :", err)
 	}
