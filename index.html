@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="send">Send!</button>
+</body>
+<script>
+    var socket = new WebSocket("ws://localhost:8080/");
+    socket.onopen = function(){
+        alert("Websocket Connection Established!!");
+        var sendBtn = document.getElementById("send");
+    sendBtn.addEventListener("click",sendMsg());
+    }
+    
+    var sendMsg = function(){
+        socket.send("Message to send");
+    }
+</script>
+</html>
