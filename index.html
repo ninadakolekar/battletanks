@@ -12,6 +12,12 @@
         <input id="msg" type="text"/>
         <button id="send" type="submit">Send</button>
     </form>
+    <div class="messages">
+        <h1>Received</h1>
+        <ul id="received"></ul>
+        <h1>Sent</h1>
+        <ul id="sent"></ul>
+    </div>
 </body>
 <script>
     var socket = new WebSocket("ws://localhost:8080/");
@@ -19,13 +25,16 @@
         alert("Websocket Connection Established!!");
         
         document.getElementById('clientMessage').onsubmit = function() {
-            socket.send(document.getElementById("msg").value);
+
+            var msg = document.getElementById("msg").value;
+            socket.send(msg);
+            document.getElementById("sent").innerHTML += '<li>' + msg + '</li>';
             return false;
         }
     }
     socket.onmessage = function (evt) { 
                   var received_msg = evt.data;
-                  alert("Message is received..."+received_msg);
+                  document.getElementById("received").innerHTML += '<li>' + received_msg + '</li>';
     };
 </script>
 </html>
