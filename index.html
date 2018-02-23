@@ -26,15 +26,16 @@
         
         document.getElementById('clientMessage').onsubmit = function() {
 
-            var msg = document.getElementById("msg").value;
-            socket.send(msg);
+            var msg = '{"username":"client","message":"using JSON"}'
+            socket.send(JSON.stringify(msg));
             document.getElementById("sent").innerHTML += '<li>' + msg + '</li>';
             return false;
         }
-    }
+    };
     socket.onmessage = function (evt) { 
-                  var received_msg = evt.data;
-                  document.getElementById("received").innerHTML += '<li>' + received_msg + '</li>';
+                  var received_msg  = evt.data;
+                  var msg_obj = JSON.parse(received_msg)
+                  document.getElementById("received").innerHTML += '<li>' + msg_obj.username + ': '+ msg_obj.message+'</li>';
     };
 </script>
 </html>

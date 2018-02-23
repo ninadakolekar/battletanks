@@ -40,21 +40,22 @@ func (c *Client) Listen() {
 func (c *Client) listenRead() {
 	log.Println("ReadFromWebSocket() called...")
 	for {
-		_, data, err := c.Ws.ReadMessage()
+		// _, data, err := c.Ws.ReadMessage()
 
+		msg := message.Message{}
+		err := c.Ws.ReadJSON(&msg)
 		if err != nil {
 			log.Println("ReadFromWebSocket : ", err)
 			return
 		}
 
-		c.processClientData(data)
+		c.processClientData(msg)
 	}
 }
 
 //processClientData ...
-func (c *Client) processClientData(msg []byte) {
-	s := string(msg[:])
-	fmt.Println("Message Received from Client: ", s)
+func (c *Client) processClientData(msg message.Message) {
+	fmt.Println("Message Received from Client: ", msg)
 }
 
 func (c *Client) listenWrite() {
