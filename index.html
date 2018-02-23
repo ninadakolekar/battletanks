@@ -7,21 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="send">Send!</button>
+    <form id="clientMessage">
+        <label for="msg">Message : </label>
+        <input id="msg" type="text"/>
+        <button id="send" type="submit">Send</button>
+    </form>
 </body>
 <script>
     var socket = new WebSocket("ws://localhost:8080/");
     socket.onopen = function(){
         alert("Websocket Connection Established!!");
-        var sendBtn = document.getElementById("send");
-    sendBtn.addEventListener("click",sendMsg());
+        
+        document.getElementById('clientMessage').onsubmit = function() {
+            socket.send(document.getElementById("msg").value);
+            return false;
+        }
     }
     socket.onmessage = function (evt) { 
                   var received_msg = evt.data;
                   alert("Message is received..."+received_msg);
     };
-    var sendMsg = function(){
-        socket.send("Message to send");
-    }
 </script>
 </html>
