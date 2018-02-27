@@ -9,10 +9,13 @@ import (
 	"../message"
 )
 
+const bufferSize = 100
+
 //Client ...
 type Client struct {
 	ID uint32
 	Ws *websocket.Conn
+	ch chan message.Message
 }
 
 //NewClient ... Returns a new Client object
@@ -22,12 +25,21 @@ func NewClient(ws *websocket.Conn, id uint32) *Client {
 		panic("Websocket* is nil.")
 	}
 
-	return &Client{id, ws}
+	ch := make(chan message.Message, bufferSize)
+
+	return &Client{id, ws, ch}
 }
 
 //Conn ... Returns the websocket of client
 func (c *Client) Conn() *websocket.Conn {
 	return c.Ws
+}
+
+//SendMessage ... Sends message to the client
+func (c *Client) SendMessage(msg message.Message) {
+	select {
+	case c.ch <- msg:
+	}
 }
 
 //Listen ... Make Client Listen
@@ -59,15 +71,27 @@ func (c *Client) processClientData(msg message.Message) {
 }
 
 func (c *Client) listenWrite() {
-	log.Println("Writing to Websocket now...")
-	// msg := []byte("Hi Client. I'm the server.")
-	// err := c.Ws.WriteMessage(websocket.TextMessage, msg)
-	msg := message.Message{
-		Username: "gorilla",
-		Message:  "Hi Client. I'm the gorilla server.",
+
+	defer func() {
+		err := c.Ws.Close()
+		if err != nil {
+			log.Println("Client Close() Error:", err.Error())
+		}
+	}()
+
+	log.Println("Listening for Write to Client")
+
+	for {
+		select {
+		case msg := <-c.ch:
+			err := c.Ws.WriteJSON(&msg)
+			if err != nil {
+				log.Println("listenWrite :", err)
+			}
+		}
 	}
-	err := c.Ws.WriteJSON(&msg)
-	if err != nil {
-		log.Println("listenWrite :", err)
-	}
+
 }
+
+//checkAlive ... Checks if client is active
+func (c* Client)
