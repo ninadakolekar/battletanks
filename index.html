@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body id="body">
+    <h2>Background color changes based on message received from server.</h2>
     <form id="clientMessage">
         <label for="msg">Message : </label>
         <input id="msg" type="text"/>
@@ -20,6 +21,18 @@
     </div>
 </body>
 <script>
+    function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+    function red(){
+        document.getElementById("body").style.background = getRandomColor();
+    }
     var socket = new WebSocket("ws://localhost:8080/");
     socket.onopen = function(){
         alert("Websocket Connection Established!!");
@@ -36,6 +49,8 @@
                   var received_msg  = evt.data;
                   var msg_obj = JSON.parse(received_msg)
                   document.getElementById("received").innerHTML += '<li>' + msg_obj.username + ': '+ msg_obj.message+'</li>';
+                  /* Executing Function based on received message */
+                  if(msg_obj.message == "red") red();
     };
 </script>
 </html>
