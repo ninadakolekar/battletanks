@@ -61,30 +61,30 @@ func (s *Server) Listen() {
 		log.Println("Added new client. Now", len(s.Clients), "clients connected.")
 
 		go cl.Listen()
-		go s.checkAlive()
 
 	}
 
 	http.HandleFunc(s.Pattern, handler)
 }
 
-//checkAlive ... Checks if all clients are active
-func (s *Server) checkAlive() {
-	for _, c := range s.Clients {
-		if c.Alive() == false {
-			delete(s.Clients, c.ID)
-		}
-	}
-}
-
 //Broadcast ... Send message to all the clients
-func (s *Server) Broadcast() {
+func (s *Server) Broadcast(msg message.Message) {
 	for _, c := range s.Clients {
-		msg := message.Message{
-			Username: "gorilla",
-			Message:  "Hi Client. I'm the gorilla server broadcast.",
-		}
 		c.SendMessage(msg)
 		log.Println("Broadcasted now...")
 	}
+}
+
+//SendMessageToClient ... Send message to a specific client
+func (s *Server) SendMessageToClient(clientID uint32, msg message.Message) {
+
+	client, found := s.Clients[clientID]
+
+	if found {
+		client.SendMessage(msg)
+	} else {
+		log.Printf("Error (SendMessageToClient) : Client %d not found!\n", clientID)
+		return
+	}
+
 }

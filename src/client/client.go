@@ -50,6 +50,14 @@ func (c *Client) Listen() {
 
 //listenRead ... To read messages sent by client over the websocket
 func (c *Client) listenRead() {
+
+	defer func() {
+		err := c.Ws.Close()
+		if err != nil {
+			log.Println("Client Close() Error:", err.Error())
+		}
+	}()
+
 	log.Println("ReadFromWebSocket() called...")
 	for {
 		// _, data, err := c.Ws.ReadMessage()
@@ -92,6 +100,3 @@ func (c *Client) listenWrite() {
 	}
 
 }
-
-//checkAlive ... Checks if client is active
-func (c* Client)
