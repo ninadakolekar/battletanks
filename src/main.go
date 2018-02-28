@@ -6,15 +6,15 @@ import (
 	"net/http"
 	"time"
 
+	comm "./communication"
 	message "./message"
-	server "./server"
 )
 
 /* MAIN */
 
 func main() {
 
-	server := server.NewServer("/")
+	server := comm.NewServer("/")
 	fmt.Println("Client Count before gor: ", server.ClientCount)
 	go server.Listen()
 

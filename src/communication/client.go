@@ -122,4 +122,11 @@ func (c *Client) NewUserConnected(id uint32) {
 
 	msg := message.NewClientMessage{id, "newUser"}
 	go c.server.BroadcastNewUser(msg)
+
+	for _, cl := range c.server.Clients {
+		if cl.ID != id {
+			msg := message.NewClientMessage{cl.ID, "newUser"}
+			c.SendNewUserMessage(msg)
+		}
+	}
 }
