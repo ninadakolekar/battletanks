@@ -59,7 +59,6 @@ func (s *Server) Listen() {
 
 		log.Println("Added new client. Now", len(s.Clients), "clients connected.")
 
-		// cl.update()
 		cl.NewUserConnected(cl.ID)
 		cl.Listen()
 

@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"log"
 
+	message "../message"
 	"github.com/gorilla/websocket"
-
-	"../message"
 )
 
 const bufferSize = 100
@@ -76,7 +75,7 @@ func (c *Client) listenRead() {
 		msg := message.Message{}
 		err := c.Ws.ReadJSON(&msg)
 		if err != nil {
-			log.Println("ReadFromWebSocket : ", err)
+			log.Println("ReadFromWebSocket : ", err.Error())
 			return
 		}
 
@@ -84,7 +83,7 @@ func (c *Client) listenRead() {
 	}
 }
 
-//processClientData ...
+//processClientData ... Process response to message received from client
 func (c *Client) processClientData(msg message.Message) {
 	fmt.Println("Message Received from Client: ", msg)
 }
@@ -117,8 +116,10 @@ func (c *Client) listenWrite() {
 
 }
 
-//NewUserConnected ...
+//NewUserConnected ... Handles new user connection
 func (c *Client) NewUserConnected(id uint32) {
+
+	c.SendID()
 
 	msg := message.NewClientMessage{id, "newUser"}
 	go c.server.BroadcastNewUser(msg)
@@ -129,4 +130,10 @@ func (c *Client) NewUserConnected(id uint32) {
 			c.SendNewUserMessage(msg)
 		}
 	}
+}
+
+//SendID ...
+func (c *Client) SendID() {
+	msg := message.NewClientMessage{c.ID, "uid"}
+	c.SendNewUserMessage(msg)
 }

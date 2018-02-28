@@ -29,9 +29,12 @@
 </body>
 <script>
 
+    var myID;
+
     function createBox(x){
+        console.log("Ceating box:",x);
         var clientsDiv = document.getElementById("clients");
-        clientsDiv.innerHTML += '<div class="client_box">'+ x + '</div><br>';
+        clientsDiv.innerHTML += '<div class="client_box" id="box' + x + '">'+ x + '</div><br>';
     }
 
     function getRandomColor() {
@@ -44,7 +47,7 @@
 }
 
     function red(){
-        document.getElementById("body").style.background = getRandomColor();
+        document.getElementById("box"+myID).style.background = getRandomColor();
     }
     var socket = new WebSocket("ws://localhost:8080/");
     socket.onopen = function(){
@@ -65,6 +68,7 @@
                   /* Executing Function based on received message */
                   if(msg_obj.message == "red") red();
                   else if(msg_obj.message == "newUser") {var x = msg_obj.id; console.log("New User: ",x);createBox(x);}
+                  else if(msg_obj.message == "uid") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
     };
 </script>
 </html>

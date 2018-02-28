@@ -11,3 +11,9 @@ type NewClientMessage struct {
 	ID      uint32 `json:"id"`      // 1
 	Message string `json:"message"` // 2
 }
+
+//UpdateMessage ... Structure: Gameplay Update Message
+type UpdateMessage struct {
+	ID      uint32 `json:"id"`      // 1
+	Message string `json:"message"` // 2
+}
