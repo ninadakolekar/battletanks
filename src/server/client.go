@@ -1,4 +1,4 @@
-package client
+package communication
 
 import (
 	"fmt"
@@ -13,13 +13,15 @@ const bufferSize = 100
 
 //Client ...
 type Client struct {
-	ID uint32
-	Ws *websocket.Conn
-	ch chan message.Message
+	ID        uint32
+	server    *Server
+	Ws        *websocket.Conn
+	ch        chan message.Message
+	newUserCh chan message.NewClientMessage
 }
 
 //NewClient ... Returns a new Client object
-func NewClient(ws *websocket.Conn, id uint32) *Client {
+func NewClient(server *Server, ws *websocket.Conn, id uint32) *Client {
 
 	if ws == nil {
 		panic("Websocket* is nil.")
@@ -27,7 +29,9 @@ func NewClient(ws *websocket.Conn, id uint32) *Client {
 
 	ch := make(chan message.Message, bufferSize)
 
-	return &Client{id, ws, ch}
+	newUserCh := make(chan message.NewClientMessage, bufferSize)
+
+	return &Client{id, server, ws, ch, newUserCh}
 }
 
 //Conn ... Returns the websocket of client
@@ -39,6 +43,13 @@ func (c *Client) Conn() *websocket.Conn {
 func (c *Client) SendMessage(msg message.Message) {
 	select {
 	case c.ch <- msg:
+	}
+}
+
+//SendNewUserMessage ... Sends message to the client
+func (c *Client) SendNewUserMessage(msg message.NewClientMessage) {
+	select {
+	case c.newUserCh <- msg:
 	}
 }
 
@@ -94,9 +105,21 @@ func (c *Client) listenWrite() {
 		case msg := <-c.ch:
 			err := c.Ws.WriteJSON(&msg)
 			if err != nil {
-				log.Println("listenWrite :", err)
+				log.Println("listenWrite :", err.Error())
+			}
+		case msg := <-c.newUserCh:
+			err := c.Ws.WriteJSON(&msg)
+			if err != nil {
+				log.Println("listenWrite newUserCh:", err.Error())
 			}
 		}
 	}
 
+}
+
+//NewUserConnected ...
+func (c *Client) NewUserConnected(id uint32) {
+
+	msg := message.NewClientMessage{id, "newUser"}
+	go c.server.BroadcastNewUser(msg)
 }

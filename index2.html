@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .client_box {
+        border-style: solid;
+        font-size: 48px; 
+    }
+</style>
+<body id="body">
+    <h2>Background color changes based on message received from server.</h2>
+    <form id="clientMessage">
+        <label for="msg">Message : </label>
+        <input id="msg" type="text"/>
+        <button id="send" type="submit">Send</button>
+    </form>
+    <div class="messages">
+        <h1>Received</h1>
+        <ul id="received"></ul>
+        <h1>Sent</h1>
+        <ul id="sent"></ul>
+    </div>
+    <div id="clients"></div>
+</body>
+<script>
+
+    function createBox(x){
+        var clientsDiv = document.getElementById("clients");
+        clientsDiv.innerHTML += '<div class="client_box">'+ x + '</div><br>';
+    }
+
+    function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+    function red(){
+        document.getElementById("body").style.background = getRandomColor();
+    }
+    var socket = new WebSocket("ws://localhost:8080/");
+    socket.onopen = function(){
+        alert("Websocket Connection Established!!");
+        
+        document.getElementById('clientMessage').onsubmit = function() {
+
+            var msg = '{"username":"client","message":"using JSON"}'
+            socket.send(JSON.stringify(msg));
+            document.getElementById("sent").innerHTML += '<li>' + msg + '</li>';
+            return false;
+        }
+    };
+    socket.onmessage = function (evt) { 
+                  var received_msg  = evt.data;
+                  var msg_obj = JSON.parse(received_msg)
+                  document.getElementById("received").innerHTML += '<li>' + msg_obj.username + ': '+ msg_obj.message+'</li>';
+                  /* Executing Function based on received message */
+                  if(msg_obj.message == "red") red();
+                  else if(msg_obj.message == "newUser") {var x = msg_obj.id; console.log("New User: ",x);createBox(x);}
+    };
+</script>
+</html>

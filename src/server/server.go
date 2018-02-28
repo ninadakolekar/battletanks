@@ -1,11 +1,10 @@
-package server
+package communication
 
 import (
 	"fmt"
 	"log"
 	"net/http"
 
-	"../client"
 	"../message"
 	"github.com/gorilla/websocket"
 )
@@ -16,7 +15,7 @@ var upgrader = websocket.Upgrader{} // To convert HTTP GET Request to WebSocket
 type Server struct {
 	Pattern     string
 	ClientCount uint32
-	Clients     map[uint32]*client.Client // User Connections
+	Clients     map[uint32]*Client // User Connections
 	Upgrader    *websocket.Upgrader
 }
 
@@ -25,7 +24,7 @@ func NewServer(pattern string) *Server {
 	return &Server{
 		Pattern:     pattern,
 		ClientCount: uint32(0),
-		Clients:     make(map[uint32]*client.Client),
+		Clients:     make(map[uint32]*Client),
 		Upgrader: &websocket.Upgrader{
 			ReadBufferSize:  1024,
 			WriteBufferSize: 1024,
@@ -50,7 +49,7 @@ func (s *Server) Listen() {
 		}
 		fmt.Println("Client Count after err: ", s.ClientCount)
 
-		cl := client.NewClient(conn, s.ClientCount)
+		cl := NewClient(s, conn, s.ClientCount)
 
 		fmt.Println("Client Count after newC: ", s.ClientCount)
 
@@ -60,7 +59,9 @@ func (s *Server) Listen() {
 
 		log.Println("Added new client. Now", len(s.Clients), "clients connected.")
 
-		go cl.Listen()
+		// cl.update()
+		cl.NewUserConnected(cl.ID)
+		cl.Listen()
 
 	}
 
@@ -72,6 +73,14 @@ func (s *Server) Broadcast(msg message.Message) {
 	for _, c := range s.Clients {
 		c.SendMessage(msg)
 		log.Println("Broadcasted now...")
+	}
+}
+
+//BroadcastNewUser ... Send message to all the clients
+func (s *Server) BroadcastNewUser(msg message.NewClientMessage) {
+	for _, c := range s.Clients {
+		c.SendNewUserMessage(msg)
+		log.Println("Broadcasted New User now...")
 	}
 }
 
