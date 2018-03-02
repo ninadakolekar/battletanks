@@ -1,0 +1,30 @@
+{"frames": {
+
+"ground.png":
+{
+	"frame": {"x":2,"y":2,"w":894,"h":894},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":894,"h":894},
+	"sourceSize": {"w":894,"h":894},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tank12.png":
+{
+	"frame": {"x":898,"y":2,"w":416,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":416,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tank.png",
+	"format": "RGBA8888",
+	"size": {"w":1316,"h":898},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3baa3874fbf65686235599874df30068:172097c4b13688a5733bcfb236b6053f:e5746570371ae3e0565b6e20f5a72ab3$"
+}
+}

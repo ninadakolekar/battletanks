@@ -1,0 +1,48 @@
+{"frames": {
+
+"broke.png":
+{
+	"frame": {"x":201,"y":0,"w":225,"h":225},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":225,"h":225},
+	"sourceSize": {"w":225,"h":225},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"ground.png":
+{
+	"frame": {"x":0,"y":512,"w":894,"h":894},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":894,"h":894},
+	"sourceSize": {"w":894,"h":894},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tank12.png":
+{
+	"frame": {"x":426,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tile.png":
+{
+	"frame": {"x":0,"y":0,"w":201,"h":250},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":201,"h":250},
+	"sourceSize": {"w":201,"h":250},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tank.png",
+	"format": "RGBA8888",
+	"size": {"w":938,"h":1406},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a654332525218e3664034d50851777cf:92f7d97c36f9cdbef05e57d60300423a:e5746570371ae3e0565b6e20f5a72ab3$"
+}
+}
