@@ -5,6 +5,7 @@
 <body>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
  <script src="js/maze.js"></script>
+ <p id ="demo"></p>
 <script>
 
 
@@ -194,7 +195,7 @@ w.press =()=>{
                 if (bulletcount <100)
                 { ammo[bulletcount].visible =true ;
                   ismoving== true ;
-                  state =bulletmove ;
+                  bulletmove() ;
                   bulletcount++ ;
                   console.log(bulletcount + " is the bulletcount");
 
@@ -275,14 +276,10 @@ w.press =()=>{
 
                         for(i=bulletcount; i<100; i++){
                            ammo[i].rotation +=angle ;
-                           //ammo[i].x+=x;
-                      		 //ammo[i].y+=y;
 
                          }
 
                    			move_state = r_state;
-
-                   			//console.log("rot_done "+tank.x+" "+tank.y+" "+tank.pivot.x+" "+tank.pivot.y+" "+angle+" "+pi+" "+Math.PI);
                    			console.log("rot_done "+tank.x+" "+tank.y+" "+tank.pivot.x+" "+tank.pivot.y+" "+move_state);
    		}
 
@@ -360,8 +357,9 @@ function detect_col(c_state) {
 
 
  function bulletmove(){
-                          ammo[bulletcount].x += 2*tank.vx*Math.sin(tank.rotation);
-                          ammo[bulletcount].y -= 2*tank.vy* Math.cos(tank.rotation);
+                            ammo[bulletcount].x += 2*tank.vx*Math.sin(tank.rotation);
+                            ammo[bulletcount].y -= 2*tank.vy* Math.cos(tank.rotation);
+
                           console.log("bullet"+ bulletcount+" has been released");
 
                           ismoving =false ;
@@ -552,6 +550,18 @@ function game_over(){
         function play(delta) {
          tank.vx = 30;
          tank.vy= 30;
+         console.log("play all the time \n");
+
+
+        var  object_of_player ={ "tank_x" :tank.x ,
+                                 "tank_y" :tank.y ,
+                                 "attempts":attempts ,
+                                "healthouterwidth": healthstatus.outer.width ,
+                                 "exit": exit
+
+                           } ;
+       var ed = JSON.stringify(object_of_player);
+      document.getElementById("demo").innerHTML = ed;
 
         }
 
