@@ -1,0 +1,66 @@
+{"frames": {
+
+"broke.png":
+{
+	"frame": {"x":235,"y":2,"w":225,"h":225},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":225,"h":225},
+	"sourceSize": {"w":225,"h":225},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"ground.png":
+{
+	"frame": {"x":2,"y":768,"w":894,"h":894},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":894,"h":894},
+	"sourceSize": {"w":894,"h":894},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"missile.png":
+{
+	"frame": {"x":462,"y":2,"w":253,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":178},
+	"sourceSize": {"w":253,"h":178},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tank12.png":
+{
+	"frame": {"x":2,"y":254,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tile.png":
+{
+	"frame": {"x":32,"y":2,"w":201,"h":250},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":201,"h":250},
+	"sourceSize": {"w":201,"h":250},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"treasure.png":
+{
+	"frame": {"x":2,"y":2,"w":28,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":24},
+	"sourceSize": {"w":28,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sirowa.png",
+	"format": "RGBA8888",
+	"size": {"w":898,"h":1664},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7ba03de1a02cd5c6c90aa154944ca37f:ea906808c3a98220727d46b4c2d90b34:b18ba16cede97cc592241ca54c30526a$"
+}
+}
