@@ -72,10 +72,11 @@ func (c *Client) listenRead() {
 	for {
 		// _, data, err := c.Ws.ReadMessage()
 
-		msg := message.Message{}
+		msg := message.UpdateMessage{}
 		err := c.Ws.ReadJSON(&msg)
+		fmt.Println("HReceived Update: ", msg)
 		if err != nil {
-			log.Println("ReadFromWebSocket : ", err.Error())
+			log.Println("ReadFromWebSocket L78: ", err.Error())
 			return
 		}
 
@@ -84,7 +85,7 @@ func (c *Client) listenRead() {
 }
 
 //processClientData ... Process response to message received from client
-func (c *Client) processClientData(msg message.Message) {
+func (c *Client) processClientData(msg message.UpdateMessage) {
 	fmt.Println("Message Received from Client: ", msg)
 }
 

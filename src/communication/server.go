@@ -71,7 +71,7 @@ func (s *Server) Listen() {
 func (s *Server) Broadcast(msg message.Message) {
 	for _, c := range s.Clients {
 		c.SendMessage(msg)
-		log.Println("Broadcasted now...")
+		// log.Println("Broadcasted now...")
 	}
 }
 

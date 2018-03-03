@@ -51,11 +51,13 @@
     }
 
     function myUpdate() {
+        console.log("myUpdate() requested");
         var element = document.getElementById("box" + myID),
         style = window.getComputedStyle(element),
-        bgcolor = style.getPropertyValue('background');
-        var msg = '{"id":'+myID+',"message":updateResponse,"boxColor":'+bgcolor+'}';
-        return JSON.stringify(msg);
+        bgcolor = style.getPropertyValue('background-color');
+        var msg = '{"id":'+myID+',"message":"updateResponse","boxColor":"'+bgcolor+'"}';
+        document.getElementById("sent").innerHTML += '<li>' + msg + '</li>';
+        socket.send(msg);
     }
 
     var socket = new WebSocket("ws://localhost:8080/");
@@ -79,7 +81,8 @@
                   if(msg_obj.message == "red") red();
                   else if(msg_obj.message == "newUser") {var x = msg_obj.id; console.log("New User: ",x);createBox(x);}
                   else if(msg_obj.message == "uid") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
-                  else if(msg_obj.message == "getUpdate") {socket.send(myUpdate());}
+                  else if(msg_obj.message == "getUpdate") {myUpdate();}
+                  else if(msg_obj.message == "applyUpdate") {console.log(msg_obj.id," : ",msg_obj.bgcolor)}
     };
 </script>
 </html>

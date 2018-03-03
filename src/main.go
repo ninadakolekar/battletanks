@@ -30,13 +30,13 @@ func main() {
 	}()
 
 	/* UPDATE Service */
-	utick := time.NewTicker(time.Millisecond * 20) // 20 milliseconds
+	utick := time.NewTicker(time.Millisecond * 6000) // 20 milliseconds
 	go func() {
-		for t := range utick.C {
+		for range utick.C {
 			// make getUpdate signal
 			uSignal := message.Message{"user_random101", "getUpdate"}
 			server.Broadcast(uSignal)
-			log.Println("Update Signal from server sent at ", t)
+			// log.Println("Update Signal from server sent at ", t)
 		}
 	}()
 
