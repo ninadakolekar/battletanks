@@ -14,6 +14,7 @@ type NewClientMessage struct {
 
 //UpdateMessage ... Structure: Gameplay Update Message
 type UpdateMessage struct {
-	ID      uint32 `json:"id"`      // 1
-	Message string `json:"message"` // 2
+	ID       uint32 `json:"id"`       // 1
+	Message  string `json:"message"`  // 2
+	BoxColor string `json:"boxColor"` // Color of the box
 }

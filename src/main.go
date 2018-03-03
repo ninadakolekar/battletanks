@@ -29,6 +29,17 @@ func main() {
 		}
 	}()
 
+	/* UPDATE Service */
+	utick := time.NewTicker(time.Millisecond * 20) // 20 milliseconds
+	go func() {
+		for t := range utick.C {
+			// make getUpdate signal
+			uSignal := message.Message{"user_random101", "getUpdate"}
+			server.Broadcast(uSignal)
+			log.Println("Update Signal from server sent at ", t)
+		}
+	}()
+
 	fmt.Println("Client Count after gor: ", server.ClientCount)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 	fmt.Println(server.Pattern)

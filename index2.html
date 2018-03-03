@@ -49,7 +49,17 @@
     function red(){
         document.getElementById("box"+myID).style.background = getRandomColor();
     }
+
+    function myUpdate() {
+        var element = document.getElementById("box" + myID),
+        style = window.getComputedStyle(element),
+        bgcolor = style.getPropertyValue('background');
+        var msg = '{"id":'+myID+',"message":updateResponse,"boxColor":'+bgcolor+'}';
+        return JSON.stringify(msg);
+    }
+
     var socket = new WebSocket("ws://localhost:8080/");
+    
     socket.onopen = function(){
         alert("Websocket Connection Established!!");
         
@@ -69,6 +79,7 @@
                   if(msg_obj.message == "red") red();
                   else if(msg_obj.message == "newUser") {var x = msg_obj.id; console.log("New User: ",x);createBox(x);}
                   else if(msg_obj.message == "uid") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
+                  else if(msg_obj.message == "getUpdate") {socket.send(myUpdate());}
     };
 </script>
 </html>
