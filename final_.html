@@ -754,7 +754,7 @@ function detect_tb()
     if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450){
 
       //console.log("bullet tank collision detected");
-      ammo[bullcount-1].visible = false ;
+      ammo[other_bulletcount-1].visible = false ;
       healthbar-- ;
       //collide.play();
       healthstatus.outer.width -=25 ;     
@@ -876,6 +876,8 @@ function sendUpdate() {
 
 function applyUpdate(msg) {
 
+  console.log("applyUpdate: ",msg);
+
   update = msg ;
 
   if(msg.id != myID) {
@@ -922,18 +924,20 @@ function applyUpdate(msg) {
 
       other_ammo[i].visible =true ;
 
-    }
+    } 
+    other_bulletcount = msg.bulletCount;
 
     if(msg.bulletCount !== 0){
 
       other_ammo[msg.bulletCount-1].x =update.bullet_x ;
       other_ammo[msg.bulletCount-1].y =update.bullet_y ;
-      
+      detect_tb();
     }
 
     other_healthstatus.outer.width = update.outer;
+    
     detect_tc();
-    detect_tb();
+ 
 
     if(update.won == true)
           {
