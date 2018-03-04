@@ -182,7 +182,11 @@ other_healthstatus.outer = oBar;
      down = keyboard(40);
      w = keyboard(87);
 
-      left.press = () =>{  if(exit == true)
+      left.press = () =>{  
+                            if(check_tank_col(2)){
+                              return;
+                            }
+                            if(exit == true)
                               {return ;}
                              console.log("a1");
                              leftflag =true;
@@ -193,13 +197,18 @@ other_healthstatus.outer = oBar;
                                rot(37);
                              }
                              tank.pivot.set(15,15);
+                          }
                           };
        left.release =() => {
                              console.log("a2");
                              leftflag =false ;
                            };
 
-       right.press=()=>{  if(exit == true)
+       right.press=()=>{
+                        if(check_tank_col(1)){
+                              return;
+                            }  
+                        if(exit == true)
                           {return ;}
                          console.log("a3");
                          rightflag =true ;
@@ -215,7 +224,11 @@ other_healthstatus.outer = oBar;
                          console.log("a4");
                          rightflag =false ;
                        }
-     up.press = () => { if(exit == true)
+     up.press = () => { 
+                        if(check_tank_col(4)){
+                              return;
+                            }
+                        if(exit == true)
                         {return ;
                         }
 
@@ -234,6 +247,9 @@ other_healthstatus.outer = oBar;
                          upflag =false;
                      };
   down.press = () => {
+                      if(check_tank_col(3)){
+                              return;
+                            }
                       if(exit == true)
                       {return ;}
                        console.log("a7");
@@ -689,10 +705,21 @@ function detect_tb()
  if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450)
  {
    console.log("bullet tank collision detected");
+   return true;
  }
+ return false;
 }
 
-
+function check_tank_col(num){
+  if(center_x < other_center_x && num == 1 && detect_tc)
+    return true;
+  else if(center_x > other_center_x && num == 2 && detect_tc)
+    return true;
+  else if(center_y < other_center_y && num == 3 && detect_col)
+    return true;
+  else if(center_y > other_center_y && num == 4 && detect_col)
+    return true;
+}
 
 
 function gameLoop(delta){
