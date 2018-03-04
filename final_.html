@@ -132,15 +132,15 @@ message2.position.set(450,450);
  tank.height=30;
  other_tank.width=30;
  other_tank.height=30;
- treasure.width =30;
- treasure.width =30;
+ treasure.width =50;
+ treasure.height =30;
 
  tank.x = 30;
  tank.y=30;
  center_x  = 45;
  center_y =45;
- treasure.x = 440 ;
- treasure.y =440 ;
+ treasure.x = 425 ;
+ treasure.y =435 ;
  tank.vx = 4;
  tank.vy = 4;
  other_tank.vx =4;
@@ -516,7 +516,15 @@ function idle(){
 
                  if(attempts == 0)
                  {
+                 	//console.log("jsfbdsbfusd")
                    tank.visible =false ;
+                   let x=bulletcount;
+                   for(i=x; i<100; i++){
+                   	ammo[bulletcount].visible=false;
+                   	//console.log("bul_gone");
+                   	bulletcount++;
+                    }
+                    //console.log("idle "+bulletcount);
                    healthstatus.outer.width=0;
                    exit = true ;
 
