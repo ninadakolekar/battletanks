@@ -14,6 +14,7 @@
 </style>
 <body id="body">
     <h2>Background color changes based on message received from server.</h2>
+    <div id="clients"></div>
     <form id="clientMessage">
         <label for="msg">Message : </label>
         <input id="msg" type="text"/>
@@ -25,7 +26,6 @@
         <h1>Sent</h1>
         <ul id="sent"></ul>
     </div>
-    <div id="clients"></div>
 </body>
 <script>
 
@@ -60,6 +60,10 @@
         socket.send(msg);
     }
 
+    function applyUpdate(x,y) {
+        document.getElementById("box"+x).style.background = y;
+    }
+
     var socket = new WebSocket("ws://localhost:8080/");
     
     socket.onopen = function(){
@@ -75,14 +79,16 @@
     };
     socket.onmessage = function (evt) { 
                   var received_msg  = evt.data;
+                  console.log("evt.data: ",evt.data);
                   var msg_obj = JSON.parse(received_msg)
+                  console.log("parse: ",msg_obj);
                   document.getElementById("received").innerHTML += '<li>' + msg_obj.username + ': '+ msg_obj.message+'</li>';
                   /* Executing Function based on received message */
                   if(msg_obj.message == "red") red();
                   else if(msg_obj.message == "newUser") {var x = msg_obj.id; console.log("New User: ",x);createBox(x);}
                   else if(msg_obj.message == "uid") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
                   else if(msg_obj.message == "getUpdate") {myUpdate();}
-                  else if(msg_obj.message == "applyUpdate") {console.log(msg_obj.id," : ",msg_obj.bgcolor)}
+                  else if(msg_obj.message == "applyUpdate") {applyUpdate(msg_obj.id, msg_obj.boxColor);}
     };
 </script>
 </html>
