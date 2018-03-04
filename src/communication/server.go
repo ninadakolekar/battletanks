@@ -54,6 +54,7 @@ func (s *Server) Listen() {
 		fmt.Println("Client Count after newC: ", s.ClientCount)
 
 		s.Clients[cl.ID] = cl
+
 		fmt.Println("Client Count after acc: ", s.ClientCount)
 		s.ClientCount = s.ClientCount + 1
 
@@ -70,7 +71,7 @@ func (s *Server) Listen() {
 //Broadcast ... Send message to all the clients
 func (s *Server) Broadcast(msg message.Message) {
 	for _, c := range s.Clients {
-		c.SendMessage(msg)
+		go c.SendMessage(msg)
 		// log.Println("Broadcasted now...")
 	}
 }
