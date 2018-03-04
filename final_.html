@@ -94,14 +94,156 @@ let ammo =[];
 let other_ammo=[];
 
 let other_tank ,other_healthstatus ,other_bullet ,other_bulletcount,other_bullet_shot;
+var setupDone = false;
+
+
+function sendUpdate() {
+         var updateObject = {   
+
+        "id":myID,
+        "message":"updateResponse",
+        "tank_x" :tank.x ,
+        "tank_y" :tank.y ,
+        "rotationIncrement":angle,
+        "bulletCount":bulletcount ,
+        "bullet_x":ammo[bullet_shot].x,
+        "bullet_y":ammo[bullet_shot].y,
+        "other_x":ammo[bulletcount].x,
+        "other_y":ammo[bulletcount].y,
+        "center_x":center_x,
+        "center_y":center_y,
+        "health": healthstatus.outer.width ,
+        "exit": exit,
+        "won": won
+
+        } ;
+
+      socket.send(JSON.stringify(updateObject));
+
+}
+
+
+function applyUpdate(msg) {
+
+  update = msg ;
+
+  if(msg.id != myID) {
+    
+    if(msg.exit==true){
+      console.log("exit...")
+
+      for (var i = msg.bulletCount; i < 100; i++) { 
+
+        other_ammo[i].visible =false;
+      }
+
+      other_tank.visible =false;
+      
+      return;
+    }
+    else {
+      console.log("Visible to true");
+      other_tank.visible =true;
+    }
+
+
+    if(msg.rotationIncrement != 0) {
+
+      other_tank.rotation += msg.rotationIncrement;
+
+    } 
+    
+    else {
+
+      other_tank.x = msg.tank_x;
+      other_tank.y = msg.tank_y;
+
+      other_center_x = msg.center_x;
+      other_center_y = msg.center_y;
+      console.log("Coords");
+
+    }
+
+    for (var i = msg.bulletCount; i < 100; i++) { 
+
+      if(update.rot_angle !== 0){
+
+        other_ammo[i].rotation +=update.rot_angle ;
+        
+      } 
+      
+      else {
+        
+        other_ammo[i].x =update.other_x ;
+        other_ammo[i].y =update.other_y;
+
+      }
+
+      other_ammo[i].visible =true ;
+
+    } 
+    other_bulletcount = msg.bulletCount;
+
+    if(msg.bulletCount !== 0){
+
+      other_ammo[msg.bulletCount-1].x =update.bullet_x ;
+      other_ammo[msg.bulletCount-1].y =update.bullet_y ;
+      detect_tb();
+    }
+
+    other_healthstatus.outer.width = update.outer;
+    
+    detect_tc();
+ 
+
+    if(update.won == true)
+          {
+                for(i=0 ;i<100 ;i++){
+                  ammo[i].visible = false ;
+                  ammo[i].vx=0;
+                  ammo[i].vy= 0;
+                }
+
+                tank.visible = false;
+                tank.vx =0;
+                tank.vy =0;
+
+                for(i=0; i<bricks.length; i++){
+                    //console.log(bricks[i]);
+                    grid[bricks[i]].visible=false;
+                }
+
+                for(i=0; i<broken.length; i++){
+                  grid2[broken[i]].visible=false;
+                }
+
+                dungeon.visible =false ;
+                app.stage.addChild(message1);
+                lost =true;
+               return ;
+
+          }
+
+
+
+  }
+
+}
 
 socket.onopen = function(){
         alert("Websocket Connection Established!!");
         loader
        .add("images/sirowa.json")
       .load(setup);
+};
 
-    };
+socket.onmessage = function (evt) { 
+                    var received_msg  = evt.data;
+                    var msg_obj = JSON.parse(received_msg)
+                  if(msg_obj.message == "requestUpdate") {if(setupDone==true) sendUpdate();}
+                  else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
+                  else if(msg_obj.message == "applyUpdate") {if(setupDone==true) {applyUpdate(msg_obj);console.log("applyUpdate: ",msg_obj);}}
+};
 
  function load_comp(){
 
@@ -304,6 +446,7 @@ w.press =()=>{  if(exit == true)
            }
  state = play;
  app.ticker.add(delta => gameLoop(delta));
+ setupDone = true;
  console.log("end");
  }
 
@@ -848,138 +991,8 @@ function play(delta) {
 
        }
 
-function sendUpdate() {
-         var updateObject = {   
-
-        "id":myID,
-        "message":"updateResponse",
-        "tank_x" :tank.x ,
-        "tank_y" :tank.y ,
-        "rotationIncrement":angle,
-        "bulletCount":bulletcount ,
-        "bullet_x":ammo[bullet_shot].x,
-        "bullet_y":ammo[bullet_shot].y,
-        "other_x":ammo[bulletcount].x,
-        "other_y":ammo[bulletcount].y,
-        "center_x":center_x,
-        "center_y":center_y,
-        "health": healthstatus.outer.width ,
-        "exit": exit,
-        "won": won
-
-        } ;
-
-      socket.send(JSON.stringify(updateObject));
-
-}
 
 
-function applyUpdate(msg) {
-
-  console.log("applyUpdate: ",msg);
-
-  update = msg ;
-
-  if(msg.id != myID) {
-    
-    if(msg.exit==true){
-
-      for (var i = msg.bulletCount; i < 100; i++) { 
-
-        other_ammo[i].visible =false;
-      }
-
-      other_tank.visible =false;
-      
-      return;
-    }
-
-
-    if(msg.rotationIncrement !== 0) {
-
-      other_tank.rotation += msg.rotationIncrement;
-
-    } else {
-
-      other_tank.x = msg.tank_x;
-      other_tank.y = msg.tank_y;
-
-      other_center_x = msg.center_x;
-      other_center_y = msg.center_y;
-
-    }
-
-    for (var i = msg.bulletCount; i < 100; i++) { 
-
-      if(update.rot_angle !== 0){
-
-        other_ammo[i].rotation +=update.rot_angle ;
-        
-      } else {
-        
-        other_ammo[i].x =update.other_x ;
-        other_ammo[i].y =update.other_y;
-
-      }
-
-      other_ammo[i].visible =true ;
-
-    } 
-    other_bulletcount = msg.bulletCount;
-
-    if(msg.bulletCount !== 0){
-
-      other_ammo[msg.bulletCount-1].x =update.bullet_x ;
-      other_ammo[msg.bulletCount-1].y =update.bullet_y ;
-      detect_tb();
-    }
-
-    other_healthstatus.outer.width = update.outer;
-    
-    detect_tc();
- 
-
-    if(update.won == true)
-          {
-                for(i=0 ;i<100 ;i++){
-                  ammo[i].visible = false ;
-                  ammo[i].vx=0;
-                  ammo[i].vy= 0;
-                }
-
-                tank.visible = false;
-                tank.vx =0;
-                tank.vy =0;
-
-                for(i=0; i<bricks.length; i++){
-                    //console.log(bricks[i]);
-                    grid[bricks[i]].visible=false;
-                }
-
-                for(i=0; i<broken.length; i++){
-                  grid2[broken[i]].visible=false;
-                }
-
-                dungeon.visible =false ;
-                app.stage.addChild(message1);
-                lost =true;
-               return ;
-
-          }
-
-
-
-  }
-
-}
-
-socket.onmessage = function (evt) { 
-                       var received_msg  = evt.data;
-                       var msg_obj = JSON.parse(received_msg)
-                      if(msg_obj.message == "requestUpdate") {sendUpdate();}
-                      else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
-                      else if(msg_obj.message == "applyUpdate") {applyUpdate(msg_obj);}
-    };
 
  </script>
 </body>
