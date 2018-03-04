@@ -30,7 +30,7 @@ func main() {
 	}()
 
 	/* UPDATE Service */
-	utick := time.NewTicker(time.Millisecond * 200) // 20 milliseconds
+	utick := time.NewTicker(time.Millisecond * 100) // 20 milliseconds
 	go func() {
 		for range utick.C {
 			// make getUpdate signal
