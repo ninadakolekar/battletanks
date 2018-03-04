@@ -183,7 +183,7 @@ other_healthstatus.outer = oBar;
      w = keyboard(87);
 
       left.press = () =>{  
-                            if(check_tank_col(2)){
+                            if(check_tank_col(2) && (move_state == 37 || move_state == 39)){
                               return;
                             }
                             if(exit == true)
@@ -197,7 +197,6 @@ other_healthstatus.outer = oBar;
                                rot(37);
                              }
                              tank.pivot.set(15,15);
-                          }
                           };
        left.release =() => {
                              console.log("a2");
@@ -205,9 +204,9 @@ other_healthstatus.outer = oBar;
                            };
 
        right.press=()=>{
-                        if(check_tank_col(1)){
+                        if(check_tank_col(1) && (move_state == 37 || move_state == 39)){
                               return;
-                            }  
+                        }  
                         if(exit == true)
                           {return ;}
                          console.log("a3");
@@ -224,12 +223,13 @@ other_healthstatus.outer = oBar;
                          console.log("a4");
                          rightflag =false ;
                        }
-     up.press = () => { 
-                        if(check_tank_col(4)){
+     up.press = () => {
+                        if(check_tank_col(4) && (move_state == 38 || move_state == 40)){
                               return;
                             }
+
                         if(exit == true)
-                        {return ;
+                         {return ;
                         }
 
                          upflag=true
@@ -247,9 +247,9 @@ other_healthstatus.outer = oBar;
                          upflag =false;
                      };
   down.press = () => {
-                      if(check_tank_col(3)){
+                      if(check_tank_col(3) && (move_state == 40 || move_state == 38)){
                               return;
-                            }
+                      }
                       if(exit == true)
                       {return ;}
                        console.log("a7");
@@ -696,8 +696,10 @@ function detect_tc()
   if( Math.pow(other_center_x -center_x ,2)  +   Math.pow(other_center_y -center_y ,2) <=900)
   {
       console.log("tank collision detected");
+      return true;
 
   }
+  return false;
 }
 
 function detect_tb()
@@ -711,15 +713,28 @@ function detect_tb()
 }
 
 function check_tank_col(num){
-  if(center_x < other_center_x && num == 1 && detect_tc)
+  //console.log("tank_col "+num);
+  if(midx < other_center_x && num == 1 && detect_tc()){
+    console.log("tank_col "+1)
     return true;
-  else if(center_x > other_center_x && num == 2 && detect_tc)
+  }
+  else if(midx > other_center_x && num == 2 && detect_tc()){
+    console.log("tank_col "+2)
     return true;
-  else if(center_y < other_center_y && num == 3 && detect_col)
+  }
+  else if(midy < other_center_y && num == 3 && detect_tc()){
+    console.log("tank_col "+3)
     return true;
-  else if(center_y > other_center_y && num == 4 && detect_col)
+  }
+  else if(midy > other_center_y && num == 4 && detect_tc()){
+    console.log("tank_col "+4)
     return true;
+  }
+  console.log("tank_col false "+midx+" "+other_center_x);
+  return false;
 }
+
+
 
 
 function gameLoop(delta){
@@ -783,17 +798,17 @@ function play(delta) {
 
           }
 
-          var  other_player ={ "tank_x" :90,
-                               "tank_y" : 30,
+          var  other_player ={ "tank_x" : 90+30,
+                               "tank_y" : 30+90,
                                "rot_angle":0,  //only increment
                                "bulletcount":30,
                                "bullet_x":105,          //first invoke this function
                                "bullet_y":45,
-                               "other_x":105,
+                               "other_x":15,
                                "other_y":45,
                                "attempts":3 ,
-                               "center_x":105,
-                               "center_y":45,
+                               "center_x":105+30,
+                               "center_y":45+90,
                                "outer": 25 ,
                                "exit": false,
                                "won":false
@@ -848,8 +863,8 @@ function play(delta) {
 
 
                              } ;
-      var de = JSON.stringify(object_of_player);
-     document.getElementById("demo").innerHTML = de;
+      var ed = JSON.stringify(object_of_player);
+     document.getElementById("demo").innerHTML = ed;
 
        }
  </script>
