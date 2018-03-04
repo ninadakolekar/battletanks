@@ -84,13 +84,14 @@ func (c *Client) listenRead() {
 
 		msg := message.UpdateMessage{}
 		err := c.Ws.ReadJSON(&msg)
-		log.Println("Received Update: ", msg)
+
 		if err != nil {
 			log.Println("ReadFromWebSocket : ", err.Error())
 			return
 		}
+		log.Println("Received Update: ", msg)
 
-		c.processClientData(msg)
+		go c.processClientData(msg)
 	}
 }
 
@@ -146,21 +147,21 @@ func (c *Client) listenWrite() {
 //NewUserConnected ... Handles new user connection
 func (c *Client) NewUserConnected(id uint32) {
 
-	c.SendID()
+	go c.SendID()
 
-	msg := message.NewClientMessage{id, "newUser"}
-	go c.server.BroadcastNewUser(msg)
+	// msg := message.NewClientMessage{id, "newUser"}
+	// go c.server.BroadcastNewUser(msg)
 
-	for _, cl := range c.server.Clients {
-		if cl.ID != id {
-			msg := message.NewClientMessage{cl.ID, "newUser"}
-			c.SendNewUserMessage(msg)
-		}
-	}
+	// for _, cl := range c.server.Clients {
+	// 	if cl.ID != id {
+	// 		msg := message.NewClientMessage{cl.ID, "newUser"}
+	// 		c.SendNewUserMessage(msg)
+	// 	}
+	// }
 }
 
-//SendID ...
+//SendID ... Sends Client ID to ClientJS
 func (c *Client) SendID() {
-	msg := message.NewClientMessage{c.ID, "uid"}
+	msg := message.NewClientMessage{c.ID, "notifyID"}
 	c.SendNewUserMessage(msg)
 }
