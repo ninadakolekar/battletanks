@@ -18,7 +18,7 @@ type UpdateMessage struct {
 
 	TankX       uint32  `json:"tank_x"`
 	TankY       uint32  `json:"tank_y"`
-	RotationInc float32 `json:"rotationIcrement"`
+	RotationInc float32 `json:"rotationIncrement"`
 
 	BulletCount uint32 `json:"bulletCount"`
 	BulletX     uint32 `json:"bullet_x"`
