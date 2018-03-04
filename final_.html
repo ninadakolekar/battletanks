@@ -1,20 +1,35 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>Make a sprite from a texture atlas</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Battle tanks </title>
+</head>
+
 <body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
+
 <script src="js/sound.js"></script>
+
 <p id="demo"></p>
 
 <script>
+
 var leftflag =true ;
 var rightflag =true ;
+var myID;
+
 var upflag =true;
 var downflag=true;
+
 var attempts =3 ;
 var healthbar =5 ;
+
 var exit = false ;
 var bulletcount= 0;
+
 var ismoving = false;
 var won =false;
 var lost=false;
@@ -25,7 +40,8 @@ var center_x=0;
 var center_y =0;
 var other_center_x =0 ;
 var other_center_y =0;
-
+var socket = new WebSocket("ws://localhost:8080/");
+var update;
 
 let Application = PIXI.Application,
    Container = PIXI.Container,
@@ -77,13 +93,15 @@ let grid2 = [];
 let ammo =[];
 let other_ammo=[];
 
-let other_tank ,other_healthstatus ,other_bullet ,update,other_bulletcount,other_bullet_shot;
+let other_tank ,other_healthstatus ,other_bullet ,other_bulletcount,other_bullet_shot;
 
+socket.onopen = function(){
+        alert("Websocket Connection Established!!");
+        loader
+       .add("images/sirowa.json")
+      .load(setup);
 
-
-loader
- .add("images/sirowa.json")
- .load(setup);
+    };
 
  function load_comp(){
 
@@ -107,7 +125,7 @@ message2.position.set(450,450);
  tank = new Sprite(resources["images/sirowa.json"].textures["tank12.png"]);
  other_tank = new Sprite(resources["images/sirowa.json"].textures["tank12.png"]);
  bullet = new Sprite( resources["images/sirowa.json"].textures["missile.png"]);
-other_bullet = new Sprite( resources["images/sirowa.json"].textures["missile.png"]);
+ other_bullet = new Sprite( resources["images/sirowa.json"].textures["missile.png"]);
  treasure =  new Sprite( resources["images/sirowa.json"].textures["treasure.png"]);
 
  tank.width=30;
@@ -171,9 +189,6 @@ other_healthstatus.outer = oBar;
 
 
 
-
-
-
  midx=45;
  midy=45;
  let left = keyboard(37),
@@ -182,7 +197,7 @@ other_healthstatus.outer = oBar;
      down = keyboard(40);
      w = keyboard(87);
 
-      left.press = () =>{  
+      left.press = () =>{
                             if(check_tank_col(2) && (move_state == 37 || move_state == 39)){
                               return;
                             }
@@ -206,7 +221,7 @@ other_healthstatus.outer = oBar;
        right.press=()=>{
                         if(check_tank_col(1) && (move_state == 37 || move_state == 39)){
                               return;
-                        }  
+                        }
                         if(exit == true)
                           {return ;}
                          console.log("a3");
@@ -466,6 +481,7 @@ function check_bul_col(c_state) {
                              else
                                return false;
 }
+
 function bulletmove(){
                          if(ammo[bulletcount-1].x > 920 || ammo[bulletcount-1].x <-10 || ammo[bulletcount-1].y>920 || ammo[bulletcount-1].y<-10 || bullet_fired == false){
                            //console.log("bm");
@@ -489,15 +505,14 @@ function bulletmove(){
 
 
 function idle(){
+  
+                if(healthbar ==0 && exit == false )
+                {
+                  healthbar =5 ;
+                  healthstatus.outer.width =125;
+                  attempts--;
 
-
-                  if(healthbar ==0 && exit == false )
-                 {
-                   healthbar =5 ;
-                   healthstatus.outer.width =125;
-                   attempts--;
-
-                 }
+                }
 
                  if(attempts == 0)
                  {
@@ -506,12 +521,12 @@ function idle(){
                    exit = true ;
 
                  }
-                state =play ;
+                 state = play ;
 
            }
 
 function leftloop(){
-                           if(leftflag === true)
+                        if(leftflag === true)
                            {
                                  if(detect_col(37) && exit ==false){
                                    console.log("collision");
@@ -624,7 +639,7 @@ function leftloop(){
                          }
                    }
 
-       function keyboard(keyCode) {
+function keyboard(keyCode) {
          let key = {};
          key.code = keyCode;
          key.isDown = false;
@@ -657,60 +672,39 @@ function leftloop(){
          return key;
        }
 
-function player_update(){
-  var bullcount = update.bulletcount;
-  if(update.rot_angle !== 0)
-  {
-  other_tank.rotation = update.rot_angle;
-  }
-  else
-{
-  other_tank.x = update.tank_x;
-  other_tank.y =update.tank_y;
-  other_center_x = update.center_x;
-  other_center_y = update.center_y;
-}
 
-  //console.log("player tank has been updated");
 
-    for (var i = bullcount; i < 100; i++)
-    { if(update.rot_angle !== 0)
-      {other_ammo[i].rotation =update.rot_angle ;}
-      else
-      {  other_ammo[i].x =update.other_x ;
-         other_ammo[i].y =update.other_y;
-      }
-      other_ammo[i].visible =true ;
-
-    }
-
-  other_healthstatus.outer.width = update.outer;
-  detect_tc();
-  detect_tb();
-  //check collision of tank with the wall
-  //other_tank.bullet =update.bullet_x;
-}
 
 function detect_tc()
 {
-  if( Math.pow(other_center_x -center_x ,2)  +   Math.pow(other_center_y -center_y ,2) <=900)
-  {
-      console.log("tank collision detected");
-      return true;
-
-  }
-  return false;
+    if( Math.pow(other_center_x -center_x ,2)  +   Math.pow(other_center_y -center_y ,2) <=900)
+    {
+        console.log("tank collision detected");
+        return true;
+    }
+    return false;
 }
+
 
 function detect_tb()
 {
- if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450)
- {
-   console.log("bullet tank collision detected");
-   return true;
- }
- return false;
+    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450){
+
+      //console.log("bullet tank collision detected");
+      ammo[bullcount-1].visible = false ;
+      healthbar-- ;
+      //collide.play();
+      healthstatus.outer.width -=25 ;     
+      idle();
+      console.log("in the idle state ");
+      console.log(healthbar);
+        return true;
+
+    }
+
+    return false;
 }
+
 
 function check_tank_col(num){
   //console.log("tank_col "+num);
@@ -735,8 +729,6 @@ function check_tank_col(num){
 }
 
 
-
-
 function gameLoop(delta){
           if(lost ==true || won== true || exit==true)
          {
@@ -749,7 +741,7 @@ function gameLoop(delta){
 function play(delta) {
         tank.vx = 30;
         tank.vy= 30;
-        //console.log("play all the time \n");
+
          if (exit== true){
 
            for(i=0 ;i<100 ;i++){
@@ -761,64 +753,126 @@ function play(delta) {
            tank.visible = false;
            tank.vx =0;
            tank.vy =0;
-          /* for(i=0; i<bricks.length; i++){
-               //console.log(bricks[i]);
-               grid[bricks[i]].visible=false;
-           }
-
-           for(i=0; i<broken.length; i++){
-             grid2[broken[i]].visible=false;
-           }*/
-           //dungeon.visible =false ;
-           //app.stage.addChild(message1);
-          return ;}
+            return ;}
 
 
           if(tank.x ==treasure.x && tank.y ==treasure.y)
           {
-            for(i=0 ;i<100 ;i++){
-              ammo[i].visible = false ;
-              tank.vx=0;
-              tank.vy= 0;
-            }
-            for(i=0; i<bricks.length; i++){
-                //console.log(bricks[i]);
-                grid[bricks[i]].visible=false;
-            }
+              for(i=0 ;i<100 ;i++){
+                ammo[i].visible = false ;
+                tank.vx=0;
+                tank.vy= 0;
+              }
+              for(i=0; i<bricks.length; i++){
+                  //console.log(bricks[i]);
+                  grid[bricks[i]].visible=false;
+              }
 
-            for(i=0; i<broken.length; i++){
-              grid2[broken[i]].visible=false;
-            }
-            tank.visible =false;
-            treasure.visible=false;
-            dungeon.visible =false ;
-            app.stage.addChild(message2);
-            won =true ;
-           return ;
+              for(i=0; i<broken.length; i++){
+                grid2[broken[i]].visible=false;
+              }
+              tank.visible =false;
+              treasure.visible=false;
+              dungeon.visible =false ;
+              app.stage.addChild(message2);
+              won =true ;
+            return ;
 
           }
 
-          var  other_player ={ "tank_x" : 90+30,
-                               "tank_y" : 30+90,
-                               "rot_angle":0,  //only increment
-                               "bulletcount":30,
-                               "bullet_x":105,          //first invoke this function
-                               "bullet_y":45,
-                               "other_x":15,
-                               "other_y":45,
-                               "attempts":3 ,
-                               "center_x":105+30,
-                               "center_y":45+90,
-                               "outer": 25 ,
-                               "exit": false,
-                               "won":false
+             
+     document.getElementById("demo").innerHTML = ed;
 
-                              } ;
-          var fg =  JSON.stringify(other_player);
-          update  = JSON.parse(fg);
+       }
+
+function sendUpdate() {
+         var updateObject = {   
+
+        "id":myID,
+        "msg":"updateResponse",
+        "tank_x" :tank.x ,
+        "tank_y" :tank.y ,
+        "rotationIncrement":angle,
+        "bulletCount":bulletcount ,
+        "bullet_x":ammo[bullet_shot].x,
+        "bullet_y":ammo[bullet_shot].y,
+        "other_x":ammo[bulletcount].x,
+        "other_y":ammo[bulletcount].y,
+        "center_x":center_x,
+        "center_y":center_y,
+        "outer": healthstatus.outer.width ,
+        "exit": exit,
+        "won": won
+
+        } ;
+
+      socket.send(JSON.stringify(updateObject));
+
+}
 
 
-          if(update.won == true)
+function applyUpdate(msg) {
+
+  update = msg ;
+
+  if(msg.id != myID) {
+    
+    if(msg.exit==true){
+
+      for (var i = msg.bulletCount; i < 100; i++) { 
+
+        other_ammo[i].visible =false;
+      }
+
+      other_tank.visible =false;
+      
+      return;
+    }
+
+
+    if(msg.rotationIncrement !== 0) {
+
+      other_tank.rotation += msg.rotationIncrement;
+
+    } else {
+
+      other_tank.x = msg.tank_x;
+      other_tank.y = msg.tank_y;
+
+      other_center_x = msg.center_x;
+      other_center_y = msg.center_y;
+
+    }
+
+    for (var i = msg.bulletCount; i < 100; i++) { 
+
+      if(update.rot_angle !== 0){
+
+        other_ammo[i].rotation +=update.rot_angle ;
+        
+      } else {
+        
+        other_ammo[i].x =update.other_x ;
+        other_ammo[i].y =update.other_y;
+
+      }
+
+      other_ammo[i].visible =true ;
+
+    }
+
+    if(msg.bulletCount !== 0){
+
+      other_ammo[msg.bulletCount-1].x =update.bullet_x ;
+      other_ammo[msg.bulletCount-1].y =update.bullet_y ;
+      
+    }
+
+    other_healthstatus.outer.width = update.outer;
+    detect_tc();
+    detect_tb();
+
+    if(update.won == true)
           {
                 for(i=0 ;i<100 ;i++){
                   ammo[i].visible = false ;
@@ -829,7 +883,8 @@ function play(delta) {
                 tank.visible = false;
                 tank.vx =0;
                 tank.vy =0;
-               for(i=0; i<bricks.length; i++){
+
+                for(i=0; i<bricks.length; i++){
                     //console.log(bricks[i]);
                     grid[bricks[i]].visible=false;
                 }
@@ -837,6 +892,7 @@ function play(delta) {
                 for(i=0; i<broken.length; i++){
                   grid2[broken[i]].visible=false;
                 }
+
                 dungeon.visible =false ;
                 app.stage.addChild(message1);
                 lost =true;
@@ -844,30 +900,23 @@ function play(delta) {
 
           }
 
-         player_update();
-
-       var  object_of_player ={ "tank_x" :tank.x ,
-                                "tank_y" :tank.y ,
-                                "rot_angle":angle,
-                                "bulletcount":bulletcount ,
-                                "bullet_x":ammo[bullet_shot].x,
-                                "bullet_y":ammo[bullet_shot].y,
-                                "other_x":ammo[bulletcount].x,
-                                "other_y":ammo[bulletcount].y,
-                                "attempts":attempts ,
-                                "center_x":center_x,
-                                "center_y":center_y,
-                                "outer": healthstatus.outer.width ,
-                                "exit": exit,
-                                "won": won
 
 
-                             } ;
-      var ed = JSON.stringify(object_of_player);
-     document.getElementById("demo").innerHTML = ed;
+  }
 
-       }
+}
+
+socket.onmessage = function (evt) { 
+                       var received_msg  = evt.data;
+                       var msg_obj = JSON.parse(received_msg)
+                      if(msg_obj.message == "requestUpdate") {sendUpdate();}
+                      else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
+                      if(msg_obj.message == "applyUpdate") {applyUpdate(msg_obj);}
+    };
+
  </script>
 </body>
 
 </html>
+
+
