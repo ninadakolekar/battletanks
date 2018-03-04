@@ -4,15 +4,29 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	comm "./communication"
 	message "./message"
 )
 
+func determineListenAddress() (string, error) {
+	port := os.Getenv("PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set")
+	}
+	return ":" + port, nil
+}
+
 /* MAIN */
 
 func main() {
+
+	addr, err := determineListenAddress()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	server := comm.NewServer("/")
 	fmt.Println("Client Count before gor: ", server.ClientCount)
@@ -31,7 +45,7 @@ func main() {
 	}()
 
 	fmt.Println("Client Count after gor: ", server.ClientCount)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(addr, nil))
 	fmt.Println(server.Pattern)
 
 }
