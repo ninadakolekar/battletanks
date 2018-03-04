@@ -16,6 +16,7 @@ type Client struct {
 	server    *Server
 	Ws        *websocket.Conn
 	ch        chan message.Message
+	updateCh  chan message.UpdateMessage
 	newUserCh chan message.NewClientMessage
 }
 
@@ -28,9 +29,11 @@ func NewClient(server *Server, ws *websocket.Conn, id uint32) *Client {
 
 	ch := make(chan message.Message, bufferSize)
 
+	updateCh := make(chan message.UpdateMessage, bufferSize)
+
 	newUserCh := make(chan message.NewClientMessage, bufferSize)
 
-	return &Client{id, server, ws, ch, newUserCh}
+	return &Client{id, server, ws, ch, updateCh, newUserCh}
 }
 
 //Conn ... Returns the websocket of client
@@ -42,6 +45,13 @@ func (c *Client) Conn() *websocket.Conn {
 func (c *Client) SendMessage(msg message.Message) {
 	select {
 	case c.ch <- msg:
+	}
+}
+
+//SendUpdate ... Sends update to the client
+func (c *Client) SendUpdate(msg message.UpdateMessage) {
+	select {
+	case c.updateCh <- msg:
 	}
 }
 
@@ -74,9 +84,9 @@ func (c *Client) listenRead() {
 
 		msg := message.UpdateMessage{}
 		err := c.Ws.ReadJSON(&msg)
-		fmt.Println("HReceived Update: ", msg)
+		log.Println("Received Update: ", msg)
 		if err != nil {
-			log.Println("ReadFromWebSocket L78: ", err.Error())
+			log.Println("ReadFromWebSocket : ", err.Error())
 			return
 		}
 
@@ -87,6 +97,17 @@ func (c *Client) listenRead() {
 //processClientData ... Process response to message received from client
 func (c *Client) processClientData(msg message.UpdateMessage) {
 	fmt.Println("Message Received from Client: ", msg)
+
+	for _, cl := range c.server.Clients {
+
+		go func(c *Client, cl *Client, msg message.UpdateMessage) {
+			if c.ID != cl.ID {
+				msg.Message = "applyUpdate"
+				cl.SendUpdate(msg)
+			}
+		}(c, cl, msg)
+
+	}
 }
 
 func (c *Client) listenWrite() {
@@ -103,6 +124,11 @@ func (c *Client) listenWrite() {
 	for {
 		select {
 		case msg := <-c.ch:
+			err := c.Ws.WriteJSON(&msg)
+			if err != nil {
+				log.Println("listenWrite :", err.Error())
+			}
+		case msg := <-c.updateCh:
 			err := c.Ws.WriteJSON(&msg)
 			if err != nil {
 				log.Println("listenWrite :", err.Error())
