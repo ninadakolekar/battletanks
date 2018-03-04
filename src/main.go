@@ -20,18 +20,14 @@ func main() {
 	go server.Listen()
 
 	/* UPDATE Service */
-
-	utick := time.NewTicker(time.Millisecond * 100) // 100 milliseconds
-
+	ticker := time.NewTicker(time.Millisecond * 2000) // 2 seconds
 	go func() {
-
-		for range utick.C {
-			// make getUpdate signal
-			uSignal := message.Message{"getUpdate"}
+		for t := range ticker.C {
+			// make message msg here
+			uSignal := message.Message{"requestUpdate"}
 			server.Broadcast(uSignal)
-			// log.Println("Update Signal from server sent at ", t)
+			fmt.Println("Tick at", t)
 		}
-
 	}()
 
 	fmt.Println("Client Count after gor: ", server.ClientCount)
