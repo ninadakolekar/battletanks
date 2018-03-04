@@ -139,8 +139,8 @@ message2.position.set(450,450);
  tank.y=30;
  center_x  = 45;
  center_y =45;
- treasure.x = 450 ;
- treasure.y =840 ;
+ treasure.x = 440 ;
+ treasure.y =440 ;
  tank.vx = 4;
  tank.vy = 4;
  other_tank.vx =4;
@@ -537,7 +537,7 @@ function leftloop(){
                                    console.log("in the idle state ");
                                    console.log(healthbar);
                                  }
-                               else{
+                               else{  requestAnimationFrame(leftloop);
                                          tank.x-=tank.vx;
                                          center_x-=tank.vx;
                                          if(!ismoving)
@@ -566,6 +566,7 @@ function leftloop(){
                              console.log(healthbar);
                            }
                            else{
+                                
                              tank.x+=tank.vx;
                             center_x+=tank.vx;
                                if(!ismoving)
