@@ -47,6 +47,9 @@ var other_center_x =0 ;
 var other_center_y =0;
 var socket = new WebSocket("ws://localhost:8080/");
 var update;
+var broken_tile=-1;
+var x=0;
+var y=0;
 
 let Application = PIXI.Application,
    Container = PIXI.Container,
@@ -119,10 +122,13 @@ function sendUpdate() {
         "center_y":center_y,
         "health": healthstatus.outer.width ,
         "exit": exit,
-        "won": won
+        "won": won,
+        "tile_index":broken_tile 
 
         } ;
         angle=0;
+        broken_tile=-1;
+        //healthstatus.outer.width =0;
 
       socket.send(JSON.stringify(updateObject));
 
@@ -195,7 +201,12 @@ function applyUpdate(msg) {
       detect_tb();
     }
 
-    other_healthstatus.outer.width = msg.outer;
+    other_healthstatus.outer.width = msg.health;
+
+    if(msg.tile_index !=-1)
+    {
+     grid2[msg.tile_index].visible =false;
+    }
     
     //coll_tc();
  
@@ -670,29 +681,35 @@ function detect_col(c_state) {
                                return false;
                         }
 function check_bul_col(c_state) {
-                             let x=(ammo[bulletcount-1].x-15+(ammo[bulletcount-1].x-15)%30)/30, y=(ammo[bulletcount-1].y-15+(ammo[bulletcount-1].y-15)%30)/30, l, r, d, u;
-                             l = grid[(x-1)+y*30].visible || grid2[(x-1)+y*30].visible;
-                             r = grid[x+1+y*30].visible || grid2[x+1+y*30].visible;
-                             d = grid[x+(y+1)*30].visible || grid2[x+(y+1)*30].visible;
-                             u = grid[x+(y-1)*30].visible || grid2[x+(y-1)*30].visible;
+                             x=(ammo[bulletcount-1].x-15+(ammo[bulletcount-1].x-15)%30)/30;
+                             y=(ammo[bulletcount-1].y-15+(ammo[bulletcount-1].y-15)%30)/30;
+                              
+                             let l = grid[(x-1)+y*30].visible || grid2[(x-1)+y*30].visible;
+                             let r = grid[x+1+y*30].visible || grid2[x+1+y*30].visible;
+                             let d = grid[x+(y+1)*30].visible || grid2[x+(y+1)*30].visible;
+                             let u = grid[x+(y-1)*30].visible || grid2[x+(y-1)*30].visible;
                              //console.log(c_state+" cords"+x+" "+y+" "+midx+" "+midy+" "+l+" "+r+" "+d+" "+u);
                              if(c_state == 38 && u){
                                if(grid2[x+(y-1)*30].visible)
+                                 broken_tile =x+(y-1)*30;
                                  grid2[x+(y-1)*30].visible=false;
                                return true;
                              }
                              else if(c_state == 40 && d){
                                if(grid2[x+(y+1)*30].visible)
+                                 broken_tile =x+(y+1)*30;
                                  grid2[x+(y+1)*30].visible=false;
                                return true;
                              }
                              else if(c_state == 37 && l){
                                if(grid2[(x-1)+y*30].visible)
+                                 broken_tile =(x-1)+y*30;
                                  grid2[(x-1)+y*30].visible=false;
                                return true;
                              }
                              else if(c_state ==39 && r){
                                if(grid2[x+1+y*30].visible)
+                                 broken_tile  =(x+1)+y*30;
                                  grid2[x+1+y*30].visible=false;
                                return true;
                              }
