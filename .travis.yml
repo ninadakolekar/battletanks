@@ -1,0 +1,14 @@
+language: go
+
+install: true
+
+go:
+  - 1.9.x
+  - tip
+
+env:
+  global:
+    - PORT=8080
+
+before_install:
+  - go get github.com/gorilla/websocket
