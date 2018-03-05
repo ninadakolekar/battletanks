@@ -8,6 +8,7 @@ import (
 	"time"
 
 	comm "github.com/IITH-POPL2-Jan2018/concurrency-13/src/communication"
+	constants "github.com/IITH-POPL2-Jan2018/concurrency-13/src/constants"
 	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 )
 
@@ -34,13 +35,13 @@ func main() {
 	go server.Listen()
 
 	/* UPDATE Service */
-	ticker := time.NewTicker(time.Millisecond * 20) // 2 seconds
+	ticker := time.NewTicker(constants.UpdateRequestInterval) // 2 seconds
 	go func() {
-		for t := range ticker.C {
+		for range ticker.C {
 			// make message msg here
 			uSignal := message.Message{"requestUpdate"}
 			server.Broadcast(uSignal)
-			fmt.Println("Tick at", t)
+			// fmt.Println("Tick at", t)
 		}
 	}()
 
