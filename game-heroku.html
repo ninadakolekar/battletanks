@@ -26,6 +26,7 @@ var angle_1;
 
 var upflag =true;
 var downflag=true;
+var hit_wall =false;
 
 var attempts =3 ;
 var healthbar =5 ;
@@ -47,6 +48,9 @@ var other_center_x =0 ;
 var other_center_y =0;
 var socket = new WebSocket("ws://peaceful-spire-96840.herokuapp.com/");
 var update;
+var broken_tile=-1;
+var x=0;
+var y=0;
 
 let Application = PIXI.Application,
    Container = PIXI.Container,
@@ -119,10 +123,14 @@ function sendUpdate() {
         "center_y":center_y,
         "health": healthstatus.outer.width ,
         "exit": exit,
-        "won": won
+        "won": won,
+        "tile_index":broken_tile ,
+        "hitwall":hit_wall
 
         } ;
         angle=0;
+        broken_tile=-1;
+        //healthstatus.outer.width =0;
 
       socket.send(JSON.stringify(updateObject));
 
@@ -131,7 +139,7 @@ function sendUpdate() {
 
 function applyUpdate(msg) {
 
-   update = msg ;
+     update = msg ;
 
    if(msg.id != myID) {
     
@@ -192,10 +200,24 @@ function applyUpdate(msg) {
     if(msg.bulletCount !== 0){
       other_ammo[msg.bulletCount-1].x =msg.bullet_x ;
       other_ammo[msg.bulletCount-1].y =msg.bullet_y ;
-      detect_tb();
+       if(msg.hitwall == true)
+       { other_ammo[msg.bulletCount-1].visible =false ;
+         console.log("bullet has hit the wall");
+          msg.hitwall =false ;
+        }
+  detect_tb();
+       
+
     }
 
-    other_healthstatus.outer.width = msg.outer;
+    other_healthstatus.outer.width = msg.health;
+
+    if(msg.tile_index !=-1)
+    {
+     grid2[msg.tile_index].visible =false;
+
+    }
+  
     
     //coll_tc();
  
@@ -657,6 +679,7 @@ function detect_col(c_state) {
                              r = grid[x+1+y*30].visible || grid2[x+1+y*30].visible;
                              d = grid[x+(y+1)*30].visible || grid2[x+(y+1)*30].visible;
                              u = grid[x+(y-1)*30].visible || grid2[x+(y-1)*30].visible;
+                          
                              //console.log(c_state+" cords"+x+" "+y+" "+midx+" "+midy+" "+l+" "+r+" "+d+" "+u);
                              if(c_state == 38 && u)
                                return true;
@@ -670,29 +693,45 @@ function detect_col(c_state) {
                                return false;
                         }
 function check_bul_col(c_state) {
-                             let x=(ammo[bulletcount-1].x-15+(ammo[bulletcount-1].x-15)%30)/30, y=(ammo[bulletcount-1].y-15+(ammo[bulletcount-1].y-15)%30)/30, l, r, d, u;
-                             l = grid[(x-1)+y*30].visible || grid2[(x-1)+y*30].visible;
-                             r = grid[x+1+y*30].visible || grid2[x+1+y*30].visible;
-                             d = grid[x+(y+1)*30].visible || grid2[x+(y+1)*30].visible;
-                             u = grid[x+(y-1)*30].visible || grid2[x+(y-1)*30].visible;
+                             x=(ammo[bulletcount-1].x-15+(ammo[bulletcount-1].x-15)%30)/30;
+                             y=(ammo[bulletcount-1].y-15+(ammo[bulletcount-1].y-15)%30)/30;
+
+                              
+                             let l = grid[(x-1)+y*30].visible || grid2[(x-1)+y*30].visible;
+                             let r = grid[x+1+y*30].visible || grid2[x+1+y*30].visible;
+                             let d = grid[x+(y+1)*30].visible || grid2[x+(y+1)*30].visible;
+                             let u = grid[x+(y-1)*30].visible || grid2[x+(y-1)*30].visible;
                              //console.log(c_state+" cords"+x+" "+y+" "+midx+" "+midy+" "+l+" "+r+" "+d+" "+u);
+                             
                              if(c_state == 38 && u){
+                                 hit_wall =true;
+                               ammo[bulletcount-1].visible =false;
                                if(grid2[x+(y-1)*30].visible)
+                                 broken_tile =x+(y-1)*30;
                                  grid2[x+(y-1)*30].visible=false;
                                return true;
                              }
                              else if(c_state == 40 && d){
+                                hit_wall =true;
+                               ammo[bulletcount-1].visible =false;
                                if(grid2[x+(y+1)*30].visible)
+                                 broken_tile =x+(y+1)*30;
                                  grid2[x+(y+1)*30].visible=false;
                                return true;
                              }
                              else if(c_state == 37 && l){
+                               hit_wall =true;
+                               ammo[bulletcount-1].visible =false;
                                if(grid2[(x-1)+y*30].visible)
+                                 broken_tile =(x-1)+y*30;
                                  grid2[(x-1)+y*30].visible=false;
                                return true;
                              }
                              else if(c_state ==39 && r){
+                              hit_wall =true;
+                              ammo[bulletcount-1].visible =false;
                                if(grid2[x+1+y*30].visible)
+                                 broken_tile  =(x+1)+y*30;
                                  grid2[x+1+y*30].visible=false;
                                return true;
                              }
@@ -919,7 +958,7 @@ function detect_tc()
 
 function detect_tb()
 {
-    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450){
+    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450 && ammo[other_bulletcount-1].visible ==true){
 
       //console.log("bullet tank collision detected");
       console.log("health decrease due to detect_tb()");
