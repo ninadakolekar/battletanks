@@ -756,33 +756,32 @@ function bulletmove(){
 
 function idle(){
   
-                if(healthbar ==0 && exit == false )
-                {
-                  healthbar =5 ;
-                  healthstatus.outer.width =125;
-                  attempts--;
+  if(healthbar ==0 && exit == false )
+  {
+    healthbar =5 ;
+    healthstatus.outer.width =125;
+    attempts--;
 
-                }
+  }
 
-                 if(attempts == 0)
-                 {
-                 	//console.log("jsfbdsbfusd")
-                   tank.visible =false ;
-                   let x=bulletcount;
-                   for(i=x; i<100; i++){
-                   	ammo[bulletcount].visible=false;
-                   	//console.log("bul_gone");
-                   	bulletcount++;
-                    }
-                    //console.log("idle "+bulletcount);
-                   healthstatus.outer.width=0;
-                   exit = true ;
+   if(attempts == 0)
+   {
+     //console.log("jsfbdsbfusd")
+     tank.visible =false ;
+     let x=bulletcount;
+     for(i=x; i<100; i++){
+       ammo[i].visible=false;
+       //console.log("bul_gone");
+       //bulletcount++;
+      }
+      //console.log("idle "+bulletcount);
+     healthstatus.outer.width=0;
+     exit = true ;
 
-                 }
-                 state = play ;
+   }
+   state = play ;
 
-           }
-
+}
 function leftloop(){
                         if(leftflag === true)
                            {
