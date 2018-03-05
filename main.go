@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	comm "github.com/ninadakolekar/concurrency-13/src/communication"
-	message "github.com/ninadakolekar/concurrency-13/src/message"
+	comm "github.com/IITH-POPL2-Jan2018/concurrency-13/src/communication"
+	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 )
 
 func determineListenAddress() (string, error) {

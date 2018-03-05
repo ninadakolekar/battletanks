@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
+	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 	"github.com/gorilla/websocket"
-	message "github.com/ninadakolekar/concurrency-13/src/message"
 )
 
 const bufferSize = 100

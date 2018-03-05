@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 	"github.com/gorilla/websocket"
-	message "github.com/ninadakolekar/concurrency-13/src/message"
 )
 
 var upgrader = websocket.Upgrader{} // To convert HTTP GET Request to WebSocket

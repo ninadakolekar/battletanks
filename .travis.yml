@@ -9,6 +9,6 @@ env:
     - PORT=8080
 
 install:
-  - go get github.com/ninadakolekar/concurrency-13/src/communication
-  - go get github.com/ninadakolekar/concurrency-13/src/message
+  - go get github.com/IITH-POPL2-Jan2018/concurrency-13/src/communication
+  - go get github.com/IITH-POPL2-Jan2018/concurrency-13/src/message
   - go get github.com/gorilla/websocket
