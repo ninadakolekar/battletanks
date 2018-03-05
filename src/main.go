@@ -34,7 +34,7 @@ func main() {
 	go server.Listen()
 
 	/* UPDATE Service */
-	ticker := time.NewTicker(time.Millisecond * 500) // 2 seconds
+	ticker := time.NewTicker(time.Millisecond * 20) // 2 seconds
 	go func() {
 		for t := range ticker.C {
 			// make message msg here

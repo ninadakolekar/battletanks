@@ -46,7 +46,7 @@ var center_y =0;
 
 var other_center_x =0 ;
 var other_center_y =0;
-var socket = new WebSocket("ws://localhost:8080/");
+var socket = new WebSocket("ws://localhost:8080");
 var update;
 var broken_tile=-1;
 var x=0;
@@ -104,7 +104,7 @@ let other_ammo=[];
 
 let other_tank ,other_healthstatus ,other_bullet ,other_bulletcount,other_bullet_shot;
 var setupDone = false;
-
+var updateDone = false;
 
 function sendUpdate() {
          var updateObject = {   
@@ -138,8 +138,8 @@ function sendUpdate() {
 
 
 function applyUpdate(msg) {
-
-     update = msg ;
+    updateDone = false;
+    update = msg ;
 
    if(msg.id != myID) {
     
@@ -163,37 +163,30 @@ function applyUpdate(msg) {
 
     if(msg.rotationIncrement != 0) {
 
+      for (var i = msg.bulletCount; i < 100; i++){ 
+        other_ammo[i].visible =true ;
+        other_ammo[i].rotation += msg.rotationIncrement ;
+        }
+        console.log("####################### BULLET ROTATED ###################")
       other_tank.rotation += msg.rotationIncrement;
-
+      console.log("*********************TANK ROTATED ******************************")
+      
     } 
     
     else {
 
       other_tank.x = msg.tank_x;
       other_tank.y = msg.tank_y;
-
       other_center_x = msg.center_x;
-      other_center_y = msg.center_y;
-      console.log("Coords");
+      other_center_y = msg.center_y; 
+         
+      for (var i = msg.bulletCount; i < 100; i++){
+        other_ammo[i].visible =true ;
+        other_ammo[i].x =msg.other_x ;
+        other_ammo[i].y =msg.other_y;
+      }
 
     }
-
- 
-
-
-    for (var i = msg.bulletCount; i < 100; i++) { 
-
-       if(msg.rotationIncrement != 0){
-        other_ammo[i].rotation += msg.rotationIncrement ;}
-      
-       else{  
-        other_ammo[i].x =msg.other_x ;
-        other_ammo[i].y =msg.other_y;}
-      
-
-       other_ammo[i].visible =true ;
-
-    } 
 
     other_bulletcount = msg.bulletCount;
 
@@ -253,7 +246,7 @@ function applyUpdate(msg) {
 
 
   }
-
+  updateDone = true;
 }
 
 socket.onopen = function(){
@@ -268,7 +261,7 @@ socket.onmessage = function (evt) {
                     var msg_obj = JSON.parse(received_msg)
                   if(msg_obj.message == "requestUpdate") {if(setupDone==true) sendUpdate();}
                   else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;myIDset=true;}
-                  else if(msg_obj.message == "applyUpdate") {if(setupDone==true) {applyUpdate(msg_obj);console.log("applyUpdate: ",msg_obj);}}
+                  else if(msg_obj.message == "applyUpdate") { if(setupDone==true) {applyUpdate(msg_obj);console.log("applyUpdate: ",msg_obj);} }
 };
 
  function load_comp(){
