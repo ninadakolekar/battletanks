@@ -27,12 +27,11 @@ type UpdateMessage struct {
 	OtherX uint32 `json:"other_x"`
 	OtherY uint32 `json:"other_y"`
 
-	CenterX uint32 `json:"center_x"`
-	CenterY uint32 `json:"center_y"`
-
-	BrokenTile int32 `json:"tile_index"`
-
-	Health uint32 `json:"health"`
-	Exit   bool   `json:"exit"`
-	Won    bool   `json:"won"`
+	CenterX    uint32 `json:"center_x"`
+	CenterY    uint32 `json:"center_y"`
+	Health     uint32 `json:"health"`
+	Exit       bool   `json:"exit"`
+	Won        bool   `json:"won"`
+	BrokenTile int32  `json:"tile_index"`
+	HitWall    bool   `json:"hitwall"`
 }
