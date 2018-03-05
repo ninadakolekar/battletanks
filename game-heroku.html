@@ -21,6 +21,8 @@
 var leftflag =true ;
 var rightflag =true ;
 var myID;
+var myIDset =false;
+var angle_1;
 
 var upflag =true;
 var downflag=true;
@@ -37,11 +39,13 @@ var lost=false;
 var isloaded =false;
 var bullet_shot =0;
 var initiliase =true ;
+
 var center_x=0;
 var center_y =0;
+
 var other_center_x =0 ;
 var other_center_y =0;
-var socket = new WebSocket("ws://https://peaceful-spire-96840.herokuapp.com:8080/");
+var socket = new WebSocket("ws://peaceful-spire-96840.herokuapp.com/");
 var update;
 
 let Application = PIXI.Application,
@@ -118,6 +122,7 @@ function sendUpdate() {
         "won": won
 
         } ;
+        angle=0;
 
       socket.send(JSON.stringify(updateObject));
 
@@ -126,9 +131,9 @@ function sendUpdate() {
 
 function applyUpdate(msg) {
 
-  update = msg ;
+   update = msg ;
 
-  if(msg.id != myID) {
+   if(msg.id != myID) {
     
     if(msg.exit==true){
       console.log("exit...")
@@ -143,7 +148,7 @@ function applyUpdate(msg) {
       return;
     }
     else {
-      console.log("Visible to true");
+      console.log("other tank  visibe true");
       other_tank.visible =true;
     }
 
@@ -165,36 +170,34 @@ function applyUpdate(msg) {
 
     }
 
+ 
+
+
     for (var i = msg.bulletCount; i < 100; i++) { 
 
-      if(update.rot_angle !== 0){
-
-        other_ammo[i].rotation +=update.rot_angle ;
-        
-      } 
+       if(msg.rotationIncrement != 0){
+        other_ammo[i].rotation += msg.rotationIncrement ;}
       
-      else {
-        
-        other_ammo[i].x =update.other_x ;
-        other_ammo[i].y =update.other_y;
+       else{  
+        other_ammo[i].x =msg.other_x ;
+        other_ammo[i].y =msg.other_y;}
+      
 
-      }
-
-      other_ammo[i].visible =true ;
+       other_ammo[i].visible =true ;
 
     } 
+
     other_bulletcount = msg.bulletCount;
 
     if(msg.bulletCount !== 0){
-
-      other_ammo[msg.bulletCount-1].x =update.bullet_x ;
-      other_ammo[msg.bulletCount-1].y =update.bullet_y ;
+      other_ammo[msg.bulletCount-1].x =msg.bullet_x ;
+      other_ammo[msg.bulletCount-1].y =msg.bullet_y ;
       detect_tb();
     }
 
-    other_healthstatus.outer.width = update.outer;
+    other_healthstatus.outer.width = msg.outer;
     
-    detect_tc();
+    //coll_tc();
  
 
     if(update.won == true)
@@ -242,7 +245,7 @@ socket.onmessage = function (evt) {
                     var received_msg  = evt.data;
                     var msg_obj = JSON.parse(received_msg)
                   if(msg_obj.message == "requestUpdate") {if(setupDone==true) sendUpdate();}
-                  else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;}
+                  else if(msg_obj.message == "notifyID") {var x = msg_obj.id; console.log("Me User: ",x);myID = x;myIDset=true;}
                   else if(msg_obj.message == "applyUpdate") {if(setupDone==true) {applyUpdate(msg_obj);console.log("applyUpdate: ",msg_obj);}}
 };
 
@@ -277,11 +280,26 @@ message2.position.set(450,450);
  other_tank.height=30;
  treasure.width =50;
  treasure.height =30;
-
+ while(!myIDset){};
+if(myID%2==0)
+{
  tank.x = 30;
  tank.y=30;
- center_x  = 45;
+ midx = 45;
+ midy =45;
+ center_x = 45;
  center_y =45;
+}
+else{
+  tank.x =840;
+  tank.y=840;
+  midx =855;
+  midy=855;
+  center_x =855;
+  center_y =855;
+
+}
+
  treasure.x = 425 ;
  treasure.y =435 ;
  tank.vx = 4;
@@ -332,8 +350,8 @@ other_healthstatus.outer = oBar;
 
 
 
- midx=45;
- midy=45;
+ /*midx=45;
+ midy=45;*/
  let left = keyboard(37),
      up = keyboard(38),
      right = keyboard(39),
@@ -436,7 +454,7 @@ w.press =()=>{  if(exit == true)
                  //ismoving== true ;
                  bullet_shot =bulletcount ;
                  bulletcount++;
-                 angle=tank.rotation;
+                 angle_1=tank.rotation;
                  bulletmove();
                  console.log(bulletcount + " is the bulletcount");
                 }
@@ -445,10 +463,12 @@ w.press =()=>{  if(exit == true)
                       console.log("no ammo ");
                 }
            }
+
  state = play;
  app.ticker.add(delta => gameLoop(delta));
  setupDone = true;
  console.log("end");
+
  }
 
  function hitTestRectangle(r1, r2) {
@@ -505,7 +525,8 @@ w.press =()=>{  if(exit == true)
 
 
  function rot(r_state){
-                       let angle=pi/2.0, final, x=0, y=0;
+                       angle=pi/2.0;
+                       let final, x=0, y=0;
                        if(move_state == 38)
                        {
                          if(r_state == 37)
@@ -693,8 +714,8 @@ function bulletmove(){
                            state= play;
                          }
                          requestAnimationFrame(bulletmove);
-                         ammo[bulletcount-1].x += 0.5*tank.vx*Math.sin(angle);
-                         ammo[bulletcount-1].y -= 0.5*tank.vy* Math.cos(angle);
+                         ammo[bulletcount-1].x += 0.5*tank.vx*Math.sin(angle_1);
+                         ammo[bulletcount-1].y -= 0.5*tank.vy* Math.cos(angle_1);
 
                          //console.log("bullet"+ bulletcount+" has been released "+ammo[bulletcount-1].x);
                          //ismoving =false ;
@@ -738,6 +759,7 @@ function leftloop(){
                                    healthbar-- ;
                                    collide.play();
                                    healthstatus.outer.width -=25 ;
+                                   console.log("health decrease due to wall");
                                    idle();
                                    console.log("in the idle state ");
                                    console.log(healthbar);
@@ -766,6 +788,7 @@ function leftloop(){
                              console.log("collision");
                              healthbar-- ;
                              collide.play();
+                             console.log("health decrease due to wall");
                              healthstatus.outer.width -=25 ;
                              idle();
                              console.log("in the idle state ");
@@ -774,7 +797,7 @@ function leftloop(){
                            else{
                                 
                              tank.x+=tank.vx;
-                            center_x+=tank.vx;
+                             center_x+=tank.vx;
                                if(!ismoving)
                                {
                                  for( i=bulletcount;i<100 ;i++ )
@@ -796,13 +819,14 @@ function leftloop(){
                          healthbar-- ;
                          collide.play();
                          healthstatus.outer.width -=25 ;
+                         console.log("health decrease due to wall");
                          idle();
                          console.log("in the idle state ");
                          console.log(healthbar);
                        }
                        else{
                            tank.y-=tank.vy;
-                            center_y-=tank.vy;
+                           center_y-=tank.vy;
                            if(!ismoving)
                            {
                              for( i=bulletcount;i<100 ;i++ )
@@ -826,12 +850,13 @@ function leftloop(){
                            collide.play();
                            healthstatus.outer.width -=25 ;
                            idle();
-                           console.log("in the idle state ");
+                           console.log("health decrease due to wall");
+                           //console.log("in the idle state ");
                            console.log(healthbar);
                          }
                          else{
-                           tank.y+=tank.vy;
-                           center_y += tank.vy;
+                            tank.y+=tank.vy;
+                            center_y += tank.vy;
                              if(!ismoving)
                              {
                                for( i=bulletcount;i<100 ;i++ )
@@ -884,7 +909,7 @@ function keyboard(keyCode) {
 
 function detect_tc()
 {
-    if( Math.pow(other_center_x -center_x ,2)  +   Math.pow(other_center_y -center_y ,2) <=900)
+    if( Math.pow(other_center_x -center_x ,2)  +   Math.pow(other_center_y - center_y ,2) <=900)
     {
         console.log("tank collision detected");
         return true;
@@ -892,12 +917,12 @@ function detect_tc()
     return false;
 }
 
-
 function detect_tb()
 {
     if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450){
 
       //console.log("bullet tank collision detected");
+      console.log("health decrease due to detect_tb()");
       ammo[other_bulletcount-1].visible = false ;
       healthbar-- ;
       //collide.play();
@@ -905,11 +930,11 @@ function detect_tb()
       idle();
       console.log("in the idle state ");
       console.log(healthbar);
-        return true;
+       
 
     }
 
-    return false;
+
 }
 
 
