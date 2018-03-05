@@ -1,7 +1,5 @@
 language: go
 
-install: true
-
 go:
   - 1.9.x
   - tip
@@ -10,5 +8,7 @@ env:
   global:
     - PORT=8080
 
-before_install:
+install:
+  - go get github.com/ninadakolekar/concurrency-13/src/communication
+  - go get github.com/ninadakolekar/concurrency-13/src/message
   - go get github.com/gorilla/websocket
