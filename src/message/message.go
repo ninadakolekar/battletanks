@@ -30,6 +30,8 @@ type UpdateMessage struct {
 	CenterX uint32 `json:"center_x"`
 	CenterY uint32 `json:"center_y"`
 
+	BrokenTile int32 `json:"tile_index"`
+
 	Health uint32 `json:"health"`
 	Exit   bool   `json:"exit"`
 	Won    bool   `json:"won"`
