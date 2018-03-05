@@ -193,13 +193,14 @@ function applyUpdate(msg) {
     if(msg.bulletCount !== 0){
       other_ammo[msg.bulletCount-1].x =msg.bullet_x ;
       other_ammo[msg.bulletCount-1].y =msg.bullet_y ;
-       if(msg.hitwall == true)
-       { other_ammo[msg.bulletCount-1].visible =false ;
-         console.log("bullet has hit the wall");
-          msg.hitwall =false ;
-        }
-  detect_tb();
-       
+      other_ammo[msg.bulletCount-1].visible = true ;
+      if(msg.hitwall)
+      {
+         other_ammo[msg.bulletcount-1].visible = false;
+      }
+  
+      detect_tb();
+  
 
     }
 
@@ -697,7 +698,7 @@ function check_bul_col(c_state) {
                              //console.log(c_state+" cords"+x+" "+y+" "+midx+" "+midy+" "+l+" "+r+" "+d+" "+u);
                              
                              if(c_state == 38 && u){
-                                 hit_wall =true;
+                               hit_wall =true;
                                ammo[bulletcount-1].visible =false;
                                if(grid2[x+(y-1)*30].visible)
                                  broken_tile =x+(y-1)*30;
@@ -741,6 +742,7 @@ function bulletmove(){
                          //angle=tank.rotation;
                          if(check_bul_col(bul_mov_state)){
                            ammo[bulletcount-1].visible = false;
+                          
                            console.log("bullet collided with wall")
                            bullet_fired = false;
                            state= play;
@@ -950,11 +952,12 @@ function detect_tc()
 
 function detect_tb()
 {
-    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450 && ammo[other_bulletcount-1].visible ==true){
+    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450 && other_ammo[msg.bulletCount-1].visible == true){
 
       //console.log("bullet tank collision detected");
       console.log("health decrease due to detect_tb()");
-      ammo[other_bulletcount-1].visible = false ;
+      //ammo[other_bulletcount-1].visible = false ;
+      other_ammo[msg.bulletCount-1].visible =false ;
       healthbar-- ;
       //collide.play();
       healthstatus.outer.width -=25 ;     
