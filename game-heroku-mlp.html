@@ -84,6 +84,13 @@ let style = new PIXI.TextStyle({
   dropShadowDistance: 6,
 });
 
+let style2 = new PIXI.TextStyle({
+  fontFamily: "Arial",
+  fontSize: 20,
+  fontWeight: 'bold',
+});
+
+
 sounds.load([
   "sounds/movement.mp3",
   "sounds/collision.mp3"
@@ -422,10 +429,10 @@ w.press =()=>{  if(exit == true)
 
 function health_init(){
 
-p1 = new PIXI.Text("Player 1",style);
-p2 = new PIXI.Text("Player 2",style);
-p3 = new PIXI.Text("Player 3",style);
-p4 = new PIXI.Text("Player 4",style);
+p1 = new PIXI.Text("Player 1",style2);
+p2 = new PIXI.Text("Player 2",style2);
+p3 = new PIXI.Text("Player 3",style2);
+p4 = new PIXI.Text("Player 4",style2);
 
 p1.position.set(1000,240);
 p2.position.set(1000,330);
