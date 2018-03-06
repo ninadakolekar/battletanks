@@ -14,10 +14,11 @@ var upgrader = websocket.Upgrader{} // To convert HTTP GET Request to WebSocket
 
 // Server ... Structure: Server
 type Server struct {
-	Pattern     string              // URL of the server
-	ClientCount uint32              // Number of Clients Connected
-	Clients     map[uint32]*Client  // User Connections
-	Upgrader    *websocket.Upgrader // HTTP to WebSocket Upgrader
+	Pattern      string              // URL of the server
+	ClientCount  uint32              // Number of Clients Connected
+	Clients      map[uint32]*Client  // User Connections
+	Upgrader     *websocket.Upgrader // HTTP to WebSocket Upgrader
+	CeaseUpdates chan bool
 }
 
 // NewServer ... Function to initialize new server
@@ -32,6 +33,7 @@ func NewServer(pattern string) *Server {
 			CheckOrigin: func(r *http.Request) bool {
 				return true
 			}},
+		CeaseUpdates: make(chan bool),
 	}
 }
 
@@ -67,7 +69,7 @@ func (s *Server) Listen() {
 
 			log.Println("Added new client. Now", len(s.Clients), "clients connected.")
 
-			cl.NewUserConnected(cl.ID)
+			cl.HandleNewUserConnected(cl.ID)
 			cl.Listen()
 		} else {
 

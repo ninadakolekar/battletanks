@@ -1,7 +1,6 @@
 package communication
 
 import (
-	"fmt"
 	"log"
 
 	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
@@ -62,7 +61,7 @@ func (c *Client) SendNewUserMessage(msg message.NewClientMessage) {
 	}
 }
 
-//Listen ... Make Client Listen
+//Listen ... Make Client Listen to Writer and Reader over the WebSocket
 func (c *Client) Listen() {
 	go c.listenWrite()
 	c.listenRead()
@@ -80,7 +79,6 @@ func (c *Client) listenRead() {
 
 	log.Println("ReadFromWebSocket() called...")
 	for {
-		// _, data, err := c.Ws.ReadMessage()
 
 		msg := message.UpdateMessage{}
 		err := c.Ws.ReadJSON(&msg)
@@ -91,23 +89,7 @@ func (c *Client) listenRead() {
 		}
 		log.Println("Received Update: ", msg)
 
-		go c.processClientData(msg)
-	}
-}
-
-//processClientData ... Process response to message received from client
-func (c *Client) processClientData(msg message.UpdateMessage) {
-	fmt.Println("Message Received from Client: ", msg)
-
-	for _, cl := range c.server.Clients {
-
-		go func(c *Client, cl *Client, msg message.UpdateMessage) {
-			if c.ID != cl.ID {
-				msg.Message = "applyUpdate"
-				cl.SendUpdate(msg)
-			}
-		}(c, cl, msg)
-
+		go c.UpdateSender(msg)
 	}
 }
 
@@ -144,8 +126,8 @@ func (c *Client) listenWrite() {
 
 }
 
-//NewUserConnected ... Handles new user connection
-func (c *Client) NewUserConnected(id uint32) {
+//HandleNewUserConnected ... Handles new user connection
+func (c *Client) HandleNewUserConnected(id uint32) {
 
 	go c.SendID()
 

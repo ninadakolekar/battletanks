@@ -34,19 +34,35 @@ func main() {
 
 	go server.Listen()
 
-	/* UPDATE Service */
-	ticker := time.NewTicker(constants.UpdateRequestInterval) // 2 seconds
-	go func() {
-		for range ticker.C {
-			// make message msg here
-			uSignal := message.Message{"requestUpdate"}
-			server.Broadcast(uSignal)
-			// fmt.Println("Tick at", t)
-		}
-	}()
+	go updateServiceRoutine(server)
 
 	fmt.Println("Client Count after gor: ", server.ClientCount)
 	log.Fatal(http.ListenAndServe(addr, nil))
 	fmt.Println(server.Pattern)
+
+}
+
+func updateServiceRoutine(s *comm.Server) {
+
+	/* UPDATE Service */
+	ticker := time.NewTicker(constants.UpdateRequestInterval) // 2 seconds
+	go func() {
+		for range ticker.C {
+
+			select {
+
+			case stop := <-s.CeaseUpdates:
+				if stop {
+					return
+				}
+
+			default:
+				uSignal := message.Message{"requestUpdate"}
+				s.Broadcast(uSignal)
+				// fmt.Println("Tick at", t)
+
+			}
+		}
+	}()
 
 }
