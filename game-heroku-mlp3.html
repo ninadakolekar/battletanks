@@ -141,8 +141,7 @@ function applyUpdate(msg) {
     updateDone = false;
     update = msg ;
   if(won ==true){
-    healthstatus.outer.width = 0;
-    other_healthstatus[msg.id].outer.width = 0;
+
       return;
   }
 
@@ -225,24 +224,25 @@ function applyUpdate(msg) {
  
 
     if(update.won == true)
-          {
-                for(i=0 ;i<100 ;i++){
-                  ammo[i].visible = false ;
-                  ammo[i].vx=0;
-                  ammo[i].vy= 0;
+          {     
+                healthstatus.outer.width = 0;
+                for(i=0 ;i<100 ;i++)
+                {
+                  app.stage.removeChild(ammo[i]);
                 
                 }
 
                 for(i=0 ;i<400 ;i++){
-                  other_ammo[i]=0;
+                 app.stage.removeChild(other_ammo[i]);
                 }
 
                for(i=0 ;i<=3 ;i++){
-                  if(i!=myID)
-                 {other_tank[i].visible =false;}
+                app.stage.removeChild(other_tank[i]);
+                //other_tank[i].visible =false;
+                app.stage.removeChild(other_healthstatus[i]);
 
                }
-
+              
                 tank.visible = false;
                 tank.vx =0;
                 tank.vy =0;
@@ -255,7 +255,8 @@ function applyUpdate(msg) {
                 for(i=0; i<broken.length; i++){
                   grid2[broken[i]].visible=false;
                 }
-
+                
+                treasure.visible =false;
                 dungeon.visible =false ;
                 app.stage.addChild(message1);
                 lost =true;
@@ -1206,9 +1207,7 @@ function play(delta) {
   if(hitTestRectangle(tank ,treasure))
   {
       for(i=0 ;i<100 ;i++){
-        ammo[i].visible = false ;
-        tank.vx=0;
-        tank.vy= 0;
+        app.stage.removeChild(ammo[i]);
       }
       for(i=0; i<bricks.length; i++){
           //console.log(bricks[i]);
@@ -1221,19 +1220,20 @@ function play(delta) {
 
       for(i=0 ;i<=3 ;i++)
       {
-        other_tank[i].visible =false;
+        app.stage.removeChild(other_tank[i]);
+        app.stage.removeChild(other_healthstatus[i]);
         //other_healthstatus[i].outer.width =0 ;
       }
      for(i=0;i<400 ;i++)
-     {
-         other_ammo[i].visible =false;
-
+     {   app.stage.removeChild(other_ammo[i]);
+        
      }
-
-      tank.visible =false;
-      treasure.visible=false;
-      dungeon.visible =false;
+     app.stage.removeChild(healthstatus);
+      app.stage.removeChild(tank);
+      app.stage.removeChild(treasure);
+      app.stage.removeChild(dungeon);
       app.stage.addChild(message2);
+      
       won =true ;
     return ;
 
