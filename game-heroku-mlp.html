@@ -127,6 +127,7 @@ function sendUpdate() {
         "tile_index":broken_tile ,
         "hitwall":hit_wall,
         "bullet_direction":bul_mov_state
+        //"btc": 	//btc means bullet tank collision
         } ;
 
         angle=0;
@@ -146,7 +147,7 @@ function applyUpdate(msg) {
     
        if(msg.exit==true){
       
-      console.log("exit...")
+      //console.log("exit...")
 
       for (var i = msg.bulletCount; i < 100; i++) { 
 
@@ -158,7 +159,7 @@ function applyUpdate(msg) {
       return;
     }
     else {
-      console.log("other tank  visibe true");
+      //console.log("other tank  visibe true");
       other_tank[msg.id].visible =true;
     }
 
@@ -169,9 +170,9 @@ function applyUpdate(msg) {
         other_ammo[msg.id*100+ i].visible =true ;
         other_ammo[msg.id*100+i].rotation += msg.rotationIncrement ;
         }
-        console.log("####################### BULLET ROTATED ###################")
+        //console.log("####################### BULLET ROTATED ###################")
       other_tank[msg.id].rotation += msg.rotationIncrement;
-      console.log("*********************TANK ROTATED ******************************")
+      //console.log("*********************TANK ROTATED ******************************")
       
     } 
     
@@ -207,7 +208,7 @@ function applyUpdate(msg) {
     	//console.log("apply "+msg.bullet_direction);
 
        if(check_bul_col_update(msg.bullet_direction, x_temp, y_temp, 100*msg.id + msg.bulletCount-1)){
-       	console.log("bullet of P "+msg.id+" collided with wall update");
+       	//console.log("bullet of P "+msg.id+" collided with wall update");
        	other_ammo[100*msg.id+msg.bulletCount-1].visible =false ;
        }
   
@@ -1179,7 +1180,7 @@ function detect_tc()
 
 function detect_tb()
 {
-    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <=450 && other_ammo[100*update.id + other_bulletcount-1].visible ==true){
+    if(Math.pow(update.bullet_x -center_x ,2)  +   Math.pow(update.bullet_y -center_y ,2) <= 900 && other_ammo[100*update.id + other_bulletcount-1].visible ==true){
 
       //console.log("bullet tank collision detected");
       console.log("health decrease due to detect_tb()");
