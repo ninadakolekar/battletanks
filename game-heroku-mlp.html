@@ -973,6 +973,27 @@ function check_bul_col(c_state) {
     return false;}
 }
 
+function detect_tankBulletCollision(){
+
+	console.log(Math.pow(other_center_x[1]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[1]-ammo[bulletcount-1].y,2) + " " + myID + "dtbc");
+
+	if(Math.pow(other_center_x[0]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[0]-ammo[bulletcount-1].y,2) <= 900 && myID != 0){
+		return true;
+	}
+	else if(Math.pow(other_center_x[1]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[1]-ammo[bulletcount-1].y,2) <= 900 && myID != 1){
+		return true;
+	}
+	else if(Math.pow(other_center_x[2]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[2]-ammo[bulletcount-1].y,2) <= 900 && myID != 2){
+		return true;
+	}
+	else if(Math.pow(other_center_x[3]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[3]-ammo[bulletcount-1].y,2) <= 900 && myID != 3){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 function bulletmove(){
   
   if(ammo[bulletcount-1].x > 920 || ammo[bulletcount-1].x <-10 || ammo[bulletcount-1].y>920 || ammo[bulletcount-1].y<-10 || bullet_fired == false){
@@ -981,13 +1002,24 @@ function bulletmove(){
     return;
   }
   //angle=tank.rotation;
+  
+
+  if(detect_tankBulletCollision()){
+  	ammo[bulletcount-1].visible = false;
+    console.log("bullet collided with tank");
+    bullet_fired = false;
+    state= play;
+  }
+
   if(check_bul_col(bul_mov_state)){
     ammo[bulletcount-1].visible = false;
     console.log("bullet collided with wall")
     bullet_fired = false;
     state= play;
   }
+
   requestAnimationFrame(bulletmove);
+
   ammo[bulletcount-1].x += 0.5*tank.vx*Math.sin(angle_1);
   ammo[bulletcount-1].y -= 0.5*tank.vy* Math.cos(angle_1);
 
