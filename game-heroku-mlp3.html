@@ -530,7 +530,13 @@ for(i=0;i<=3;i++)
   other_tank[i] = new Sprite(resources["images/sirowa.json"].textures["tank12.png"]);
   other_tank[i].width=30;
   other_tank[i].height=30;
+  
 }
+
+other_tank[0].tint = 0xff3300;    
+other_tank[1].tint = 0x008000;
+other_tank[2].tint = 0x0000FF;
+
 
  bullet = new Sprite( resources["images/sirowa.json"].textures["missile.png"]);
 
