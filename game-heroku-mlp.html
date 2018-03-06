@@ -422,6 +422,21 @@ w.press =()=>{  if(exit == true)
 
 function health_init(){
 
+p1 = new PIXI.Text("Player 1",style);
+p2 = new PIXI.Text("Player 2",style);
+p3 = new PIXI.Text("Player 3",style);
+p4 = new PIXI.Text("Player 4",style);
+
+p1.position.set(1000,240);
+p2.position.set(1000,330);
+p3.position.set(1000,510);
+p4.position.set(1000,600);
+
+app.stage.addChild(p1);
+app.stage.addChild(p2);
+app.stage.addChild(p3);
+app.stage.addChild(p4);
+
 
 
 healthstatus  = new PIXI.DisplayObjectContainer();
