@@ -34,4 +34,5 @@ type UpdateMessage struct {
 	Won        bool   `json:"won"`
 	BrokenTile int32  `json:"tile_index"`
 	HitWall    bool   `json:"hitwall"`
+	BulletDirection uint32	`json:"bullet_direction"`
 }
