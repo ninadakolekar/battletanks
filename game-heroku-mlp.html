@@ -204,7 +204,7 @@ function applyUpdate(msg) {
         x_temp = (msg.bullet_x-15+(msg.bullet_x-15)%30)/30;
     	y_temp = (msg.bullet_y-15+(msg.bullet_y-15)%30)/30;
 
-    	console.log("apply "+msg.bullet_direction);
+    	//console.log("apply "+msg.bullet_direction);
 
        if(check_bul_col_update(msg.bullet_direction, x_temp, y_temp, 100*msg.id + msg.bulletCount-1)){
        	console.log("bullet of P "+msg.id+" collided with wall update");
