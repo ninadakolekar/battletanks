@@ -314,7 +314,7 @@ message2.position.set(450,450);
  treasure.width =50;
  treasure.height =30;
  while(!myIDset){};
-if(myID%2==0)
+if(myID%4 == 0)
 {
  tank.x = 30;
  tank.y=30;
@@ -323,15 +323,31 @@ if(myID%2==0)
  center_x = 45;
  center_y =45;
 }
-else{
+else if(myID%4 == 1){
   tank.x =840;
   tank.y=840;
   midx =855;
   midy=855;
   center_x =855;
   center_y =855;
-
 }
+else if(myID%4 == 2){
+  tank.x =30;
+  tank.y=840;
+  midx =45;
+  midy=855;
+  center_x = 45;
+  center_y = 855;
+}
+else if(myID%4 == 3){
+	tank.x = 840;
+	tank.y = 30;
+	midx = 855;
+	midy = 45;
+	center_x = 855;
+	center_y = 45;
+}
+
 
  treasure.x = 425 ;
  treasure.y =435 ;
