@@ -53,6 +53,7 @@ func updateServiceRoutine(s *comm.Server) {
 
 			case stop := <-s.CeaseUpdates:
 				if stop {
+					log.Println("Update cease signal received. Update Service Routine ceased.")
 					return
 				}
 
