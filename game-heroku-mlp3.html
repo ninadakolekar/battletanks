@@ -140,6 +140,13 @@ function sendUpdate() {
 function applyUpdate(msg) {
     updateDone = false;
     update = msg ;
+  if(won ==true){
+    healthstatus.outer.width = 0;
+    other_healthstatus[msg.id].outer.width = 0;
+      return;
+  }
+
+    
 
    if(msg.id != myID) {
     
@@ -1211,9 +1218,21 @@ function play(delta) {
       for(i=0; i<broken.length; i++){
         grid2[broken[i]].visible=false;
       }
+
+      for(i=0 ;i<=3 ;i++)
+      {
+        other_tank[i].visible =false;
+        //other_healthstatus[i].outer.width =0 ;
+      }
+     for(i=0;i<400 ;i++)
+     {
+         other_ammo[i].visible =false;
+
+     }
+
       tank.visible =false;
       treasure.visible=false;
-      dungeon.visible =false ;
+      dungeon.visible =false;
       app.stage.addChild(message2);
       won =true ;
     return ;
