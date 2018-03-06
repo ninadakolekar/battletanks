@@ -8,6 +8,7 @@ import (
 	"time"
 
 	comm "github.com/IITH-POPL2-Jan2018/concurrency-13/src/communication"
+	constants "github.com/IITH-POPL2-Jan2018/concurrency-13/src/constants"
 	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 )
 
@@ -33,19 +34,36 @@ func main() {
 
 	go server.Listen()
 
-	/* UPDATE Service */
-	ticker := time.NewTicker(time.Millisecond * 20) // 2 seconds
-	go func() {
-		for t := range ticker.C {
-			// make message msg here
-			uSignal := message.Message{"requestUpdate"}
-			server.Broadcast(uSignal)
-			fmt.Println("Tick at", t)
-		}
-	}()
+	go updateServiceRoutine(server)
 
 	fmt.Println("Client Count after gor: ", server.ClientCount)
 	log.Fatal(http.ListenAndServe(addr, nil))
 	fmt.Println(server.Pattern)
+
+}
+
+func updateServiceRoutine(s *comm.Server) {
+
+	/* UPDATE Service */
+	ticker := time.NewTicker(constants.UpdateRequestInterval) // 2 seconds
+	go func() {
+		for range ticker.C {
+
+			select {
+
+			case stop := <-s.CeaseUpdates:
+				if stop {
+					log.Println("Update cease signal received. Update Service Routine ceased.")
+					return
+				}
+
+			default:
+				uSignal := message.Message{"requestUpdate"}
+				s.Broadcast(uSignal)
+				// fmt.Println("Tick at", t)
+
+			}
+		}
+	}()
 
 }

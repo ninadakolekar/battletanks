@@ -1,16 +1,14 @@
 package communication
 
 import (
-	"fmt"
 	"log"
 
+	constants "github.com/IITH-POPL2-Jan2018/concurrency-13/src/constants"
 	message "github.com/IITH-POPL2-Jan2018/concurrency-13/src/message"
 	"github.com/gorilla/websocket"
 )
 
-const bufferSize = 100
-
-//Client ...
+//Client ... Client Structure to hold variables of a client
 type Client struct {
 	ID        uint32
 	server    *Server
@@ -27,11 +25,11 @@ func NewClient(server *Server, ws *websocket.Conn, id uint32) *Client {
 		panic("Websocket* is nil.")
 	}
 
-	ch := make(chan message.Message, bufferSize)
+	ch := make(chan message.Message, constants.ChanBufferSize)
 
-	updateCh := make(chan message.UpdateMessage, bufferSize)
+	updateCh := make(chan message.UpdateMessage, constants.ChanBufferSize)
 
-	newUserCh := make(chan message.NewClientMessage, bufferSize)
+	newUserCh := make(chan message.NewClientMessage, constants.ChanBufferSize)
 
 	return &Client{id, server, ws, ch, updateCh, newUserCh}
 }
@@ -41,28 +39,7 @@ func (c *Client) Conn() *websocket.Conn {
 	return c.Ws
 }
 
-//SendMessage ... Sends message to the client
-func (c *Client) SendMessage(msg message.Message) {
-	select {
-	case c.ch <- msg:
-	}
-}
-
-//SendUpdate ... Sends update to the client
-func (c *Client) SendUpdate(msg message.UpdateMessage) {
-	select {
-	case c.updateCh <- msg:
-	}
-}
-
-//SendNewUserMessage ... Sends message to the client
-func (c *Client) SendNewUserMessage(msg message.NewClientMessage) {
-	select {
-	case c.newUserCh <- msg:
-	}
-}
-
-//Listen ... Make Client Listen
+//Listen ... Make Client Listen to Writer and Reader over the WebSocket
 func (c *Client) Listen() {
 	go c.listenWrite()
 	c.listenRead()
@@ -80,7 +57,6 @@ func (c *Client) listenRead() {
 
 	log.Println("ReadFromWebSocket() called...")
 	for {
-		// _, data, err := c.Ws.ReadMessage()
 
 		msg := message.UpdateMessage{}
 		err := c.Ws.ReadJSON(&msg)
@@ -91,23 +67,7 @@ func (c *Client) listenRead() {
 		}
 		log.Println("Received Update: ", msg)
 
-		go c.processClientData(msg)
-	}
-}
-
-//processClientData ... Process response to message received from client
-func (c *Client) processClientData(msg message.UpdateMessage) {
-	fmt.Println("Message Received from Client: ", msg)
-
-	for _, cl := range c.server.Clients {
-
-		go func(c *Client, cl *Client, msg message.UpdateMessage) {
-			if c.ID != cl.ID {
-				msg.Message = "applyUpdate"
-				cl.SendUpdate(msg)
-			}
-		}(c, cl, msg)
-
+		go c.UpdateSender(msg)
 	}
 }
 
@@ -144,8 +104,8 @@ func (c *Client) listenWrite() {
 
 }
 
-//NewUserConnected ... Handles new user connection
-func (c *Client) NewUserConnected(id uint32) {
+//HandleNewUserConnected ... Handles new user connection
+func (c *Client) HandleNewUserConnected(id uint32) {
 
 	go c.SendID()
 
@@ -158,10 +118,4 @@ func (c *Client) NewUserConnected(id uint32) {
 	// 		c.SendNewUserMessage(msg)
 	// 	}
 	// }
-}
-
-//SendID ... Sends Client ID to ClientJS
-func (c *Client) SendID() {
-	msg := message.NewClientMessage{c.ID, "notifyID"}
-	c.SendNewUserMessage(msg)
 }
