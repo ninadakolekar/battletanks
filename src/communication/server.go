@@ -1,3 +1,4 @@
+// Package communication ... This package manages communication between the server-side and client-side of the game. It also contains functions to manage new and current user connections.
 package communication
 
 import (
@@ -44,26 +45,17 @@ func (s *Server) Listen() {
 
 		if s.validateUser() {
 
-			// log.Println("Client Count after entry: ", s.ClientCount)
-
 			conn, err := s.Upgrader.Upgrade(w, r, nil)
-
-			// log.Println("Client Count after upgrade: ", s.ClientCount)
 
 			if err != nil {
 				log.Fatalln("Error (Upgrade) : ", err)
 				return
 			}
 
-			// log.Println("Client Count after err: ", s.ClientCount)
-
 			cl := NewClient(s, conn, s.nextClientID())
-
-			// fmt.Println("Client Count after newC: ", s.ClientCount)
 
 			s.Clients[cl.ID] = cl
 
-			// fmt.Println("Client Count after acc: ", s.ClientCount)
 			s.ClientCount = s.ClientCount + 1
 
 			log.Println("Added new client. Now", len(s.Clients), "clients connected.")
@@ -106,5 +98,3 @@ func (s *Server) validateUser() bool {
 func (s *Server) nextClientID() uint32 {
 	return s.ClientCount
 }
-
-// TODO : Deleting Client and Reducing Client Count on Connection close

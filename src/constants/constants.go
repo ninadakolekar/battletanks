@@ -1,3 +1,4 @@
+// Package constants ... This package exports various constant values used during gameplay.
 package constants
 
 import "time"

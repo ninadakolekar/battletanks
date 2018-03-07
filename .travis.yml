@@ -16,4 +16,8 @@ install:
 
 script:
   - go test ./...
+  - go vet main.go
+  - go vet src/communication/*.go
+  - go vet src/constants/*.go
+  - go vet src/message/*.go
   - go build main.go
