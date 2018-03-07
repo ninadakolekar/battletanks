@@ -62,10 +62,10 @@ let Application = PIXI.Application,
    pi=Math.PI;
 
 let app = new Application({
-   width: 900,
-   height: 900,
+   width: 1400,
+   height: 1400,
    antialiasing:true,
-   transparent: false,
+   transparent: true,
    resolution: 1
  }
 );
@@ -115,6 +115,12 @@ var updateDone = false;
 
 
 function sendUpdate() {
+
+        let tempv;
+        if(bulletcount == 0)
+          tempv=true;
+        else
+          tempv=ammo[bulletcount-1].visible;
          var updateObject = {   
 
         "id":myID,
@@ -134,7 +140,9 @@ function sendUpdate() {
         "won": won,
         "tile_index":broken_tile ,
         "collision_tile_index": brick_index,
-        "hitwall":hit_wall
+        "hitwall":hit_wall,
+        "tankVisible":tank.visible,
+        "bulletVisible":tempv
         } ;
 
         angle=0;
@@ -160,7 +168,7 @@ function applyUpdate(msg) {
     
        if(msg.exit==true){
       
-      console.log("exit...")
+      //console.log("exit...")
 
       for (var i = msg.bulletCount; i < 100; i++) { 
 
@@ -172,7 +180,7 @@ function applyUpdate(msg) {
       return;
     }
     else {
-      console.log("other tank  visibe true");
+      //console.log("other tank  visibe true");
       other_tank[msg.id].visible =true;
     }
 
@@ -183,9 +191,9 @@ function applyUpdate(msg) {
         other_ammo[msg.id*100+ i].visible =true ;
         other_ammo[msg.id*100+i].rotation += msg.rotationIncrement ;
         }
-        console.log("####################### BULLET ROTATED ###################")
+        //console.log("####################### BULLET ROTATED ###################")
       other_tank[msg.id].rotation += msg.rotationIncrement;
-      console.log("*********************TANK ROTATED ******************************")
+      //console.log("*********************TANK ROTATED ******************************")
       
     } 
     
@@ -204,11 +212,18 @@ function applyUpdate(msg) {
 
     }
 
+    //console.log("shifshd"+msg.bulletVisible+ " "+ other_ammo[100*msg.id + msg.bulletCount-1].visible);
+    if(msg.id + msg.bulletCount >0)
+      other_ammo[100*msg.id + msg.bulletCount-1].visible = msg.bulletVisible;
+
     other_bulletcount = msg.bulletCount;
 
     if(msg.bulletCount !== 0){
       other_ammo[ 100*msg.id + msg.bulletCount-1].x = msg.bullet_x;
       other_ammo[100*msg.id + msg.bulletCount-1].y =msg.bullet_y;
+
+      //other_tank[msg.id].visible = msg.tankVisible;
+      
     /*if(msg.hitwall == true)
        { other_ammo[100*msg.id+msg.bulletCount-1].visible =false ;
          console.log("bullet has hit the wall");
@@ -533,7 +548,7 @@ for(i=0 ;i<=3;i++)
   {app.stage.addChild(other_healthstatus[i]);}
 }
   
-
+console.log("health_init "+ other_healthstatus.length);
 
 }
 
@@ -668,7 +683,9 @@ app.stage.addChild(treasure);
 make_grid();
 make_ammo();
 
+console.log("healthbar1");
 health_init();
+console.log("healthbar2");
 key_init();
 
 state = play;
@@ -988,7 +1005,7 @@ function check_bul_col(c_state) {
 
 function detect_tankBulletCollision(){
 
-console.log(Math.pow(other_center_x[1]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[1]-ammo[bulletcount-1].y,2) + " " + myID + "dtbc");
+//console.log(Math.pow(other_center_x[1]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[1]-ammo[bulletcount-1].y,2) + " " + myID + "dtbc");
 
 if(Math.pow(other_center_x[0]-ammo[bulletcount-1].x,2) + Math.pow(other_center_y[0]-ammo[bulletcount-1].y,2) <= 900 && myID != 0){
     return true;
@@ -1262,29 +1279,28 @@ function detect_tb()
 
     }
 
-
 }
 
 
 function check_tank_col(num){
   //console.log("tank_col "+num);
-  if(midx < other_center_x[update.id] && num == 1 && detect_tc()){
+  if(Math.pow(midx-other_center_x[0], 2) + Math.pow(midy-other_center_y[0], 2) <= 900 && other_tank[0].visible == true){
     console.log("tank_col "+1)
     return true;
   }
-  else if(midx > other_center_x[update.id] && num == 2 && detect_tc()){
+  else if(Math.pow(midx-other_center_x[1], 2) + Math.pow(midy-other_center_y[1], 2) <= 900 && other_tank[1].visible == true){
     console.log("tank_col "+2)
     return true;
   }
-  else if(midy < other_center_y[update.id] && num == 3 && detect_tc()){
+  else if(Math.pow(midx-other_center_x[2], 2) + Math.pow(midy-other_center_y[2], 2) <= 900 && other_tank[2].visible == true){
     console.log("tank_col "+3)
     return true;
   }
-  else if(midy > other_center_y[update.id] && num == 4 && detect_tc()){
+  else if(Math.pow(midx-other_center_x[3], 2) + Math.pow(midy-other_center_y[3], 2) <= 900 && other_tank[3].visible == true){
     console.log("tank_col "+4)
     return true;
   }
-  console.log("tank_col false "+midx+" "+other_center_x);
+  console.log("tank_col false "+midx+" "+other_center_x+ " " + num);
   return false;
 }
 

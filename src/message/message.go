@@ -35,5 +35,6 @@ type UpdateMessage struct {
 	BrokenTile int32  `json:"tile_index"`
 	HitWall    bool   `json:"hitwall"`
 	BulletDirection uint32	`json:"bullet_direction"`
-	//BrickIndex uint32 `json:"collision_tile_index"`
+	tankVisibility bool  `json:"tankVisible"`
+	BulletVisbility bool `json:"bulletVisible"`
 }
