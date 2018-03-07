@@ -23,7 +23,7 @@ var x=0;                     //indictes the change in the xcoordinate of the tan
 var y=0;                     //indicates the change in the y coordinate of the tank
 var iBar =[];                //inner bars of the healthstatus of other player tanks
 var oBar=[];                 //outer bars of the healthstatus of the other tanks 
-var socket = new WebSocket("ws://localhost:8080"); //a new websocket is initialised to create a link between the server and the client who requested 
+var socket = new WebSocket("ws://golang-battletanks.herokuapp.com/"); //a new websocket is initialised to create a link between the server and the client who requested 
 
 
 
