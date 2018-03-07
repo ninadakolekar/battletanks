@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>reader - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package reader
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/reader"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="index.html#Entry">type Entry</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LoadAbstractOrigin">func LoadAbstractOrigin(entry *dwarf.Entry, aordr *dwarf.Reader) (Entry, dwarf.Offset)</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Reader">type Reader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#New">func New(data *dwarf.Data) *Reader</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.AddrFor">func (reader *Reader) AddrFor(name string) (uint64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.AddrForMember">func (reader *Reader) AddrForMember(member string, initialInstructions []byte) (uint64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.FindEntryNamed">func (reader *Reader) FindEntryNamed(name string, member bool) (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.InstructionsForEntry">func (reader *Reader) InstructionsForEntry(entry *dwarf.Entry) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.InstructionsForEntryNamed">func (reader *Reader) InstructionsForEntryNamed(name string, member bool) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.NextCompileUnit">func (reader *Reader) NextCompileUnit() (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.NextMemberVariable">func (reader *Reader) NextMemberVariable() (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.NextPackageVariable">func (reader *Reader) NextPackageVariable() (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.NextType">func (reader *Reader) NextType() (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.Seek">func (reader *Reader) Seek(off dwarf.Offset)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.SeekToEntry">func (reader *Reader) SeekToEntry(entry *dwarf.Entry) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.SeekToFunction">func (reader *Reader) SeekToFunction(pc uint64) (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.SeekToType">func (reader *Reader) SeekToType(entry *dwarf.Entry, resolveTypedefs bool, resolvePointerTypes bool) (*dwarf.Entry, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Reader.SeekToTypeNamed">func (reader *Reader) SeekToTypeNamed(name string) (*dwarf.Entry, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#VariableReader">type VariableReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Variables">func Variables(dwarf *dwarf.Data, off dwarf.Offset, pc uint64, line int, onlyVisible bool) *VariableReader</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VariableReader.Depth">func (vrdr *VariableReader) Depth() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VariableReader.Entry">func (vrdr *VariableReader) Entry() *dwarf.Entry</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VariableReader.Err">func (vrdr *VariableReader) Err() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VariableReader.Next">func (vrdr *VariableReader) Next() bool</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go">reader.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go">variables.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="TypeNotFoundErr">TypeNotFoundErr</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;no type entry found, use &#39;types&#39; for a list of valid types&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Entry">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=8399:8452#L316">Entry</a>
+				<a class="permalink" href="index.html#Entry">&#xb6;</a>
+			</h2>
+			<p>
+Entry represents a debug_info entry.
+When calling Val, if the entry does not have the specified attribute, the
+entry specified by DW_AT_abstract_origin will be searched recursively.
+</p>
+
+			<pre>type Entry interface {
+    Val(<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a>) interface{}
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="LoadAbstractOrigin">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=8798:8884#L334">LoadAbstractOrigin</a>
+					<a class="permalink" href="index.html#LoadAbstractOrigin">&#xb6;</a>
+				</h3>
+				<pre>func LoadAbstractOrigin(entry *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, aordr *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Reader">Reader</a>) (<a href="index.html#Entry">Entry</a>, <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>)</pre>
+				<p>
+LoadAbstractOrigin loads the entry corresponding to the
+DW_AT_abstract_origin of entry and returns a combination of entry and its
+abstract origin.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Reader">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=106:154#L1">Reader</a>
+				<a class="permalink" href="index.html#Reader">&#xb6;</a>
+			</h2>
+			
+			<pre>type Reader struct {
+    *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Reader">Reader</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="New">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=210:244#L7">New</a>
+					<a class="permalink" href="index.html#New">&#xb6;</a>
+				</h3>
+				<pre>func New(data *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Data">Data</a>) *<a href="index.html#Reader">Reader</a></pre>
+				<p>
+New returns a reader for the specified dwarf data.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Reader.AddrFor">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=1364:1422#L57">AddrFor</a>
+					<a class="permalink" href="index.html#Reader.AddrFor">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) AddrFor(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Returns the address for the named entry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.AddrForMember">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=1944:2038#L75">AddrForMember</a>
+					<a class="permalink" href="index.html#Reader.AddrForMember">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) AddrForMember(member <a href="http://localhost:8081/pkg/builtin/#string">string</a>, initialInstructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Returns the address for the named struct member. Expects the reader to be at the parent entry
+or one of the parents children, thus does not seek to parent by itself.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.FindEntryNamed">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=4828:4912#L175">FindEntryNamed</a>
+					<a class="permalink" href="index.html#Reader.FindEntryNamed">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) FindEntryNamed(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>, member <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Finds the entry for &#39;name&#39;.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.InstructionsForEntry">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=6047:6125#L230">InstructionsForEntry</a>
+					<a class="permalink" href="index.html#Reader.InstructionsForEntry">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) InstructionsForEntry(entry *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>) ([]<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Reader.InstructionsForEntryNamed">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=5616:5705#L212">InstructionsForEntryNamed</a>
+					<a class="permalink" href="index.html#Reader.InstructionsForEntryNamed">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) InstructionsForEntryNamed(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>, member <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) ([]<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Reader.NextCompileUnit">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=7935:7996#L299">NextCompileUnit</a>
+					<a class="permalink" href="index.html#Reader.NextCompileUnit">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) NextCompileUnit() (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Reader.NextMemberVariable">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=6804:6868#L251">NextMemberVariable</a>
+					<a class="permalink" href="index.html#Reader.NextMemberVariable">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) NextMemberVariable() (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NextMememberVariable moves the reader to the next debug entry that describes a member variable and returns the entry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.NextPackageVariable">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=7455:7520#L276">NextPackageVariable</a>
+					<a class="permalink" href="index.html#Reader.NextPackageVariable">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) NextPackageVariable() (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NextPackageVariable moves the reader to the next debug entry that describes a package variable.
+Any TagVariable entry that is not inside a sub prgram entry and is marked external is considered a package variable.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.NextType">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=3696:3750#L136">NextType</a>
+					<a class="permalink" href="index.html#Reader.NextType">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) NextType() (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Reader.Seek">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=333:377#L12">Seek</a>
+					<a class="permalink" href="index.html#Reader.Seek">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) Seek(off <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>)</pre>
+				<p>
+Seek moves the reader to an arbitrary offset.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.SeekToEntry">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=481:540#L18">SeekToEntry</a>
+					<a class="permalink" href="index.html#Reader.SeekToEntry">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) SeekToEntry(entry *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SeekToEntry moves the reader to an arbitrary entry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.SeekToFunction">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=771:840#L27">SeekToFunction</a>
+					<a class="permalink" href="index.html#Reader.SeekToFunction">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) SeekToFunction(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SeekToFunctionEntry moves the reader to the function that includes the
+specified program counter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.SeekToType">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=2869:2991#L102">SeekToType</a>
+					<a class="permalink" href="index.html#Reader.SeekToType">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) SeekToType(entry *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, resolveTypedefs <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, resolvePointerTypes <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SeekToType moves the reader to the type specified by the entry,
+optionally resolving typedefs and pointer types. If the reader is set
+to a struct type the NextMemberVariable call can be used to walk all member data.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Reader.SeekToTypeNamed">func (*Reader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/reader.go?s=4412:4484#L154">SeekToTypeNamed</a>
+					<a class="permalink" href="index.html#Reader.SeekToTypeNamed">&#xb6;</a>
+				</h3>
+				<pre>func (reader *<a href="index.html#Reader">Reader</a>) SeekToTypeNamed(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SeekToTypeNamed moves the reader to the type specified by the name.
+If the reader is set to a struct type the NextMemberVariable call
+can be used to walk all member data.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="VariableReader">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=203:402#L1">VariableReader</a>
+				<a class="permalink" href="index.html#VariableReader">&#xb6;</a>
+			</h2>
+			<p>
+VariableReader provides a way of reading the local variables and formal
+parameters of a function that are visible at the specified PC address.
+</p>
+
+			<pre>type VariableReader struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Variables">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=582:688#L15">Variables</a>
+					<a class="permalink" href="index.html#Variables">&#xb6;</a>
+				</h3>
+				<pre>func Variables(dwarf *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Data">Data</a>, off <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>, pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, line <a href="http://localhost:8081/pkg/builtin/#int">int</a>, onlyVisible <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) *<a href="index.html#VariableReader">VariableReader</a></pre>
+				<p>
+Variables returns a VariableReader for the function or lexical block at off.
+If onlyVisible is true only variables visible at pc will be returned by
+the VariableReader.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="VariableReader.Depth">func (*VariableReader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=2292:2331#L89">Depth</a>
+					<a class="permalink" href="index.html#VariableReader.Depth">&#xb6;</a>
+				</h3>
+				<pre>func (vrdr *<a href="index.html#VariableReader">VariableReader</a>) Depth() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Depth returns the depth of the current scope
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="VariableReader.Entry">func (*VariableReader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=2171:2219#L84">Entry</a>
+					<a class="permalink" href="index.html#VariableReader.Entry">&#xb6;</a>
+				</h3>
+				<pre>func (vrdr *<a href="index.html#VariableReader">VariableReader</a>) Entry() *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Entry">Entry</a></pre>
+				<p>
+Entry returns the current variable entry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="VariableReader.Err">func (*VariableReader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=2399:2438#L94">Err</a>
+					<a class="permalink" href="index.html#VariableReader.Err">&#xb6;</a>
+				</h3>
+				<pre>func (vrdr *<a href="index.html#VariableReader">VariableReader</a>) Err() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Err returns the error if there was one.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="VariableReader.Next">func (*VariableReader) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/reader/variables.go?s=944:983#L22">Next</a>
+					<a class="permalink" href="index.html#VariableReader.Next">&#xb6;</a>
+				</h3>
+				<pre>func (vrdr *<a href="index.html#VariableReader">VariableReader</a>) Next() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Next reads the next variable entry, returns false if there aren&#39;t any.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

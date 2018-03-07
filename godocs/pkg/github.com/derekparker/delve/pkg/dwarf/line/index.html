@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>line - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package line
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/line"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="index.html#DebugLineInfo">type DebugLineInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Parse">func Parse(compdir string, buf *bytes.Buffer) *DebugLineInfo</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DebugLineInfo.AllPCsBetween">func (lineInfo *DebugLineInfo) AllPCsBetween(begin, end uint64) ([]uint64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DebugLineInfo.AllPCsForFileLine">func (lineInfo *DebugLineInfo) AllPCsForFileLine(f string, l int) (pcs []uint64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DebugLineInfo.LineToPC">func (lineInfo *DebugLineInfo) LineToPC(filename string, lineno int) uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DebugLineInfo.PCToLine">func (lineInfo *DebugLineInfo) PCToLine(basePC, pc uint64) (string, int)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#DebugLinePrologue">type DebugLinePrologue</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DebugLines">type DebugLines</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ParseAll">func ParseAll(data []byte) DebugLines</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FileEntry">type FileEntry</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Location">type Location</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StateMachine">type StateMachine</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StateMachine.PCToLine">func (sm *StateMachine) PCToLine(pc uint64) (string, int, bool)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go">line_parser.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go">state_machine.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Special opcodes
+</p>
+
+				<pre>const (
+    <span id="DW_LNS_copy">DW_LNS_copy</span>             = 1
+    <span id="DW_LNS_advance_pc">DW_LNS_advance_pc</span>       = 2
+    <span id="DW_LNS_advance_line">DW_LNS_advance_line</span>     = 3
+    <span id="DW_LNS_set_file">DW_LNS_set_file</span>         = 4
+    <span id="DW_LNS_set_column">DW_LNS_set_column</span>       = 5
+    <span id="DW_LNS_negate_stmt">DW_LNS_negate_stmt</span>      = 6
+    <span id="DW_LNS_set_basic_block">DW_LNS_set_basic_block</span>  = 7
+    <span id="DW_LNS_const_add_pc">DW_LNS_const_add_pc</span>     = 8
+    <span id="DW_LNS_fixed_advance_pc">DW_LNS_fixed_advance_pc</span> = 9
+)</pre>
+			
+				<p>
+Extended opcodes
+</p>
+
+				<pre>const (
+    <span id="DW_LINE_end_sequence">DW_LINE_end_sequence</span> = 1
+    <span id="DW_LINE_set_address">DW_LINE_set_address</span>  = 2
+    <span id="DW_LINE_define_file">DW_LINE_define_file</span>  = 3
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="NoSourceError">NoSourceError</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;no source available&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="DebugLineInfo">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=356:748#L13">DebugLineInfo</a>
+				<a class="permalink" href="index.html#DebugLineInfo">&#xb6;</a>
+			</h2>
+			
+			<pre>type DebugLineInfo struct {
+<span id="DebugLineInfo.Prologue"></span>    Prologue     *<a href="index.html#DebugLinePrologue">DebugLinePrologue</a>
+<span id="DebugLineInfo.IncludeDirs"></span>    IncludeDirs  []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="DebugLineInfo.FileNames"></span>    FileNames    []*<a href="index.html#FileEntry">FileEntry</a>
+<span id="DebugLineInfo.Instructions"></span>    Instructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+<span id="DebugLineInfo.Lookup"></span>    Lookup       map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#FileEntry">FileEntry</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Parse">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=1325:1385#L53">Parse</a>
+					<a class="permalink" href="index.html#Parse">&#xb6;</a>
+				</h3>
+				<pre>func Parse(compdir <a href="http://localhost:8081/pkg/builtin/#string">string</a>, buf *<a href="http://localhost:8081/pkg/bytes/">bytes</a>.<a href="http://localhost:8081/pkg/bytes/#Buffer">Buffer</a>) *<a href="index.html#DebugLineInfo">DebugLineInfo</a></pre>
+				<p>
+Parse parses a single debug_line segment from buf. Compdir is the
+DW_AT_comp_dir attribute of the associated compile unit.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="DebugLineInfo.AllPCsBetween">func (*DebugLineInfo) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=3276:3357#L131">AllPCsBetween</a>
+					<a class="permalink" href="index.html#DebugLineInfo.AllPCsBetween">&#xb6;</a>
+				</h3>
+				<pre>func (lineInfo *<a href="index.html#DebugLineInfo">DebugLineInfo</a>) AllPCsBetween(begin, end <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) ([]<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DebugLineInfo.AllPCsForFileLine">func (*DebugLineInfo) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=2407:2487#L89">AllPCsForFileLine</a>
+					<a class="permalink" href="index.html#DebugLineInfo.AllPCsForFileLine">&#xb6;</a>
+				</h3>
+				<pre>func (lineInfo *<a href="index.html#DebugLineInfo">DebugLineInfo</a>) AllPCsForFileLine(f <a href="http://localhost:8081/pkg/builtin/#string">string</a>, l <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (pcs []<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>)</pre>
+				<p>
+Returns all PCs for a given file/line. Useful for loops where the &#39;for&#39; line
+could be split amongst 2 PCs.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DebugLineInfo.LineToPC">func (*DebugLineInfo) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=5876:5951#L236">LineToPC</a>
+					<a class="permalink" href="index.html#DebugLineInfo.LineToPC">&#xb6;</a>
+				</h3>
+				<pre>func (lineInfo *<a href="index.html#DebugLineInfo">DebugLineInfo</a>) LineToPC(filename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, lineno <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+LineToPC returns the first PC address associated with filename:lineno.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DebugLineInfo.PCToLine">func (*DebugLineInfo) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=4338:4410#L174">PCToLine</a>
+					<a class="permalink" href="index.html#DebugLineInfo.PCToLine">&#xb6;</a>
+				</h3>
+				<pre>func (lineInfo *<a href="index.html#DebugLineInfo">DebugLineInfo</a>) PCToLine(basePC, pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				<p>
+PCToLine returns the filename and line number associated with pc.
+If pc isn&#39;t found inside lineInfo&#39;s table it will return the filename and
+line number associated with the closest PC address preceding pc.
+basePC will be used for caching, it&#39;s normally the entry point for the
+function containing pc.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DebugLinePrologue">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=119:354#L1">DebugLinePrologue</a>
+				<a class="permalink" href="index.html#DebugLinePrologue">&#xb6;</a>
+			</h2>
+			
+			<pre>type DebugLinePrologue struct {
+<span id="DebugLinePrologue.UnitLength"></span>    UnitLength     <a href="http://localhost:8081/pkg/builtin/#uint32">uint32</a>
+<span id="DebugLinePrologue.Version"></span>    Version        <a href="http://localhost:8081/pkg/builtin/#uint16">uint16</a>
+<span id="DebugLinePrologue.Length"></span>    Length         <a href="http://localhost:8081/pkg/builtin/#uint32">uint32</a>
+<span id="DebugLinePrologue.MinInstrLength"></span>    MinInstrLength <a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+<span id="DebugLinePrologue.InitialIsStmt"></span>    InitialIsStmt  <a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+<span id="DebugLinePrologue.LineBase"></span>    LineBase       <a href="http://localhost:8081/pkg/builtin/#int8">int8</a>
+<span id="DebugLinePrologue.LineRange"></span>    LineRange      <a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+<span id="DebugLinePrologue.OpcodeBase"></span>    OpcodeBase     <a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+<span id="DebugLinePrologue.StdOpLengths"></span>    StdOpLengths   []<a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DebugLines">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=857:889#L34">DebugLines</a>
+				<a class="permalink" href="index.html#DebugLines">&#xb6;</a>
+			</h2>
+			
+			<pre>type DebugLines []*<a href="index.html#DebugLineInfo">DebugLineInfo</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseAll">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=948:985#L37">ParseAll</a>
+					<a class="permalink" href="index.html#ParseAll">&#xb6;</a>
+				</h3>
+				<pre>func ParseAll(data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) <a href="index.html#DebugLines">DebugLines</a></pre>
+				<p>
+ParseAll parses all debug_line segments found in data
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="FileEntry">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/line_parser.go?s=750:855#L27">FileEntry</a>
+				<a class="permalink" href="index.html#FileEntry">&#xb6;</a>
+			</h2>
+			
+			<pre>type FileEntry struct {
+<span id="FileEntry.Path"></span>    Path        <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="FileEntry.DirIdx"></span>    DirIdx      <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="FileEntry.LastModTime"></span>    LastModTime <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="FileEntry.Length"></span>    Length      <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Location">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=119:201#L2">Location</a>
+				<a class="permalink" href="index.html#Location">&#xb6;</a>
+			</h2>
+			
+			<pre>type Location struct {
+<span id="Location.File"></span>    File    <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="Location.Line"></span>    Line    <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="Location.Address"></span>    Address <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="Location.Delta"></span>    Delta   <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StateMachine">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=203:942#L9">StateMachine</a>
+				<a class="permalink" href="index.html#StateMachine">&#xb6;</a>
+			</h2>
+			
+			<pre>type StateMachine struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StateMachine.PCToLine">func (*StateMachine) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/line/state_machine.go?s=5313:5376#L207">PCToLine</a>
+					<a class="permalink" href="index.html#StateMachine.PCToLine">&#xb6;</a>
+				</h3>
+				<pre>func (sm *<a href="index.html#StateMachine">StateMachine</a>) PCToLine(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

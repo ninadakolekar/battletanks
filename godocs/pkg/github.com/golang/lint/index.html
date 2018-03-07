@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>lint - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package lint
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/golang/lint"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="index.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package lint contains a linter for Go source code.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#Linter">type Linter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Linter.Lint">func (l *Linter) Lint(filename string, src []byte) ([]Problem, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Linter.LintFiles">func (l *Linter) LintFiles(files map[string][]byte) ([]Problem, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Problem">type Problem</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Problem.String">func (p *Problem) String() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/golang/lint/lint.go">lint.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Linter">type <a href="http://localhost:8081/src/github.com/golang/lint/lint.go?s=606:628#L22">Linter</a>
+				<a class="permalink" href="index.html#Linter">&#xb6;</a>
+			</h2>
+			<p>
+A Linter lints Go source code.
+</p>
+
+			<pre>type Linter struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Linter.Lint">func (*Linter) <a href="http://localhost:8081/src/github.com/golang/lint/lint.go?s=1894:1963#L68">Lint</a>
+					<a class="permalink" href="index.html#Linter.Lint">&#xb6;</a>
+				</h3>
+				<pre>func (l *<a href="index.html#Linter">Linter</a>) Lint(filename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, src []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) ([]<a href="index.html#Problem">Problem</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Lint lints src.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Linter.LintFiles">func (*Linter) <a href="http://localhost:8081/src/github.com/golang/lint/lint.go?s=2126:2196#L74">LintFiles</a>
+					<a class="permalink" href="index.html#Linter.LintFiles">&#xb6;</a>
+				</h3>
+				<pre>func (l *<a href="index.html#Linter">Linter</a>) LintFiles(files map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>][]<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) ([]<a href="index.html#Problem">Problem</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LintFiles lints a set of files of a single package.
+The argument is a map of filename to source.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Problem">type <a href="http://localhost:8081/src/github.com/golang/lint/lint.go?s=683:1313#L26">Problem</a>
+				<a class="permalink" href="index.html#Problem">&#xb6;</a>
+			</h2>
+			<p>
+Problem represents a problem in some source code.
+</p>
+
+			<pre>type Problem struct {
+<span id="Problem.Position"></span>    Position   <a href="http://localhost:8081/pkg/go/token/">token</a>.<a href="http://localhost:8081/pkg/go/token/#Position">Position</a> <span class="comment">// position in source file</span>
+<span id="Problem.Text"></span>    Text       <a href="http://localhost:8081/pkg/builtin/#string">string</a>         <span class="comment">// the prose that describes the problem</span>
+<span id="Problem.Link"></span>    Link       <a href="http://localhost:8081/pkg/builtin/#string">string</a>         <span class="comment">// (optional) the link to the style guide for the problem</span>
+<span id="Problem.Confidence"></span>    Confidence <a href="http://localhost:8081/pkg/builtin/#float64">float64</a>        <span class="comment">// a value in (0,1] estimating the confidence in this problem&#39;s correctness</span>
+<span id="Problem.LineText"></span>    LineText   <a href="http://localhost:8081/pkg/builtin/#string">string</a>         <span class="comment">// the source line</span>
+<span id="Problem.Category"></span>    Category   <a href="http://localhost:8081/pkg/builtin/#string">string</a>         <span class="comment">// a short name for the general category of the problem</span>
+
+    <span class="comment">// If the problem has a suggested fix (the minority case),</span>
+<span id="Problem.ReplacementLine"></span>    <span class="comment">// ReplacementLine is a full replacement for the relevant line of the source file.</span>
+    ReplacementLine <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Problem.String">func (*Problem) <a href="http://localhost:8081/src/github.com/golang/lint/lint.go?s=1315:1348#L39">String</a>
+					<a class="permalink" href="index.html#Problem.String">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Problem">Problem</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="../index.html">..</a></td>
+			</tr>
+			
+
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="golint/index.html">golint</a>
+						</td>
+						<td class="pkg-synopsis">
+							golint lints the Go source files named on its command line.
+						</td>
+					</tr>
+				
+			
+		</table>
+	</div>
+
+
+	
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

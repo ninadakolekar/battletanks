@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>token - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package token
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/rogpeppe/godef/go/token"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+This package defines constants representing the lexical
+tokens of the Go programming language and basic operations
+on tokens (printing, predicates).
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#File">type File</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.AddLine">func (f *File) AddLine(offset int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.AddLineInfo">func (f *File) AddLineInfo(offset int, filename string, line int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Base">func (f *File) Base() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Line">func (f *File) Line(p Pos) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.LineCount">func (f *File) LineCount() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Name">func (f *File) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Offset">func (f *File) Offset(p Pos) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Pos">func (f *File) Pos(offset int) Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Position">func (f *File) Position(p Pos) (pos Position)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.SetLines">func (f *File) SetLines(lines []int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.SetLinesForContent">func (f *File) SetLinesForContent(content []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Size">func (f *File) Size() int</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FileSet">type FileSet</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewFileSet">func NewFileSet() *FileSet</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FileSet.AddFile">func (s *FileSet) AddFile(filename string, base, size int) *File</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FileSet.Base">func (s *FileSet) Base() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FileSet.File">func (s *FileSet) File(p Pos) (f *File)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FileSet.Iterate">func (s *FileSet) Iterate(f func(*File) bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FileSet.Position">func (s *FileSet) Position(p Pos) (pos Position)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Pos">type Pos</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Pos.IsValid">func (p Pos) IsValid() bool</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Position">type Position</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Position.IsValid">func (pos *Position) IsValid() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Position.String">func (pos Position) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Token">type Token</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Lookup">func Lookup(ident []byte) Token</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Token.IsKeyword">func (tok Token) IsKeyword() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Token.IsLiteral">func (tok Token) IsLiteral() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Token.IsOperator">func (tok Token) IsOperator() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Token.Precedence">func (op Token) Precedence() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Token.String">func (tok Token) String() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go">position.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go">token.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+A set of constants for precedence-based expression parsing.
+Non-operators have lowest precedence, followed by operators
+starting with precedence 1 up to unary operators. The highest
+precedence corresponds serves as &#34;catch-all&#34; precedence for
+selector, indexing, and other operator and delimiter tokens.
+</p>
+
+				<pre>const (
+    <span id="LowestPrec">LowestPrec</span>  = 0 <span class="comment">// non-operators</span>
+    <span id="UnaryPrec">UnaryPrec</span>   = 6
+    <span id="HighestPrec">HighestPrec</span> = 7
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=4709:4989#L150">File</a>
+				<a class="permalink" href="index.html#File">&#xb6;</a>
+			</h2>
+			<p>
+A File is a handle for a file belonging to a FileSet.
+A File has a name, size, and line offset table.
+</p>
+
+			<pre>type File struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="File.AddLine">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=5690:5724#L188">AddLine</a>
+					<a class="permalink" href="index.html#File.AddLine">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) AddLine(offset <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				<p>
+AddLine adds the line offset for a new line.
+The line offset must be larger than the offset for the previous line
+and smaller than the file size; otherwise the line offset is ignored.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddLineInfo">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=4337:4402#L139">AddLineInfo</a>
+					<a class="permalink" href="index.html#File.AddLineInfo">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) AddLineInfo(offset <a href="http://localhost:8081/pkg/builtin/#int">int</a>, filename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, line <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				<p>
+AddLineInfo adds alternative file and line number information for
+a given file offset. The offset must be larger than the offset for
+the previously added alternative line info and smaller than the
+file size; otherwise the information is ignored.
+</p>
+<p>
+AddLineInfo is typically used to register alternative position
+information for //line filename:line comments in source files.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Base">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=5178:5203#L167">Base</a>
+					<a class="permalink" href="index.html#File.Base">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Base() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Base returns the base offset of file f as registered with AddFile.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Line">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=7645:7675#L265">Line</a>
+					<a class="permalink" href="index.html#File.Line">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Line(p <a href="index.html#Pos">Pos</a>) <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Line returns the line number for the given file position p;
+p must be a Pos value in that file or NoPos.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.LineCount">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=5385:5415#L177">LineCount</a>
+					<a class="permalink" href="index.html#File.LineCount">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) LineCount() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+LineCount returns the number of lines in file f.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Name">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=5059:5087#L162">Name</a>
+					<a class="permalink" href="index.html#File.Name">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Name() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				<p>
+Name returns the file name of file f as registered with AddFile.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Offset">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=7389:7421#L255">Offset</a>
+					<a class="permalink" href="index.html#File.Offset">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Offset(p <a href="index.html#Pos">Pos</a>) <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Offset returns the offset for the given file position p;
+p must be a valid Pos value in that file.
+f.Offset(f.Pos(offset)) == offset.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Pos">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=7118:7152#L244">Pos</a>
+					<a class="permalink" href="index.html#File.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Pos(offset <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="index.html#Pos">Pos</a></pre>
+				<p>
+Pos returns the Pos value for the given file offset;
+the offset must be &lt;= f.Size().
+f.Pos(f.Offset(p)) == p.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Position">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=7889:7934#L273">Position</a>
+					<a class="permalink" href="index.html#File.Position">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Position(p <a href="index.html#Pos">Pos</a>) (pos <a href="index.html#Position">Position</a>)</pre>
+				<p>
+Position returns the Position value for the given file position p;
+p must be a Pos value in that file or NoPos.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.SetLines">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=6317:6358#L204">SetLines</a>
+					<a class="permalink" href="index.html#File.SetLines">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) SetLines(lines []<a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+SetLines sets the line offsets for a file and returns true if successful.
+The line offsets are the offsets of the first character of each line;
+for instance for the content &#34;ab\nc\n&#34; the line offsets are {0, 3}.
+An empty file has an empty line offset table.
+Each line offset must be larger than the offset for the previous line
+and smaller than the file size; otherwise SetLines fails and returns
+false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.SetLinesForContent">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=6690:6739#L221">SetLinesForContent</a>
+					<a class="permalink" href="index.html#File.SetLinesForContent">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) SetLinesForContent(content []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>)</pre>
+				<p>
+SetLinesForContent sets the line offsets for the given file content.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Size">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=5287:5312#L172">Size</a>
+					<a class="permalink" href="index.html#File.Size">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Size() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Size returns the size of file f as registered with AddFile.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FileSet">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=8912:9164#L311">FileSet</a>
+				<a class="permalink" href="index.html#FileSet">&#xb6;</a>
+			</h2>
+			<p>
+A FileSet represents a set of source files.
+Methods of file sets are synchronized; multiple goroutines
+may invoke them concurrently.
+</p>
+
+			<pre>type FileSet struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFileSet">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=9204:9230#L319">NewFileSet</a>
+					<a class="permalink" href="index.html#NewFileSet">&#xb6;</a>
+				</h3>
+				<pre>func NewFileSet() *<a href="index.html#FileSet">FileSet</a></pre>
+				<p>
+NewFileSet creates a new file set.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="FileSet.AddFile">func (*FileSet) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=10212:10276#L352">AddFile</a>
+					<a class="permalink" href="index.html#FileSet.AddFile">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#FileSet">FileSet</a>) AddFile(filename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, base, size <a href="http://localhost:8081/pkg/builtin/#int">int</a>) *<a href="index.html#File">File</a></pre>
+				<p>
+AddFile adds a new file with a given filename, base offset, and file size
+to the file set s and returns the file. Multiple files may have the same
+name. The base offset must not be smaller than the FileSet&#39;s Base(), and
+size must not be negative.
+</p>
+<p>
+Adding the file will set the file set&#39;s Base() value to base + size + 1
+as the minimum base value for the next file. The following relationship
+exists between a Pos value p for a given file offset offs:
+</p>
+<pre>int(p) = base + offs
+</pre>
+<p>
+with offs in the range [0, size] and thus p in the range [base, base+size].
+For convenience, File.Pos may be used to create file-specific position
+values from a file offset.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FileSet.Base">func (*FileSet) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=9428:9456#L329">Base</a>
+					<a class="permalink" href="index.html#FileSet.Base">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#FileSet">FileSet</a>) Base() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Base returns the minimum base offset that must be provided to
+AddFile when adding the next file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FileSet.File">func (*FileSet) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=3154:3193#L93">File</a>
+					<a class="permalink" href="index.html#FileSet.File">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#FileSet">FileSet</a>) File(p <a href="index.html#Pos">Pos</a>) (f *<a href="index.html#File">File</a>)</pre>
+				<p>
+File returns the file which contains the position p.
+If no such file is found (for instance for p == NoPos),
+the result is nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FileSet.Iterate">func (*FileSet) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=10783:10828#L372">Iterate</a>
+					<a class="permalink" href="index.html#FileSet.Iterate">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#FileSet">FileSet</a>) Iterate(f func(*<a href="index.html#File">File</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+Files returns the files added to the file set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FileSet.Position">func (*FileSet) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=3508:3556#L110">Position</a>
+					<a class="permalink" href="index.html#FileSet.Position">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#FileSet">FileSet</a>) Position(p <a href="index.html#Pos">Pos</a>) (pos <a href="index.html#Position">Position</a>)</pre>
+				<p>
+Position converts a Pos in the fileset into a general Position.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Pos">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=2275:2287#L60">Pos</a>
+				<a class="permalink" href="index.html#Pos">&#xb6;</a>
+			</h2>
+			<p>
+Pos is a compact encoding of a source position within a file set.
+It can be converted into a Position for a more convenient, but much
+larger, representation.
+</p>
+<p>
+The Pos value for a given file is a number in the range [base, base+size],
+where base and size are specified when adding the file to the file set via
+AddFile.
+</p>
+<p>
+To create the Pos value for a specific source offset, first add
+the respective file to the current file set (via FileSet.AddFile)
+and then call File.Pos(offset) for that file. Given a Pos value p
+for a specific file set fset, the corresponding Position value is
+obtained by calling fset.Position(p).
+</p>
+<p>
+Pos values can be compared directly with the usual comparison operators:
+If two Pos values p and q are in the same file, comparing p and q is
+equivalent to comparing the respective source file offsets. If p and q
+are in different files, p &lt; q is true if the file implied by p was added
+to the respective file set before the file implied by q.
+</p>
+
+			<pre>type Pos <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+
+			
+				<p>
+The zero value for Pos is NoPos; there is no file and line information
+associated with it, and NoPos().IsValid() is false. NoPos is always
+smaller than any other Pos value. The corresponding Position value
+for NoPos is the zero value for Position.
+</p>
+
+				<pre>const <span id="NoPos">NoPos</span> <a href="index.html#Pos">Pos</a> = 0</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Pos.IsValid">func (Pos) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=2623:2650#L70">IsValid</a>
+					<a class="permalink" href="index.html#Pos.IsValid">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="index.html#Pos">Pos</a>) IsValid() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsValid returns true if the position is valid.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Position">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=444:661#L9">Position</a>
+				<a class="permalink" href="index.html#Position">&#xb6;</a>
+			</h2>
+			<p>
+Position describes an arbitrary source position
+including the file, line, and column location.
+A Position is valid if the line number is &gt; 0.
+</p>
+
+			<pre>type Position struct {
+<span id="Position.Filename"></span>    Filename <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// filename, if any</span>
+<span id="Position.Offset"></span>    Offset   <a href="http://localhost:8081/pkg/builtin/#int">int</a>    <span class="comment">// offset, starting at 0</span>
+<span id="Position.Line"></span>    Line     <a href="http://localhost:8081/pkg/builtin/#int">int</a>    <span class="comment">// line number, starting at 1</span>
+<span id="Position.Column"></span>    Column   <a href="http://localhost:8081/pkg/builtin/#int">int</a>    <span class="comment">// column number, starting at 1 (character count)</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Position.IsValid">func (*Position) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=713:748#L17">IsValid</a>
+					<a class="permalink" href="index.html#Position.IsValid">&#xb6;</a>
+				</h3>
+				<pre>func (pos *<a href="index.html#Position">Position</a>) IsValid() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsValid returns true if the position is valid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Position.String">func (Position) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/position.go?s=1054:1089#L26">String</a>
+					<a class="permalink" href="index.html#Position.String">&#xb6;</a>
+				</h3>
+				<pre>func (pos <a href="index.html#Position">Position</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				<p>
+String returns a string in one of several forms:
+</p>
+<pre>file:line:column    valid position with file name
+line:column         valid position without file name
+file                invalid position with file name
+-                   invalid position without file name
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Token">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=424:438#L4">Token</a>
+				<a class="permalink" href="index.html#Token">&#xb6;</a>
+			</h2>
+			<p>
+Token is the set of lexical tokens of the Go programming language.
+</p>
+
+			<pre>type Token <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+
+			
+				<p>
+The list of tokens.
+</p>
+
+				<pre>const (
+    <span class="comment">// Special tokens</span>
+    <span id="ILLEGAL">ILLEGAL</span> <a href="index.html#Token">Token</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="EOF">EOF</span>
+    <span id="COMMENT">COMMENT</span>
+
+    <span class="comment">// Identifiers and basic type literals</span>
+    <span class="comment">// (these tokens stand for classes of literals)</span>
+    <span id="IDENT">IDENT</span>  <span class="comment">// main</span>
+    <span id="INT">INT</span>    <span class="comment">// 12345</span>
+    <span id="FLOAT">FLOAT</span>  <span class="comment">// 123.45</span>
+    <span id="IMAG">IMAG</span>   <span class="comment">// 123.45i</span>
+    <span id="CHAR">CHAR</span>   <span class="comment">// &#39;a&#39;</span>
+    <span id="STRING">STRING</span> <span class="comment">// &#34;abc&#34;</span>
+
+    <span class="comment">// Operators and delimiters</span>
+    <span id="ADD">ADD</span> <span class="comment">// +</span>
+    <span id="SUB">SUB</span> <span class="comment">// -</span>
+    <span id="MUL">MUL</span> <span class="comment">// *</span>
+    <span id="QUO">QUO</span> <span class="comment">// /</span>
+    <span id="REM">REM</span> <span class="comment">// %</span>
+
+    <span id="AND">AND</span>     <span class="comment">// &amp;</span>
+    <span id="OR">OR</span>      <span class="comment">// |</span>
+    <span id="XOR">XOR</span>     <span class="comment">// ^</span>
+    <span id="SHL">SHL</span>     <span class="comment">// &lt;&lt;</span>
+    <span id="SHR">SHR</span>     <span class="comment">// &gt;&gt;</span>
+    <span id="AND_NOT">AND_NOT</span> <span class="comment">// &amp;^</span>
+
+    <span id="ADD_ASSIGN">ADD_ASSIGN</span> <span class="comment">// +=</span>
+    <span id="SUB_ASSIGN">SUB_ASSIGN</span> <span class="comment">// -=</span>
+    <span id="MUL_ASSIGN">MUL_ASSIGN</span> <span class="comment">// *=</span>
+    <span id="QUO_ASSIGN">QUO_ASSIGN</span> <span class="comment">// /=</span>
+    <span id="REM_ASSIGN">REM_ASSIGN</span> <span class="comment">// %=</span>
+
+    <span id="AND_ASSIGN">AND_ASSIGN</span>     <span class="comment">// &amp;=</span>
+    <span id="OR_ASSIGN">OR_ASSIGN</span>      <span class="comment">// |=</span>
+    <span id="XOR_ASSIGN">XOR_ASSIGN</span>     <span class="comment">// ^=</span>
+    <span id="SHL_ASSIGN">SHL_ASSIGN</span>     <span class="comment">// &lt;&lt;=</span>
+    <span id="SHR_ASSIGN">SHR_ASSIGN</span>     <span class="comment">// &gt;&gt;=</span>
+    <span id="AND_NOT_ASSIGN">AND_NOT_ASSIGN</span> <span class="comment">// &amp;^=</span>
+
+    <span id="LAND">LAND</span>  <span class="comment">// &amp;&amp;</span>
+    <span id="LOR">LOR</span>   <span class="comment">// ||</span>
+    <span id="ARROW">ARROW</span> <span class="comment">// &lt;-</span>
+    <span id="INC">INC</span>   <span class="comment">// ++</span>
+    <span id="DEC">DEC</span>   <span class="comment">// --</span>
+
+    <span id="EQL">EQL</span>    <span class="comment">// ==</span>
+    <span id="LSS">LSS</span>    <span class="comment">// &lt;</span>
+    <span id="GTR">GTR</span>    <span class="comment">// &gt;</span>
+    <span id="ASSIGN">ASSIGN</span> <span class="comment">// =</span>
+    <span id="NOT">NOT</span>    <span class="comment">// !</span>
+
+    <span id="NEQ">NEQ</span>      <span class="comment">// !=</span>
+    <span id="LEQ">LEQ</span>      <span class="comment">// &lt;=</span>
+    <span id="GEQ">GEQ</span>      <span class="comment">// &gt;=</span>
+    <span id="DEFINE">DEFINE</span>   <span class="comment">// :=</span>
+    <span id="ELLIPSIS">ELLIPSIS</span> <span class="comment">// ...</span>
+
+    <span id="LPAREN">LPAREN</span> <span class="comment">// (</span>
+    <span id="LBRACK">LBRACK</span> <span class="comment">// [</span>
+    <span id="LBRACE">LBRACE</span> <span class="comment">// {</span>
+    <span id="COMMA">COMMA</span>  <span class="comment">// ,</span>
+    <span id="PERIOD">PERIOD</span> <span class="comment">// .</span>
+
+    <span id="RPAREN">RPAREN</span>    <span class="comment">// )</span>
+    <span id="RBRACK">RBRACK</span>    <span class="comment">// ]</span>
+    <span id="RBRACE">RBRACE</span>    <span class="comment">// }</span>
+    <span id="SEMICOLON">SEMICOLON</span> <span class="comment">// ;</span>
+    <span id="COLON">COLON</span>     <span class="comment">// :</span>
+
+    <span class="comment">// Keywords</span>
+    <span id="BREAK">BREAK</span>
+    <span id="CASE">CASE</span>
+    <span id="CHAN">CHAN</span>
+    <span id="CONST">CONST</span>
+    <span id="CONTINUE">CONTINUE</span>
+
+    <span id="DEFAULT">DEFAULT</span>
+    <span id="DEFER">DEFER</span>
+    <span id="ELSE">ELSE</span>
+    <span id="FALLTHROUGH">FALLTHROUGH</span>
+    <span id="FOR">FOR</span>
+
+    <span id="FUNC">FUNC</span>
+    <span id="GO">GO</span>
+    <span id="GOTO">GOTO</span>
+    <span id="IF">IF</span>
+    <span id="IMPORT">IMPORT</span>
+
+    <span id="INTERFACE">INTERFACE</span>
+    <span id="MAP">MAP</span>
+    <span id="PACKAGE">PACKAGE</span>
+    <span id="RANGE">RANGE</span>
+    <span id="RETURN">RETURN</span>
+
+    <span id="SELECT">SELECT</span>
+    <span id="STRUCT">STRUCT</span>
+    <span id="SWITCH">SWITCH</span>
+    <span id="TYPE">TYPE</span>
+    <span id="VAR">VAR</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Lookup">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=4799:4830#L277">Lookup</a>
+					<a class="permalink" href="index.html#Lookup">&#xb6;</a>
+				</h3>
+				<pre>func Lookup(ident []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) <a href="index.html#Token">Token</a></pre>
+				<p>
+Lookup maps an identifier to its keyword token or IDENT (if not a keyword).
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Token.IsKeyword">func (Token) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=5582:5615#L301">IsKeyword</a>
+					<a class="permalink" href="index.html#Token.IsKeyword">&#xb6;</a>
+				</h3>
+				<pre>func (tok <a href="index.html#Token">Token</a>) IsKeyword() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsKeyword returns true for tokens corresponding to keywords;
+returns false otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Token.IsLiteral">func (Token) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=5202:5235#L291">IsLiteral</a>
+					<a class="permalink" href="index.html#Token.IsLiteral">&#xb6;</a>
+				</h3>
+				<pre>func (tok <a href="index.html#Token">Token</a>) IsLiteral() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsLiteral returns true for tokens corresponding to identifiers
+and basic type literals; returns false otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Token.IsOperator">func (Token) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=5399:5433#L296">IsOperator</a>
+					<a class="permalink" href="index.html#Token.IsOperator">&#xb6;</a>
+				</h3>
+				<pre>func (tok <a href="index.html#Token">Token</a>) IsOperator() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsOperator returns true for tokens corresponding to operators and
+delimiters; returns false otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Token.Precedence">func (Token) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=4298:4330#L250">Precedence</a>
+					<a class="permalink" href="index.html#Token.Precedence">&#xb6;</a>
+				</h3>
+				<pre>func (op <a href="index.html#Token">Token</a>) Precedence() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+Precedence returns the operator precedence of the binary
+operator op. If op is not a binary operator, the result
+is LowestPrecedence.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Token.String">func (Token) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/token/token.go?s=3568:3600#L223">String</a>
+					<a class="permalink" href="index.html#Token.String">&#xb6;</a>
+				</h3>
+				<pre>func (tok <a href="index.html#Token">Token</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				<p>
+String returns the string corresponding to the token tok.
+For operators, delimiters, and keywords the string is the actual
+token character sequence (e.g., for the token ADD, the string is
+&#34;+&#34;). For all other tokens the string corresponds to the token
+constant name (e.g. for the token IDENT, the string is &#34;IDENT&#34;).
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

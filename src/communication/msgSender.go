@@ -25,6 +25,6 @@ func (c *Client) SendNewUserMessage(msg message.NewClientMessage) {
 
 //SendID ... Sends Client ID to ClientJS
 func (c *Client) SendID() {
-	msg := message.NewClientMessage{c.ID, "notifyID"}
+	msg := message.NewClientMessage{ID: c.ID, Message: "notifyID"}
 	c.SendNewUserMessage(msg)
 }

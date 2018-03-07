@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>context - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package context
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/kardianos/govendor/context"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package context gathers the status of packages and stores it in Context.
+A new Context needs to be pointed to the root of the project and any
+project owned vendor file.
+</p>
+<p>
+Package context gathers the status of packages and stores it in Context.
+A new Context needs to be pointed to the root of the project and any
+project owned vendor file.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="index.html#Get">func Get(logger io.Writer, pkgspecName string, insecure bool) (*pkgspec.Pkg, error)</a></dd>
+			
+				
+				<dd><a href="index.html#LicenseDiscover">func LicenseDiscover(root, startIn, overridePath string, list map[string]License) error</a></dd>
+			
+				
+				<dd><a href="index.html#RemovePackage">func RemovePackage(path, root string, tree bool) error</a></dd>
+			
+				
+				<dd><a href="index.html#ResolveAutoLongestPath">func ResolveAutoLongestPath(cc []*Conflict) []*Conflict</a></dd>
+			
+				
+				<dd><a href="index.html#ResolveAutoShortestPath">func ResolveAutoShortestPath(cc []*Conflict) []*Conflict</a></dd>
+			
+			
+				
+				<dd><a href="index.html#Conflict">type Conflict</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Context">type Context</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewContext">func NewContext(root, vendorFilePathRel, vendorFolder string, rewriteImports bool) (*Context, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewContextRoot">func NewContextRoot(root string) (*Context, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewContextWD">func NewContextWD(rt RootType) (*Context, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.Alter">func (ctx *Context) Alter() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.Check">func (ctx *Context) Check() []*Conflict</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.CopyPackage">func (ctx *Context) CopyPackage(destPath, srcPath, lookRoot, pkgPath string, ignoreFiles []string, tree bool, h hash.Hash, beforeCopy func(deps []string) error) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.IgnoreBuildAndPackage">func (ctx *Context) IgnoreBuildAndPackage(ignore string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.ModifyImport">func (ctx *Context) ModifyImport(imp *pkgspec.Pkg, mod Modify, mops ...ModifyOption) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.ModifyStatus">func (ctx *Context) ModifyStatus(sg StatusGroup, mod Modify, mops ...ModifyOption) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.ResloveApply">func (ctx *Context) ResloveApply(cc []*Conflict)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.ResolveAutoVendorFileOrigin">func (ctx *Context) ResolveAutoVendorFileOrigin(cc []*Conflict) []*Conflict</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.Status">func (ctx *Context) Status() ([]StatusItem, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.Sync">func (ctx *Context) Sync(dryrun bool) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.VendorFilePackagePath">func (ctx *Context) VendorFilePackagePath(path string) *vendorfile.Package</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.VerifyVendor">func (ctx *Context) VerifyVendor() (outOfDate []*vendorfile.Package, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.Write">func (ctx *Context) Write(s []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Context.WriteVendorFile">func (ctx *Context) WriteVendorFile() (err error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Env">type Env</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewEnv">func NewEnv() (Env, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ErrDirtyPackage">type ErrDirtyPackage</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrDirtyPackage.Error">func (err ErrDirtyPackage) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrMissingVendorFile">type ErrMissingVendorFile</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrMissingVendorFile.Error">func (err ErrMissingVendorFile) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrNotInGOPATH">type ErrNotInGOPATH</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrNotInGOPATH.Error">func (err ErrNotInGOPATH) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrOldVersion">type ErrOldVersion</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrOldVersion.Error">func (err ErrOldVersion) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrPackageExists">type ErrPackageExists</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrPackageExists.Error">func (err ErrPackageExists) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrTreeChildren">type ErrTreeChildren</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrTreeChildren.Error">func (err ErrTreeChildren) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrTreeParents">type ErrTreeParents</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrTreeParents.Error">func (err ErrTreeParents) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#File">type File</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Label">type Label</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FindLabel">func FindLabel(version string, labels []Label) Label</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Label.String">func (l Label) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#LabelSource">type LabelSource</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LabelSource.String">func (ls LabelSource) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#License">type License</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#LicenseSort">type LicenseSort</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LicenseSort.Len">func (list LicenseSort) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LicenseSort.Less">func (list LicenseSort) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LicenseSort.Swap">func (list LicenseSort) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Modify">type Modify</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ModifyOption">type ModifyOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Operation">type Operation</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#OperationState">type OperationState</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#OperationType">type OperationType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#OperationType.String">func (t OperationType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Package">type Package</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Package.String">func (pkg *Package) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#RootType">type RootType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Status">type Status</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Status.Match">func (pkgSt Status) Match(filterSt Status) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Status.MatchGroup">func (status Status) MatchGroup(filter StatusGroup) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Status.String">func (s Status) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#StatusGroup">type StatusGroup</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StatusGroup.String">func (sg StatusGroup) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#StatusItem">type StatusItem</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StatusItem.String">func (li StatusItem) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#StatusLocation">type StatusLocation</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StatusPresence">type StatusPresence</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StatusType">type StatusType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#TagSet">type TagSet</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TagSet.AddBuildTags">func (ts *TagSet) AddBuildTags(tags string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TagSet.AddFileTag">func (ts *TagSet) AddFileTag(tag string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TagSet.IgnoreItem">func (ts *TagSet) IgnoreItem(ignoreList ...string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TagSet.String">func (ts *TagSet) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#VCSCmd">type VCSCmd</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VCSCmd.RevisionSync">func (vcsCmd *VCSCmd) RevisionSync(dir, revision string) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go">context.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/copy.go">copy.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go">err.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/fetch.go">fetch.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/get.go">get.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go">label.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go">license.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go">modify.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/path.go">path.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/resolve.go">resolve.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/rewrite.go">rewrite.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go">status.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/sync.go">sync.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/syslist.go">syslist.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go">tags.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/vendorFile.go">vendorFile.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/kardianos/govendor/context/version.go">version.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// ErrMissingGOROOT returns if the GOROOT was not found.</span>
+    <span id="ErrMissingGOROOT">ErrMissingGOROOT</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;Unable to determine GOROOT.&#34;)
+    <span class="comment">// ErrMissingGOPATH returns if no GOPATH was found.</span>
+    <span id="ErrMissingGOPATH">ErrMissingGOPATH</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;Missing GOPATH. Check your environment variable GOPATH.&#34;)
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Get">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/get.go?s=308:391#L8">Get</a>
+				<a class="permalink" href="index.html#Get">&#xb6;</a>
+			</h2>
+			<pre>func Get(logger <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>, pkgspecName <a href="http://localhost:8081/pkg/builtin/#string">string</a>, insecure <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (*<a href="../pkgspec/index.html">pkgspec</a>.<a href="../pkgspec/index.html#Pkg">Pkg</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="LicenseDiscover">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=4526:4613#L185">LicenseDiscover</a>
+				<a class="permalink" href="index.html#LicenseDiscover">&#xb6;</a>
+			</h2>
+			<pre>func LicenseDiscover(root, startIn, overridePath <a href="http://localhost:8081/pkg/builtin/#string">string</a>, list map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]<a href="index.html#License">License</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+LicenseDiscover looks for license files in a given path.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RemovePackage">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/path.go?s=3771:3825#L148">RemovePackage</a>
+				<a class="permalink" href="index.html#RemovePackage">&#xb6;</a>
+			</h2>
+			<pre>func RemovePackage(path, root <a href="http://localhost:8081/pkg/builtin/#string">string</a>, tree <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+RemovePackage removes the specified folder files. If folder is empty when
+done (no nested folders, remove the folder and any empty parent folders.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ResolveAutoLongestPath">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=14153:14208#L582">ResolveAutoLongestPath</a>
+				<a class="permalink" href="index.html#ResolveAutoLongestPath">&#xb6;</a>
+			</h2>
+			<pre>func ResolveAutoLongestPath(cc []*<a href="index.html#Conflict">Conflict</a>) []*<a href="index.html#Conflict">Conflict</a></pre>
+			<p>
+ResolveAutoLongestPath finds the longest local path in each conflict
+and set it to be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ResolveAutoShortestPath">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=14657:14713#L607">ResolveAutoShortestPath</a>
+				<a class="permalink" href="index.html#ResolveAutoShortestPath">&#xb6;</a>
+			</h2>
+			<pre>func ResolveAutoShortestPath(cc []*<a href="index.html#Conflict">Conflict</a>) []*<a href="index.html#Conflict">Conflict</a></pre>
+			<p>
+ResolveAutoShortestPath finds the shortest local path in each conflict
+and set it to be used.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Conflict">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=1899:2014#L75">Conflict</a>
+				<a class="permalink" href="index.html#Conflict">&#xb6;</a>
+			</h2>
+			<p>
+Conflict reports packages that are scheduled to conflict.
+</p>
+
+			<pre>type Conflict struct {
+<span id="Conflict.Canonical"></span>    Canonical <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="Conflict.Local"></span>    Local     <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="Conflict.Operation"></span>    Operation []*<a href="index.html#Operation">Operation</a>
+<span id="Conflict.OpIndex"></span>    OpIndex   <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="Conflict.Resolved"></span>    Resolved  <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Context">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=827:2147#L28">Context</a>
+				<a class="permalink" href="index.html#Context">&#xb6;</a>
+			</h2>
+			<p>
+Context represents the current project context.
+</p>
+
+			<pre>type Context struct {
+<span id="Context.Logger"></span>    Logger   <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a> <span class="comment">// Write to the verbose log.</span>
+<span id="Context.Insecure"></span>    Insecure <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>      <span class="comment">// Allow insecure network operations</span>
+
+<span id="Context.GopathList"></span>    GopathList []<a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// List of GOPATHs in environment. Includes &#34;src&#34; dir.</span>
+<span id="Context.Goroot"></span>    Goroot     <a href="http://localhost:8081/pkg/builtin/#string">string</a>   <span class="comment">// The path to the standard library.</span>
+
+<span id="Context.RootDir"></span>    RootDir        <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Full path to the project root.</span>
+<span id="Context.RootGopath"></span>    RootGopath     <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// The GOPATH the project is in.</span>
+<span id="Context.RootImportPath"></span>    RootImportPath <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// The import path to the project.</span>
+
+<span id="Context.VendorFile"></span>    VendorFile       *<a href="../vendorfile/index.html">vendorfile</a>.<a href="../vendorfile/index.html#File">File</a>
+<span id="Context.VendorFilePath"></span>    VendorFilePath   <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// File path to vendor file.</span>
+<span id="Context.VendorFolder"></span>    VendorFolder     <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Store vendor packages in this folder.</span>
+<span id="Context.RootToVendorFile"></span>    RootToVendorFile <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// The relative path from the project root to the vendor file directory.</span>
+
+<span id="Context.VendorDiscoverFolder"></span>    VendorDiscoverFolder <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Normally auto-set to &#34;vendor&#34;</span>
+
+<span id="Context.Package"></span>    <span class="comment">// Package is a map where the import path is the key.</span>
+    <span class="comment">// Populated with LoadPackage.</span>
+    Package map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#Package">Package</a>
+
+    <span class="comment">// MoveRule provides the translation from original import path to new import path.</span>
+<span id="Context.RewriteRule"></span>    RewriteRule map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]<a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// map[from]to</span>
+
+<span id="Context.TreeImport"></span>    TreeImport []*<a href="../pkgspec/index.html">pkgspec</a>.<a href="../pkgspec/index.html#Pkg">Pkg</a>
+
+<span id="Context.Operation"></span>    Operation []*<a href="index.html#Operation">Operation</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewContext">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=5287:5387#L200">NewContext</a>
+					<a class="permalink" href="index.html#NewContext">&#xb6;</a>
+				</h3>
+				<pre>func NewContext(root, vendorFilePathRel, vendorFolder <a href="http://localhost:8081/pkg/builtin/#string">string</a>, rewriteImports <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (*<a href="index.html#Context">Context</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewContext creates new context from a given root folder and vendor file path.
+The vendorFolder is where vendor packages should be placed.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewContextRoot">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=4935:4985#L191">NewContextRoot</a>
+					<a class="permalink" href="index.html#NewContextRoot">&#xb6;</a>
+				</h3>
+				<pre>func NewContextRoot(root <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="index.html#Context">Context</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewContextRoot creates a new context for the given root folder.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewContextWD">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=3867:3915#L144">NewContextWD</a>
+					<a class="permalink" href="index.html#NewContextWD">&#xb6;</a>
+				</h3>
+				<pre>func NewContextWD(rt <a href="index.html#RootType">RootType</a>) (*<a href="index.html#Context">Context</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewContextWD creates a new context. It looks for a root folder by finding
+a vendor file.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Context.Alter">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=15819:15852#L666">Alter</a>
+					<a class="permalink" href="index.html#Context.Alter">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) Alter() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Alter runs any requested package alterations.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.Check">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=12962:13001#L533">Check</a>
+					<a class="permalink" href="index.html#Context.Check">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) Check() []*<a href="index.html#Conflict">Conflict</a></pre>
+				<p>
+Check returns any conflicts when more than one package can be moved into
+the same path.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.CopyPackage">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/copy.go?s=782:948#L30">CopyPackage</a>
+					<a class="permalink" href="index.html#Context.CopyPackage">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) CopyPackage(destPath, srcPath, lookRoot, pkgPath <a href="http://localhost:8081/pkg/builtin/#string">string</a>, ignoreFiles []<a href="http://localhost:8081/pkg/builtin/#string">string</a>, tree <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, h <a href="http://localhost:8081/pkg/hash/">hash</a>.<a href="http://localhost:8081/pkg/hash/#Hash">Hash</a>, beforeCopy func(deps []<a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+CopyPackage copies the files from the srcPath to the destPath, destPath
+folder and parents are are created if they don&#39;t already exist.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.IgnoreBuildAndPackage">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=7340:7396#L278">IgnoreBuildAndPackage</a>
+					<a class="permalink" href="index.html#Context.IgnoreBuildAndPackage">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) IgnoreBuildAndPackage(ignore <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+IgnoreBuildAndPackage takes a space separated list of tags or package prefixes
+to ignore.
+Tags are words, packages are folders, containing or ending with a &#34;/&#34;.
+&#34;a b c&#34; will ignore tags &#34;a&#34; OR &#34;b&#34; OR &#34;c&#34;.
+&#34;p/x q/&#34; will ignore packages &#34;p/x&#34; OR &#34;p/x/y&#34; OR &#34;q&#34; OR &#34;q/z&#34;, etc.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.ModifyImport">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=3699:3789#L155">ModifyImport</a>
+					<a class="permalink" href="index.html#Context.ModifyImport">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) ModifyImport(imp *<a href="../pkgspec/index.html">pkgspec</a>.<a href="../pkgspec/index.html#Pkg">Pkg</a>, mod <a href="index.html#Modify">Modify</a>, mops ...<a href="index.html#ModifyOption">ModifyOption</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ModifyImport adds the package to the context.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.ModifyStatus">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=2553:2641#L103">ModifyStatus</a>
+					<a class="permalink" href="index.html#Context.ModifyStatus">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) ModifyStatus(sg <a href="index.html#StatusGroup">StatusGroup</a>, mod <a href="index.html#Modify">Modify</a>, mops ...<a href="index.html#ModifyOption">ModifyOption</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ModifyStatus adds packages to the context by status.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.ResloveApply">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=13686:13734#L560">ResloveApply</a>
+					<a class="permalink" href="index.html#Context.ResloveApply">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) ResloveApply(cc []*<a href="index.html#Conflict">Conflict</a>)</pre>
+				<p>
+ResolveApply applies the conflict resolution selected. It chooses the
+Operation listed in the OpIndex field.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.ResolveAutoVendorFileOrigin">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=15171:15246#L632">ResolveAutoVendorFileOrigin</a>
+					<a class="permalink" href="index.html#Context.ResolveAutoVendorFileOrigin">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) ResolveAutoVendorFileOrigin(cc []*<a href="index.html#Conflict">Conflict</a>) []*<a href="index.html#Conflict">Conflict</a></pre>
+				<p>
+ResolveAutoVendorFileOrigin resolves conflicts based on the vendor file
+if possible.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.Status">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=6770:6820#L246">Status</a>
+					<a class="permalink" href="index.html#Context.Status">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) Status() ([]<a href="index.html#StatusItem">StatusItem</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Status obtains the current package status list.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.Sync">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/sync.go?s=6463:6512#L280">Sync</a>
+					<a class="permalink" href="index.html#Context.Sync">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) Sync(dryrun <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Sync checks for outdated packages in the vendor folder and fetches the
+correct revision from the remote.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.VendorFilePackagePath">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=8060:8134#L306">VendorFilePackagePath</a>
+					<a class="permalink" href="index.html#Context.VendorFilePackagePath">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) VendorFilePackagePath(path <a href="http://localhost:8081/pkg/builtin/#string">string</a>) *<a href="../vendorfile/index.html">vendorfile</a>.<a href="../vendorfile/index.html#Package">Package</a></pre>
+				<p>
+VendorFilePackagePath finds a given vendor file package give the import path.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.VerifyVendor">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/sync.go?s=569:648#L24">VerifyVendor</a>
+					<a class="permalink" href="index.html#Context.VerifyVendor">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) VerifyVendor() (outOfDate []*<a href="../vendorfile/index.html">vendorfile</a>.<a href="../vendorfile/index.html#Package">Package</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Context.Write">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=7849:7897#L298">Write</a>
+					<a class="permalink" href="index.html#Context.Write">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) Write(s []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Write to the set io.Writer for logging.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Context.WriteVendorFile">func (*Context) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/vendorFile.go?s=436:485#L10">WriteVendorFile</a>
+					<a class="permalink" href="index.html#Context.WriteVendorFile">&#xb6;</a>
+				</h3>
+				<pre>func (ctx *<a href="index.html#Context">Context</a>) WriteVendorFile() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+WriteVendorFile writes the current vendor file to the context location.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Env">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=3379:3405#L121">Env</a>
+				<a class="permalink" href="index.html#Env">&#xb6;</a>
+			</h2>
+			
+			<pre>type Env map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]<a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewEnv">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=3407:3433#L123">NewEnv</a>
+					<a class="permalink" href="index.html#NewEnv">&#xb6;</a>
+				</h3>
+				<pre>func NewEnv() (<a href="index.html#Env">Env</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ErrDirtyPackage">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=779:829#L19">ErrDirtyPackage</a>
+				<a class="permalink" href="index.html#ErrDirtyPackage">&#xb6;</a>
+			</h2>
+			<p>
+ErrDirtyPackage returns if package is in dirty version control.
+</p>
+
+			<pre>type ErrDirtyPackage struct {
+<span id="ErrDirtyPackage.ImportPath"></span>    ImportPath <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrDirtyPackage.Error">func (ErrDirtyPackage) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=831:872#L23">Error</a>
+					<a class="permalink" href="index.html#ErrDirtyPackage.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrDirtyPackage">ErrDirtyPackage</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrMissingVendorFile">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1242:1291#L37">ErrMissingVendorFile</a>
+				<a class="permalink" href="index.html#ErrMissingVendorFile">&#xb6;</a>
+			</h2>
+			<p>
+ErrMissingVendorFile returns if package already exists.
+</p>
+
+			<pre>type ErrMissingVendorFile struct {
+<span id="ErrMissingVendorFile.Path"></span>    Path <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrMissingVendorFile.Error">func (ErrMissingVendorFile) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1293:1339#L41">Error</a>
+					<a class="permalink" href="index.html#ErrMissingVendorFile.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrMissingVendorFile">ErrMissingVendorFile</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrNotInGOPATH">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=536:582#L10">ErrNotInGOPATH</a>
+				<a class="permalink" href="index.html#ErrNotInGOPATH">&#xb6;</a>
+			</h2>
+			<p>
+ErrNotInGOPATH returns if not currently in the GOPATH.
+</p>
+
+			<pre>type ErrNotInGOPATH struct {
+<span id="ErrNotInGOPATH.Missing"></span>    Missing <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrNotInGOPATH.Error">func (ErrNotInGOPATH) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=584:624#L14">Error</a>
+					<a class="permalink" href="index.html#ErrNotInGOPATH.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrNotInGOPATH">ErrNotInGOPATH</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrOldVersion">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1476:1521#L46">ErrOldVersion</a>
+				<a class="permalink" href="index.html#ErrOldVersion">&#xb6;</a>
+			</h2>
+			<p>
+ErrOldVersion returns if vendor file is not in the vendor folder.
+</p>
+
+			<pre>type ErrOldVersion struct {
+<span id="ErrOldVersion.Message"></span>    Message <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrOldVersion.Error">func (ErrOldVersion) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1523:1562#L50">Error</a>
+					<a class="permalink" href="index.html#ErrOldVersion.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrOldVersion">ErrOldVersion</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrPackageExists">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1019:1067#L28">ErrPackageExists</a>
+				<a class="permalink" href="index.html#ErrPackageExists">&#xb6;</a>
+			</h2>
+			<p>
+ErrPackageExists returns if package already exists.
+</p>
+
+			<pre>type ErrPackageExists struct {
+<span id="ErrPackageExists.Package"></span>    Package <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrPackageExists.Error">func (ErrPackageExists) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1069:1111#L32">Error</a>
+					<a class="permalink" href="index.html#ErrPackageExists.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrPackageExists">ErrPackageExists</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrTreeChildren">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1634:1703#L54">ErrTreeChildren</a>
+				<a class="permalink" href="index.html#ErrTreeChildren">&#xb6;</a>
+			</h2>
+			
+			<pre>type ErrTreeChildren struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrTreeChildren.Error">func (ErrTreeChildren) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1705:1746#L59">Error</a>
+					<a class="permalink" href="index.html#ErrTreeChildren.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrTreeChildren">ErrTreeChildren</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrTreeParents">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1849:1913#L63">ErrTreeParents</a>
+				<a class="permalink" href="index.html#ErrTreeParents">&#xb6;</a>
+			</h2>
+			
+			<pre>type ErrTreeParents struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrTreeParents.Error">func (ErrTreeParents) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/err.go?s=1915:1955#L68">Error</a>
+					<a class="permalink" href="index.html#ErrTreeParents.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err <a href="index.html#ErrTreeParents">ErrTreeParents</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=2809:2904#L89">File</a>
+				<a class="permalink" href="index.html#File">&#xb6;</a>
+			</h2>
+			<p>
+File holds a reference to the imports in a file and the file locaiton.
+</p>
+
+			<pre>type File struct {
+<span id="File.Package"></span>    Package *<a href="index.html#Package">Package</a>
+<span id="File.Path"></span>    Path    <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="File.Imports"></span>    Imports []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="File.ImportComment"></span>    ImportComment <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Label">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go?s=535:591#L27">Label</a>
+				<a class="permalink" href="index.html#Label">&#xb6;</a>
+			</h2>
+			
+			<pre>type Label struct {
+<span id="Label.Text"></span>    Text   <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="Label.Source"></span>    Source <a href="index.html#LabelSource">LabelSource</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FindLabel">func <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go?s=4083:4135#L189">FindLabel</a>
+					<a class="permalink" href="index.html#FindLabel">&#xb6;</a>
+				</h3>
+				<pre>func FindLabel(version <a href="http://localhost:8081/pkg/builtin/#string">string</a>, labels []<a href="index.html#Label">Label</a>) <a href="index.html#Label">Label</a></pre>
+				<p>
+FindLabel matches a single label from a list of labels, given a version.
+If the returning label.Source is LabelNone, then no labels match.
+</p>
+<p>
+Labels are first broken into sections separated by &#34;-&#34;. Shortest wins.
+If they have the same number of above sections, then they are compared
+further. Number sequences are treated as numbers. Numbers do not need a
+separator. The &#34;.&#34; is a break point as well.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Label.String">func (Label) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go?s=593:623#L32">String</a>
+					<a class="permalink" href="index.html#Label.String">&#xb6;</a>
+				</h3>
+				<pre>func (l <a href="index.html#Label">Label</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LabelSource">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go?s=246:267#L6">LabelSource</a>
+				<a class="permalink" href="index.html#LabelSource">&#xb6;</a>
+			</h2>
+			
+			<pre>type LabelSource <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="LabelNone">LabelNone</span> <a href="index.html#LabelSource">LabelSource</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="LabelBranch">LabelBranch</span>
+    <span id="LabelTag">LabelTag</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LabelSource.String">func (LabelSource) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/label.go?s=333:370#L14">String</a>
+					<a class="permalink" href="index.html#LabelSource.String">&#xb6;</a>
+				</h3>
+				<pre>func (ls <a href="index.html#LabelSource">LabelSource</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="License">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=326:400#L9">License</a>
+				<a class="permalink" href="index.html#License">&#xb6;</a>
+			</h2>
+			
+			<pre>type License struct {
+<span id="License.Path"></span>    Path     <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="License.Filename"></span>    Filename <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="License.Text"></span>    Text     <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LicenseSort">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=402:428#L15">LicenseSort</a>
+				<a class="permalink" href="index.html#LicenseSort">&#xb6;</a>
+			</h2>
+			
+			<pre>type LicenseSort []<a href="index.html#License">License</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LicenseSort.Len">func (LicenseSort) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=430:463#L17">Len</a>
+					<a class="permalink" href="index.html#LicenseSort.Len">&#xb6;</a>
+				</h3>
+				<pre>func (list <a href="index.html#LicenseSort">LicenseSort</a>) Len() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LicenseSort.Less">func (LicenseSort) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=566:609#L23">Less</a>
+					<a class="permalink" href="index.html#LicenseSort.Less">&#xb6;</a>
+				</h3>
+				<pre>func (list <a href="index.html#LicenseSort">LicenseSort</a>) Less(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LicenseSort.Swap">func (LicenseSort) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/license.go?s=486:524#L20">Swap</a>
+					<a class="permalink" href="index.html#LicenseSort.Swap">&#xb6;</a>
+				</h3>
+				<pre>func (list <a href="index.html#LicenseSort">LicenseSort</a>) Swap(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Modify">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=2060:2076#L84">Modify</a>
+				<a class="permalink" href="index.html#Modify">&#xb6;</a>
+			</h2>
+			<p>
+Modify is the type of modifcation to do.
+</p>
+
+			<pre>type Modify <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="AddUpdate">AddUpdate</span> <a href="index.html#Modify">Modify</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// Add or update the import.</span>
+    <span id="Add">Add</span>                     <span class="comment">// Only add, error if it already exists.</span>
+    <span id="Update">Update</span>                  <span class="comment">// Only update, error if it doesn&#39;t currently exist.</span>
+    <span id="Remove">Remove</span>                  <span class="comment">// Remove from vendor path.</span>
+    <span id="Fetch">Fetch</span>                   <span class="comment">// Get directly from remote repository.</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ModifyOption">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=2405:2427#L94">ModifyOption</a>
+				<a class="permalink" href="index.html#ModifyOption">&#xb6;</a>
+			</h2>
+			
+			<pre>type ModifyOption <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="Uncommitted">Uncommitted</span> <a href="index.html#ModifyOption">ModifyOption</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="MatchTree">MatchTree</span>
+    <span id="IncludeTree">IncludeTree</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Operation">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=1425:1836#L52">Operation</a>
+				<a class="permalink" href="index.html#Operation">&#xb6;</a>
+			</h2>
+			<p>
+Operation defines how packages should be moved.
+</p>
+<p>
+TODO (DT): Remove Pkg field and change Src and Dest to *pkgspec.Pkg types.
+</p>
+
+			<pre>type Operation struct {
+<span id="Operation.Type"></span>    Type <a href="index.html#OperationType">OperationType</a>
+
+<span id="Operation.Pkg"></span>    Pkg *<a href="index.html#Package">Package</a>
+
+    <span class="comment">// Source file path to move packages from.</span>
+    <span class="comment">// Must not be empty.</span>
+<span id="Operation.Src"></span>    Src <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+    <span class="comment">// Destination file path to move package to.</span>
+    <span class="comment">// If Dest if empty the package is removed.</span>
+<span id="Operation.Dest"></span>    Dest <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+    <span class="comment">// Files to ignore for operation.</span>
+<span id="Operation.IgnoreFile"></span>    IgnoreFile []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="Operation.State"></span>    State <a href="index.html#OperationState">OperationState</a>
+
+    <span class="comment">// True if the operation should treat the package as uncommitted.</span>
+<span id="Operation.Uncommitted"></span>    Uncommitted <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OperationState">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=783:807#L20">OperationState</a>
+				<a class="permalink" href="index.html#OperationState">&#xb6;</a>
+			</h2>
+			<p>
+OperationState is the state of the given package move operation.
+</p>
+
+			<pre>type OperationState <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="OpReady">OpReady</span>  <a href="index.html#OperationState">OperationState</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// Operation is ready to go.</span>
+    <span id="OpIgnore">OpIgnore</span>                       <span class="comment">// Operation should be ignored.</span>
+    <span id="OpDone">OpDone</span>                         <span class="comment">// Operation has been completed.</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OperationType">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=1010:1033#L28">OperationType</a>
+				<a class="permalink" href="index.html#OperationType">&#xb6;</a>
+			</h2>
+			
+			<pre>type OperationType <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="OpCopy">OpCopy</span> <a href="index.html#OperationType">OperationType</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="OpRemove">OpRemove</span>
+    <span id="OpFetch">OpFetch</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="OperationType.String">func (OperationType) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/modify.go?s=1094:1132#L36">String</a>
+					<a class="permalink" href="index.html#OperationType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="index.html#OperationType">OperationType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Package">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=2207:2733#L69">Package</a>
+				<a class="permalink" href="index.html#Package">&#xb6;</a>
+			</h2>
+			<p>
+Package maintains information pertaining to a package.
+</p>
+
+			<pre>type Package struct {
+<span id="Package.OriginDir"></span>    OriginDir <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Origin directory</span>
+<span id="Package.Dir"></span>    Dir       <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Physical directory path of the package.</span>
+
+<span id="Package.Status"></span>    Status <a href="index.html#Status">Status</a> <span class="comment">// Status and location of the package.</span>
+    *<a href="../pkgspec/index.html">pkgspec</a>.<a href="../pkgspec/index.html#Pkg">Pkg</a>
+<span id="Package.Local"></span>    Local  <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Current location of a package relative to $GOPATH/src.</span>
+<span id="Package.Gopath"></span>    Gopath <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// Includes trailing &#34;src&#34;.</span>
+<span id="Package.Files"></span>    Files  []*<a href="index.html#File">File</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Package.String">func (*Package) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=3018:3053#L106">String</a>
+					<a class="permalink" href="index.html#Package.String">&#xb6;</a>
+				</h3>
+				<pre>func (pkg *<a href="index.html#Package">Package</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RootType">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/context.go?s=2906:2924#L97">RootType</a>
+				<a class="permalink" href="index.html#RootType">&#xb6;</a>
+			</h2>
+			
+			<pre>type RootType <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="RootVendor">RootVendor</span> <a href="index.html#RootType">RootType</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="RootWD">RootWD</span>
+    <span id="RootVendorOrWD">RootVendorOrWD</span>
+    <span id="RootVendorOrWDOrFirstGOPATH">RootVendorOrWDOrFirstGOPATH</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Status">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=330:579#L7">Status</a>
+				<a class="permalink" href="index.html#Status">&#xb6;</a>
+			</h2>
+			<p>
+Status is the package type, location, and presence indicators.
+</p>
+
+			<pre>type Status struct {
+<span id="Status.Type"></span>    Type     <a href="index.html#StatusType">StatusType</a>     <span class="comment">// program, package</span>
+<span id="Status.Location"></span>    Location <a href="index.html#StatusLocation">StatusLocation</a> <span class="comment">// vendor, local, external, stdlib</span>
+<span id="Status.Presence"></span>    Presence <a href="index.html#StatusPresence">StatusPresence</a> <span class="comment">// missing, unused, tree, excluded</span>
+
+<span id="Status.Not"></span>    Not <a href="http://localhost:8081/pkg/builtin/#bool">bool</a> <span class="comment">// Not indicates boolean operation &#34;not&#34; on above.</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Status.Match">func (Status) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=2265:2312#L108">Match</a>
+					<a class="permalink" href="index.html#Status.Match">&#xb6;</a>
+				</h3>
+				<pre>func (pkgSt <a href="index.html#Status">Status</a>) Match(filterSt <a href="index.html#Status">Status</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Status.MatchGroup">func (Status) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=3004:3060#L132">MatchGroup</a>
+					<a class="permalink" href="index.html#Status.MatchGroup">&#xb6;</a>
+				</h3>
+				<pre>func (status <a href="index.html#Status">Status</a>) MatchGroup(filter <a href="index.html#StatusGroup">StatusGroup</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Status.String">func (Status) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=957:988#L28">String</a>
+					<a class="permalink" href="index.html#Status.String">&#xb6;</a>
+				</h3>
+				<pre>func (s <a href="index.html#Status">Status</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StatusGroup">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=861:953#L20">StatusGroup</a>
+				<a class="permalink" href="index.html#StatusGroup">&#xb6;</a>
+			</h2>
+			<p>
+StatusGroup is the logical filter for status with &#34;and&#34;, &#34;not&#34;, and grouping.
+</p>
+
+			<pre>type StatusGroup struct {
+<span id="StatusGroup.Status"></span>    Status []<a href="index.html#Status">Status</a>
+<span id="StatusGroup.Group"></span>    Group  []<a href="index.html#StatusGroup">StatusGroup</a>
+<span id="StatusGroup.And"></span>    And    <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+<span id="StatusGroup.Not"></span>    Not    <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StatusGroup.String">func (StatusGroup) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=1781:1818#L81">String</a>
+					<a class="permalink" href="index.html#StatusGroup.String">&#xb6;</a>
+				</h3>
+				<pre>func (sg <a href="index.html#StatusGroup">StatusGroup</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StatusItem">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=4776:4917#L172">StatusItem</a>
+				<a class="permalink" href="index.html#StatusItem">&#xb6;</a>
+			</h2>
+			<p>
+ListItem represents a package in the current project.
+</p>
+
+			<pre>type StatusItem struct {
+<span id="StatusItem.Status"></span>    Status       <a href="index.html#Status">Status</a>
+<span id="StatusItem.Pkg"></span>    Pkg          *<a href="../pkgspec/index.html">pkgspec</a>.<a href="../pkgspec/index.html#Pkg">Pkg</a>
+<span id="StatusItem.VersionExact"></span>    VersionExact <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="StatusItem.Local"></span>    Local        <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="StatusItem.ImportedBy"></span>    ImportedBy   []*<a href="index.html#Package">Package</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StatusItem.String">func (StatusItem) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=4919:4955#L180">String</a>
+					<a class="permalink" href="index.html#StatusItem.String">&#xb6;</a>
+				</h3>
+				<pre>func (li <a href="index.html#StatusItem">StatusItem</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StatusLocation">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=638:657#L16">StatusLocation</a>
+				<a class="permalink" href="index.html#StatusLocation">&#xb6;</a>
+			</h2>
+			
+			<pre>type StatusLocation <a href="http://localhost:8081/pkg/builtin/#byte">byte</a> <span class="comment">// StatusLocation is where the package is.</span>
+</pre>
+
+			
+				
+				<pre>const (
+    <span id="LocationUnknown">LocationUnknown</span>  <a href="index.html#StatusLocation">StatusLocation</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// LocationUnknown is unset StatusLocation.</span>
+    <span id="LocationNotFound">LocationNotFound</span>                       <span class="comment">// LocationNotFound package is not to be found (use PresenceMissing).</span>
+    <span id="LocationStandard">LocationStandard</span>                       <span class="comment">// LocationStandard package is in the standard library.</span>
+    <span id="LocationLocal">LocationLocal</span>                          <span class="comment">// LocationLocal package is in a project, not in a vendor folder.</span>
+    <span id="LocationExternal">LocationExternal</span>                       <span class="comment">// LocationExternal package is not in a project, in GOPATH.</span>
+    <span id="LocationVendor">LocationVendor</span>                         <span class="comment">// LocationVendor package is in a vendor folder.</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StatusPresence">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=702:721#L17">StatusPresence</a>
+				<a class="permalink" href="index.html#StatusPresence">&#xb6;</a>
+			</h2>
+			
+			<pre>type StatusPresence <a href="http://localhost:8081/pkg/builtin/#byte">byte</a> <span class="comment">// StatusPresence is if it can be found or referenced.</span>
+</pre>
+
+			
+				
+				<pre>const (
+    <span id="PresenceUnknown">PresenceUnknown</span>  <a href="index.html#StatusPresence">StatusPresence</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// PresenceUnknown is unset StatusPresence.</span>
+    <span id="PresenceFound">PresenceFound</span>                          <span class="comment">// PresenceFound package exists.</span>
+    <span id="PresenceMissing">PresenceMissing</span>                        <span class="comment">// PresenceMissing package is referenced but not found.</span>
+    <span id="PresenceUnused">PresenceUnused</span>                         <span class="comment">// PresenceUnused package is found locally but not referenced.</span>
+    <span id="PresenceTree">PresenceTree</span>                           <span class="comment">// PresenceTree package is in vendor folder, in a tree, but not referenced.</span>
+    <span id="PresenceExcluded">PresenceExcluded</span>                       <span class="comment">// PresenceExcluded package exists, but should not be vendored.</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StatusType">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/status.go?s=582:601#L15">StatusType</a>
+				<a class="permalink" href="index.html#StatusType">&#xb6;</a>
+			</h2>
+			
+			<pre>type StatusType <a href="http://localhost:8081/pkg/builtin/#byte">byte</a> <span class="comment">// StatusType is main or not-main.</span>
+</pre>
+
+			
+				
+				<pre>const (
+    <span id="TypeUnknown">TypeUnknown</span> <a href="index.html#StatusType">StatusType</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// TypeUnknown is unset StatusType.</span>
+    <span id="TypePackage">TypePackage</span>                   <span class="comment">// TypePackage package is a non-main package.</span>
+    <span id="TypeProgram">TypeProgram</span>                   <span class="comment">// TypeProgram package is a main package.</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TagSet">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go?s=3122:3224#L158">TagSet</a>
+				<a class="permalink" href="index.html#TagSet">&#xb6;</a>
+			</h2>
+			
+			<pre>type TagSet struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TagSet.AddBuildTags">func (*TagSet) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go?s=3979:4022#L204">AddBuildTags</a>
+					<a class="permalink" href="index.html#TagSet.AddBuildTags">&#xb6;</a>
+				</h3>
+				<pre>func (ts *<a href="index.html#TagSet">TagSet</a>) AddBuildTags(tags <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TagSet.AddFileTag">func (*TagSet) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go?s=3831:3871#L197">AddFileTag</a>
+					<a class="permalink" href="index.html#TagSet.AddFileTag">&#xb6;</a>
+				</h3>
+				<pre>func (ts *<a href="index.html#TagSet">TagSet</a>) AddFileTag(tag <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TagSet.IgnoreItem">func (*TagSet) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go?s=3363:3418#L175">IgnoreItem</a>
+					<a class="permalink" href="index.html#TagSet.IgnoreItem">&#xb6;</a>
+				</h3>
+				<pre>func (ts *<a href="index.html#TagSet">TagSet</a>) IgnoreItem(ignoreList ...<a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TagSet.String">func (*TagSet) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/tags.go?s=3226:3259#L165">String</a>
+					<a class="permalink" href="index.html#TagSet.String">&#xb6;</a>
+				</h3>
+				<pre>func (ts *<a href="index.html#TagSet">TagSet</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="VCSCmd">type <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/sync.go?s=3376:3408#L156">VCSCmd</a>
+				<a class="permalink" href="index.html#VCSCmd">&#xb6;</a>
+			</h2>
+			
+			<pre>type VCSCmd struct {
+    *<a href="../../../../golang.org/x/tools/go/vcs/index.html">vcs</a>.<a href="../../../../golang.org/x/tools/go/vcs/index.html#Cmd">Cmd</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="VCSCmd.RevisionSync">func (*VCSCmd) <a href="http://localhost:8081/src/github.com/kardianos/govendor/context/sync.go?s=3410:3472#L160">RevisionSync</a>
+					<a class="permalink" href="index.html#VCSCmd.RevisionSync">&#xb6;</a>
+				</h3>
+				<pre>func (vcsCmd *<a href="index.html#VCSCmd">VCSCmd</a>) RevisionSync(dir, revision <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

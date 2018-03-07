@@ -42,25 +42,31 @@ func main() {
 
 }
 
+// Requests Gameplay Update from all clients concurrently, at regular intervals.
 func updateServiceRoutine(s *comm.Server) {
 
 	/* UPDATE Service */
-	ticker := time.NewTicker(constants.UpdateRequestInterval) // 2 seconds
+
+	ticker := time.NewTicker(constants.UpdateRequestInterval) // Timer
+
 	go func() {
+
 		for range ticker.C {
 
 			select {
 
 			case stop := <-s.CeaseUpdates:
-				if stop {
+				if stop { // if stop is true (no more updates required)
+
 					log.Println("Update cease signal received. Update Service Routine ceased.")
 					return
 				}
 
 			default:
-				uSignal := message.Message{"requestUpdate"}
-				s.Broadcast(uSignal)
-				// fmt.Println("Tick at", t)
+
+				uSignal := message.Message{Message: "requestUpdate"}
+
+				s.Broadcast(uSignal) // Send the request for update
 
 			}
 		}

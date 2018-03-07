@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>gdbserial - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package gdbserial
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/proc/gdbserial"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="index.html#Record">func Record(cmd []string, wd string, quiet bool) (tracedir string, err error)</a></dd>
+			
+			
+				
+				<dd><a href="index.html#ErrMalformedRRGdbCommand">type ErrMalformedRRGdbCommand</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrMalformedRRGdbCommand.Error">func (err *ErrMalformedRRGdbCommand) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#GdbMalformedThreadIDError">type GdbMalformedThreadIDError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GdbMalformedThreadIDError.Error">func (err *GdbMalformedThreadIDError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#GdbProtocolError">type GdbProtocolError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GdbProtocolError.Error">func (err *GdbProtocolError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Process">type Process</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LLDBAttach">func LLDBAttach(pid int, path string) (*Process, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LLDBLaunch">func LLDBLaunch(cmd []string, wd string) (*Process, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#New">func New(process *os.Process) *Process</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RecordAndReplay">func RecordAndReplay(cmd []string, wd string, quiet bool) (p *Process, tracedir string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Replay">func Replay(tracedir string, quiet bool) (*Process, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.AllGCache">func (p *Process) AllGCache() *[]*proc.G</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.BinInfo">func (p *Process) BinInfo() *proc.BinaryInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Breakpoints">func (p *Process) Breakpoints() *proc.BreakpointMap</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.CheckAndClearManualStopRequest">func (p *Process) CheckAndClearManualStopRequest() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Checkpoint">func (p *Process) Checkpoint(where string) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Checkpoints">func (p *Process) Checkpoints() ([]proc.Checkpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearBreakpoint">func (p *Process) ClearBreakpoint(addr uint64) (*proc.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearCheckpoint">func (p *Process) ClearCheckpoint(id int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearInternalBreakpoints">func (p *Process) ClearInternalBreakpoints() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Connect">func (p *Process) Connect(conn net.Conn, path string, pid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ContinueOnce">func (p *Process) ContinueOnce() (proc.Thread, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.CurrentThread">func (p *Process) CurrentThread() proc.Thread</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Detach">func (p *Process) Detach(kill bool) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Dial">func (p *Process) Dial(addr string, path string, pid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Direction">func (p *Process) Direction(dir proc.Direction) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Exited">func (p *Process) Exited() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.FindBreakpoint">func (p *Process) FindBreakpoint(pc uint64) (*proc.Breakpoint, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.FindThread">func (p *Process) FindThread(threadID int) (proc.Thread, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Halt">func (p *Process) Halt() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Kill">func (p *Process) Kill() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Listen">func (p *Process) Listen(listener net.Listener, path string, pid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Pid">func (p *Process) Pid() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Recorded">func (p *Process) Recorded() (bool, string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.RequestManualStop">func (p *Process) RequestManualStop() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Restart">func (p *Process) Restart(pos string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ResumeNotify">func (p *Process) ResumeNotify(ch chan&lt;- struct{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SelectedGoroutine">func (p *Process) SelectedGoroutine() *proc.G</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SetBreakpoint">func (p *Process) SetBreakpoint(addr uint64, kind proc.BreakpointKind, cond ast.Expr) (*proc.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.StepInstruction">func (p *Process) StepInstruction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SwitchGoroutine">func (p *Process) SwitchGoroutine(gid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SwitchThread">func (p *Process) SwitchThread(tid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ThreadList">func (p *Process) ThreadList() []proc.Thread</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.When">func (p *Process) When() (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Thread">type Thread</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Arch">func (t *Thread) Arch() proc.Arch</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.BinInfo">func (t *Thread) BinInfo() *proc.BinaryInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Blocked">func (t *Thread) Blocked() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Breakpoint">func (t *Thread) Breakpoint() proc.BreakpointState</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Location">func (t *Thread) Location() (*proc.Location, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.ReadMemory">func (t *Thread) ReadMemory(data []byte, addr uintptr) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Registers">func (t *Thread) Registers(floatingPoint bool) (proc.Registers, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.SetCurrentBreakpoint">func (thread *Thread) SetCurrentBreakpoint() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.StepInstruction">func (t *Thread) StepInstruction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.ThreadID">func (t *Thread) ThreadID() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.WriteMemory">func (t *Thread) WriteMemory(addr uintptr, data []byte) (written int, err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go">gdbserver.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_conn.go">gdbserver_conn.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_unix.go">gdbserver_unix.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go">rr.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="ErrDirChange">ErrDirChange</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;direction change with internal breakpoints&#34;)</pre>
+			
+				
+				<pre>var <span id="ErrTooManyAttempts">ErrTooManyAttempts</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;too many transmit attempts&#34;)</pre>
+			
+				
+				<pre>var <span id="ErrUnsupportedOS">ErrUnsupportedOS</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;lldb backend not supported on windows&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Record">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go?s=224:301#L7">Record</a>
+				<a class="permalink" href="index.html#Record">&#xb6;</a>
+			</h2>
+			<pre>func Record(cmd []<a href="http://localhost:8081/pkg/builtin/#string">string</a>, wd <a href="http://localhost:8081/pkg/builtin/#string">string</a>, quiet <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (tracedir <a href="http://localhost:8081/pkg/builtin/#string">string</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+Record uses rr to record the execution of the specified program and
+returns the trace directory&#39;s path.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ErrMalformedRRGdbCommand">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go?s=2404:2465#L115">ErrMalformedRRGdbCommand</a>
+				<a class="permalink" href="index.html#ErrMalformedRRGdbCommand">&#xb6;</a>
+			</h2>
+			
+			<pre>type ErrMalformedRRGdbCommand struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrMalformedRRGdbCommand.Error">func (*ErrMalformedRRGdbCommand) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go?s=2467:2518#L119">Error</a>
+					<a class="permalink" href="index.html#ErrMalformedRRGdbCommand.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err *<a href="index.html#ErrMalformedRRGdbCommand">ErrMalformedRRGdbCommand</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="GdbMalformedThreadIDError">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_conn.go?s=2033:2086#L78">GdbMalformedThreadIDError</a>
+				<a class="permalink" href="index.html#GdbMalformedThreadIDError">&#xb6;</a>
+			</h2>
+			<p>
+GdbMalformedThreadIDError is returned when a the stub responds with a
+thread ID that does not conform with the Gdb Remote Serial Protocol
+specification.
+</p>
+
+			<pre>type GdbMalformedThreadIDError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="GdbMalformedThreadIDError.Error">func (*GdbMalformedThreadIDError) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_conn.go?s=2088:2140#L82">Error</a>
+					<a class="permalink" href="index.html#GdbMalformedThreadIDError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err *<a href="index.html#GdbMalformedThreadIDError">GdbMalformedThreadIDError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="GdbProtocolError">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_conn.go?s=1339:1419#L50">GdbProtocolError</a>
+				<a class="permalink" href="index.html#GdbProtocolError">&#xb6;</a>
+			</h2>
+			<p>
+GdbProtocolError is an error response (Exx) of Gdb Remote Serial Protocol
+or an &#34;unsupported command&#34; response (empty packet).
+</p>
+
+			<pre>type GdbProtocolError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="GdbProtocolError.Error">func (*GdbProtocolError) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver_conn.go?s=1421:1464#L56">Error</a>
+					<a class="permalink" href="index.html#GdbProtocolError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err *<a href="index.html#GdbProtocolError">GdbProtocolError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Process">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=4023:4683#L91">Process</a>
+				<a class="permalink" href="index.html#Process">&#xb6;</a>
+			</h2>
+			<p>
+Process implements proc.Process using a connection to a debugger stub
+that understands Gdb Remote Serial Protocol.
+</p>
+
+			<pre>type Process struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="LLDBAttach">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=13135:13190#L428">LLDBAttach</a>
+					<a class="permalink" href="index.html#LLDBAttach">&#xb6;</a>
+				</h3>
+				<pre>func LLDBAttach(pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="index.html#Process">Process</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LLDBAttach starts an instance of lldb-server and connects to it, asking
+it to attach to the specified pid.
+Path is path to the target&#39;s executable, path only needs to be specified
+for some stubs that do not provide an automated way of determining it
+(for example debugserver).
+</p>
+
+				
+				
+			
+				
+				<h3 id="LLDBLaunch">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=11258:11316#L354">LLDBLaunch</a>
+					<a class="permalink" href="index.html#LLDBLaunch">&#xb6;</a>
+				</h3>
+				<pre>func LLDBLaunch(cmd []<a href="http://localhost:8081/pkg/builtin/#string">string</a>, wd <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="index.html#Process">Process</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LLDBLaunch starts an instance of lldb-server and connects to it, asking
+it to launch the specified target program with the specified arguments
+(cmd) on the specified directory wd.
+</p>
+
+				
+				
+			
+				
+				<h3 id="New">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=5604:5642#L150">New</a>
+					<a class="permalink" href="index.html#New">&#xb6;</a>
+				</h3>
+				<pre>func New(process *<a href="http://localhost:8081/pkg/os/">os</a>.<a href="http://localhost:8081/pkg/os/#Process">Process</a>) *<a href="index.html#Process">Process</a></pre>
+				<p>
+New creates a new Process instance.
+If process is not nil it is the stub&#39;s process and will be killed after
+Detach.
+Use Listen, Dial or Connect to complete connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="RecordAndReplay">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go?s=4288:4386#L214">RecordAndReplay</a>
+					<a class="permalink" href="index.html#RecordAndReplay">&#xb6;</a>
+				</h3>
+				<pre>func RecordAndReplay(cmd []<a href="http://localhost:8081/pkg/builtin/#string">string</a>, wd <a href="http://localhost:8081/pkg/builtin/#string">string</a>, quiet <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (p *<a href="index.html#Process">Process</a>, tracedir <a href="http://localhost:8081/pkg/builtin/#string">string</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+RecordAndReplay acts like calling Record and then Replay.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Replay">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/rr.go?s=1030:1088#L41">Replay</a>
+					<a class="permalink" href="index.html#Replay">&#xb6;</a>
+				</h3>
+				<pre>func Replay(tracedir <a href="http://localhost:8081/pkg/builtin/#string">string</a>, quiet <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (*<a href="index.html#Process">Process</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Replay starts an instance of rr in replay mode, with the specified trace
+directory, and connects to it.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Process.AllGCache">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=15336:15376#L525">AllGCache</a>
+					<a class="permalink" href="index.html#Process.AllGCache">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) AllGCache() *[]*<a href="../index.html">proc</a>.<a href="../index.html#G">G</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.BinInfo">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14630:14674#L488">BinInfo</a>
+					<a class="permalink" href="index.html#Process.BinInfo">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) BinInfo() *<a href="../index.html">proc</a>.<a href="../index.html#BinaryInfo">BinaryInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Breakpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=23872:23923#L912">Breakpoints</a>
+					<a class="permalink" href="index.html#Process.Breakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Breakpoints() *<a href="../index.html">proc</a>.<a href="../index.html#BreakpointMap">BreakpointMap</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.CheckAndClearManualStopRequest">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=19731:19786#L710">CheckAndClearManualStopRequest</a>
+					<a class="permalink" href="index.html#Process.CheckAndClearManualStopRequest">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) CheckAndClearManualStopRequest() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Checkpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=21815:21870#L825">Checkpoint</a>
+					<a class="permalink" href="index.html#Process.Checkpoint">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Checkpoint(where <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Checkpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=22422:22480#L852">Checkpoints</a>
+					<a class="permalink" href="index.html#Process.Checkpoints">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Checkpoints() ([]<a href="../index.html">proc</a>.<a href="../index.html#Checkpoint">Checkpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=24842:24914#L945">ClearBreakpoint</a>
+					<a class="permalink" href="index.html#Process.ClearBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ClearBreakpoint(addr <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearCheckpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=23222:23269#L881">ClearCheckpoint</a>
+					<a class="permalink" href="index.html#Process.ClearCheckpoint">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ClearCheckpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearInternalBreakpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=25107:25157#L954">ClearInternalBreakpoints</a>
+					<a class="permalink" href="index.html#Process.ClearInternalBreakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ClearInternalBreakpoints() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Connect">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=7459:7527#L220">Connect</a>
+					<a class="permalink" href="index.html#Process.Connect">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Connect(conn <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Conn">Conn</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>, pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Connect connects to a stub and performs a handshake.
+</p>
+<p>
+Path and pid are, respectively, the path to the executable of the target
+program and the PID of the target process, both are optional, however
+some stubs do not provide ways to determine path and pid automatically
+and Connect will be unable to function without knowing them.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.ContinueOnce">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=15591:15644#L540">ContinueOnce</a>
+					<a class="permalink" href="index.html#Process.ContinueOnce">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ContinueOnce() (<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.CurrentThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=15261:15306#L521">CurrentThread</a>
+					<a class="permalink" href="index.html#Process.CurrentThread">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) CurrentThread() <a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Detach">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=20475:20516#L750">Detach</a>
+					<a class="permalink" href="index.html#Process.Detach">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Detach(kill <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Dial">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=6779:6842#L199">Dial</a>
+					<a class="permalink" href="index.html#Process.Dial">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Dial(addr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>, pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Dial attempts to connect to the stub.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Direction">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=23526:23579#L895">Direction</a>
+					<a class="permalink" href="index.html#Process.Direction">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Direction(dir <a href="../index.html">proc</a>.<a href="../index.html#Direction">Direction</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Exited">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14837:14868#L500">Exited</a>
+					<a class="permalink" href="index.html#Process.Exited">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Exited() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.FindBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=23952:24020#L916">FindBreakpoint</a>
+					<a class="permalink" href="index.html#Process.FindBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) FindBreakpoint(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.FindThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14971:15033#L508">FindThread</a>
+					<a class="permalink" href="index.html#Process.FindThread">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) FindThread(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Halt">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=20171:20201#L730">Halt</a>
+					<a class="permalink" href="index.html#Process.Halt">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Halt() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Kill">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=20283:20313#L738">Kill</a>
+					<a class="permalink" href="index.html#Process.Kill">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Kill() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Listen">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=6264:6339#L177">Listen</a>
+					<a class="permalink" href="index.html#Process.Listen">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Listen(listener <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Listener">Listener</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>, pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Listen waits for a connection from the stub.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Pid">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14780:14807#L496">Pid</a>
+					<a class="permalink" href="index.html#Process.Pid">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Pid() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Recorded">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14694:14737#L492">Recorded</a>
+					<a class="permalink" href="index.html#Process.Recorded">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Recorded() (<a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.RequestManualStop">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=19473:19516#L698">RequestManualStop</a>
+					<a class="permalink" href="index.html#Process.RequestManualStop">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) RequestManualStop() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Restart">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=20833:20876#L771">Restart</a>
+					<a class="permalink" href="index.html#Process.Restart">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) Restart(pos <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ResumeNotify">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=14891:14941#L504">ResumeNotify</a>
+					<a class="permalink" href="index.html#Process.ResumeNotify">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ResumeNotify(ch chan&lt;- struct{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SelectedGoroutine">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=15403:15448#L529">SelectedGoroutine</a>
+					<a class="permalink" href="index.html#Process.SelectedGoroutine">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) SelectedGoroutine() *<a href="../index.html">proc</a>.<a href="../index.html#G">G</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SetBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=24662:24773#L941">SetBreakpoint</a>
+					<a class="permalink" href="index.html#Process.SetBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) SetBreakpoint(addr <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, kind <a href="../index.html">proc</a>.<a href="../index.html#BreakpointKind">BreakpointKind</a>, cond <a href="http://localhost:8081/pkg/go/ast/">ast</a>.<a href="http://localhost:8081/pkg/go/ast/#Expr">Expr</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.StepInstruction">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=18128:18169#L640">StepInstruction</a>
+					<a class="permalink" href="index.html#Process.StepInstruction">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) StepInstruction() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SwitchGoroutine">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=19158:19206#L682">SwitchGoroutine</a>
+					<a class="permalink" href="index.html#Process.SwitchGoroutine">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) SwitchGoroutine(gid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SwitchThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=18857:18902#L670">SwitchThread</a>
+					<a class="permalink" href="index.html#Process.SwitchThread">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) SwitchThread(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ThreadList">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=15093:15137#L513">ThreadList</a>
+					<a class="permalink" href="index.html#Process.ThreadList">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) ThreadList() []<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.When">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=21553:21593#L810">When</a>
+					<a class="permalink" href="index.html#Process.When">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Process">Process</a>) When() (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Thread">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=4708:4949#L119">Thread</a>
+				<a class="permalink" href="index.html#Thread">&#xb6;</a>
+			</h2>
+			<p>
+Thread is a thread.
+</p>
+
+			<pre>type Thread struct {
+<span id="Thread.ID"></span>    ID <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+<span id="Thread.CurrentBreakpoint"></span>    CurrentBreakpoint <a href="../index.html">proc</a>.<a href="../index.html#BreakpointState">BreakpointState</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Thread.Arch">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29168:29201#L1137">Arch</a>
+					<a class="permalink" href="index.html#Thread.Arch">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Arch() <a href="../index.html">proc</a>.<a href="../index.html#Arch">Arch</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.BinInfo">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29227:29270#L1141">BinInfo</a>
+					<a class="permalink" href="index.html#Thread.BinInfo">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) BinInfo() *<a href="../index.html">proc</a>.<a href="../index.html#BinaryInfo">BinaryInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Blocked">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29741:29772#L1165">Blocked</a>
+					<a class="permalink" href="index.html#Thread.Blocked">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Blocked() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Breakpoint">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=28937:28987#L1125">Breakpoint</a>
+					<a class="permalink" href="index.html#Thread.Breakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Breakpoint() <a href="../index.html">proc</a>.<a href="../index.html#BreakpointState">BreakpointState</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Location">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=28697:28748#L1115">Location</a>
+					<a class="permalink" href="index.html#Thread.Location">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Location() (*<a href="../index.html">proc</a>.<a href="../index.html#Location">Location</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.ReadMemory">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=28393:28466#L1103">ReadMemory</a>
+					<a class="permalink" href="index.html#Thread.ReadMemory">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) ReadMemory(data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, addr <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>) (n <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Registers">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29071:29141#L1133">Registers</a>
+					<a class="permalink" href="index.html#Thread.Registers">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Registers(floatingPoint <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (<a href="../index.html">proc</a>.<a href="../index.html#Registers">Registers</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.SetCurrentBreakpoint">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=36130:36180#L1428">SetCurrentBreakpoint</a>
+					<a class="permalink" href="index.html#Thread.SetCurrentBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) SetCurrentBreakpoint() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.StepInstruction">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29584:29624#L1158">StepInstruction</a>
+					<a class="permalink" href="index.html#Thread.StepInstruction">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) StepInstruction() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.ThreadID">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=29021:29052#L1129">ThreadID</a>
+					<a class="permalink" href="index.html#Thread.ThreadID">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) ThreadID() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.WriteMemory">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/gdbserial/gdbserver.go?s=28570:28650#L1111">WriteMemory</a>
+					<a class="permalink" href="index.html#Thread.WriteMemory">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) WriteMemory(addr <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (written <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

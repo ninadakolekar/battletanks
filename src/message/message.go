@@ -1,3 +1,4 @@
+// Package message ... Contains message structure for various kinds of messages exchanged between server and its clients.
 package message
 
 // Message ... Structure: Message
@@ -27,14 +28,14 @@ type UpdateMessage struct {
 	OtherX uint32 `json:"other_x"`
 	OtherY uint32 `json:"other_y"`
 
-	CenterX    uint32 `json:"center_x"`
-	CenterY    uint32 `json:"center_y"`
-	Health     uint32 `json:"health"`
-	Exit       bool   `json:"exit"`
-	Won        bool   `json:"won"`
-	BrokenTile int32  `json:"tile_index"`
-	HitWall    bool   `json:"hitwall"`
-	BulletDirection uint32	`json:"bullet_direction"`
-	tankVisibility bool  `json:"tankVisible"`
-	BulletVisbility bool `json:"bulletVisible"`
+	CenterX         uint32 `json:"center_x"`
+	CenterY         uint32 `json:"center_y"`
+	Health          uint32 `json:"health"`
+	Exit            bool   `json:"exit"`
+	Won             bool   `json:"won"`
+	BrokenTile      int32  `json:"tile_index"`
+	HitWall         bool   `json:"hitwall"`
+	BulletDirection uint32 `json:"bullet_direction"`
+	TankVisibility  bool   `json:"tankVisible"`
+	BulletVisbility bool   `json:"bulletVisible"`
 }

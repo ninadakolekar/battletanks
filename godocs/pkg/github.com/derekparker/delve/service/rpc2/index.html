@@ -1,0 +1,3160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>rpc2 - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package rpc2
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/service/rpc2"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#AmendBreakpointIn">type AmendBreakpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#AmendBreakpointOut">type AmendBreakpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#AttachedToExistingProcessIn">type AttachedToExistingProcessIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#AttachedToExistingProcessOut">type AttachedToExistingProcessOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CancelNextIn">type CancelNextIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CancelNextOut">type CancelNextOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CheckpointIn">type CheckpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CheckpointOut">type CheckpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ClearBreakpointIn">type ClearBreakpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ClearBreakpointOut">type ClearBreakpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ClearCheckpointIn">type ClearCheckpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ClearCheckpointOut">type ClearCheckpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CommandOut">type CommandOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CreateBreakpointIn">type CreateBreakpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CreateBreakpointOut">type CreateBreakpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DetachIn">type DetachIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DetachOut">type DetachOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DisassembleIn">type DisassembleIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DisassembleOut">type DisassembleOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#EvalIn">type EvalIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#EvalOut">type EvalOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FindLocationIn">type FindLocationIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FindLocationOut">type FindLocationOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#GetBreakpointIn">type GetBreakpointIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#GetBreakpointOut">type GetBreakpointOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#GetThreadIn">type GetThreadIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#GetThreadOut">type GetThreadOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#LastModifiedIn">type LastModifiedIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#LastModifiedOut">type LastModifiedOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListBreakpointsIn">type ListBreakpointsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListBreakpointsOut">type ListBreakpointsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListCheckpointsIn">type ListCheckpointsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListCheckpointsOut">type ListCheckpointsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListFunctionArgsIn">type ListFunctionArgsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListFunctionArgsOut">type ListFunctionArgsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListFunctionsIn">type ListFunctionsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListFunctionsOut">type ListFunctionsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListGoroutinesIn">type ListGoroutinesIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListGoroutinesOut">type ListGoroutinesOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListLocalVarsIn">type ListLocalVarsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListLocalVarsOut">type ListLocalVarsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListPackageVarsIn">type ListPackageVarsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListPackageVarsOut">type ListPackageVarsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListRegistersIn">type ListRegistersIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListRegistersOut">type ListRegistersOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListSourcesIn">type ListSourcesIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListSourcesOut">type ListSourcesOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListThreadsIn">type ListThreadsIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListThreadsOut">type ListThreadsOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListTypesIn">type ListTypesIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ListTypesOut">type ListTypesOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ProcessPidIn">type ProcessPidIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ProcessPidOut">type ProcessPidOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#RPCClient">type RPCClient</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewClient">func NewClient(addr string) *RPCClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.AmendBreakpoint">func (c *RPCClient) AmendBreakpoint(bp *api.Breakpoint) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.AttachedToExistingProcess">func (c *RPCClient) AttachedToExistingProcess() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.CancelNext">func (c *RPCClient) CancelNext() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Checkpoint">func (c *RPCClient) Checkpoint(where string) (checkpointID int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ClearBreakpoint">func (c *RPCClient) ClearBreakpoint(id int) (*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ClearBreakpointByName">func (c *RPCClient) ClearBreakpointByName(name string) (*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ClearCheckpoint">func (c *RPCClient) ClearCheckpoint(id int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Continue">func (c *RPCClient) Continue() &lt;-chan *api.DebuggerState</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.CreateBreakpoint">func (c *RPCClient) CreateBreakpoint(breakPoint *api.Breakpoint) (*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Detach">func (c *RPCClient) Detach(kill bool) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.DisassemblePC">func (c *RPCClient) DisassemblePC(scope api.EvalScope, pc uint64, flavour api.AssemblyFlavour) (api.AsmInstructions, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.DisassembleRange">func (c *RPCClient) DisassembleRange(scope api.EvalScope, startPC, endPC uint64, flavour api.AssemblyFlavour) (api.AsmInstructions, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.EvalVariable">func (c *RPCClient) EvalVariable(scope api.EvalScope, expr string, cfg api.LoadConfig) (*api.Variable, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.FindLocation">func (c *RPCClient) FindLocation(scope api.EvalScope, loc string) ([]api.Location, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.GetBreakpoint">func (c *RPCClient) GetBreakpoint(id int) (*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.GetBreakpointByName">func (c *RPCClient) GetBreakpointByName(name string) (*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.GetState">func (c *RPCClient) GetState() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.GetThread">func (c *RPCClient) GetThread(id int) (*api.Thread, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Halt">func (c *RPCClient) Halt() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.LastModified">func (c *RPCClient) LastModified() time.Time</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListBreakpoints">func (c *RPCClient) ListBreakpoints() ([]*api.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListCheckpoints">func (c *RPCClient) ListCheckpoints() ([]api.Checkpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListFunctionArgs">func (c *RPCClient) ListFunctionArgs(scope api.EvalScope, cfg api.LoadConfig) ([]api.Variable, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListFunctions">func (c *RPCClient) ListFunctions(filter string) ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListGoroutines">func (c *RPCClient) ListGoroutines() ([]*api.Goroutine, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListLocalVariables">func (c *RPCClient) ListLocalVariables(scope api.EvalScope, cfg api.LoadConfig) ([]api.Variable, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListPackageVariables">func (c *RPCClient) ListPackageVariables(filter string, cfg api.LoadConfig) ([]api.Variable, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListRegisters">func (c *RPCClient) ListRegisters(threadID int, includeFp bool) (api.Registers, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListSources">func (c *RPCClient) ListSources(filter string) ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListThreads">func (c *RPCClient) ListThreads() ([]*api.Thread, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ListTypes">func (c *RPCClient) ListTypes(filter string) ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Next">func (c *RPCClient) Next() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.ProcessPid">func (c *RPCClient) ProcessPid() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Recorded">func (c *RPCClient) Recorded() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Restart">func (c *RPCClient) Restart() ([]api.DiscardedBreakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.RestartFrom">func (c *RPCClient) RestartFrom(pos string, resetArgs bool, newArgs []string) ([]api.DiscardedBreakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Rewind">func (c *RPCClient) Rewind() &lt;-chan *api.DebuggerState</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.SetVariable">func (c *RPCClient) SetVariable(scope api.EvalScope, symbol, value string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Stacktrace">func (c *RPCClient) Stacktrace(goroutineId, depth int, cfg *api.LoadConfig) ([]api.Stackframe, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.Step">func (c *RPCClient) Step() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.StepInstruction">func (c *RPCClient) StepInstruction() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.StepOut">func (c *RPCClient) StepOut() (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.SwitchGoroutine">func (c *RPCClient) SwitchGoroutine(goroutineID int) (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.SwitchThread">func (c *RPCClient) SwitchThread(threadID int) (*api.DebuggerState, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCClient.TraceDirectory">func (c *RPCClient) TraceDirectory() (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#RPCServer">type RPCServer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewServer">func NewServer(config *service.Config, debugger *debugger.Debugger) *RPCServer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.AmendBreakpoint">func (s *RPCServer) AmendBreakpoint(arg AmendBreakpointIn, out *AmendBreakpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.AttachedToExistingProcess">func (c *RPCServer) AttachedToExistingProcess(arg AttachedToExistingProcessIn, out *AttachedToExistingProcessOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.CancelNext">func (s *RPCServer) CancelNext(arg CancelNextIn, out *CancelNextOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Checkpoint">func (s *RPCServer) Checkpoint(arg CheckpointIn, out *CheckpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ClearBreakpoint">func (s *RPCServer) ClearBreakpoint(arg ClearBreakpointIn, out *ClearBreakpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ClearCheckpoint">func (s *RPCServer) ClearCheckpoint(arg ClearCheckpointIn, out *ClearCheckpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Command">func (s *RPCServer) Command(command api.DebuggerCommand, cb service.RPCCallback)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.CreateBreakpoint">func (s *RPCServer) CreateBreakpoint(arg CreateBreakpointIn, out *CreateBreakpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Detach">func (s *RPCServer) Detach(arg DetachIn, out *DetachOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Disassemble">func (c *RPCServer) Disassemble(arg DisassembleIn, out *DisassembleOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Eval">func (s *RPCServer) Eval(arg EvalIn, out *EvalOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.FindLocation">func (c *RPCServer) FindLocation(arg FindLocationIn, out *FindLocationOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.GetBreakpoint">func (s *RPCServer) GetBreakpoint(arg GetBreakpointIn, out *GetBreakpointOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.GetThread">func (s *RPCServer) GetThread(arg GetThreadIn, out *GetThreadOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.LastModified">func (s *RPCServer) LastModified(arg LastModifiedIn, out *LastModifiedOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListBreakpoints">func (s *RPCServer) ListBreakpoints(arg ListBreakpointsIn, out *ListBreakpointsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListCheckpoints">func (s *RPCServer) ListCheckpoints(arg ListCheckpointsIn, out *ListCheckpointsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListFunctionArgs">func (s *RPCServer) ListFunctionArgs(arg ListFunctionArgsIn, out *ListFunctionArgsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListFunctions">func (s *RPCServer) ListFunctions(arg ListFunctionsIn, out *ListFunctionsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListGoroutines">func (s *RPCServer) ListGoroutines(arg ListGoroutinesIn, out *ListGoroutinesOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListLocalVars">func (s *RPCServer) ListLocalVars(arg ListLocalVarsIn, out *ListLocalVarsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListPackageVars">func (s *RPCServer) ListPackageVars(arg ListPackageVarsIn, out *ListPackageVarsOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListRegisters">func (s *RPCServer) ListRegisters(arg ListRegistersIn, out *ListRegistersOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListSources">func (s *RPCServer) ListSources(arg ListSourcesIn, out *ListSourcesOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListThreads">func (s *RPCServer) ListThreads(arg ListThreadsIn, out *ListThreadsOut) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ListTypes">func (s *RPCServer) ListTypes(arg ListTypesIn, out *ListTypesOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.ProcessPid">func (s *RPCServer) ProcessPid(arg ProcessPidIn, out *ProcessPidOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Recorded">func (s *RPCServer) Recorded(arg RecordedIn, out *RecordedOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Restart">func (s *RPCServer) Restart(arg RestartIn, out *RestartOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Set">func (s *RPCServer) Set(arg SetIn, out *SetOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.Stacktrace">func (s *RPCServer) Stacktrace(arg StacktraceIn, out *StacktraceOut) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RPCServer.State">func (s *RPCServer) State(arg StateIn, out *StateOut) error</a></dd>
+				
+			
+				
+				<dd><a href="index.html#RecordedIn">type RecordedIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#RecordedOut">type RecordedOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#RestartIn">type RestartIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#RestartOut">type RestartOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#SetIn">type SetIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#SetOut">type SetOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StacktraceIn">type StacktraceIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StacktraceOut">type StacktraceOut</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StateIn">type StateIn</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StateOut">type StateOut</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go">client.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go">server.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="AmendBreakpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=5897:5957#L239">AmendBreakpointIn</a>
+				<a class="permalink" href="index.html#AmendBreakpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type AmendBreakpointIn struct {
+<span id="AmendBreakpointIn.Breakpoint"></span>    Breakpoint <a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="AmendBreakpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=5959:5993#L243">AmendBreakpointOut</a>
+				<a class="permalink" href="index.html#AmendBreakpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type AmendBreakpointOut struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="AttachedToExistingProcessIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11625:11668#L509">AttachedToExistingProcessIn</a>
+				<a class="permalink" href="index.html#AttachedToExistingProcessIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type AttachedToExistingProcessIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="AttachedToExistingProcessOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11670:11727#L512">AttachedToExistingProcessOut</a>
+				<a class="permalink" href="index.html#AttachedToExistingProcessOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type AttachedToExistingProcessOut struct {
+<span id="AttachedToExistingProcessOut.Answer"></span>    Answer <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CancelNextIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6390:6418#L255">CancelNextIn</a>
+				<a class="permalink" href="index.html#CancelNextIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type CancelNextIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CancelNextOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6420:6449#L258">CancelNextOut</a>
+				<a class="permalink" href="index.html#CancelNextOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type CancelNextOut struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CheckpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14303:14345#L588">CheckpointIn</a>
+				<a class="permalink" href="index.html#CheckpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type CheckpointIn struct {
+<span id="CheckpointIn.Where"></span>    Where <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CheckpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14347:14384#L592">CheckpointOut</a>
+				<a class="permalink" href="index.html#CheckpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type CheckpointOut struct {
+<span id="CheckpointOut.ID"></span>    ID <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClearBreakpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=5159:5215#L207">ClearBreakpointIn</a>
+				<a class="permalink" href="index.html#ClearBreakpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ClearBreakpointIn struct {
+<span id="ClearBreakpointIn.Id"></span>    Id   <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="ClearBreakpointIn.Name"></span>    Name <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClearBreakpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=5217:5279#L212">ClearBreakpointOut</a>
+				<a class="permalink" href="index.html#ClearBreakpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ClearBreakpointOut struct {
+<span id="ClearBreakpointOut.Breakpoint"></span>    Breakpoint *<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClearCheckpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14813:14854#L615">ClearCheckpointIn</a>
+				<a class="permalink" href="index.html#ClearCheckpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ClearCheckpointIn struct {
+<span id="ClearCheckpointIn.ID"></span>    ID <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClearCheckpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14856:14890#L619">ClearCheckpointOut</a>
+				<a class="permalink" href="index.html#ClearCheckpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ClearCheckpointOut struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CommandOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2287:2338#L94">CommandOut</a>
+				<a class="permalink" href="index.html#CommandOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type CommandOut struct {
+<span id="CommandOut.State"></span>    State <a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CreateBreakpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=4229:4290#L178">CreateBreakpointIn</a>
+				<a class="permalink" href="index.html#CreateBreakpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type CreateBreakpointIn struct {
+<span id="CreateBreakpointIn.Breakpoint"></span>    Breakpoint <a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CreateBreakpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=4292:4354#L182">CreateBreakpointOut</a>
+				<a class="permalink" href="index.html#CreateBreakpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type CreateBreakpointOut struct {
+<span id="CreateBreakpointOut.Breakpoint"></span>    Breakpoint <a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DetachIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=977:1012#L39">DetachIn</a>
+				<a class="permalink" href="index.html#DetachIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type DetachIn struct {
+<span id="DetachIn.Kill"></span>    Kill <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DetachOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=1014:1039#L43">DetachOut</a>
+				<a class="permalink" href="index.html#DetachOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type DetachOut struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DisassembleIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=13242:13360#L552">DisassembleIn</a>
+				<a class="permalink" href="index.html#DisassembleIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type DisassembleIn struct {
+<span id="DisassembleIn.Scope"></span>    Scope          <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="DisassembleIn.StartPC"></span>    StartPC, EndPC <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="DisassembleIn.Flavour"></span>    Flavour        <a href="../api/index.html">api</a>.<a href="../api/index.html#AssemblyFlavour">AssemblyFlavour</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DisassembleOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=13362:13425#L558">DisassembleOut</a>
+				<a class="permalink" href="index.html#DisassembleOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type DisassembleOut struct {
+<span id="DisassembleOut.Disassemble"></span>    Disassemble <a href="../api/index.html">api</a>.<a href="../api/index.html#AsmInstructions">AsmInstructions</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="EvalIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9305:9385#L396">EvalIn</a>
+				<a class="permalink" href="index.html#EvalIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type EvalIn struct {
+<span id="EvalIn.Scope"></span>    Scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="EvalIn.Expr"></span>    Expr  <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="EvalIn.Cfg"></span>    Cfg   *<a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="EvalOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9387:9434#L402">EvalOut</a>
+				<a class="permalink" href="index.html#EvalOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type EvalOut struct {
+<span id="EvalOut.Variable"></span>    Variable *<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FindLocationIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=12004:12069#L524">FindLocationIn</a>
+				<a class="permalink" href="index.html#FindLocationIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type FindLocationIn struct {
+<span id="FindLocationIn.Scope"></span>    Scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="FindLocationIn.Loc"></span>    Loc   <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FindLocationOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=12071:12128#L529">FindLocationOut</a>
+				<a class="permalink" href="index.html#FindLocationOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type FindLocationOut struct {
+<span id="FindLocationOut.Locations"></span>    Locations []<a href="../api/index.html">api</a>.<a href="../api/index.html#Location">Location</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="GetBreakpointIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2640:2694#L110">GetBreakpointIn</a>
+				<a class="permalink" href="index.html#GetBreakpointIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type GetBreakpointIn struct {
+<span id="GetBreakpointIn.Id"></span>    Id   <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="GetBreakpointIn.Name"></span>    Name <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="GetBreakpointOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2696:2755#L115">GetBreakpointOut</a>
+				<a class="permalink" href="index.html#GetBreakpointOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type GetBreakpointOut struct {
+<span id="GetBreakpointOut.Breakpoint"></span>    Breakpoint <a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="GetThreadIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6825:6860#L278">GetThreadIn</a>
+				<a class="permalink" href="index.html#GetThreadIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type GetThreadIn struct {
+<span id="GetThreadIn.Id"></span>    Id <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="GetThreadOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6862:6910#L282">GetThreadOut</a>
+				<a class="permalink" href="index.html#GetThreadOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type GetThreadOut struct {
+<span id="GetThreadOut.Thread"></span>    Thread *<a href="../api/index.html">api</a>.<a href="../api/index.html#Thread">Thread</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LastModifiedIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=760:790#L27">LastModifiedIn</a>
+				<a class="permalink" href="index.html#LastModifiedIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type LastModifiedIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LastModifiedOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=792:839#L30">LastModifiedOut</a>
+				<a class="permalink" href="index.html#LastModifiedOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type LastModifiedOut struct {
+<span id="LastModifiedOut.Time"></span>    Time <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListBreakpointsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=3935:3968#L165">ListBreakpointsIn</a>
+				<a class="permalink" href="index.html#ListBreakpointsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListBreakpointsIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListBreakpointsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=3970:4035#L168">ListBreakpointsOut</a>
+				<a class="permalink" href="index.html#ListBreakpointsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListBreakpointsOut struct {
+<span id="ListBreakpointsOut.Breakpoints"></span>    Breakpoints []*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListCheckpointsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14541:14574#L602">ListCheckpointsIn</a>
+				<a class="permalink" href="index.html#ListCheckpointsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListCheckpointsIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListCheckpointsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14576:14640#L605">ListCheckpointsOut</a>
+				<a class="permalink" href="index.html#ListCheckpointsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListCheckpointsOut struct {
+<span id="ListCheckpointsOut.Checkpoints"></span>    Checkpoints []<a href="../api/index.html">api</a>.<a href="../api/index.html#Checkpoint">Checkpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListFunctionArgsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8857:8934#L377">ListFunctionArgsIn</a>
+				<a class="permalink" href="index.html#ListFunctionArgsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListFunctionArgsIn struct {
+<span id="ListFunctionArgsIn.Scope"></span>    Scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="ListFunctionArgsIn.Cfg"></span>    Cfg   <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListFunctionArgsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8936:8992#L382">ListFunctionArgsOut</a>
+				<a class="permalink" href="index.html#ListFunctionArgsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListFunctionArgsOut struct {
+<span id="ListFunctionArgsOut.Args"></span>    Args []<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListFunctionsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10597:10643#L456">ListFunctionsIn</a>
+				<a class="permalink" href="index.html#ListFunctionsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListFunctionsIn struct {
+<span id="ListFunctionsIn.Filter"></span>    Filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListFunctionsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10645:10693#L460">ListFunctionsOut</a>
+				<a class="permalink" href="index.html#ListFunctionsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListFunctionsOut struct {
+<span id="ListFunctionsOut.Funcs"></span>    Funcs []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListGoroutinesIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11293:11325#L492">ListGoroutinesIn</a>
+				<a class="permalink" href="index.html#ListGoroutinesIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListGoroutinesIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListGoroutinesOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11327:11389#L495">ListGoroutinesOut</a>
+				<a class="permalink" href="index.html#ListGoroutinesOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListGoroutinesOut struct {
+<span id="ListGoroutinesOut.Goroutines"></span>    Goroutines []*<a href="../api/index.html">api</a>.<a href="../api/index.html#Goroutine">Goroutine</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListLocalVarsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8428:8502#L358">ListLocalVarsIn</a>
+				<a class="permalink" href="index.html#ListLocalVarsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListLocalVarsIn struct {
+<span id="ListLocalVarsIn.Scope"></span>    Scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="ListLocalVarsIn.Cfg"></span>    Cfg   <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListLocalVarsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8504:8562#L363">ListLocalVarsOut</a>
+				<a class="permalink" href="index.html#ListLocalVarsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListLocalVarsOut struct {
+<span id="ListLocalVarsOut.Variables"></span>    Variables []<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListPackageVarsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=7199:7270#L299">ListPackageVarsIn</a>
+				<a class="permalink" href="index.html#ListPackageVarsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListPackageVarsIn struct {
+<span id="ListPackageVarsIn.Filter"></span>    Filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="ListPackageVarsIn.Cfg"></span>    Cfg    <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListPackageVarsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=7272:7332#L304">ListPackageVarsOut</a>
+				<a class="permalink" href="index.html#ListPackageVarsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListPackageVarsOut struct {
+<span id="ListPackageVarsOut.Variables"></span>    Variables []<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListRegistersIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=7846:7908#L328">ListRegistersIn</a>
+				<a class="permalink" href="index.html#ListRegistersIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListRegistersIn struct {
+<span id="ListRegistersIn.ThreadID"></span>    ThreadID  <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="ListRegistersIn.IncludeFp"></span>    IncludeFp <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListRegistersOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=7910:7985#L333">ListRegistersOut</a>
+				<a class="permalink" href="index.html#ListRegistersOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListRegistersOut struct {
+<span id="ListRegistersOut.Registers"></span>    Registers <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="ListRegistersOut.Regs"></span>    Regs      <a href="../api/index.html">api</a>.<a href="../api/index.html#Registers">Registers</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListSourcesIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10242:10286#L438">ListSourcesIn</a>
+				<a class="permalink" href="index.html#ListSourcesIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListSourcesIn struct {
+<span id="ListSourcesIn.Filter"></span>    Filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListSourcesOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10288:10336#L442">ListSourcesOut</a>
+				<a class="permalink" href="index.html#ListSourcesOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListSourcesOut struct {
+<span id="ListSourcesOut.Sources"></span>    Sources []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListThreadsIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6563:6592#L265">ListThreadsIn</a>
+				<a class="permalink" href="index.html#ListThreadsIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListThreadsIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListThreadsOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6594:6647#L268">ListThreadsOut</a>
+				<a class="permalink" href="index.html#ListThreadsOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListThreadsOut struct {
+<span id="ListThreadsOut.Threads"></span>    Threads []*<a href="../api/index.html">api</a>.<a href="../api/index.html#Thread">Thread</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListTypesIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10961:11003#L474">ListTypesIn</a>
+				<a class="permalink" href="index.html#ListTypesIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListTypesIn struct {
+<span id="ListTypesIn.Filter"></span>    Filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListTypesOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11005:11049#L478">ListTypesOut</a>
+				<a class="permalink" href="index.html#ListTypesOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ListTypesOut struct {
+<span id="ListTypesOut.Types"></span>    Types []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ProcessPidIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=500:528#L14">ProcessPidIn</a>
+				<a class="permalink" href="index.html#ProcessPidIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type ProcessPidIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ProcessPidOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=530:568#L17">ProcessPidOut</a>
+				<a class="permalink" href="index.html#ProcessPidOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type ProcessPidOut struct {
+<span id="ProcessPidOut.Pid"></span>    Pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RPCClient">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=198:258#L5">RPCClient</a>
+				<a class="permalink" href="index.html#RPCClient">&#xb6;</a>
+			</h2>
+			<p>
+Client is a RPC service.Client.
+</p>
+
+			<pre>type RPCClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClient">func <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=389:427#L14">NewClient</a>
+					<a class="permalink" href="index.html#NewClient">&#xb6;</a>
+				</h3>
+				<pre>func NewClient(addr <a href="http://localhost:8081/pkg/builtin/#string">string</a>) *<a href="index.html#RPCClient">RPCClient</a></pre>
+				<p>
+NewClient creates a new RPCClient.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="RPCClient.AmendBreakpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5376:5437#L192">AmendBreakpoint</a>
+					<a class="permalink" href="index.html#RPCClient.AmendBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) AmendBreakpoint(bp *<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.AttachedToExistingProcess">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=8284:8336#L280">AttachedToExistingProcess</a>
+					<a class="permalink" href="index.html#RPCClient.AttachedToExistingProcess">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) AttachedToExistingProcess() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.CancelNext">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5550:5588#L198">CancelNext</a>
+					<a class="permalink" href="index.html#RPCClient.CancelNext">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) CancelNext() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Checkpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=9788:9862#L321">Checkpoint</a>
+					<a class="permalink" href="index.html#RPCClient.Checkpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Checkpoint(where <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (checkpointID <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Checkpoint sets a checkpoint at the current position.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ClearBreakpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=4970:5038#L180">ClearBreakpoint</a>
+					<a class="permalink" href="index.html#RPCClient.ClearBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ClearBreakpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ClearBreakpointByName">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5167:5246#L186">ClearBreakpointByName</a>
+					<a class="permalink" href="index.html#RPCClient.ClearBreakpointByName">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ClearBreakpointByName(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ClearCheckpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=10234:10283#L335">ClearCheckpoint</a>
+					<a class="permalink" href="index.html#RPCClient.ClearCheckpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ClearCheckpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ClearCheckpoint removes a checkpoint
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Continue">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=1649:1705#L60">Continue</a>
+					<a class="permalink" href="index.html#RPCClient.Continue">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Continue() &lt;-chan *<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.CreateBreakpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=4555:4644#L168">CreateBreakpoint</a>
+					<a class="permalink" href="index.html#RPCClient.CreateBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) CreateBreakpoint(breakPoint *<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Detach">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=924:967#L36">Detach</a>
+					<a class="permalink" href="index.html#RPCClient.Detach">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Detach(kill <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.DisassemblePC">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=9052:9175#L300">DisassemblePC</a>
+					<a class="permalink" href="index.html#RPCClient.DisassemblePC">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) DisassemblePC(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, flavour <a href="../api/index.html">api</a>.<a href="../api/index.html#AssemblyFlavour">AssemblyFlavour</a>) (<a href="../api/index.html">api</a>.<a href="../api/index.html#AsmInstructions">AsmInstructions</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Disassemble function containing pc
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.DisassembleRange">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=8734:8872#L293">DisassembleRange</a>
+					<a class="permalink" href="index.html#RPCClient.DisassembleRange">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) DisassembleRange(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, startPC, endPC <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, flavour <a href="../api/index.html">api</a>.<a href="../api/index.html#AssemblyFlavour">AssemblyFlavour</a>) (<a href="../api/index.html">api</a>.<a href="../api/index.html#AsmInstructions">AsmInstructions</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Disassemble code between startPC and endPC
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.EvalVariable">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5993:6102#L215">EvalVariable</a>
+					<a class="permalink" href="index.html#RPCClient.EvalVariable">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) EvalVariable(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, expr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, cfg <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.FindLocation">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=8476:8565#L286">FindLocation</a>
+					<a class="permalink" href="index.html#RPCClient.FindLocation">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) FindLocation(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, loc <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Location">Location</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.GetBreakpoint">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=4163:4229#L156">GetBreakpoint</a>
+					<a class="permalink" href="index.html#RPCClient.GetBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) GetBreakpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.GetBreakpointByName">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=4353:4430#L162">GetBreakpointByName</a>
+					<a class="permalink" href="index.html#RPCClient.GetBreakpointByName">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) GetBreakpointByName(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.GetState">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=1503:1561#L54">GetState</a>
+					<a class="permalink" href="index.html#RPCClient.GetState">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) GetState() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.GetThread">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5832:5890#L209">GetThread</a>
+					<a class="permalink" href="index.html#RPCClient.GetThread">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) GetThread(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Halt">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=3990:4044#L150">Halt</a>
+					<a class="permalink" href="index.html#RPCClient.Halt">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Halt() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.LastModified">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=781:825#L30">LastModified</a>
+					<a class="permalink" href="index.html#RPCClient.LastModified">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) LastModified() <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListBreakpoints">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=4782:4846#L174">ListBreakpoints</a>
+					<a class="permalink" href="index.html#RPCClient.ListBreakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListBreakpoints() ([]*<a href="../api/index.html">api</a>.<a href="../api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListCheckpoints">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=10007:10070#L328">ListCheckpoints</a>
+					<a class="permalink" href="index.html#RPCClient.ListCheckpoints">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListCheckpoints() ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Checkpoint">Checkpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ListCheckpoints gets all checkpoints.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListFunctionArgs">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=7633:7734#L262">ListFunctionArgs</a>
+					<a class="permalink" href="index.html#RPCClient.ListFunctionArgs">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListFunctionArgs(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, cfg <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListFunctions">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=6562:6628#L232">ListFunctions</a>
+					<a class="permalink" href="index.html#RPCClient.ListFunctions">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListFunctions(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListGoroutines">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=7864:7926#L268">ListGoroutines</a>
+					<a class="permalink" href="index.html#RPCClient.ListGoroutines">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListGoroutines() ([]*<a href="../api/index.html">api</a>.<a href="../api/index.html#Goroutine">Goroutine</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListLocalVariables">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=7164:7267#L250">ListLocalVariables</a>
+					<a class="permalink" href="index.html#RPCClient.ListLocalVariables">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListLocalVariables(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, cfg <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListPackageVariables">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=6932:7031#L244">ListPackageVariables</a>
+					<a class="permalink" href="index.html#RPCClient.ListPackageVariables">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListPackageVariables(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>, cfg <a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListRegisters">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=7393:7479#L256">ListRegisters</a>
+					<a class="permalink" href="index.html#RPCClient.ListRegisters">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListRegisters(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>, includeFp <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (<a href="../api/index.html">api</a>.<a href="../api/index.html#Registers">Registers</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListSources">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=6369:6433#L226">ListSources</a>
+					<a class="permalink" href="index.html#RPCClient.ListSources">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListSources(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListThreads">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=5668:5724#L203">ListThreads</a>
+					<a class="permalink" href="index.html#RPCClient.ListThreads">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListThreads() ([]*<a href="../api/index.html">api</a>.<a href="../api/index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ListTypes">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=6755:6817#L238">ListTypes</a>
+					<a class="permalink" href="index.html#RPCClient.ListTypes">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ListTypes(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Next">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=2761:2815#L106">Next</a>
+					<a class="permalink" href="index.html#RPCClient.Next">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Next() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.ProcessPid">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=653:689#L24">ProcessPid</a>
+					<a class="permalink" href="index.html#RPCClient.ProcessPid">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) ProcessPid() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Recorded">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=9372:9407#L307">Recorded</a>
+					<a class="permalink" href="index.html#RPCClient.Recorded">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Recorded() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Recorded returns true if the debugger target is a recording.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Restart">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=1066:1130#L42">Restart</a>
+					<a class="permalink" href="index.html#RPCClient.Restart">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Restart() ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#DiscardedBreakpoint">DiscardedBreakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.RestartFrom">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=1256:1368#L48">RestartFrom</a>
+					<a class="permalink" href="index.html#RPCClient.RestartFrom">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) RestartFrom(pos <a href="http://localhost:8081/pkg/builtin/#string">string</a>, resetArgs <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, newArgs []<a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#DiscardedBreakpoint">DiscardedBreakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Rewind">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=1747:1801#L64">Rewind</a>
+					<a class="permalink" href="index.html#RPCClient.Rewind">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Rewind() &lt;-chan *<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.SetVariable">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=6207:6287#L221">SetVariable</a>
+					<a class="permalink" href="index.html#RPCClient.SetVariable">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) SetVariable(scope <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>, symbol, value <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Stacktrace">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=8046:8147#L274">Stacktrace</a>
+					<a class="permalink" href="index.html#RPCClient.Stacktrace">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Stacktrace(goroutineId, depth <a href="http://localhost:8081/pkg/builtin/#int">int</a>, cfg *<a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="../api/index.html">api</a>.<a href="../api/index.html#Stackframe">Stackframe</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.Step">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=2934:2988#L112">Step</a>
+					<a class="permalink" href="index.html#RPCClient.Step">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) Step() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.StepInstruction">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=3287:3352#L124">StepInstruction</a>
+					<a class="permalink" href="index.html#RPCClient.StepInstruction">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) StepInstruction() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.StepOut">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=3107:3164#L118">StepOut</a>
+					<a class="permalink" href="index.html#RPCClient.StepOut">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) StepOut() (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.SwitchGoroutine">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=3727:3807#L140">SwitchGoroutine</a>
+					<a class="permalink" href="index.html#RPCClient.SwitchGoroutine">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) SwitchGoroutine(goroutineID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.SwitchThread">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=3482:3556#L130">SwitchThread</a>
+					<a class="permalink" href="index.html#RPCClient.SwitchThread">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) SwitchThread(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCClient.TraceDirectory">func (*RPCClient) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/client.go?s=9573:9625#L314">TraceDirectory</a>
+					<a class="permalink" href="index.html#RPCClient.TraceDirectory">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCClient">RPCClient</a>) TraceDirectory() (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+TraceDirectory returns the path to the trace directory for a recording.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RPCServer">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=185:377#L3">RPCServer</a>
+				<a class="permalink" href="index.html#RPCServer">&#xb6;</a>
+			</h2>
+			
+			<pre>type RPCServer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewServer">func <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=379:457#L10">NewServer</a>
+					<a class="permalink" href="index.html#NewServer">&#xb6;</a>
+				</h3>
+				<pre>func NewServer(config *<a href="../index.html">service</a>.<a href="../index.html#Config">Config</a>, debugger *<a href="../debugger/index.html">debugger</a>.<a href="../debugger/index.html#Debugger">Debugger</a>) *<a href="index.html#RPCServer">RPCServer</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="RPCServer.AmendBreakpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6243:6332#L251">AmendBreakpoint</a>
+					<a class="permalink" href="index.html#RPCServer.AmendBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) AmendBreakpoint(arg <a href="index.html#AmendBreakpointIn">AmendBreakpointIn</a>, out *<a href="index.html#AmendBreakpointOut">AmendBreakpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+AmendBreakpoint allows user to update an existing breakpoint
+for example to change the information retrieved when the
+breakpoint is hit or to change, add or remove the break condition.
+</p>
+<p>
+arg.Breakpoint.ID must be a valid breakpoint ID
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.AttachedToExistingProcess">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11814:11933#L517">AttachedToExistingProcess</a>
+					<a class="permalink" href="index.html#RPCServer.AttachedToExistingProcess">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCServer">RPCServer</a>) AttachedToExistingProcess(arg <a href="index.html#AttachedToExistingProcessIn">AttachedToExistingProcessIn</a>, out *<a href="index.html#AttachedToExistingProcessOut">AttachedToExistingProcessOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+AttachedToExistingProcess returns whether we attached to a running process or not
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.CancelNext">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6451:6525#L261">CancelNext</a>
+					<a class="permalink" href="index.html#RPCServer.CancelNext">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) CancelNext(arg <a href="index.html#CancelNextIn">CancelNextIn</a>, out *<a href="index.html#CancelNextOut">CancelNextOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Checkpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14386:14460#L596">Checkpoint</a>
+					<a class="permalink" href="index.html#RPCServer.Checkpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Checkpoint(arg <a href="index.html#CheckpointIn">CheckpointIn</a>, out *<a href="index.html#CheckpointOut">CheckpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ClearBreakpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=5375:5464#L218">ClearBreakpoint</a>
+					<a class="permalink" href="index.html#RPCServer.ClearBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ClearBreakpoint(arg <a href="index.html#ClearBreakpointIn">ClearBreakpointIn</a>, out *<a href="index.html#ClearBreakpointOut">ClearBreakpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ClearBreakpoint deletes a breakpoint by Name (if Name is not an
+empty string) or by ID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ClearCheckpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14892:14981#L622">ClearCheckpoint</a>
+					<a class="permalink" href="index.html#RPCServer.ClearCheckpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ClearCheckpoint(arg <a href="index.html#ClearCheckpointIn">ClearCheckpointIn</a>, out *<a href="index.html#ClearCheckpointOut">ClearCheckpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Command">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2404:2484#L99">Command</a>
+					<a class="permalink" href="index.html#RPCServer.Command">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Command(command <a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerCommand">DebuggerCommand</a>, cb <a href="../index.html">service</a>.<a href="../index.html#RPCCallback">RPCCallback</a>)</pre>
+				<p>
+Command interrupts, continues and steps through the program.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.CreateBreakpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=4923:5015#L198">CreateBreakpoint</a>
+					<a class="permalink" href="index.html#RPCServer.CreateBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) CreateBreakpoint(arg <a href="index.html#CreateBreakpointIn">CreateBreakpointIn</a>, out *<a href="index.html#CreateBreakpointOut">CreateBreakpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+CreateBreakpoint creates a new breakpoint.
+</p>
+<p>
+- If arg.Breakpoint.File is not an empty string the breakpoint
+will be created on the specified file:line location
+</p>
+<p>
+- If arg.Breakpoint.FunctionName is not an empty string
+the breakpoint will be created on the specified function:line
+location. Note that setting a breakpoint on a function&#39;s entry point
+(line == 0) can have surprising consequences, it is advisable to
+use line = -1 instead which will skip the prologue.
+</p>
+<p>
+- Otherwise the value specified by arg.Breakpoint.Addr will be used.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Detach">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=1106:1168#L47">Detach</a>
+					<a class="permalink" href="index.html#RPCServer.Detach">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Detach(arg <a href="index.html#DetachIn">DetachIn</a>, out *<a href="index.html#DetachOut">DetachOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Detach detaches the debugger, optionally killing the process.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Disassemble">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=13853:13930#L569">Disassemble</a>
+					<a class="permalink" href="index.html#RPCServer.Disassemble">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCServer">RPCServer</a>) Disassemble(arg <a href="index.html#DisassembleIn">DisassembleIn</a>, out *<a href="index.html#DisassembleOut">DisassembleOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Disassemble code.
+</p>
+<p>
+If both StartPC and EndPC are non-zero the specified range will be disassembled, otherwise the function containing StartPC will be disassembled.
+</p>
+<p>
+Scope is used to mark the instruction the specified gorutine is stopped at.
+</p>
+<p>
+Disassemble will also try to calculate the destination address of an absolute indirect CALL if it happens to be the instruction the selected goroutine is stopped at.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Eval">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9616:9672#L410">Eval</a>
+					<a class="permalink" href="index.html#RPCServer.Eval">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Eval(arg <a href="index.html#EvalIn">EvalIn</a>, out *<a href="index.html#EvalOut">EvalOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+EvalVariable returns a variable in the specified context.
+</p>
+<p>
+See <a href="https://github.com/derekparker/delve/wiki/Expressions">https://github.com/derekparker/delve/wiki/Expressions</a> for
+a description of acceptable values of arg.Expr.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.FindLocation">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=13063:13143#L546">FindLocation</a>
+					<a class="permalink" href="index.html#RPCServer.FindLocation">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#RPCServer">RPCServer</a>) FindLocation(arg <a href="index.html#FindLocationIn">FindLocationIn</a>, out *<a href="index.html#FindLocationOut">FindLocationOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+FindLocation returns concrete location information described by a location expression
+</p>
+<pre>loc ::= &lt;filename&gt;:&lt;line&gt; | &lt;function&gt;[:&lt;line&gt;] | /&lt;regex&gt;/ | (+|-)&lt;offset&gt; | &lt;line&gt; | *&lt;address&gt;
+* &lt;filename&gt; can be the full path of a file or just a suffix
+* &lt;function&gt; ::= &lt;package&gt;.&lt;receiver type&gt;.&lt;name&gt; | &lt;package&gt;.(*&lt;receiver type&gt;).&lt;name&gt; | &lt;receiver type&gt;.&lt;name&gt; | &lt;package&gt;.&lt;name&gt; | (*&lt;receiver type&gt;).&lt;name&gt; | &lt;name&gt;
+* &lt;function&gt; must be unambiguous
+* /&lt;regex&gt;/ will return a location for each function matched by regex
+* +&lt;offset&gt; returns a location for the line that is &lt;offset&gt; lines after the current line
+* -&lt;offset&gt; returns a location for the line that is &lt;offset&gt; lines before the current line
+* &lt;line&gt; returns a location for a line in the current file
+* *&lt;address&gt; returns the location corresponding to the specified address
+</pre>
+<p>
+NOTE: this function does not actually set breakpoints.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.GetBreakpoint">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2843:2926#L120">GetBreakpoint</a>
+					<a class="permalink" href="index.html#RPCServer.GetBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) GetBreakpoint(arg <a href="index.html#GetBreakpointIn">GetBreakpointIn</a>, out *<a href="index.html#GetBreakpointOut">GetBreakpointOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+GetBreakpoint gets a breakpoint by Name (if Name is not an empty string) or by ID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.GetThread">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6950:7021#L287">GetThread</a>
+					<a class="permalink" href="index.html#RPCServer.GetThread">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) GetThread(arg <a href="index.html#GetThreadIn">GetThreadIn</a>, out *<a href="index.html#GetThreadOut">GetThreadOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+GetThread gets a thread by its ID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.LastModified">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=841:921#L34">LastModified</a>
+					<a class="permalink" href="index.html#RPCServer.LastModified">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) LastModified(arg <a href="index.html#LastModifiedIn">LastModifiedIn</a>, out *<a href="index.html#LastModifiedOut">LastModifiedOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListBreakpoints">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=4078:4167#L173">ListBreakpoints</a>
+					<a class="permalink" href="index.html#RPCServer.ListBreakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListBreakpoints(arg <a href="index.html#ListBreakpointsIn">ListBreakpointsIn</a>, out *<a href="index.html#ListBreakpointsOut">ListBreakpointsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListBreakpoints gets all breakpoints.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListCheckpoints">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14642:14731#L609">ListCheckpoints</a>
+					<a class="permalink" href="index.html#RPCServer.ListCheckpoints">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListCheckpoints(arg <a href="index.html#ListCheckpointsIn">ListCheckpointsIn</a>, out *<a href="index.html#ListCheckpointsOut">ListCheckpointsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListFunctionArgs">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9058:9150#L387">ListFunctionArgs</a>
+					<a class="permalink" href="index.html#RPCServer.ListFunctionArgs">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListFunctionArgs(arg <a href="index.html#ListFunctionArgsIn">ListFunctionArgsIn</a>, out *<a href="index.html#ListFunctionArgsOut">ListFunctionArgsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListFunctionArgs lists all arguments to the current function
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListFunctions">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10764:10847#L465">ListFunctions</a>
+					<a class="permalink" href="index.html#RPCServer.ListFunctions">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListFunctions(arg <a href="index.html#ListFunctionsIn">ListFunctionsIn</a>, out *<a href="index.html#ListFunctionsOut">ListFunctionsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListFunctions lists all functions in the process matching filter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListGoroutines">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11431:11517#L500">ListGoroutines</a>
+					<a class="permalink" href="index.html#RPCServer.ListGoroutines">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListGoroutines(arg <a href="index.html#ListGoroutinesIn">ListGoroutinesIn</a>, out *<a href="index.html#ListGoroutinesOut">ListGoroutinesOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListGoroutines lists all goroutines.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListLocalVars">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8617:8700#L368">ListLocalVars</a>
+					<a class="permalink" href="index.html#RPCServer.ListLocalVars">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListLocalVars(arg <a href="index.html#ListLocalVarsIn">ListLocalVarsIn</a>, out *<a href="index.html#ListLocalVarsOut">ListLocalVarsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListLocalVars lists all local variables in scope.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListPackageVars">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=7419:7508#L309">ListPackageVars</a>
+					<a class="permalink" href="index.html#RPCServer.ListPackageVars">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListPackageVars(arg <a href="index.html#ListPackageVarsIn">ListPackageVarsIn</a>, out *<a href="index.html#ListPackageVarsOut">ListPackageVarsOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListPackageVars lists all package variables in the context of the current thread.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListRegisters">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=8038:8121#L339">ListRegisters</a>
+					<a class="permalink" href="index.html#RPCServer.ListRegisters">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListRegisters(arg <a href="index.html#ListRegistersIn">ListRegistersIn</a>, out *<a href="index.html#ListRegistersOut">ListRegistersOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListRegisters lists registers and their values.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListSources">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10408:10485#L447">ListSources</a>
+					<a class="permalink" href="index.html#RPCServer.ListSources">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListSources(arg <a href="index.html#ListSourcesIn">ListSourcesIn</a>, out *<a href="index.html#ListSourcesOut">ListSourcesOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListSources lists all source files in the process matching filter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListThreads">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=6683:6766#L273">ListThreads</a>
+					<a class="permalink" href="index.html#RPCServer.ListThreads">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListThreads(arg <a href="index.html#ListThreadsIn">ListThreadsIn</a>, out *<a href="index.html#ListThreadsOut">ListThreadsOut</a>) (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ListThreads lists all threads.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ListTypes">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=11112:11183#L483">ListTypes</a>
+					<a class="permalink" href="index.html#RPCServer.ListTypes">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ListTypes(arg <a href="index.html#ListTypesIn">ListTypesIn</a>, out *<a href="index.html#ListTypesOut">ListTypesOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ListTypes lists all types in the process matching filter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.ProcessPid">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=633:707#L22">ProcessPid</a>
+					<a class="permalink" href="index.html#RPCServer.ProcessPid">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) ProcessPid(arg <a href="index.html#ProcessPidIn">ProcessPidIn</a>, out *<a href="index.html#ProcessPidOut">ProcessPidOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ProcessPid returns the pid of the process we are debugging.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Recorded">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14159:14227#L583">Recorded</a>
+					<a class="permalink" href="index.html#RPCServer.Recorded">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Recorded(arg <a href="index.html#RecordedIn">RecordedIn</a>, out *<a href="index.html#RecordedOut">RecordedOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Restart">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=1716:1781#L68">Restart</a>
+					<a class="permalink" href="index.html#RPCServer.Restart">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Restart(arg <a href="index.html#RestartIn">RestartIn</a>, out *<a href="index.html#RestartOut">RestartOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Restart restarts program.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Set">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=10111:10164#L434">Set</a>
+					<a class="permalink" href="index.html#RPCServer.Set">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Set(arg <a href="index.html#SetIn">SetIn</a>, out *<a href="index.html#SetOut">SetOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Set sets the value of a variable. Only numerical types and
+pointers are currently supported.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.Stacktrace">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=3613:3687#L152">Stacktrace</a>
+					<a class="permalink" href="index.html#RPCServer.Stacktrace">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) Stacktrace(arg <a href="index.html#StacktraceIn">StacktraceIn</a>, out *<a href="index.html#StacktraceOut">StacktraceOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Stacktrace returns stacktrace of goroutine Id up to the specified Depth.
+</p>
+<p>
+If Full is set it will also the variable of all local variables
+and function arguments of all stack frames.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RPCServer.State">func (*RPCServer) <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2130:2189#L85">State</a>
+					<a class="permalink" href="index.html#RPCServer.State">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RPCServer">RPCServer</a>) State(arg <a href="index.html#StateIn">StateIn</a>, out *<a href="index.html#StateOut">StateOut</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+State returns the current debugger state.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RecordedIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14058:14084#L575">RecordedIn</a>
+				<a class="permalink" href="index.html#RecordedIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type RecordedIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RecordedOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=14086:14157#L578">RecordedOut</a>
+				<a class="permalink" href="index.html#RecordedOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type RecordedOut struct {
+<span id="RecordedOut.Recorded"></span>    Recorded       <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+<span id="RecordedOut.TraceDirectory"></span>    TraceDirectory <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RestartIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=1210:1609#L51">RestartIn</a>
+				<a class="permalink" href="index.html#RestartIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type RestartIn struct {
+<span id="RestartIn.Position"></span>    <span class="comment">// Position to restart from, if it starts with &#39;c&#39; it&#39;s a checkpoint ID,</span>
+    <span class="comment">// otherwise it&#39;s an event number. Only valid for recorded targets.</span>
+    Position <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="RestartIn.ResetArgs"></span>    <span class="comment">// ResetArgs tell whether NewArgs should take effect.</span>
+    ResetArgs <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+<span id="RestartIn.NewArgs"></span>    <span class="comment">// NewArgs are arguments to launch a new process.  They replace only the</span>
+    <span class="comment">// argv[1] and later. Argv[0] cannot be changed.</span>
+    NewArgs []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RestartOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=1611:1685#L63">RestartOut</a>
+				<a class="permalink" href="index.html#RestartOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type RestartOut struct {
+<span id="RestartOut.DiscardedBreakpoints"></span>    DiscardedBreakpoints []<a href="../api/index.html">api</a>.<a href="../api/index.html#DiscardedBreakpoint">DiscardedBreakpoint</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SetIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9913:9986#L423">SetIn</a>
+				<a class="permalink" href="index.html#SetIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type SetIn struct {
+<span id="SetIn.Scope"></span>    Scope  <a href="../api/index.html">api</a>.<a href="../api/index.html#EvalScope">EvalScope</a>
+<span id="SetIn.Symbol"></span>    Symbol <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="SetIn.Value"></span>    Value  <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SetOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=9988:10010#L429">SetOut</a>
+				<a class="permalink" href="index.html#SetOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type SetOut struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StacktraceIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=3274:3359#L137">StacktraceIn</a>
+				<a class="permalink" href="index.html#StacktraceIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type StacktraceIn struct {
+<span id="StacktraceIn.Id"></span>    Id    <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="StacktraceIn.Depth"></span>    Depth <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="StacktraceIn.Full"></span>    Full  <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+<span id="StacktraceIn.Cfg"></span>    Cfg   *<a href="../api/index.html">api</a>.<a href="../api/index.html#LoadConfig">LoadConfig</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StacktraceOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=3361:3418#L144">StacktraceOut</a>
+				<a class="permalink" href="index.html#StacktraceOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type StacktraceOut struct {
+<span id="StacktraceOut.Locations"></span>    Locations []<a href="../api/index.html">api</a>.<a href="../api/index.html#Stackframe">Stackframe</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StateIn">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2008:2031#L77">StateIn</a>
+				<a class="permalink" href="index.html#StateIn">&#xb6;</a>
+			</h2>
+			
+			<pre>type StateIn struct {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StateOut">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpc2/server.go?s=2033:2083#L80">StateOut</a>
+				<a class="permalink" href="index.html#StateOut">&#xb6;</a>
+			</h2>
+			
+			<pre>type StateOut struct {
+<span id="StateOut.State"></span>    State *<a href="../api/index.html">api</a>.<a href="../api/index.html#DebuggerState">DebuggerState</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

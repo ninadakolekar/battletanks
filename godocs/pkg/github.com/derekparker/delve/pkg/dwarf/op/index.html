@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>op - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package op
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/op"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="index.html#ExecuteStackProgram">func ExecuteStackProgram(regs DwarfRegisters, instructions []byte) (int64, []Piece, error)</a></dd>
+			
+				
+				<dd><a href="index.html#PrettyPrint">func PrettyPrint(out io.Writer, instructions []byte)</a></dd>
+			
+			
+				
+				<dd><a href="index.html#DwarfRegister">type DwarfRegister</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisterFromBytes">func DwarfRegisterFromBytes(bytes []byte) *DwarfRegister</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisterFromUint64">func DwarfRegisterFromUint64(v uint64) *DwarfRegister</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DwarfRegisters">type DwarfRegisters</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.AddReg">func (regs *DwarfRegisters) AddReg(idx uint64, reg *DwarfRegister)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.BP">func (regs *DwarfRegisters) BP() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.Bytes">func (regs *DwarfRegisters) Bytes(idx uint64) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.PC">func (regs *DwarfRegisters) PC() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.Reg">func (regs *DwarfRegisters) Reg(idx uint64) *DwarfRegister</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.SP">func (regs *DwarfRegisters) SP() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DwarfRegisters.Uint64Val">func (regs *DwarfRegisters) Uint64Val(idx uint64) uint64</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Opcode">type Opcode</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Piece">type Piece</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/op.go">op.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/opcodes.go">opcodes.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go">regs.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="ExecuteStackProgram">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/op.go?s=771:861#L29">ExecuteStackProgram</a>
+				<a class="permalink" href="index.html#ExecuteStackProgram">&#xb6;</a>
+			</h2>
+			<pre>func ExecuteStackProgram(regs <a href="index.html#DwarfRegisters">DwarfRegisters</a>, instructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (<a href="http://localhost:8081/pkg/builtin/#int64">int64</a>, []<a href="index.html#Piece">Piece</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+ExecuteStackProgram executes a DWARF location expression and returns
+either an address (int64), or a slice of Pieces for location expressions
+that don&#39;t evaluate to an address (such as register and composite expressions).
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PrettyPrint">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/op.go?s=1571:1623#L68">PrettyPrint</a>
+				<a class="permalink" href="index.html#PrettyPrint">&#xb6;</a>
+			</h2>
+			<pre>func PrettyPrint(out <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>, instructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>)</pre>
+			<p>
+PrettyPrint prints instructions to out.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="DwarfRegister">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=246:311#L10">DwarfRegister</a>
+				<a class="permalink" href="index.html#DwarfRegister">&#xb6;</a>
+			</h2>
+			
+			<pre>type DwarfRegister struct {
+<span id="DwarfRegister.Uint64Val"></span>    Uint64Val <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="DwarfRegister.Bytes"></span>    Bytes     []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="DwarfRegisterFromBytes">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1676:1732#L73">DwarfRegisterFromBytes</a>
+					<a class="permalink" href="index.html#DwarfRegisterFromBytes">&#xb6;</a>
+				</h3>
+				<pre>func DwarfRegisterFromBytes(bytes []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) *<a href="index.html#DwarfRegister">DwarfRegister</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisterFromUint64">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1580:1633#L69">DwarfRegisterFromUint64</a>
+					<a class="permalink" href="index.html#DwarfRegisterFromUint64">&#xb6;</a>
+				</h3>
+				<pre>func DwarfRegisterFromUint64(v <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) *<a href="index.html#DwarfRegister">DwarfRegister</a></pre>
+				
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="DwarfRegisters">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=52:244#L1">DwarfRegisters</a>
+				<a class="permalink" href="index.html#DwarfRegisters">&#xb6;</a>
+			</h2>
+			
+			<pre>type DwarfRegisters struct {
+<span id="DwarfRegisters.CFA"></span>    CFA       <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="DwarfRegisters.FrameBase"></span>    FrameBase <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="DwarfRegisters.ObjBase"></span>    ObjBase   <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="DwarfRegisters.Regs"></span>    Regs      []*<a href="index.html#DwarfRegister">DwarfRegister</a>
+
+<span id="DwarfRegisters.ByteOrder"></span>    ByteOrder <a href="http://localhost:8081/pkg/encoding/binary/">binary</a>.<a href="http://localhost:8081/pkg/encoding/binary/#ByteOrder">ByteOrder</a>
+<span id="DwarfRegisters.PCRegNum"></span>    PCRegNum  <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="DwarfRegisters.SPRegNum"></span>    SPRegNum  <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="DwarfRegisters.BPRegNum"></span>    BPRegNum  <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DwarfRegisters.AddReg">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1355:1421#L60">AddReg</a>
+					<a class="permalink" href="index.html#DwarfRegisters.AddReg">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) AddReg(idx <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, reg *<a href="index.html#DwarfRegister">DwarfRegister</a>)</pre>
+				<p>
+AddReg adds register idx to regs.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.BP">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1235:1274#L55">BP</a>
+					<a class="permalink" href="index.html#DwarfRegisters.BP">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) BP() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.Bytes">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=605:657#L26">Bytes</a>
+					<a class="permalink" href="index.html#DwarfRegisters.Bytes">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) Bytes(idx <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+				<p>
+Bytes returns the bytes value of register idx, nil if the register is not
+defined.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.PC">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1069:1108#L47">PC</a>
+					<a class="permalink" href="index.html#DwarfRegisters.PC">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) PC() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.Reg">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=930:988#L40">Reg</a>
+					<a class="permalink" href="index.html#DwarfRegisters.Reg">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) Reg(idx <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) *<a href="index.html#DwarfRegister">DwarfRegister</a></pre>
+				<p>
+Reg returns register idx or nil if the register is not defined.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.SP">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=1152:1191#L51">SP</a>
+					<a class="permalink" href="index.html#DwarfRegisters.SP">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) SP() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DwarfRegisters.Uint64Val">func (*DwarfRegisters) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/regs.go?s=368:424#L16">Uint64Val</a>
+					<a class="permalink" href="index.html#DwarfRegisters.Uint64Val">&#xb6;</a>
+				</h3>
+				<pre>func (regs *<a href="index.html#DwarfRegisters">DwarfRegisters</a>) Uint64Val(idx <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+Uint64Val returns the uint64 value of register idx.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Opcode">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/op.go?s=123:139#L3">Opcode</a>
+				<a class="permalink" href="index.html#Opcode">&#xb6;</a>
+			</h2>
+			
+			<pre>type Opcode <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="DW_OP_addr">DW_OP_addr</span>                <a href="index.html#Opcode">Opcode</a> = 0x03
+    <span id="DW_OP_deref">DW_OP_deref</span>               <a href="index.html#Opcode">Opcode</a> = 0x06
+    <span id="DW_OP_const1u">DW_OP_const1u</span>             <a href="index.html#Opcode">Opcode</a> = 0x08
+    <span id="DW_OP_const1s">DW_OP_const1s</span>             <a href="index.html#Opcode">Opcode</a> = 0x09
+    <span id="DW_OP_const2u">DW_OP_const2u</span>             <a href="index.html#Opcode">Opcode</a> = 0x0a
+    <span id="DW_OP_const2s">DW_OP_const2s</span>             <a href="index.html#Opcode">Opcode</a> = 0x0b
+    <span id="DW_OP_const4u">DW_OP_const4u</span>             <a href="index.html#Opcode">Opcode</a> = 0x0c
+    <span id="DW_OP_const4s">DW_OP_const4s</span>             <a href="index.html#Opcode">Opcode</a> = 0x0d
+    <span id="DW_OP_const8u">DW_OP_const8u</span>             <a href="index.html#Opcode">Opcode</a> = 0x0e
+    <span id="DW_OP_const8s">DW_OP_const8s</span>             <a href="index.html#Opcode">Opcode</a> = 0x0f
+    <span id="DW_OP_constu">DW_OP_constu</span>              <a href="index.html#Opcode">Opcode</a> = 0x10
+    <span id="DW_OP_consts">DW_OP_consts</span>              <a href="index.html#Opcode">Opcode</a> = 0x11
+    <span id="DW_OP_dup">DW_OP_dup</span>                 <a href="index.html#Opcode">Opcode</a> = 0x12
+    <span id="DW_OP_drop">DW_OP_drop</span>                <a href="index.html#Opcode">Opcode</a> = 0x13
+    <span id="DW_OP_over">DW_OP_over</span>                <a href="index.html#Opcode">Opcode</a> = 0x14
+    <span id="DW_OP_pick">DW_OP_pick</span>                <a href="index.html#Opcode">Opcode</a> = 0x15
+    <span id="DW_OP_swap">DW_OP_swap</span>                <a href="index.html#Opcode">Opcode</a> = 0x16
+    <span id="DW_OP_rot">DW_OP_rot</span>                 <a href="index.html#Opcode">Opcode</a> = 0x17
+    <span id="DW_OP_xderef">DW_OP_xderef</span>              <a href="index.html#Opcode">Opcode</a> = 0x18
+    <span id="DW_OP_abs">DW_OP_abs</span>                 <a href="index.html#Opcode">Opcode</a> = 0x19
+    <span id="DW_OP_and">DW_OP_and</span>                 <a href="index.html#Opcode">Opcode</a> = 0x1a
+    <span id="DW_OP_div">DW_OP_div</span>                 <a href="index.html#Opcode">Opcode</a> = 0x1b
+    <span id="DW_OP_minus">DW_OP_minus</span>               <a href="index.html#Opcode">Opcode</a> = 0x1c
+    <span id="DW_OP_mod">DW_OP_mod</span>                 <a href="index.html#Opcode">Opcode</a> = 0x1d
+    <span id="DW_OP_mul">DW_OP_mul</span>                 <a href="index.html#Opcode">Opcode</a> = 0x1e
+    <span id="DW_OP_neg">DW_OP_neg</span>                 <a href="index.html#Opcode">Opcode</a> = 0x1f
+    <span id="DW_OP_not">DW_OP_not</span>                 <a href="index.html#Opcode">Opcode</a> = 0x20
+    <span id="DW_OP_or">DW_OP_or</span>                  <a href="index.html#Opcode">Opcode</a> = 0x21
+    <span id="DW_OP_plus">DW_OP_plus</span>                <a href="index.html#Opcode">Opcode</a> = 0x22
+    <span id="DW_OP_plus_uconst">DW_OP_plus_uconst</span>         <a href="index.html#Opcode">Opcode</a> = 0x23
+    <span id="DW_OP_shl">DW_OP_shl</span>                 <a href="index.html#Opcode">Opcode</a> = 0x24
+    <span id="DW_OP_shr">DW_OP_shr</span>                 <a href="index.html#Opcode">Opcode</a> = 0x25
+    <span id="DW_OP_shra">DW_OP_shra</span>                <a href="index.html#Opcode">Opcode</a> = 0x26
+    <span id="DW_OP_xor">DW_OP_xor</span>                 <a href="index.html#Opcode">Opcode</a> = 0x27
+    <span id="DW_OP_bra">DW_OP_bra</span>                 <a href="index.html#Opcode">Opcode</a> = 0x28
+    <span id="DW_OP_eq">DW_OP_eq</span>                  <a href="index.html#Opcode">Opcode</a> = 0x29
+    <span id="DW_OP_ge">DW_OP_ge</span>                  <a href="index.html#Opcode">Opcode</a> = 0x2a
+    <span id="DW_OP_gt">DW_OP_gt</span>                  <a href="index.html#Opcode">Opcode</a> = 0x2b
+    <span id="DW_OP_le">DW_OP_le</span>                  <a href="index.html#Opcode">Opcode</a> = 0x2c
+    <span id="DW_OP_lt">DW_OP_lt</span>                  <a href="index.html#Opcode">Opcode</a> = 0x2d
+    <span id="DW_OP_ne">DW_OP_ne</span>                  <a href="index.html#Opcode">Opcode</a> = 0x2e
+    <span id="DW_OP_skip">DW_OP_skip</span>                <a href="index.html#Opcode">Opcode</a> = 0x2f
+    <span id="DW_OP_lit0">DW_OP_lit0</span>                <a href="index.html#Opcode">Opcode</a> = 0x30
+    <span id="DW_OP_lit1">DW_OP_lit1</span>                <a href="index.html#Opcode">Opcode</a> = 0x31
+    <span id="DW_OP_lit2">DW_OP_lit2</span>                <a href="index.html#Opcode">Opcode</a> = 0x32
+    <span id="DW_OP_lit3">DW_OP_lit3</span>                <a href="index.html#Opcode">Opcode</a> = 0x33
+    <span id="DW_OP_lit4">DW_OP_lit4</span>                <a href="index.html#Opcode">Opcode</a> = 0x34
+    <span id="DW_OP_lit5">DW_OP_lit5</span>                <a href="index.html#Opcode">Opcode</a> = 0x35
+    <span id="DW_OP_lit6">DW_OP_lit6</span>                <a href="index.html#Opcode">Opcode</a> = 0x36
+    <span id="DW_OP_lit7">DW_OP_lit7</span>                <a href="index.html#Opcode">Opcode</a> = 0x37
+    <span id="DW_OP_lit8">DW_OP_lit8</span>                <a href="index.html#Opcode">Opcode</a> = 0x38
+    <span id="DW_OP_lit9">DW_OP_lit9</span>                <a href="index.html#Opcode">Opcode</a> = 0x39
+    <span id="DW_OP_lit10">DW_OP_lit10</span>               <a href="index.html#Opcode">Opcode</a> = 0x3a
+    <span id="DW_OP_lit11">DW_OP_lit11</span>               <a href="index.html#Opcode">Opcode</a> = 0x3b
+    <span id="DW_OP_lit12">DW_OP_lit12</span>               <a href="index.html#Opcode">Opcode</a> = 0x3c
+    <span id="DW_OP_lit13">DW_OP_lit13</span>               <a href="index.html#Opcode">Opcode</a> = 0x3d
+    <span id="DW_OP_lit14">DW_OP_lit14</span>               <a href="index.html#Opcode">Opcode</a> = 0x3e
+    <span id="DW_OP_lit15">DW_OP_lit15</span>               <a href="index.html#Opcode">Opcode</a> = 0x3f
+    <span id="DW_OP_lit16">DW_OP_lit16</span>               <a href="index.html#Opcode">Opcode</a> = 0x40
+    <span id="DW_OP_lit17">DW_OP_lit17</span>               <a href="index.html#Opcode">Opcode</a> = 0x41
+    <span id="DW_OP_lit18">DW_OP_lit18</span>               <a href="index.html#Opcode">Opcode</a> = 0x42
+    <span id="DW_OP_lit19">DW_OP_lit19</span>               <a href="index.html#Opcode">Opcode</a> = 0x43
+    <span id="DW_OP_lit20">DW_OP_lit20</span>               <a href="index.html#Opcode">Opcode</a> = 0x44
+    <span id="DW_OP_lit21">DW_OP_lit21</span>               <a href="index.html#Opcode">Opcode</a> = 0x45
+    <span id="DW_OP_lit22">DW_OP_lit22</span>               <a href="index.html#Opcode">Opcode</a> = 0x46
+    <span id="DW_OP_lit23">DW_OP_lit23</span>               <a href="index.html#Opcode">Opcode</a> = 0x47
+    <span id="DW_OP_lit24">DW_OP_lit24</span>               <a href="index.html#Opcode">Opcode</a> = 0x48
+    <span id="DW_OP_lit25">DW_OP_lit25</span>               <a href="index.html#Opcode">Opcode</a> = 0x49
+    <span id="DW_OP_lit26">DW_OP_lit26</span>               <a href="index.html#Opcode">Opcode</a> = 0x4a
+    <span id="DW_OP_lit27">DW_OP_lit27</span>               <a href="index.html#Opcode">Opcode</a> = 0x4b
+    <span id="DW_OP_lit28">DW_OP_lit28</span>               <a href="index.html#Opcode">Opcode</a> = 0x4c
+    <span id="DW_OP_lit29">DW_OP_lit29</span>               <a href="index.html#Opcode">Opcode</a> = 0x4d
+    <span id="DW_OP_lit30">DW_OP_lit30</span>               <a href="index.html#Opcode">Opcode</a> = 0x4e
+    <span id="DW_OP_lit31">DW_OP_lit31</span>               <a href="index.html#Opcode">Opcode</a> = 0x4f
+    <span id="DW_OP_reg0">DW_OP_reg0</span>                <a href="index.html#Opcode">Opcode</a> = 0x50
+    <span id="DW_OP_reg1">DW_OP_reg1</span>                <a href="index.html#Opcode">Opcode</a> = 0x51
+    <span id="DW_OP_reg2">DW_OP_reg2</span>                <a href="index.html#Opcode">Opcode</a> = 0x52
+    <span id="DW_OP_reg3">DW_OP_reg3</span>                <a href="index.html#Opcode">Opcode</a> = 0x53
+    <span id="DW_OP_reg4">DW_OP_reg4</span>                <a href="index.html#Opcode">Opcode</a> = 0x54
+    <span id="DW_OP_reg5">DW_OP_reg5</span>                <a href="index.html#Opcode">Opcode</a> = 0x55
+    <span id="DW_OP_reg6">DW_OP_reg6</span>                <a href="index.html#Opcode">Opcode</a> = 0x56
+    <span id="DW_OP_reg7">DW_OP_reg7</span>                <a href="index.html#Opcode">Opcode</a> = 0x57
+    <span id="DW_OP_reg8">DW_OP_reg8</span>                <a href="index.html#Opcode">Opcode</a> = 0x58
+    <span id="DW_OP_reg9">DW_OP_reg9</span>                <a href="index.html#Opcode">Opcode</a> = 0x59
+    <span id="DW_OP_reg10">DW_OP_reg10</span>               <a href="index.html#Opcode">Opcode</a> = 0x5a
+    <span id="DW_OP_reg11">DW_OP_reg11</span>               <a href="index.html#Opcode">Opcode</a> = 0x5b
+    <span id="DW_OP_reg12">DW_OP_reg12</span>               <a href="index.html#Opcode">Opcode</a> = 0x5c
+    <span id="DW_OP_reg13">DW_OP_reg13</span>               <a href="index.html#Opcode">Opcode</a> = 0x5d
+    <span id="DW_OP_reg14">DW_OP_reg14</span>               <a href="index.html#Opcode">Opcode</a> = 0x5e
+    <span id="DW_OP_reg15">DW_OP_reg15</span>               <a href="index.html#Opcode">Opcode</a> = 0x5f
+    <span id="DW_OP_reg16">DW_OP_reg16</span>               <a href="index.html#Opcode">Opcode</a> = 0x60
+    <span id="DW_OP_reg17">DW_OP_reg17</span>               <a href="index.html#Opcode">Opcode</a> = 0x61
+    <span id="DW_OP_reg18">DW_OP_reg18</span>               <a href="index.html#Opcode">Opcode</a> = 0x62
+    <span id="DW_OP_reg19">DW_OP_reg19</span>               <a href="index.html#Opcode">Opcode</a> = 0x63
+    <span id="DW_OP_reg20">DW_OP_reg20</span>               <a href="index.html#Opcode">Opcode</a> = 0x64
+    <span id="DW_OP_reg21">DW_OP_reg21</span>               <a href="index.html#Opcode">Opcode</a> = 0x65
+    <span id="DW_OP_reg22">DW_OP_reg22</span>               <a href="index.html#Opcode">Opcode</a> = 0x66
+    <span id="DW_OP_reg23">DW_OP_reg23</span>               <a href="index.html#Opcode">Opcode</a> = 0x67
+    <span id="DW_OP_reg24">DW_OP_reg24</span>               <a href="index.html#Opcode">Opcode</a> = 0x68
+    <span id="DW_OP_reg25">DW_OP_reg25</span>               <a href="index.html#Opcode">Opcode</a> = 0x69
+    <span id="DW_OP_reg26">DW_OP_reg26</span>               <a href="index.html#Opcode">Opcode</a> = 0x6a
+    <span id="DW_OP_reg27">DW_OP_reg27</span>               <a href="index.html#Opcode">Opcode</a> = 0x6b
+    <span id="DW_OP_reg28">DW_OP_reg28</span>               <a href="index.html#Opcode">Opcode</a> = 0x6c
+    <span id="DW_OP_reg29">DW_OP_reg29</span>               <a href="index.html#Opcode">Opcode</a> = 0x6d
+    <span id="DW_OP_reg30">DW_OP_reg30</span>               <a href="index.html#Opcode">Opcode</a> = 0x6e
+    <span id="DW_OP_reg31">DW_OP_reg31</span>               <a href="index.html#Opcode">Opcode</a> = 0x6f
+    <span id="DW_OP_breg0">DW_OP_breg0</span>               <a href="index.html#Opcode">Opcode</a> = 0x70
+    <span id="DW_OP_breg1">DW_OP_breg1</span>               <a href="index.html#Opcode">Opcode</a> = 0x71
+    <span id="DW_OP_breg2">DW_OP_breg2</span>               <a href="index.html#Opcode">Opcode</a> = 0x72
+    <span id="DW_OP_breg3">DW_OP_breg3</span>               <a href="index.html#Opcode">Opcode</a> = 0x73
+    <span id="DW_OP_breg4">DW_OP_breg4</span>               <a href="index.html#Opcode">Opcode</a> = 0x74
+    <span id="DW_OP_breg5">DW_OP_breg5</span>               <a href="index.html#Opcode">Opcode</a> = 0x75
+    <span id="DW_OP_breg6">DW_OP_breg6</span>               <a href="index.html#Opcode">Opcode</a> = 0x76
+    <span id="DW_OP_breg7">DW_OP_breg7</span>               <a href="index.html#Opcode">Opcode</a> = 0x77
+    <span id="DW_OP_breg8">DW_OP_breg8</span>               <a href="index.html#Opcode">Opcode</a> = 0x78
+    <span id="DW_OP_breg9">DW_OP_breg9</span>               <a href="index.html#Opcode">Opcode</a> = 0x79
+    <span id="DW_OP_breg10">DW_OP_breg10</span>              <a href="index.html#Opcode">Opcode</a> = 0x7a
+    <span id="DW_OP_breg11">DW_OP_breg11</span>              <a href="index.html#Opcode">Opcode</a> = 0x7b
+    <span id="DW_OP_breg12">DW_OP_breg12</span>              <a href="index.html#Opcode">Opcode</a> = 0x7c
+    <span id="DW_OP_breg13">DW_OP_breg13</span>              <a href="index.html#Opcode">Opcode</a> = 0x7d
+    <span id="DW_OP_breg14">DW_OP_breg14</span>              <a href="index.html#Opcode">Opcode</a> = 0x7e
+    <span id="DW_OP_breg15">DW_OP_breg15</span>              <a href="index.html#Opcode">Opcode</a> = 0x7f
+    <span id="DW_OP_breg16">DW_OP_breg16</span>              <a href="index.html#Opcode">Opcode</a> = 0x80
+    <span id="DW_OP_breg17">DW_OP_breg17</span>              <a href="index.html#Opcode">Opcode</a> = 0x81
+    <span id="DW_OP_breg18">DW_OP_breg18</span>              <a href="index.html#Opcode">Opcode</a> = 0x82
+    <span id="DW_OP_breg19">DW_OP_breg19</span>              <a href="index.html#Opcode">Opcode</a> = 0x83
+    <span id="DW_OP_breg20">DW_OP_breg20</span>              <a href="index.html#Opcode">Opcode</a> = 0x84
+    <span id="DW_OP_breg21">DW_OP_breg21</span>              <a href="index.html#Opcode">Opcode</a> = 0x85
+    <span id="DW_OP_breg22">DW_OP_breg22</span>              <a href="index.html#Opcode">Opcode</a> = 0x86
+    <span id="DW_OP_breg23">DW_OP_breg23</span>              <a href="index.html#Opcode">Opcode</a> = 0x87
+    <span id="DW_OP_breg24">DW_OP_breg24</span>              <a href="index.html#Opcode">Opcode</a> = 0x88
+    <span id="DW_OP_breg25">DW_OP_breg25</span>              <a href="index.html#Opcode">Opcode</a> = 0x89
+    <span id="DW_OP_breg26">DW_OP_breg26</span>              <a href="index.html#Opcode">Opcode</a> = 0x8a
+    <span id="DW_OP_breg27">DW_OP_breg27</span>              <a href="index.html#Opcode">Opcode</a> = 0x8b
+    <span id="DW_OP_breg28">DW_OP_breg28</span>              <a href="index.html#Opcode">Opcode</a> = 0x8c
+    <span id="DW_OP_breg29">DW_OP_breg29</span>              <a href="index.html#Opcode">Opcode</a> = 0x8d
+    <span id="DW_OP_breg30">DW_OP_breg30</span>              <a href="index.html#Opcode">Opcode</a> = 0x8e
+    <span id="DW_OP_breg31">DW_OP_breg31</span>              <a href="index.html#Opcode">Opcode</a> = 0x8f
+    <span id="DW_OP_regx">DW_OP_regx</span>                <a href="index.html#Opcode">Opcode</a> = 0x90
+    <span id="DW_OP_fbreg">DW_OP_fbreg</span>               <a href="index.html#Opcode">Opcode</a> = 0x91
+    <span id="DW_OP_bregx">DW_OP_bregx</span>               <a href="index.html#Opcode">Opcode</a> = 0x92
+    <span id="DW_OP_piece">DW_OP_piece</span>               <a href="index.html#Opcode">Opcode</a> = 0x93
+    <span id="DW_OP_deref_size">DW_OP_deref_size</span>          <a href="index.html#Opcode">Opcode</a> = 0x94
+    <span id="DW_OP_xderef_size">DW_OP_xderef_size</span>         <a href="index.html#Opcode">Opcode</a> = 0x95
+    <span id="DW_OP_nop">DW_OP_nop</span>                 <a href="index.html#Opcode">Opcode</a> = 0x96
+    <span id="DW_OP_push_object_address">DW_OP_push_object_address</span> <a href="index.html#Opcode">Opcode</a> = 0x97
+    <span id="DW_OP_call2">DW_OP_call2</span>               <a href="index.html#Opcode">Opcode</a> = 0x98
+    <span id="DW_OP_call4">DW_OP_call4</span>               <a href="index.html#Opcode">Opcode</a> = 0x99
+    <span id="DW_OP_call_ref">DW_OP_call_ref</span>            <a href="index.html#Opcode">Opcode</a> = 0x9a
+    <span id="DW_OP_form_tls_address">DW_OP_form_tls_address</span>    <a href="index.html#Opcode">Opcode</a> = 0x9b
+    <span id="DW_OP_call_frame_cfa">DW_OP_call_frame_cfa</span>      <a href="index.html#Opcode">Opcode</a> = 0x9c
+    <span id="DW_OP_bit_piece">DW_OP_bit_piece</span>           <a href="index.html#Opcode">Opcode</a> = 0x9d
+    <span id="DW_OP_implicit_value">DW_OP_implicit_value</span>      <a href="index.html#Opcode">Opcode</a> = 0x9e
+    <span id="DW_OP_stack_value">DW_OP_stack_value</span>         <a href="index.html#Opcode">Opcode</a> = 0x9f
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Piece">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/op/op.go?s=447:538#L19">Piece</a>
+				<a class="permalink" href="index.html#Piece">&#xb6;</a>
+			</h2>
+			<p>
+Piece is a piece of memory stored either at an addres or in a register.
+</p>
+
+			<pre>type Piece struct {
+<span id="Piece.Size"></span>    Size       <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="Piece.Addr"></span>    Addr       <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="Piece.RegNum"></span>    RegNum     <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="Piece.IsRegister"></span>    IsRegister <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

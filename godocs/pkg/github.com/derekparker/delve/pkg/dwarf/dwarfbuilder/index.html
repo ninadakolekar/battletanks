@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>dwarfbuilder - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package dwarfbuilder
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/dwarfbuilder"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package dwarfbuilder provides a way to build DWARF sections with
+arbitrary contents.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="index.html#LocationBlock">func LocationBlock(args ...interface{}) []byte</a></dd>
+			
+			
+				
+				<dd><a href="index.html#Address">type Address</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Builder">type Builder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#New">func New() *Builder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.AddBaseType">func (b *Builder) AddBaseType(typename string, encoding Encoding, byteSz uint16) dwarf.Offset</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.AddMember">func (b *Builder) AddMember(fieldname string, typ dwarf.Offset, memberLoc []byte) dwarf.Offset</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.AddStructType">func (b *Builder) AddStructType(typename string, byteSz uint16) dwarf.Offset</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.AddSubprogram">func (b *Builder) AddSubprogram(fnname string, lowpc, highpc uint64) dwarf.Offset</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.AddVariable">func (b *Builder) AddVariable(varname string, typ dwarf.Offset, loc interface{}) dwarf.Offset</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.Attr">func (b *Builder) Attr(attr dwarf.Attr, val interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.Build">func (b *Builder) Build() (abbrev, aranges, frame, info, line, pubnames, ranges, str, loc []byte, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.SetHasChildren">func (b *Builder) SetHasChildren()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.TagClose">func (b *Builder) TagClose()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Builder.TagOpen">func (b *Builder) TagOpen(tag dwarf.Tag, name string) dwarf.Offset</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Encoding">type Encoding</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Form">type Form</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#LocEntry">type LocEntry</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/builder.go">builder.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go">info.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/loc.go">loc.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="LocationBlock">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/loc.go?s=341:387#L9">LocationBlock</a>
+				<a class="permalink" href="index.html#LocationBlock">&#xb6;</a>
+			</h2>
+			<pre>func LocationBlock(args ...interface{}) []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+			<p>
+LocationBlock returns a DWARF expression corresponding to the list of
+arguments.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Address">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=2319:2338#L59">Address</a>
+				<a class="permalink" href="index.html#Address">&#xb6;</a>
+			</h2>
+			<p>
+Address represents a machine address.
+</p>
+
+			<pre>type Address <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Builder">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/builder.go?s=175:287#L2">Builder</a>
+				<a class="permalink" href="index.html#Builder">&#xb6;</a>
+			</h2>
+			
+			<pre>type Builder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="New">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/builder.go?s=325:344#L10">New</a>
+					<a class="permalink" href="index.html#New">&#xb6;</a>
+				</h3>
+				<pre>func New() *<a href="index.html#Builder">Builder</a></pre>
+				<p>
+New creates a new DWARF builder.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Builder.AddBaseType">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=7443:7536#L249">AddBaseType</a>
+					<a class="permalink" href="index.html#Builder.AddBaseType">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) AddBaseType(typename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, encoding <a href="index.html#Encoding">Encoding</a>, byteSz <a href="http://localhost:8081/pkg/builtin/#uint16">uint16</a>) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+AddBaseType adds a new base type entry to debug_info.
+Will write a DW_TAG_base_type, followed by a DW_AT_encoding and a
+DW_AT_byte_size.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddMember">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=8163:8257#L268">AddMember</a>
+					<a class="permalink" href="index.html#Builder.AddMember">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) AddMember(fieldname <a href="http://localhost:8081/pkg/builtin/#string">string</a>, typ <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>, memberLoc []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+AddMember adds a new member entry to debug_info.
+Writes a DW_TAG_member followed by DW_AT_type and DW_AT_data_member_loc.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddStructType">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=7860:7936#L260">AddStructType</a>
+					<a class="permalink" href="index.html#Builder.AddStructType">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) AddStructType(typename <a href="http://localhost:8081/pkg/builtin/#string">string</a>, byteSz <a href="http://localhost:8081/pkg/builtin/#uint16">uint16</a>) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+AddStructType adds a new structure type to debug_info. Call TagClose to
+finish adding fields.
+Will write a DW_TAG_struct_type, followed by a DW_AT_byte_size.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddSubprogram">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=6703:6784#L228">AddSubprogram</a>
+					<a class="permalink" href="index.html#Builder.AddSubprogram">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) AddSubprogram(fnname <a href="http://localhost:8081/pkg/builtin/#string">string</a>, lowpc, highpc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+AddSubprogram adds a subprogram declaration to debug_info, must call
+TagClose after adding all local variables and parameters.
+Will write an abbrev corresponding to a DW_TAG_subprogram, followed by a
+DW_AT_lowpc and a DW_AT_highpc.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddVariable">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=7068:7161#L238">AddVariable</a>
+					<a class="permalink" href="index.html#Builder.AddVariable">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) AddVariable(varname <a href="http://localhost:8081/pkg/builtin/#string">string</a>, typ <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>, loc interface{}) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+AddVariable adds a new variable entry to debug_info.
+Will write a DW_TAG_variable, followed by a DW_AT_type and a
+DW_AT_location.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.Attr">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=3536:3592#L113">Attr</a>
+					<a class="permalink" href="index.html#Builder.Attr">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) Attr(attr <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a>, val interface{})</pre>
+				<p>
+Attr adds an attribute to the current DIE.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.Build">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/builder.go?s=661:769#L27">Build</a>
+					<a class="permalink" href="index.html#Builder.Build">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) Build() (abbrev, aranges, frame, info, line, pubnames, ranges, str, loc []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Build closes b and returns all the dwarf sections.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.SetHasChildren">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=2989:3023#L90">SetHasChildren</a>
+					<a class="permalink" href="index.html#Builder.SetHasChildren">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) SetHasChildren()</pre>
+				<p>
+SetHasChildren sets the current DIE as having children (even if none are added).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.TagClose">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=3182:3210#L98">TagClose</a>
+					<a class="permalink" href="index.html#Builder.TagClose">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) TagClose()</pre>
+				<p>
+TagClose closes the current DIE.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.TagOpen">func (*Builder) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=2588:2654#L76">TagOpen</a>
+					<a class="permalink" href="index.html#Builder.TagOpen">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#Builder">Builder</a>) TagOpen(tag <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Tag">Tag</a>, name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a></pre>
+				<p>
+TagOpen starts a new DIE, call TagClose after adding all attributes and
+children elements.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Encoding">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=1525:1545#L35">Encoding</a>
+				<a class="permalink" href="index.html#Encoding">&#xb6;</a>
+			</h2>
+			<p>
+Encoding represents a DWARF base type encoding (see section 7.8, page 168
+and following, DWARF v4).
+</p>
+
+			<pre>type Encoding <a href="http://localhost:8081/pkg/builtin/#uint16">uint16</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="DW_ATE_address">DW_ATE_address</span>         <a href="index.html#Encoding">Encoding</a> = 0x01
+    <span id="DW_ATE_boolean">DW_ATE_boolean</span>         <a href="index.html#Encoding">Encoding</a> = 0x02
+    <span id="DW_ATE_complex_float">DW_ATE_complex_float</span>   <a href="index.html#Encoding">Encoding</a> = 0x03
+    <span id="DW_ATE_float">DW_ATE_float</span>           <a href="index.html#Encoding">Encoding</a> = 0x04
+    <span id="DW_ATE_signed">DW_ATE_signed</span>          <a href="index.html#Encoding">Encoding</a> = 0x05
+    <span id="DW_ATE_signed_char">DW_ATE_signed_char</span>     <a href="index.html#Encoding">Encoding</a> = 0x06
+    <span id="DW_ATE_unsigned">DW_ATE_unsigned</span>        <a href="index.html#Encoding">Encoding</a> = 0x07
+    <span id="DW_ATE_unsigned_char">DW_ATE_unsigned_char</span>   <a href="index.html#Encoding">Encoding</a> = 0x08
+    <span id="DW_ATE_imaginary_float">DW_ATE_imaginary_float</span> <a href="index.html#Encoding">Encoding</a> = 0x09
+    <span id="DW_ATE_packed_decimal">DW_ATE_packed_decimal</span>  <a href="index.html#Encoding">Encoding</a> = 0x0a
+    <span id="DW_ATE_numeric_string">DW_ATE_numeric_string</span>  <a href="index.html#Encoding">Encoding</a> = 0x0b
+    <span id="DW_ATE_edited">DW_ATE_edited</span>          <a href="index.html#Encoding">Encoding</a> = 0x0c
+    <span id="DW_ATE_signed_fixed">DW_ATE_signed_fixed</span>    <a href="index.html#Encoding">Encoding</a> = 0x0d
+    <span id="DW_ATE_unsigned_fixed">DW_ATE_unsigned_fixed</span>  <a href="index.html#Encoding">Encoding</a> = 0x0e
+    <span id="DW_ATE_decimal_float">DW_ATE_decimal_float</span>   <a href="index.html#Encoding">Encoding</a> = 0x0f
+    <span id="DW_ATE_UTF">DW_ATE_UTF</span>             <a href="index.html#Encoding">Encoding</a> = 0x10
+    <span id="DW_ATE_lo_user">DW_ATE_lo_user</span>         <a href="index.html#Encoding">Encoding</a> = 0x80
+    <span id="DW_ATE_hi_user">DW_ATE_hi_user</span>         <a href="index.html#Encoding">Encoding</a> = 0xff
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Form">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/info.go?s=215:231#L3">Form</a>
+				<a class="permalink" href="index.html#Form">&#xb6;</a>
+			</h2>
+			<p>
+Form represents a DWARF form kind (see Figure 20, page 160 and following,
+DWARF v4)
+</p>
+
+			<pre>type Form <a href="http://localhost:8081/pkg/builtin/#uint16">uint16</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="DW_FORM_addr">DW_FORM_addr</span>         <a href="index.html#Form">Form</a> = 0x01 <span class="comment">// address</span>
+    <span id="DW_FORM_block2">DW_FORM_block2</span>       <a href="index.html#Form">Form</a> = 0x03 <span class="comment">// block</span>
+    <span id="DW_FORM_block4">DW_FORM_block4</span>       <a href="index.html#Form">Form</a> = 0x04 <span class="comment">// block</span>
+    <span id="DW_FORM_data2">DW_FORM_data2</span>        <a href="index.html#Form">Form</a> = 0x05 <span class="comment">// constant</span>
+    <span id="DW_FORM_data4">DW_FORM_data4</span>        <a href="index.html#Form">Form</a> = 0x06 <span class="comment">// constant</span>
+    <span id="DW_FORM_data8">DW_FORM_data8</span>        <a href="index.html#Form">Form</a> = 0x07 <span class="comment">// constant</span>
+    <span id="DW_FORM_string">DW_FORM_string</span>       <a href="index.html#Form">Form</a> = 0x08 <span class="comment">// string</span>
+    <span id="DW_FORM_block">DW_FORM_block</span>        <a href="index.html#Form">Form</a> = 0x09 <span class="comment">// block</span>
+    <span id="DW_FORM_block1">DW_FORM_block1</span>       <a href="index.html#Form">Form</a> = 0x0a <span class="comment">// block</span>
+    <span id="DW_FORM_data1">DW_FORM_data1</span>        <a href="index.html#Form">Form</a> = 0x0b <span class="comment">// constant</span>
+    <span id="DW_FORM_flag">DW_FORM_flag</span>         <a href="index.html#Form">Form</a> = 0x0c <span class="comment">// flag</span>
+    <span id="DW_FORM_sdata">DW_FORM_sdata</span>        <a href="index.html#Form">Form</a> = 0x0d <span class="comment">// constant</span>
+    <span id="DW_FORM_strp">DW_FORM_strp</span>         <a href="index.html#Form">Form</a> = 0x0e <span class="comment">// string</span>
+    <span id="DW_FORM_udata">DW_FORM_udata</span>        <a href="index.html#Form">Form</a> = 0x0f <span class="comment">// constant</span>
+    <span id="DW_FORM_ref_addr">DW_FORM_ref_addr</span>     <a href="index.html#Form">Form</a> = 0x10 <span class="comment">// reference</span>
+    <span id="DW_FORM_ref1">DW_FORM_ref1</span>         <a href="index.html#Form">Form</a> = 0x11 <span class="comment">// reference</span>
+    <span id="DW_FORM_ref2">DW_FORM_ref2</span>         <a href="index.html#Form">Form</a> = 0x12 <span class="comment">// reference</span>
+    <span id="DW_FORM_ref4">DW_FORM_ref4</span>         <a href="index.html#Form">Form</a> = 0x13 <span class="comment">// reference</span>
+    <span id="DW_FORM_ref8">DW_FORM_ref8</span>         <a href="index.html#Form">Form</a> = 0x14 <span class="comment">// reference</span>
+    <span id="DW_FORM_ref_udata">DW_FORM_ref_udata</span>    <a href="index.html#Form">Form</a> = 0x15 <span class="comment">// reference</span>
+    <span id="DW_FORM_indirect">DW_FORM_indirect</span>     <a href="index.html#Form">Form</a> = 0x16 <span class="comment">// (see Section 7.5.3)</span>
+    <span id="DW_FORM_sec_offset">DW_FORM_sec_offset</span>   <a href="index.html#Form">Form</a> = 0x17 <span class="comment">// lineptr, loclistptr, macptr, rangelistptr</span>
+    <span id="DW_FORM_exprloc">DW_FORM_exprloc</span>      <a href="index.html#Form">Form</a> = 0x18 <span class="comment">// exprloc</span>
+    <span id="DW_FORM_flag_present">DW_FORM_flag_present</span> <a href="index.html#Form">Form</a> = 0x19 <span class="comment">// flag</span>
+    <span id="DW_FORM_ref_sig8">DW_FORM_ref_sig8</span>     <a href="index.html#Form">Form</a> = 0x20 <span class="comment">// reference</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LocEntry">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/dwarfbuilder/loc.go?s=183:252#L1">LocEntry</a>
+				<a class="permalink" href="index.html#LocEntry">&#xb6;</a>
+			</h2>
+			<p>
+LocEntry represents one entry of debug_loc.
+</p>
+
+			<pre>type LocEntry struct {
+<span id="LocEntry.Lowpc"></span>    Lowpc  <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="LocEntry.Highpc"></span>    Highpc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="LocEntry.Loc"></span>    Loc    []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+
