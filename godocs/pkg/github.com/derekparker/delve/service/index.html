@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>service - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package service
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/service"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="index.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Config">type Config</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#RPCCallback">type RPCCallback</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Server">type Server</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/client.go">client.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/config.go">config.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpccallback.go">rpccallback.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/service/server.go">server.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Client">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/client.go?s=169:6006#L1">Client</a>
+				<a class="permalink" href="index.html#Client">&#xb6;</a>
+			</h2>
+			<p>
+Client represents a debugger service client. All client methods are
+synchronous.
+</p>
+
+			<pre>type Client interface {
+    <span class="comment">// Returns the pid of the process we are debugging.</span>
+    ProcessPid() <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+    <span class="comment">// LastModified returns the time that the process&#39; executable was modified.</span>
+    LastModified() <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a>
+
+    <span class="comment">// Detach detaches the debugger, optionally killing the process.</span>
+    Detach(killProcess <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+
+    <span class="comment">// Restarts program.</span>
+    Restart() ([]<a href="api/index.html">api</a>.<a href="api/index.html#DiscardedBreakpoint">DiscardedBreakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Restarts program from the specified position.</span>
+    RestartFrom(pos <a href="http://localhost:8081/pkg/builtin/#string">string</a>, resetArgs <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, newArgs []<a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#DiscardedBreakpoint">DiscardedBreakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// GetState returns the current debugger state.</span>
+    GetState() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// Continue resumes process execution.</span>
+    Continue() &lt;-chan *<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>
+    <span class="comment">// Rewind resumes process execution backwards.</span>
+    Rewind() &lt;-chan *<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>
+    <span class="comment">// Next continues to the next source line, not entering function calls.</span>
+    Next() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Step continues to the next source line, entering function calls.</span>
+    Step() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// StepOut continues to the return address of the current function</span>
+    StepOut() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// SingleStep will step a single cpu instruction.</span>
+    StepInstruction() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// SwitchThread switches the current thread context.</span>
+    SwitchThread(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// SwitchGoroutine switches the current goroutine (and the current thread as well)</span>
+    SwitchGoroutine(goroutineID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Halt suspends the process.</span>
+    Halt() (*<a href="api/index.html">api</a>.<a href="api/index.html#DebuggerState">DebuggerState</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// GetBreakpoint gets a breakpoint by ID.</span>
+    GetBreakpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// GetBreakpointByName gets a breakpoint by name.</span>
+    GetBreakpointByName(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// CreateBreakpoint creates a new breakpoint.</span>
+    CreateBreakpoint(*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListBreakpoints gets all breakpoints.</span>
+    ListBreakpoints() ([]*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ClearBreakpoint deletes a breakpoint by ID.</span>
+    ClearBreakpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ClearBreakpointByName deletes a breakpoint by name</span>
+    ClearBreakpointByName(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Allows user to update an existing breakpoint for example to change the information</span>
+    <span class="comment">// retrieved when the breakpoint is hit or to change, add or remove the break condition</span>
+    AmendBreakpoint(*<a href="api/index.html">api</a>.<a href="api/index.html#Breakpoint">Breakpoint</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+    <span class="comment">// Cancels a Next or Step call that was interrupted by a manual stop or by another breakpoint</span>
+    CancelNext() <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+
+    <span class="comment">// ListThreads lists all threads.</span>
+    ListThreads() ([]*<a href="api/index.html">api</a>.<a href="api/index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// GetThread gets a thread by its ID.</span>
+    GetThread(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// ListPackageVariables lists all package variables in the context of the current thread.</span>
+    ListPackageVariables(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>, cfg <a href="api/index.html">api</a>.<a href="api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// EvalVariable returns a variable in the context of the current thread.</span>
+    EvalVariable(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, symbol <a href="http://localhost:8081/pkg/builtin/#string">string</a>, cfg <a href="api/index.html">api</a>.<a href="api/index.html#LoadConfig">LoadConfig</a>) (*<a href="api/index.html">api</a>.<a href="api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// SetVariable sets the value of a variable</span>
+    SetVariable(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, symbol, value <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+
+    <span class="comment">// ListSources lists all source files in the process matching filter.</span>
+    ListSources(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListFunctions lists all functions in the process matching filter.</span>
+    ListFunctions(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListTypes lists all types in the process matching filter.</span>
+    ListTypes(filter <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListLocals lists all local variables in scope.</span>
+    ListLocalVariables(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, cfg <a href="api/index.html">api</a>.<a href="api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListFunctionArgs lists all arguments to the current function.</span>
+    ListFunctionArgs(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, cfg <a href="api/index.html">api</a>.<a href="api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#Variable">Variable</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListRegisters lists registers and their values.</span>
+    ListRegisters(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>, includeFp <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (<a href="api/index.html">api</a>.<a href="api/index.html#Registers">Registers</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// ListGoroutines lists all goroutines.</span>
+    ListGoroutines() ([]*<a href="api/index.html">api</a>.<a href="api/index.html#Goroutine">Goroutine</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// Returns stacktrace</span>
+    Stacktrace(<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#int">int</a>, *<a href="api/index.html">api</a>.<a href="api/index.html#LoadConfig">LoadConfig</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#Stackframe">Stackframe</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// Returns whether we attached to a running process or not</span>
+    AttachedToExistingProcess() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Returns concrete location information described by a location expression</span>
+    <span class="comment">// loc ::= &lt;filename&gt;:&lt;line&gt; | &lt;function&gt;[:&lt;line&gt;] | /&lt;regex&gt;/ | (+|-)&lt;offset&gt; | &lt;line&gt; | *&lt;address&gt;</span>
+    <span class="comment">// * &lt;filename&gt; can be the full path of a file or just a suffix</span>
+    <span class="comment">// * &lt;function&gt; ::= &lt;package&gt;.&lt;receiver type&gt;.&lt;name&gt; | &lt;package&gt;.(*&lt;receiver type&gt;).&lt;name&gt; | &lt;receiver type&gt;.&lt;name&gt; | &lt;package&gt;.&lt;name&gt; | (*&lt;receiver type&gt;).&lt;name&gt; | &lt;name&gt;</span>
+    <span class="comment">// * &lt;function&gt; must be unambiguous</span>
+    <span class="comment">// * /&lt;regex&gt;/ will return a location for each function matched by regex</span>
+    <span class="comment">// * +&lt;offset&gt; returns a location for the line that is &lt;offset&gt; lines after the current line</span>
+    <span class="comment">// * -&lt;offset&gt; returns a location for the line that is &lt;offset&gt; lines before the current line</span>
+    <span class="comment">// * &lt;line&gt; returns a location for a line in the current file</span>
+    <span class="comment">// * *&lt;address&gt; returns the location corresponding to the specified address</span>
+    <span class="comment">// NOTE: this function does not actually set breakpoints.</span>
+    FindLocation(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, loc <a href="http://localhost:8081/pkg/builtin/#string">string</a>) ([]<a href="api/index.html">api</a>.<a href="api/index.html#Location">Location</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// Disassemble code between startPC and endPC</span>
+    DisassembleRange(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, startPC, endPC <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, flavour <a href="api/index.html">api</a>.<a href="api/index.html#AssemblyFlavour">AssemblyFlavour</a>) (<a href="api/index.html">api</a>.<a href="api/index.html#AsmInstructions">AsmInstructions</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Disassemble code of the function containing PC</span>
+    DisassemblePC(scope <a href="api/index.html">api</a>.<a href="api/index.html#EvalScope">EvalScope</a>, pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, flavour <a href="api/index.html">api</a>.<a href="api/index.html#AssemblyFlavour">AssemblyFlavour</a>) (<a href="api/index.html">api</a>.<a href="api/index.html#AsmInstructions">AsmInstructions</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// Recorded returns true if the target is a recording.</span>
+    Recorded() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+    <span class="comment">// TraceDirectory returns the path to the trace directory for a recording.</span>
+    TraceDirectory() (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// Checkpoint sets a checkpoint at the current position.</span>
+    Checkpoint(where <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (checkpointID <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ListCheckpoints gets all checkpoints.</span>
+    ListCheckpoints() ([]<a href="api/index.html">api</a>.<a href="api/index.html#Checkpoint">Checkpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+    <span class="comment">// ClearCheckpoint removes a checkpoint</span>
+    ClearCheckpoint(id <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Config">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/config.go?s=333:1224#L1">Config</a>
+				<a class="permalink" href="index.html#Config">&#xb6;</a>
+			</h2>
+			<p>
+Config provides the configuration to start a Debugger and expose it with a
+service.
+</p>
+<p>
+Only one of ProcessArgs or AttachPid should be specified. If ProcessArgs is
+provided, a new process will be launched. Otherwise, the debugger will try
+to attach to an existing process with AttachPid.
+</p>
+
+			<pre>type Config struct {
+<span id="Config.Listener"></span>    <span class="comment">// Listener is used to serve requests.</span>
+    Listener <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Listener">Listener</a>
+<span id="Config.ProcessArgs"></span>    <span class="comment">// ProcessArgs are the arguments to launch a new process.</span>
+    ProcessArgs []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="Config.WorkingDir"></span>    <span class="comment">// WorkingDir is working directory of the new process. This field is used</span>
+    <span class="comment">// only when launching a new process.</span>
+    WorkingDir <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="Config.AttachPid"></span>    <span class="comment">// AttachPid is the PID of an existing process to which the debugger should</span>
+    <span class="comment">// attach.</span>
+    AttachPid <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+<span id="Config.AcceptMulti"></span>    <span class="comment">// AcceptMulti configures the server to accept multiple connection.</span>
+    <span class="comment">// Note that the server API is not reentrant and clients will have to coordinate.</span>
+    AcceptMulti <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+<span id="Config.APIVersion"></span>    <span class="comment">// APIVersion selects which version of the API to serve (default: 1).</span>
+    APIVersion <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+<span id="Config.CoreFile"></span>    <span class="comment">// CoreFile specifies the path to the core dump to open.</span>
+    CoreFile <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+    <span class="comment">// Selects server backend.</span>
+<span id="Config.Backend"></span>    Backend <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="Config.DisconnectChan"></span>    <span class="comment">// DisconnectChan will be closed by the server when the client disconnects</span>
+    DisconnectChan chan&lt;- struct{}
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RPCCallback">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/rpccallback.go?s=94:160#L1">RPCCallback</a>
+				<a class="permalink" href="index.html#RPCCallback">&#xb6;</a>
+			</h2>
+			<p>
+RPCCallback is used by RPC methods to return their result asynchronously.
+</p>
+
+			<pre>type RPCCallback interface {
+    Return(out interface{}, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Server">type <a href="http://localhost:8081/src/github.com/derekparker/delve/service/server.go?s=85:141#L1">Server</a>
+				<a class="permalink" href="index.html#Server">&#xb6;</a>
+			</h2>
+			<p>
+Server represents a server for a remote client
+to connect to.
+</p>
+
+			<pre>type Server interface {
+    Run() <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+    Stop(<a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="../index.html">..</a></td>
+			</tr>
+			
+
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="api/index.html">api</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="debugger/index.html">debugger</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="rpc1/index.html">rpc1</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="rpc2/index.html">rpc2</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="rpccommon/index.html">rpccommon</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="test/index.html">test</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="test/cmd/index.html">cmd</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+		</table>
+	</div>
+
+
+	
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

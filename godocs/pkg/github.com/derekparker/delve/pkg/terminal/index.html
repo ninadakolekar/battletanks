@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>terminal - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package terminal
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/terminal"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package terminal implements functions for responding to user
+input and dispatching to appropriate backend commands.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="index.html#DisasmPrint">func DisasmPrint(dv api.AsmInstructions, out io.Writer)</a></dd>
+			
+				
+				<dd><a href="index.html#ShortenFilePath">func ShortenFilePath(fullPath string) string</a></dd>
+			
+			
+				
+				<dd><a href="index.html#ByFirstAlias">type ByFirstAlias</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByFirstAlias.Len">func (a ByFirstAlias) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByFirstAlias.Less">func (a ByFirstAlias) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByFirstAlias.Swap">func (a ByFirstAlias) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ByID">type ByID</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByID.Len">func (a ByID) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByID.Less">func (a ByID) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ByID.Swap">func (a ByID) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Commands">type Commands</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DebugCommands">func DebugCommands(client service.Client) *Commands</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.Call">func (c *Commands) Call(cmdstr string, t *Term) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.CallWithContext">func (c *Commands) CallWithContext(cmdstr string, t *Term, ctx callContext) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.Find">func (c *Commands) Find(cmdstr string, prefix cmdPrefix) cmdfunc</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.Merge">func (c *Commands) Merge(allAliases map[string][]string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.Register">func (c *Commands) Register(cmdstr string, cf cmdfunc, helpMsg string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Commands.WriteMarkdown">func (commands *Commands) WriteMarkdown(w io.Writer)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ExitRequestError">type ExitRequestError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ExitRequestError.Error">func (ere ExitRequestError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Term">type Term</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#New">func New(client service.Client, conf *config.Config) *Term</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Term.Close">func (t *Term) Close()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Term.Println">func (t *Term) Println(prefix, str string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Term.Run">func (t *Term) Run() (int, error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go">command.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/config.go">config.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/disasmprint.go">disasmprint.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/docgen.go">docgen.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go">terminal.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal_other.go">terminal_other.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="LongLoadConfig">LongLoadConfig</span>  = <a href="../../service/api/index.html">api</a>.<a href="../../service/api/index.html#LoadConfig">LoadConfig</a>{<a href="http://localhost:8081/pkg/builtin/#true">true</a>, 1, 64, 64, -1}
+    <span id="ShortLoadConfig">ShortLoadConfig</span> = <a href="../../service/api/index.html">api</a>.<a href="../../service/api/index.html#LoadConfig">LoadConfig</a>{<a href="http://localhost:8081/pkg/builtin/#false">false</a>, 0, 64, 0, 3}
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="DisasmPrint">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/disasmprint.go?s=132:187#L3">DisasmPrint</a>
+				<a class="permalink" href="index.html#DisasmPrint">&#xb6;</a>
+			</h2>
+			<pre>func DisasmPrint(dv <a href="../../service/api/index.html">api</a>.<a href="../../service/api/index.html#AsmInstructions">AsmInstructions</a>, out <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ShortenFilePath">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=42657:42701#L1588">ShortenFilePath</a>
+				<a class="permalink" href="index.html#ShortenFilePath">&#xb6;</a>
+			</h2>
+			<pre>func ShortenFilePath(fullPath <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+			<p>
+ShortenFilePath take a full file path and attempts to shorten
+it by replacing the current directory to &#39;./&#39;.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ByFirstAlias">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1440:1467#L65">ByFirstAlias</a>
+				<a class="permalink" href="index.html#ByFirstAlias">&#xb6;</a>
+			</h2>
+			
+			<pre>type ByFirstAlias []command</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ByFirstAlias.Len">func (ByFirstAlias) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1469:1500#L67">Len</a>
+					<a class="permalink" href="index.html#ByFirstAlias.Len">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByFirstAlias">ByFirstAlias</a>) Len() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ByFirstAlias.Less">func (ByFirstAlias) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1599:1640#L69">Less</a>
+					<a class="permalink" href="index.html#ByFirstAlias.Less">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByFirstAlias">ByFirstAlias</a>) Less(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ByFirstAlias.Swap">func (ByFirstAlias) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1529:1565#L68">Swap</a>
+					<a class="permalink" href="index.html#ByFirstAlias.Swap">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByFirstAlias">ByFirstAlias</a>) Swap(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ByID">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=25966:25993#L893">ByID</a>
+				<a class="permalink" href="index.html#ByID">&#xb6;</a>
+			</h2>
+			<p>
+ByID sorts breakpoints by ID.
+</p>
+
+			<pre>type ByID []*<a href="../../service/api/index.html">api</a>.<a href="../../service/api/index.html#Breakpoint">Breakpoint</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ByID.Len">func (ByID) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=25995:26018#L895">Len</a>
+					<a class="permalink" href="index.html#ByID.Len">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByID">ByID</a>) Len() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ByID.Less">func (ByID) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=26109:26142#L897">Less</a>
+					<a class="permalink" href="index.html#ByID.Less">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByID">ByID</a>) Less(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ByID.Swap">func (ByID) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=26047:26075#L896">Swap</a>
+					<a class="permalink" href="index.html#ByID.Swap">&#xb6;</a>
+				</h3>
+				<pre>func (a <a href="index.html#ByID">ByID</a>) Swap(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Commands">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1236:1320#L54">Commands</a>
+				<a class="permalink" href="index.html#Commands">&#xb6;</a>
+			</h2>
+			<p>
+Commands represents the commands for Delve terminal process.
+</p>
+
+			<pre>type Commands struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="DebugCommands">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=1761:1812#L72">DebugCommands</a>
+					<a class="permalink" href="index.html#DebugCommands">&#xb6;</a>
+				</h3>
+				<pre>func DebugCommands(client <a href="../../service/index.html">service</a>.<a href="../../service/index.html#Client">Client</a>) *<a href="index.html#Commands">Commands</a></pre>
+				<p>
+DebugCommands returns a Commands struct with default commands defined.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Commands.Call">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=12548:12601#L341">Call</a>
+					<a class="permalink" href="index.html#Commands.Call">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Commands">Commands</a>) Call(cmdstr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, t *<a href="index.html#Term">Term</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Commands.CallWithContext">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=12256:12337#L331">CallWithContext</a>
+					<a class="permalink" href="index.html#Commands.CallWithContext">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Commands">Commands</a>) CallWithContext(cmdstr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, t *<a href="index.html#Term">Term</a>, ctx callContext) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Commands.Find">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=11842:11906#L309">Find</a>
+					<a class="permalink" href="index.html#Commands.Find">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Commands">Commands</a>) Find(cmdstr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, prefix cmdPrefix) cmdfunc</pre>
+				<p>
+Find will look up the command function for the given command input.
+If it cannot find the command it will default to noCmdAvailable().
+If the command is an empty string it will replay the last command.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Commands.Merge">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=12830:12886#L347">Merge</a>
+					<a class="permalink" href="index.html#Commands.Merge">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Commands">Commands</a>) Merge(allAliases map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>][]<a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Merge takes aliases defined in the config struct and merges them with the default aliases.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Commands.Register">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=11380:11450#L295">Register</a>
+					<a class="permalink" href="index.html#Commands.Register">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Commands">Commands</a>) Register(cmdstr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, cf cmdfunc, helpMsg <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Register custom commands. Expects cf to be a func of type cmdfunc,
+returning only an error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Commands.WriteMarkdown">func (*Commands) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/docgen.go?s=495:547#L19">WriteMarkdown</a>
+					<a class="permalink" href="index.html#Commands.WriteMarkdown">&#xb6;</a>
+				</h3>
+				<pre>func (commands *<a href="index.html#Commands">Commands</a>) WriteMarkdown(w <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ExitRequestError">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=41396:41426#L1532">ExitRequestError</a>
+				<a class="permalink" href="index.html#ExitRequestError">&#xb6;</a>
+			</h2>
+			<p>
+ExitRequestError is returned when the user
+exits Delve.
+</p>
+
+			<pre>type ExitRequestError struct{}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ExitRequestError.Error">func (ExitRequestError) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/command.go?s=41428:41470#L1534">Error</a>
+					<a class="permalink" href="index.html#ExitRequestError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (ere <a href="index.html#ExitRequestError">ExitRequestError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Term">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go?s=446:628#L17">Term</a>
+				<a class="permalink" href="index.html#Term">&#xb6;</a>
+			</h2>
+			<p>
+Term represents the terminal running dlv.
+</p>
+
+			<pre>type Term struct {
+<span id="Term.InitFile"></span>    InitFile <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="New">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go?s=657:715#L29">New</a>
+					<a class="permalink" href="index.html#New">&#xb6;</a>
+				</h3>
+				<pre>func New(client <a href="../../service/index.html">service</a>.<a href="../../service/index.html#Client">Client</a>, conf *<a href="../config/index.html">config</a>.<a href="../config/index.html#Config">Config</a>) *<a href="index.html#Term">Term</a></pre>
+				<p>
+New returns a new Term.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Term.Close">func (*Term) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go?s=1161:1183#L56">Close</a>
+					<a class="permalink" href="index.html#Term.Close">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Term">Term</a>) Close()</pre>
+				<p>
+Close returns the terminal to its previous mode.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Term.Println">func (*Term) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go?s=3195:3237#L139">Println</a>
+					<a class="permalink" href="index.html#Term.Println">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Term">Term</a>) Println(prefix, str <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Println prints a line to the terminal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Term.Run">func (*Term) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/terminal/terminal.go?s=1248:1281#L61">Run</a>
+					<a class="permalink" href="index.html#Term.Run">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Term">Term</a>) Run() (<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Run begins running dlv in the terminal.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

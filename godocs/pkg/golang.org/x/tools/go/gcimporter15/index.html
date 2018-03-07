@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>gcimporter - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package gcimporter
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/tools/go/gcimporter15"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package gcimporter15 provides various functions for reading
+gc-generated object files that can be used to implement the
+Importer interface defined by the Go 1.5 standard library package.
+</p>
+<p>
+Deprecated: this package will be deleted in October 2017.
+New code should use golang.org/x/tools/go/gcexportdata.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="index.html#BExportData">func BExportData(fset *token.FileSet, pkg *types.Package) []byte</a></dd>
+			
+				
+				<dd><a href="index.html#BImportData">func BImportData(fset *token.FileSet, imports map[string]*types.Package, data []byte, path string) (_ int, pkg *types.Package, err error)</a></dd>
+			
+				
+				<dd><a href="index.html#FindExportData">func FindExportData(r *bufio.Reader) (hdr string, err error)</a></dd>
+			
+				
+				<dd><a href="index.html#FindPkg">func FindPkg(path, srcDir string) (filename, id string)</a></dd>
+			
+				
+				<dd><a href="index.html#Import">func Import(packages map[string]*types.Package, path, srcDir string) (pkg *types.Package, err error)</a></dd>
+			
+				
+				<dd><a href="index.html#ImportData">func ImportData(packages map[string]*types.Package, filename, id string, data io.Reader) (pkg *types.Package, err error)</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/bexport.go">bexport.go</a>
+			
+				<a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/bimport.go">bimport.go</a>
+			
+				<a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/exportdata.go">exportdata.go</a>
+			
+				<a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/gcimporter.go">gcimporter.go</a>
+			
+				<a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/isAlias18.go">isAlias18.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="BExportData">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/bexport.go?s=2768:2832#L71">BExportData</a>
+				<a class="permalink" href="index.html#BExportData">&#xb6;</a>
+			</h2>
+			<pre>func BExportData(fset *<a href="http://localhost:8081/pkg/go/token/">token</a>.<a href="http://localhost:8081/pkg/go/token/#FileSet">FileSet</a>, pkg *<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>) []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+			<p>
+BExportData returns binary export data for pkg.
+If no file set is provided, position info will be missing.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="BImportData">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/bimport.go?s=1406:1543#L44">BImportData</a>
+				<a class="permalink" href="index.html#BImportData">&#xb6;</a>
+			</h2>
+			<pre>func BImportData(fset *<a href="http://localhost:8081/pkg/go/token/">token</a>.<a href="http://localhost:8081/pkg/go/token/#FileSet">FileSet</a>, imports map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (_ <a href="http://localhost:8081/pkg/builtin/#int">int</a>, pkg *<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+BImportData imports a package from the serialized package data
+and returns the number of bytes consumed and a reference to the package.
+If the export data version is not recognized or the format is otherwise
+compromised, an error is returned.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindExportData">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/exportdata.go?s=1224:1284#L36">FindExportData</a>
+				<a class="permalink" href="index.html#FindExportData">&#xb6;</a>
+			</h2>
+			<pre>func FindExportData(r *<a href="http://localhost:8081/pkg/bufio/">bufio</a>.<a href="http://localhost:8081/pkg/bufio/#Reader">Reader</a>) (hdr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindExportData positions the reader r at the beginning of the
+export data section of an underlying GC-created object/archive
+file by reading from it. The reader must be positioned at the
+start of the file before calling this function. The hdr result
+is the string before the export data, either &#34;$$&#34; or &#34;$$B&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindPkg">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/gcimporter.go?s=1346:1401#L37">FindPkg</a>
+				<a class="permalink" href="index.html#FindPkg">&#xb6;</a>
+			</h2>
+			<pre>func FindPkg(path, srcDir <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (filename, id <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+			<p>
+FindPkg returns the filename and unique package id for an import
+path based on package information provided by build.Import (using
+the build.Default build.Context). A relative srcDir is interpreted
+relative to the current working directory.
+If no file was found, an empty filename is returned.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Import">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/gcimporter.go?s=3656:3756#L124">Import</a>
+				<a class="permalink" href="index.html#Import">&#xb6;</a>
+			</h2>
+			<pre>func Import(packages map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, path, srcDir <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (pkg *<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+Import imports a gc-generated package given its import path and srcDir, adds
+the corresponding package object to the packages map, and returns the object.
+The packages map must contain all packages already imported.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ImportData">func <a href="http://localhost:8081/src/golang.org/x/tools/go/gcimporter15/gcimporter.go?s=3017:3137#L100">ImportData</a>
+				<a class="permalink" href="index.html#ImportData">&#xb6;</a>
+			</h2>
+			<pre>func ImportData(packages map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, filename, id <a href="http://localhost:8081/pkg/builtin/#string">string</a>, data <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Reader">Reader</a>) (pkg *<a href="http://localhost:8081/pkg/go/types/">types</a>.<a href="http://localhost:8081/pkg/go/types/#Package">Package</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+ImportData imports a package by reading the gc-generated export data,
+adds the corresponding package object to the packages map indexed by id,
+and returns the object.
+</p>
+<p>
+The packages map must contains all packages already imported. The data
+reader position must be the beginning of the export data section. The
+filename is only used in error messages.
+</p>
+<p>
+If packages[id] contains the completely imported package, that package
+can be used directly, and there is no need to call this function (but
+there is also no harm but for extra time used).
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

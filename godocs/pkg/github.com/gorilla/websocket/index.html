@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>websocket - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package websocket
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/gorilla/websocket"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="index.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="index.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package websocket implements the WebSocket protocol defined in RFC 6455.
+</p>
+<h3 id="hdr-Overview">Overview</h3>
+<p>
+The Conn type represents a WebSocket connection. A server application calls
+the Upgrader.Upgrade method from an HTTP request handler to get a *Conn:
+</p>
+<pre>var upgrader = websocket.Upgrader{
+    ReadBufferSize:  1024,
+    WriteBufferSize: 1024,
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    conn, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Println(err)
+        return
+    }
+    ... Use conn to send and receive messages.
+}
+</pre>
+<p>
+Call the connection&#39;s WriteMessage and ReadMessage methods to send and
+receive messages as a slice of bytes. This snippet of code shows how to echo
+messages using these methods:
+</p>
+<pre>for {
+    messageType, p, err := conn.ReadMessage()
+    if err != nil {
+        log.Println(err)
+        return
+    }
+    if err := conn.WriteMessage(messageType, p); err != nil {
+        log.Println(err)
+        return
+    }
+}
+</pre>
+<p>
+In above snippet of code, p is a []byte and messageType is an int with value
+websocket.BinaryMessage or websocket.TextMessage.
+</p>
+<p>
+An application can also send and receive messages using the io.WriteCloser
+and io.Reader interfaces. To send a message, call the connection NextWriter
+method to get an io.WriteCloser, write the message to the writer and close
+the writer when done. To receive a message, call the connection NextReader
+method to get an io.Reader and read until io.EOF is returned. This snippet
+shows how to echo messages using the NextWriter and NextReader methods:
+</p>
+<pre>for {
+    messageType, r, err := conn.NextReader()
+    if err != nil {
+        return
+    }
+    w, err := conn.NextWriter(messageType)
+    if err != nil {
+        return err
+    }
+    if _, err := io.Copy(w, r); err != nil {
+        return err
+    }
+    if err := w.Close(); err != nil {
+        return err
+    }
+}
+</pre>
+<h3 id="hdr-Data_Messages">Data Messages</h3>
+<p>
+The WebSocket protocol distinguishes between text and binary data messages.
+Text messages are interpreted as UTF-8 encoded text. The interpretation of
+binary messages is left to the application.
+</p>
+<p>
+This package uses the TextMessage and BinaryMessage integer constants to
+identify the two data message types. The ReadMessage and NextReader methods
+return the type of the received message. The messageType argument to the
+WriteMessage and NextWriter methods specifies the type of a sent message.
+</p>
+<p>
+It is the application&#39;s responsibility to ensure that text messages are
+valid UTF-8 encoded text.
+</p>
+<h3 id="hdr-Control_Messages">Control Messages</h3>
+<p>
+The WebSocket protocol defines three types of control messages: close, ping
+and pong. Call the connection WriteControl, WriteMessage or NextWriter
+methods to send a control message to the peer.
+</p>
+<p>
+Connections handle received close messages by calling the handler function
+set with the SetCloseHandler method and by returning a *CloseError from the
+NextReader, ReadMessage or the message Read method. The default close
+handler sends a close message to the peer.
+</p>
+<p>
+Connections handle received ping messages by calling the handler function
+set with the SetPingHandler method. The default ping handler sends a pong
+message to the peer.
+</p>
+<p>
+Connections handle received pong messages by calling the handler function
+set with the SetPongHandler method. The default pong handler does nothing.
+If an application sends ping messages, then the application should set a
+pong handler to receive the corresponding pong.
+</p>
+<p>
+The control message handler functions are called from the NextReader,
+ReadMessage and message reader Read methods. The default close and ping
+handlers can block these methods for a short time when the handler writes to
+the connection.
+</p>
+<p>
+The application must read the connection to process close, ping and pong
+messages sent from the peer. If the application is not otherwise interested
+in messages from the peer, then the application should start a goroutine to
+read and discard messages from the peer. A simple example is:
+</p>
+<pre>func readLoop(c *websocket.Conn) {
+    for {
+        if _, _, err := c.NextReader(); err != nil {
+            c.Close()
+            break
+        }
+    }
+}
+</pre>
+<h3 id="hdr-Concurrency">Concurrency</h3>
+<p>
+Connections support one concurrent reader and one concurrent writer.
+</p>
+<p>
+Applications are responsible for ensuring that no more than one goroutine
+calls the write methods (NextWriter, SetWriteDeadline, WriteMessage,
+WriteJSON, EnableWriteCompression, SetCompressionLevel) concurrently and
+that no more than one goroutine calls the read methods (NextReader,
+SetReadDeadline, ReadMessage, ReadJSON, SetPongHandler, SetPingHandler)
+concurrently.
+</p>
+<p>
+The Close and WriteControl methods can be called concurrently with all other
+methods.
+</p>
+<h3 id="hdr-Origin_Considerations">Origin Considerations</h3>
+<p>
+Web browsers allow Javascript applications to open a WebSocket connection to
+any host. It&#39;s up to the server to enforce an origin policy using the Origin
+request header sent by the browser.
+</p>
+<p>
+The Upgrader calls the function specified in the CheckOrigin field to check
+the origin. If the CheckOrigin function returns false, then the Upgrade
+method fails the WebSocket handshake with HTTP status 403.
+</p>
+<p>
+If the CheckOrigin field is nil, then the Upgrader uses a safe default: fail
+the handshake if the Origin request header is present and the Origin host is
+not equal to the Host request header.
+</p>
+<p>
+The deprecated package-level Upgrade function does not perform origin
+checking. The application is responsible for checking the Origin header
+before calling the Upgrade function.
+</p>
+<h3 id="hdr-Compression_EXPERIMENTAL">Compression EXPERIMENTAL</h3>
+<p>
+Per message compression extensions (RFC 7692) are experimentally supported
+by this package in a limited capacity. Setting the EnableCompression option
+to true in Dialer or Upgrader will attempt to negotiate per message deflate
+support.
+</p>
+<pre>var upgrader = websocket.Upgrader{
+    EnableCompression: true,
+}
+</pre>
+<p>
+If compression was successfully negotiated with the connection&#39;s peer, any
+message received in compressed form will be automatically decompressed.
+All Read methods will return uncompressed bytes.
+</p>
+<p>
+Per message compression of messages written to a connection can be enabled
+or disabled by calling the corresponding Conn method:
+</p>
+<pre>conn.EnableWriteCompression(false)
+</pre>
+<p>
+Currently this package does not support compression with &#34;context takeover&#34;.
+This means that messages must be compressed and decompressed in isolation,
+without retaining sliding window or dictionary state across messages. For
+more details refer to RFC 7692.
+</p>
+<p>
+Use of compression is experimental and may result in decreased performance.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="index.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="index.html#FormatCloseMessage">func FormatCloseMessage(closeCode int, text string) []byte</a></dd>
+			
+				
+				<dd><a href="index.html#IsCloseError">func IsCloseError(err error, codes ...int) bool</a></dd>
+			
+				
+				<dd><a href="index.html#IsUnexpectedCloseError">func IsUnexpectedCloseError(err error, expectedCodes ...int) bool</a></dd>
+			
+				
+				<dd><a href="index.html#IsWebSocketUpgrade">func IsWebSocketUpgrade(r *http.Request) bool</a></dd>
+			
+				
+				<dd><a href="index.html#ReadJSON">func ReadJSON(c *Conn, v interface{}) error</a></dd>
+			
+				
+				<dd><a href="index.html#Subprotocols">func Subprotocols(r *http.Request) []string</a></dd>
+			
+				
+				<dd><a href="index.html#WriteJSON">func WriteJSON(c *Conn, v interface{}) error</a></dd>
+			
+			
+				
+				<dd><a href="index.html#CloseError">type CloseError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CloseError.Error">func (e *CloseError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Conn">type Conn</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewClient">func NewClient(netConn net.Conn, u *url.URL, requestHeader http.Header, readBufSize, writeBufSize int) (c *Conn, response *http.Response, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Upgrade">func Upgrade(w http.ResponseWriter, r *http.Request, responseHeader http.Header, readBufSize, writeBufSize int) (*Conn, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.Close">func (c *Conn) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.CloseHandler">func (c *Conn) CloseHandler() func(code int, text string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.EnableWriteCompression">func (c *Conn) EnableWriteCompression(enable bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.LocalAddr">func (c *Conn) LocalAddr() net.Addr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.NextReader">func (c *Conn) NextReader() (messageType int, r io.Reader, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.NextWriter">func (c *Conn) NextWriter(messageType int) (io.WriteCloser, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.PingHandler">func (c *Conn) PingHandler() func(appData string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.PongHandler">func (c *Conn) PongHandler() func(appData string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.ReadJSON">func (c *Conn) ReadJSON(v interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.ReadMessage">func (c *Conn) ReadMessage() (messageType int, p []byte, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.RemoteAddr">func (c *Conn) RemoteAddr() net.Addr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetCloseHandler">func (c *Conn) SetCloseHandler(h func(code int, text string) error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetCompressionLevel">func (c *Conn) SetCompressionLevel(level int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetPingHandler">func (c *Conn) SetPingHandler(h func(appData string) error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetPongHandler">func (c *Conn) SetPongHandler(h func(appData string) error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetReadDeadline">func (c *Conn) SetReadDeadline(t time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetReadLimit">func (c *Conn) SetReadLimit(limit int64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.SetWriteDeadline">func (c *Conn) SetWriteDeadline(t time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.Subprotocol">func (c *Conn) Subprotocol() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.UnderlyingConn">func (c *Conn) UnderlyingConn() net.Conn</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.WriteControl">func (c *Conn) WriteControl(messageType int, data []byte, deadline time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.WriteJSON">func (c *Conn) WriteJSON(v interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.WriteMessage">func (c *Conn) WriteMessage(messageType int, data []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Conn.WritePreparedMessage">func (c *Conn) WritePreparedMessage(pm *PreparedMessage) error</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Dialer">type Dialer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Dialer.Dial">func (d *Dialer) Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Response, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#HandshakeError">type HandshakeError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#HandshakeError.Error">func (e HandshakeError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#PreparedMessage">type PreparedMessage</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewPreparedMessage">func NewPreparedMessage(messageType int, data []byte) (*PreparedMessage, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Upgrader">type Upgrader</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Upgrader.Upgrade">func (u *Upgrader) Upgrade(w http.ResponseWriter, r *http.Request, responseHeader http.Header) (*Conn, error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<dl>
+			
+			<dd><a class="exampleLink" href="index.html#example_IsUnexpectedCloseError">IsUnexpectedCloseError</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/client.go">client.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/client_clone.go">client_clone.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/compression.go">compression.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go">conn.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/conn_read.go">conn_read.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/doc.go">doc.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/json.go">json.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/mask.go">mask.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/prepared.go">prepared.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/proxy.go">proxy.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go">server.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/util.go">util.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/gorilla/websocket/x_net_proxy.go">x_net_proxy.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Close codes defined in RFC 6455, section 11.7.
+</p>
+
+				<pre>const (
+    <span id="CloseNormalClosure">CloseNormalClosure</span>           = 1000
+    <span id="CloseGoingAway">CloseGoingAway</span>               = 1001
+    <span id="CloseProtocolError">CloseProtocolError</span>           = 1002
+    <span id="CloseUnsupportedData">CloseUnsupportedData</span>         = 1003
+    <span id="CloseNoStatusReceived">CloseNoStatusReceived</span>        = 1005
+    <span id="CloseAbnormalClosure">CloseAbnormalClosure</span>         = 1006
+    <span id="CloseInvalidFramePayloadData">CloseInvalidFramePayloadData</span> = 1007
+    <span id="ClosePolicyViolation">ClosePolicyViolation</span>         = 1008
+    <span id="CloseMessageTooBig">CloseMessageTooBig</span>           = 1009
+    <span id="CloseMandatoryExtension">CloseMandatoryExtension</span>      = 1010
+    <span id="CloseInternalServerErr">CloseInternalServerErr</span>       = 1011
+    <span id="CloseServiceRestart">CloseServiceRestart</span>          = 1012
+    <span id="CloseTryAgainLater">CloseTryAgainLater</span>           = 1013
+    <span id="CloseTLSHandshake">CloseTLSHandshake</span>            = 1015
+)</pre>
+			
+				<p>
+The message types are defined in RFC 6455, section 11.8.
+</p>
+
+				<pre>const (
+    <span class="comment">// TextMessage denotes a text data message. The text message payload is</span>
+    <span class="comment">// interpreted as UTF-8 encoded text data.</span>
+    <span id="TextMessage">TextMessage</span> = 1
+
+    <span class="comment">// BinaryMessage denotes a binary data message.</span>
+    <span id="BinaryMessage">BinaryMessage</span> = 2
+
+    <span class="comment">// CloseMessage denotes a close control message. The optional message</span>
+    <span class="comment">// payload contains a numeric code and text. Use the FormatCloseMessage</span>
+    <span class="comment">// function to format a close message payload.</span>
+    <span id="CloseMessage">CloseMessage</span> = 8
+
+    <span class="comment">// PingMessage denotes a ping control message. The optional message payload</span>
+    <span class="comment">// is UTF-8 encoded text.</span>
+    <span id="PingMessage">PingMessage</span> = 9
+
+    <span class="comment">// PongMessage denotes a pong control message. The optional message payload</span>
+    <span class="comment">// is UTF-8 encoded text.</span>
+    <span id="PongMessage">PongMessage</span> = 10
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+DefaultDialer is a dialer with all fields set to the default values.
+</p>
+
+				<pre>var <span id="DefaultDialer">DefaultDialer</span> = &amp;<a href="index.html#Dialer">Dialer</a>{
+    <a href="index.html#Dialer.Proxy">Proxy</a>: <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#ProxyFromEnvironment">ProxyFromEnvironment</a>,
+}</pre>
+			
+				<p>
+ErrBadHandshake is returned when the server response to opening handshake is
+invalid.
+</p>
+
+				<pre>var <span id="ErrBadHandshake">ErrBadHandshake</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;websocket: bad handshake&#34;)</pre>
+			
+				<p>
+ErrCloseSent is returned when the application writes a message to the
+connection after sending a close message.
+</p>
+
+				<pre>var <span id="ErrCloseSent">ErrCloseSent</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;websocket: close sent&#34;)</pre>
+			
+				<p>
+ErrReadLimit is returned when reading a message that is larger than the
+read limit set for the connection.
+</p>
+
+				<pre>var <span id="ErrReadLimit">ErrReadLimit</span> = <a href="http://localhost:8081/pkg/errors/">errors</a>.<a href="http://localhost:8081/pkg/errors/#New">New</a>(&#34;websocket: read limit exceeded&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="FormatCloseMessage">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=30589:30647#L1137">FormatCloseMessage</a>
+				<a class="permalink" href="index.html#FormatCloseMessage">&#xb6;</a>
+			</h2>
+			<pre>func FormatCloseMessage(closeCode <a href="http://localhost:8081/pkg/builtin/#int">int</a>, text <a href="http://localhost:8081/pkg/builtin/#string">string</a>) []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+			<p>
+FormatCloseMessage formats closeCode and text as a WebSocket close message.
+An empty message is returned for code CloseNoStatusReceived.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsCloseError">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=4108:4155#L140">IsCloseError</a>
+				<a class="permalink" href="index.html#IsCloseError">&#xb6;</a>
+			</h2>
+			<pre>func IsCloseError(err <a href="http://localhost:8081/pkg/builtin/#error">error</a>, codes ...<a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+IsCloseError returns boolean indicating whether the error is a *CloseError
+with one of the specified codes.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsUnexpectedCloseError">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=4432:4497#L153">IsUnexpectedCloseError</a>
+				<a class="permalink" href="index.html#IsUnexpectedCloseError">&#xb6;</a>
+			</h2>
+			<pre>func IsUnexpectedCloseError(err <a href="http://localhost:8081/pkg/builtin/#error">error</a>, expectedCodes ...<a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+IsUnexpectedCloseError returns boolean indicating whether the error is a
+*CloseError with a code not in the list of expected codes.
+</p>
+
+			<div id="example_IsUnexpectedCloseError" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		<p>The websocket.IsUnexpectedCloseError function is useful for identifying
+application and protocol errors.
+
+This server application works with a client application running in the
+browser. The client application does not explicitly close the websocket. The
+only expected close message from the client has the code
+websocket.CloseGoingAway. All other other close messages are likely the
+result of an application or protocol error and are logged to aid debugging.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+
+for {
+    messageType, p, err := c.ReadMessage()
+    if err != nil {
+        if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway) {
+            log.Printf(&#34;error: %v, user-agent: %v&#34;, err, req.Header.Get(&#34;User-Agent&#34;))
+        }
+        return
+    }
+    processMesage(messageType, p)
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="IsWebSocketUpgrade">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=9777:9822#L285">IsWebSocketUpgrade</a>
+				<a class="permalink" href="index.html#IsWebSocketUpgrade">&#xb6;</a>
+			</h2>
+			<pre>func IsWebSocketUpgrade(r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+IsWebSocketUpgrade returns true if the client requested upgrade to the
+WebSocket protocol.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadJSON">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/json.go?s=954:997#L30">ReadJSON</a>
+				<a class="permalink" href="index.html#ReadJSON">&#xb6;</a>
+			</h2>
+			<pre>func ReadJSON(c *<a href="index.html#Conn">Conn</a>, v interface{}) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+ReadJSON reads the next JSON-encoded message from the connection and stores
+it in the value pointed to by v.
+</p>
+<p>
+Deprecated: Use c.ReadJSON instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Subprotocols">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=9403:9446#L271">Subprotocols</a>
+				<a class="permalink" href="index.html#Subprotocols">&#xb6;</a>
+			</h2>
+			<pre>func Subprotocols(r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>) []<a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+			<p>
+Subprotocols returns the subprotocols requested by the client in the
+Sec-Websocket-Protocol header.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="WriteJSON">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/json.go?s=329:373#L5">WriteJSON</a>
+				<a class="permalink" href="index.html#WriteJSON">&#xb6;</a>
+			</h2>
+			<pre>func WriteJSON(c *<a href="index.html#Conn">Conn</a>, v interface{}) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+WriteJSON writes the JSON encoding of v as a message.
+</p>
+<p>
+Deprecated: Use c.WriteJSON instead.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="CloseError">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=2788:2924#L94">CloseError</a>
+				<a class="permalink" href="index.html#CloseError">&#xb6;</a>
+			</h2>
+			<p>
+CloseError represents a close message.
+</p>
+
+			<pre>type CloseError struct {
+<span id="CloseError.Code"></span>    <span class="comment">// Code is defined in RFC 6455, section 11.7.</span>
+    Code <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+<span id="CloseError.Text"></span>    <span class="comment">// Text is the optional text payload.</span>
+    Text <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CloseError.Error">func (*CloseError) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=2926:2961#L102">Error</a>
+					<a class="permalink" href="index.html#CloseError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (e *<a href="index.html#CloseError">CloseError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Conn">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=6420:7704#L217">Conn</a>
+				<a class="permalink" href="index.html#Conn">&#xb6;</a>
+			</h2>
+			<p>
+The Conn type represents a WebSocket connection.
+</p>
+
+			<pre>type Conn struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClient">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/client.go?s=1106:1254#L27">NewClient</a>
+					<a class="permalink" href="index.html#NewClient">&#xb6;</a>
+				</h3>
+				<pre>func NewClient(netConn <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Conn">Conn</a>, u *<a href="http://localhost:8081/pkg/net/url/">url</a>.<a href="http://localhost:8081/pkg/net/url/#URL">URL</a>, requestHeader <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Header">Header</a>, readBufSize, writeBufSize <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (c *<a href="index.html#Conn">Conn</a>, response *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Response">Response</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewClient creates a new client connection using the given net connection.
+The URL u specifies the host and request URI. Use requestHeader to specify
+the origin (Origin), subprotocols (Sec-WebSocket-Protocol) and cookies
+(Cookie). Use the response.Header to get the selected subprotocol
+(Sec-WebSocket-Protocol) and cookies (Set-Cookie).
+</p>
+<p>
+If the WebSocket handshake fails, ErrBadHandshake is returned along with a
+non-nil *http.Response so that callers can handle redirects, authentication,
+etc.
+</p>
+<p>
+Deprecated: Use Dialer instead.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Upgrade">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=8801:8927#L257">Upgrade</a>
+					<a class="permalink" href="index.html#Upgrade">&#xb6;</a>
+				</h3>
+				<pre>func Upgrade(w <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>, responseHeader <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Header">Header</a>, readBufSize, writeBufSize <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="index.html#Conn">Conn</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Upgrade upgrades the HTTP server connection to the WebSocket protocol.
+</p>
+<p>
+Deprecated: Use websocket.Upgrader instead.
+</p>
+<p>
+Upgrade does not perform origin checking. The application is responsible for
+checking the Origin header before calling Upgrade. An example implementation
+of the same origin policy check is:
+</p>
+<pre>if req.Header.Get(&#34;Origin&#34;) != &#34;http://&#34;+req.Host {
+	http.Error(w, &#34;Origin not allowed&#34;, 403)
+	return
+}
+</pre>
+<p>
+If the endpoint supports subprotocols, then the application is responsible
+for negotiating the protocol used on the connection. Use the Subprotocols()
+function to get the subprotocols requested by the client. Use the
+Sec-Websocket-Protocol response header to specify the subprotocol selected
+by the application.
+</p>
+<p>
+The responseHeader is included in the response to the client&#39;s upgrade
+request. Use the responseHeader to specify cookies (Set-Cookie) and the
+negotiated subprotocol (Sec-Websocket-Protocol).
+</p>
+<p>
+The connection buffers IO to the underlying network connection. The
+readBufSize and writeBufSize parameters specify the size of the buffers to
+use. Messages can be larger than the buffers.
+</p>
+<p>
+If the request is not a valid WebSocket handshake, then Upgrade returns an
+error of type HandshakeError. Applications should handle this error by
+replying to the client with an HTTP error response.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Conn.Close">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=9932:9960#L337">Close</a>
+					<a class="permalink" href="index.html#Conn.Close">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) Close() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Close closes the underlying network connection without sending or waiting
+for a close message.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.CloseHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=26742:26805#L1035">CloseHandler</a>
+					<a class="permalink" href="index.html#Conn.CloseHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) CloseHandler() func(code <a href="http://localhost:8081/pkg/builtin/#int">int</a>, text <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+CloseHandler returns the current close handler
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.EnableWriteCompression">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=29906:29956#L1119">EnableWriteCompression</a>
+					<a class="permalink" href="index.html#Conn.EnableWriteCompression">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) EnableWriteCompression(enable <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+EnableWriteCompression enables and disables write compression of
+subsequent text and binary messages. This function is a noop if
+compression was not negotiated with the peer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.LocalAddr">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=10037:10072#L342">LocalAddr</a>
+					<a class="permalink" href="index.html#Conn.LocalAddr">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) LocalAddr() <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Addr">Addr</a></pre>
+				<p>
+LocalAddr returns the local network address.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.NextReader">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=23686:23755#L919">NextReader</a>
+					<a class="permalink" href="index.html#Conn.NextReader">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) NextReader() (messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>, r <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Reader">Reader</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NextReader returns the next data message received from the peer. The
+returned messageType is either TextMessage or BinaryMessage.
+</p>
+<p>
+There can be at most one open reader on a connection. NextReader discards
+the previous message if the application has not already consumed it.
+</p>
+<p>
+Applications must break out of the application&#39;s read loop when this method
+returns a non-nil error value. Errors returned from this method are
+permanent. Once this method returns a non-nil error, all subsequent calls to
+this method return the same error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.NextWriter">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=13055:13121#L480">NextWriter</a>
+					<a class="permalink" href="index.html#Conn.NextWriter">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) NextWriter(messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (<a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#WriteCloser">WriteCloser</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NextWriter returns a writer for the next message to send. The writer&#39;s Close
+method flushes the complete message to the network.
+</p>
+<p>
+There can be at most one open writer on a connection. NextWriter closes the
+previous writer if the application has not already done so.
+</p>
+<p>
+All message types (TextMessage, BinaryMessage, CloseMessage, PingMessage and
+PongMessage) are supported.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.PingHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=27980:28035#L1065">PingHandler</a>
+					<a class="permalink" href="index.html#Conn.PingHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) PingHandler() func(appData <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+PingHandler returns the current ping handler
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.PongHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=28898:28953#L1092">PongHandler</a>
+					<a class="permalink" href="index.html#Conn.PongHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) PongHandler() func(appData <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+PongHandler returns the current pong handler
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.ReadJSON">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/json.go?s=1268:1312#L39">ReadJSON</a>
+					<a class="permalink" href="index.html#Conn.ReadJSON">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) ReadJSON(v interface{}) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ReadJSON reads the next JSON-encoded message from the connection and stores
+it in the value pointed to by v.
+</p>
+<p>
+See the documentation for the encoding/json Unmarshal function for details
+about the conversion of JSON to a Go value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.ReadMessage">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=25845:25912#L1009">ReadMessage</a>
+					<a class="permalink" href="index.html#Conn.ReadMessage">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) ReadMessage() (messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>, p []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ReadMessage is a helper method for getting a reader using NextReader and
+reading from that reader to a buffer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.RemoteAddr">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=10155:10191#L347">RemoteAddr</a>
+					<a class="permalink" href="index.html#Conn.RemoteAddr">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) RemoteAddr() <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Addr">Addr</a></pre>
+				<p>
+RemoteAddr returns the remote network address.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetCloseHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=27651:27718#L1053">SetCloseHandler</a>
+					<a class="permalink" href="index.html#Conn.SetCloseHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetCloseHandler(h func(code <a href="http://localhost:8081/pkg/builtin/#int">int</a>, text <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SetCloseHandler sets the handler for close messages received from the peer.
+The code argument to h is the received close code or CloseNoStatusReceived
+if the close message is empty. The default close handler sends a close
+message back to the peer.
+</p>
+<p>
+The handler function is called from the NextReader, ReadMessage and message
+reader Read methods. The application must read the connection to process
+close messages as described in the section on Control Messages above.
+</p>
+<p>
+The connection read methods return a CloseError when a close message is
+received. Most applications should handle close messages as part of their
+normal error handling. Applications should only set a close handler when the
+application must perform some action before sending a close message back to
+the peer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetCompressionLevel">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=30248:30299#L1127">SetCompressionLevel</a>
+					<a class="permalink" href="index.html#Conn.SetCompressionLevel">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetCompressionLevel(level <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SetCompressionLevel sets the flate compression level for subsequent text and
+binary messages. This function is a noop if compression was not negotiated
+with the peer. See the compress/flate package for a description of
+compression levels.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetPingHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=28490:28549#L1076">SetPingHandler</a>
+					<a class="permalink" href="index.html#Conn.SetPingHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetPingHandler(h func(appData <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SetPingHandler sets the handler for ping messages received from the peer.
+The appData argument to h is the PING message application data. The default
+ping handler sends a pong to the peer.
+</p>
+<p>
+The handler function is called from the NextReader, ReadMessage and message
+reader Read methods. The application must read the connection to process
+ping messages as described in the section on Control Messages above.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetPongHandler">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=29396:29455#L1103">SetPongHandler</a>
+					<a class="permalink" href="index.html#Conn.SetPongHandler">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetPongHandler(h func(appData <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SetPongHandler sets the handler for pong messages received from the peer.
+The appData argument to h is the PONG message application data. The default
+pong handler does nothing.
+</p>
+<p>
+The handler function is called from the NextReader, ReadMessage and message
+reader Read methods. The application must read the connection to process
+pong messages as described in the section on Control Messages above.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetReadDeadline">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=26332:26381#L1023">SetReadDeadline</a>
+					<a class="permalink" href="index.html#Conn.SetReadDeadline">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetReadDeadline(t <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SetReadDeadline sets the read deadline on the underlying network connection.
+After a read has timed out, the websocket connection state is corrupt and
+all future reads will return an error. A zero value for t means reads will
+not time out.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetReadLimit">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=26625:26665#L1030">SetReadLimit</a>
+					<a class="permalink" href="index.html#Conn.SetReadLimit">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetReadLimit(limit <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>)</pre>
+				<p>
+SetReadLimit sets the maximum size for a message read from the peer. If a
+message exceeds the limit, the connection sends a close message to the peer
+and returns ErrReadLimit to the application.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.SetWriteDeadline">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=19184:19234#L752">SetWriteDeadline</a>
+					<a class="permalink" href="index.html#Conn.SetWriteDeadline">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) SetWriteDeadline(t <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SetWriteDeadline sets the write deadline on the underlying network
+connection. After a write has timed out, the websocket state is corrupt and
+all future writes will return an error. A zero value for t means writes will
+not time out.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.Subprotocol">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=9768:9803#L331">Subprotocol</a>
+					<a class="permalink" href="index.html#Conn.Subprotocol">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) Subprotocol() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				<p>
+Subprotocol returns the negotiated protocol for the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.UnderlyingConn">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=29661:29701#L1112">UnderlyingConn</a>
+					<a class="permalink" href="index.html#Conn.UnderlyingConn">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) UnderlyingConn() <a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Conn">Conn</a></pre>
+				<p>
+UnderlyingConn returns the internal net.Conn. This can be used to further
+modifications to connection specific flags.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.WriteControl">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=11032:11115#L392">WriteControl</a>
+					<a class="permalink" href="index.html#Conn.WriteControl">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) WriteControl(messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, deadline <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Time">Time</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+WriteControl writes a control message with the given deadline. The allowed
+message types are CloseMessage, PingMessage and PongMessage.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.WriteJSON">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/json.go?s=571:616#L13">WriteJSON</a>
+					<a class="permalink" href="index.html#Conn.WriteJSON">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) WriteJSON(v interface{}) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+WriteJSON writes the JSON encoding of v as a message.
+</p>
+<p>
+See the documentation for encoding/json Marshal for details about the
+conversion of Go values to JSON.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.WriteMessage">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=18332:18395#L723">WriteMessage</a>
+					<a class="permalink" href="index.html#Conn.WriteMessage">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) WriteMessage(messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+WriteMessage is a helper method for getting a writer using NextWriter,
+writing the message and closing the writer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Conn.WritePreparedMessage">func (*Conn) <a href="http://localhost:8081/src/github.com/gorilla/websocket/conn.go?s=17619:17681#L700">WritePreparedMessage</a>
+					<a class="permalink" href="index.html#Conn.WritePreparedMessage">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Conn">Conn</a>) WritePreparedMessage(pm *<a href="index.html#PreparedMessage">PreparedMessage</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+WritePreparedMessage writes prepared message into connection.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Dialer">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/client.go?s=1531:3027#L39">Dialer</a>
+				<a class="permalink" href="index.html#Dialer">&#xb6;</a>
+			</h2>
+			<p>
+A Dialer contains options for connecting to WebSocket server.
+</p>
+
+			<pre>type Dialer struct {
+<span id="Dialer.NetDial"></span>    <span class="comment">// NetDial specifies the dial function for creating TCP connections. If</span>
+    <span class="comment">// NetDial is nil, net.Dial is used.</span>
+    NetDial func(network, addr <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (<a href="http://localhost:8081/pkg/net/">net</a>.<a href="http://localhost:8081/pkg/net/#Conn">Conn</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+<span id="Dialer.Proxy"></span>    <span class="comment">// Proxy specifies a function to return a proxy for a given</span>
+    <span class="comment">// Request. If the function returns a non-nil error, the</span>
+    <span class="comment">// request is aborted with the provided error.</span>
+    <span class="comment">// If Proxy is nil or returns a nil *URL, no proxy is used.</span>
+    Proxy func(*<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>) (*<a href="http://localhost:8081/pkg/net/url/">url</a>.<a href="http://localhost:8081/pkg/net/url/#URL">URL</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+<span id="Dialer.TLSClientConfig"></span>    <span class="comment">// TLSClientConfig specifies the TLS configuration to use with tls.Client.</span>
+    <span class="comment">// If nil, the default configuration is used.</span>
+    TLSClientConfig *<a href="http://localhost:8081/pkg/crypto/tls/">tls</a>.<a href="http://localhost:8081/pkg/crypto/tls/#Config">Config</a>
+
+<span id="Dialer.HandshakeTimeout"></span>    <span class="comment">// HandshakeTimeout specifies the duration for the handshake to complete.</span>
+    HandshakeTimeout <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Duration">Duration</a>
+
+<span id="Dialer.ReadBufferSize"></span>    <span class="comment">// ReadBufferSize and WriteBufferSize specify I/O buffer sizes. If a buffer</span>
+    <span class="comment">// size is zero, then a useful default size is used. The I/O buffer sizes</span>
+    <span class="comment">// do not limit the size of the messages that can be sent or received.</span>
+    ReadBufferSize, WriteBufferSize <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+<span id="Dialer.Subprotocols"></span>    <span class="comment">// Subprotocols specifies the client&#39;s requested subprotocols.</span>
+    Subprotocols []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="Dialer.EnableCompression"></span>    <span class="comment">// EnableCompression specifies if the client should attempt to negotiate</span>
+    <span class="comment">// per message compression (RFC 7692). Setting this value to true does not</span>
+    <span class="comment">// guarantee that compression will be supported. Currently only &#34;no context</span>
+    <span class="comment">// takeover&#34; modes are supported.</span>
+    EnableCompression <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+
+<span id="Dialer.Jar"></span>    <span class="comment">// Jar specifies the cookie jar.</span>
+    <span class="comment">// If Jar is nil, cookies are not sent in requests and ignored</span>
+    <span class="comment">// in responses.</span>
+    Jar <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#CookieJar">CookieJar</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Dialer.Dial">func (*Dialer) <a href="http://localhost:8081/src/github.com/gorilla/websocket/client.go?s=4165:4259#L111">Dial</a>
+					<a class="permalink" href="index.html#Dialer.Dial">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#Dialer">Dialer</a>) Dial(urlStr <a href="http://localhost:8081/pkg/builtin/#string">string</a>, requestHeader <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Header">Header</a>) (*<a href="index.html#Conn">Conn</a>, *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Response">Response</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Dial creates a new client connection. Use requestHeader to specify the
+origin (Origin), subprotocols (Sec-WebSocket-Protocol) and cookies (Cookie).
+Use the response.Header to get the selected subprotocol
+(Sec-WebSocket-Protocol) and cookies (Set-Cookie).
+</p>
+<p>
+If the WebSocket handshake fails, ErrBadHandshake is returned along with a
+non-nil *http.Response so that callers can handle redirects, authentication,
+etcetera. The response body may not contain the entire response and does not
+need to be closed by the application.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HandshakeError">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=345:391#L8">HandshakeError</a>
+				<a class="permalink" href="index.html#HandshakeError">&#xb6;</a>
+			</h2>
+			<p>
+HandshakeError describes an error with the handshake from the peer.
+</p>
+
+			<pre>type HandshakeError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="HandshakeError.Error">func (HandshakeError) <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=393:431#L12">Error</a>
+					<a class="permalink" href="index.html#HandshakeError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (e <a href="index.html#HandshakeError">HandshakeError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PreparedMessage">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/prepared.go?s=591:745#L9">PreparedMessage</a>
+				<a class="permalink" href="index.html#PreparedMessage">&#xb6;</a>
+			</h2>
+			<p>
+PreparedMessage caches on the wire representations of a message payload.
+Use PreparedMessage to efficiently send a message payload to multiple
+connections. PreparedMessage is especially useful when compression is used
+because the CPU and memory expensive compression operation can be executed
+once for a given set of compression options.
+</p>
+
+			<pre>type PreparedMessage struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewPreparedMessage">func <a href="http://localhost:8081/src/github.com/gorilla/websocket/prepared.go?s=1293:1372#L34">NewPreparedMessage</a>
+					<a class="permalink" href="index.html#NewPreparedMessage">&#xb6;</a>
+				</h3>
+				<pre>func NewPreparedMessage(messageType <a href="http://localhost:8081/pkg/builtin/#int">int</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (*<a href="index.html#PreparedMessage">PreparedMessage</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewPreparedMessage returns an initialized PreparedMessage. You can then send
+it to connection using WritePreparedMessage method. Valid wire
+representation will be calculated lazily only once for a set of current
+connection options.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Upgrader">type <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=550:2154#L16">Upgrader</a>
+				<a class="permalink" href="index.html#Upgrader">&#xb6;</a>
+			</h2>
+			<p>
+Upgrader specifies parameters for upgrading an HTTP connection to a
+WebSocket connection.
+</p>
+
+			<pre>type Upgrader struct {
+<span id="Upgrader.HandshakeTimeout"></span>    <span class="comment">// HandshakeTimeout specifies the duration for the handshake to complete.</span>
+    HandshakeTimeout <a href="http://localhost:8081/pkg/time/">time</a>.<a href="http://localhost:8081/pkg/time/#Duration">Duration</a>
+
+<span id="Upgrader.ReadBufferSize"></span>    <span class="comment">// ReadBufferSize and WriteBufferSize specify I/O buffer sizes. If a buffer</span>
+    <span class="comment">// size is zero, then buffers allocated by the HTTP server are used. The</span>
+    <span class="comment">// I/O buffer sizes do not limit the size of the messages that can be sent</span>
+    <span class="comment">// or received.</span>
+    ReadBufferSize, WriteBufferSize <a href="http://localhost:8081/pkg/builtin/#int">int</a>
+
+<span id="Upgrader.Subprotocols"></span>    <span class="comment">// Subprotocols specifies the server&#39;s supported protocols in order of</span>
+    <span class="comment">// preference. If this field is set, then the Upgrade method negotiates a</span>
+    <span class="comment">// subprotocol by selecting the first match in this list with a protocol</span>
+    <span class="comment">// requested by the client.</span>
+    Subprotocols []<a href="http://localhost:8081/pkg/builtin/#string">string</a>
+
+<span id="Upgrader.Error"></span>    <span class="comment">// Error specifies the function for generating HTTP error responses. If Error</span>
+    <span class="comment">// is nil, then http.Error is used to generate the HTTP response.</span>
+    Error func(w <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>, status <a href="http://localhost:8081/pkg/builtin/#int">int</a>, reason <a href="http://localhost:8081/pkg/builtin/#error">error</a>)
+
+<span id="Upgrader.CheckOrigin"></span>    <span class="comment">// CheckOrigin returns true if the request Origin header is acceptable. If</span>
+    <span class="comment">// CheckOrigin is nil, then a safe default is used: return false if the</span>
+    <span class="comment">// Origin request header is present and the origin host is not equal to</span>
+    <span class="comment">// request Host header.</span>
+    <span class="comment">//</span>
+    <span class="comment">// A CheckOrigin function should carefully validate the request origin to</span>
+    <span class="comment">// prevent cross-site request forgery.</span>
+    CheckOrigin func(r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+
+<span id="Upgrader.EnableCompression"></span>    <span class="comment">// EnableCompression specify if the server should attempt to negotiate per</span>
+    <span class="comment">// message compression (RFC 7692). Setting this value to true does not</span>
+    <span class="comment">// guarantee that compression will be supported. Currently only &#34;no context</span>
+    <span class="comment">// takeover&#34; modes are supported.</span>
+    EnableCompression <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Upgrader.Upgrade">func (*Upgrader) <a href="http://localhost:8081/src/github.com/gorilla/websocket/server.go?s=3629:3738#L100">Upgrade</a>
+					<a class="permalink" href="index.html#Upgrader.Upgrade">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="index.html#Upgrader">Upgrader</a>) Upgrade(w <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Request">Request</a>, responseHeader <a href="http://localhost:8081/pkg/net/http/">http</a>.<a href="http://localhost:8081/pkg/net/http/#Header">Header</a>) (*<a href="index.html#Conn">Conn</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Upgrade upgrades the HTTP server connection to the WebSocket protocol.
+</p>
+<p>
+The responseHeader is included in the response to the client&#39;s upgrade
+request. Use the responseHeader to specify cookies (Set-Cookie) and the
+application negotiated subprotocol (Sec-Websocket-Protocol).
+</p>
+<p>
+If the upgrade fails, then Upgrade replies to the client with an HTTP error
+response.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="../index.html">..</a></td>
+			</tr>
+			
+
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="examples/index.html">examples</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="examples/autobahn/index.html">autobahn</a>
+						</td>
+						<td class="pkg-synopsis">
+							Command server is a test server for the Autobahn WebSockets Test Suite.
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="examples/chat/index.html">chat</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="examples/command/index.html">command</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="examples/echo/index.html">echo</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 20px;">
+							<a href="examples/filewatch/index.html">filewatch</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+		</table>
+	</div>
+
+
+	
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

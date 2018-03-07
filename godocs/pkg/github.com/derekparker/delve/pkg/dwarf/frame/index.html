@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>frame - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package frame
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/frame"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package frame contains data structures and
+related functions for parsing and searching
+through Dwarf .debug_frame data.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="index.html#DwarfEndian">func DwarfEndian(infoSec []byte) binary.ByteOrder</a></dd>
+			
+			
+				
+				<dd><a href="index.html#CommonInformationEntry">type CommonInformationEntry</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DWRule">type DWRule</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FrameContext">type FrameContext</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameContext.ExecuteDwarfProgram">func (frame *FrameContext) ExecuteDwarfProgram()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameContext.ExecuteUntilPC">func (frame *FrameContext) ExecuteUntilPC(instructions []byte)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FrameDescriptionEntries">type FrameDescriptionEntries</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewFrameIndex">func NewFrameIndex() FrameDescriptionEntries</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Parse">func Parse(data []byte, order binary.ByteOrder) FrameDescriptionEntries</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntries.FDEForPC">func (fdes FrameDescriptionEntries) FDEForPC(pc uint64) (*FrameDescriptionEntry, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FrameDescriptionEntry">type FrameDescriptionEntry</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntry.Begin">func (fde *FrameDescriptionEntry) Begin() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntry.Cover">func (fde *FrameDescriptionEntry) Cover(addr uint64) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntry.End">func (fde *FrameDescriptionEntry) End() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntry.EstablishFrame">func (fde *FrameDescriptionEntry) EstablishFrame(pc uint64) *FrameContext</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FrameDescriptionEntry.LessThan">func (frame *FrameDescriptionEntry) LessThan(pc uint64) bool</a></dd>
+				
+			
+				
+				<dd><a href="index.html#NoFDEForPCError">type NoFDEForPCError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NoFDEForPCError.Error">func (err *NoFDEForPCError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Rule">type Rule</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go">entries.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/expression_constants.go">expression_constants.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/parser.go">parser.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go">table.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Operation opcodes
+</p>
+
+				<pre>const (
+    <span id="DW_OP_addr">DW_OP_addr</span>    = 0x03
+    <span id="DW_OP_const1s">DW_OP_const1s</span> = 0x09
+)</pre>
+			
+				
+				<pre>const (
+    <span id="DW_OP_const2u">DW_OP_const2u</span> = 0x0a
+    <span id="DW_OP_const2s">DW_OP_const2s</span> = 0x0b
+    <span id="DW_OP_const4u">DW_OP_const4u</span> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="DW_OP_const4s">DW_OP_const4s</span>
+    <span id="DW_OP_const8u">DW_OP_const8u</span>
+    <span id="DW_OP_const8s">DW_OP_const8s</span>
+    <span id="DW_OP_constu">DW_OP_constu</span>
+    <span id="DW_OP_consts">DW_OP_consts</span>
+    <span id="DW_OP_dup">DW_OP_dup</span>
+    <span id="DW_OP_drop">DW_OP_drop</span>
+    <span id="DW_OP_over">DW_OP_over</span>
+    <span id="DW_OP_pick">DW_OP_pick</span>
+    <span id="DW_OP_swap">DW_OP_swap</span>
+    <span id="DW_OP_rot">DW_OP_rot</span>
+    <span id="DW_OP_xderef">DW_OP_xderef</span>
+    <span id="DW_OP_abs">DW_OP_abs</span>
+    <span id="DW_OP_and">DW_OP_and</span>
+    <span id="DW_OP_div">DW_OP_div</span>
+    <span id="DW_OP_minus">DW_OP_minus</span>
+    <span id="DW_OP_mod">DW_OP_mod</span>
+    <span id="DW_OP_mul">DW_OP_mul</span>
+    <span id="DW_OP_neg">DW_OP_neg</span>
+    <span id="DW_OP_not">DW_OP_not</span>
+    <span id="DW_OP_or">DW_OP_or</span>
+    <span id="DW_OP_plus">DW_OP_plus</span>
+    <span id="DW_OP_plus_uconst">DW_OP_plus_uconst</span>
+    <span id="DW_OP_shl">DW_OP_shl</span>
+    <span id="DW_OP_shr">DW_OP_shr</span>
+    <span id="DW_OP_shra">DW_OP_shra</span>
+    <span id="DW_OP_xor">DW_OP_xor</span>
+    <span id="DW_OP_skip">DW_OP_skip</span>
+    <span id="DW_OP_bra">DW_OP_bra</span>
+    <span id="DW_OP_eq">DW_OP_eq</span>
+    <span id="DW_OP_ge">DW_OP_ge</span>
+    <span id="DW_OP_gt">DW_OP_gt</span>
+    <span id="DW_OP_le">DW_OP_le</span>
+    <span id="DW_OP_lt">DW_OP_lt</span>
+    <span id="DW_OP_ne">DW_OP_ne</span>
+)</pre>
+			
+				
+				<pre>const (
+    <span id="DW_OP_lit0">DW_OP_lit0</span> = 0x30
+    <span id="DW_OP_lit1">DW_OP_lit1</span> = 0x31
+    <span id="DW_OP_lit2">DW_OP_lit2</span> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="DW_OP_lit3">DW_OP_lit3</span>
+    <span id="DW_OP_lit4">DW_OP_lit4</span>
+    <span id="DW_OP_lit5">DW_OP_lit5</span>
+    <span id="DW_OP_lit6">DW_OP_lit6</span>
+    <span id="DW_OP_lit7">DW_OP_lit7</span>
+    <span id="DW_OP_lit8">DW_OP_lit8</span>
+    <span id="DW_OP_lit9">DW_OP_lit9</span>
+    <span id="DW_OP_lit10">DW_OP_lit10</span>
+    <span id="DW_OP_lit11">DW_OP_lit11</span>
+    <span id="DW_OP_lit12">DW_OP_lit12</span>
+    <span id="DW_OP_lit13">DW_OP_lit13</span>
+    <span id="DW_OP_lit14">DW_OP_lit14</span>
+    <span id="DW_OP_lit15">DW_OP_lit15</span>
+    <span id="DW_OP_lit16">DW_OP_lit16</span>
+    <span id="DW_OP_lit17">DW_OP_lit17</span>
+    <span id="DW_OP_lit18">DW_OP_lit18</span>
+    <span id="DW_OP_lit19">DW_OP_lit19</span>
+    <span id="DW_OP_lit20">DW_OP_lit20</span>
+    <span id="DW_OP_lit21">DW_OP_lit21</span>
+    <span id="DW_OP_lit22">DW_OP_lit22</span>
+    <span id="DW_OP_lit23">DW_OP_lit23</span>
+    <span id="DW_OP_lit24">DW_OP_lit24</span>
+    <span id="DW_OP_lit25">DW_OP_lit25</span>
+    <span id="DW_OP_lit26">DW_OP_lit26</span>
+    <span id="DW_OP_lit27">DW_OP_lit27</span>
+    <span id="DW_OP_lit28">DW_OP_lit28</span>
+    <span id="DW_OP_lit29">DW_OP_lit29</span>
+    <span id="DW_OP_lit30">DW_OP_lit30</span>
+    <span id="DW_OP_lit31">DW_OP_lit31</span>
+    <span id="DW_OP_reg0">DW_OP_reg0</span>
+    <span id="DW_OP_reg1">DW_OP_reg1</span>
+    <span id="DW_OP_reg2">DW_OP_reg2</span>
+    <span id="DW_OP_reg3">DW_OP_reg3</span>
+    <span id="DW_OP_reg4">DW_OP_reg4</span>
+    <span id="DW_OP_reg5">DW_OP_reg5</span>
+    <span id="DW_OP_reg6">DW_OP_reg6</span>
+    <span id="DW_OP_reg7">DW_OP_reg7</span>
+    <span id="DW_OP_reg8">DW_OP_reg8</span>
+    <span id="DW_OP_reg9">DW_OP_reg9</span>
+    <span id="DW_OP_reg10">DW_OP_reg10</span>
+    <span id="DW_OP_reg11">DW_OP_reg11</span>
+    <span id="DW_OP_reg12">DW_OP_reg12</span>
+    <span id="DW_OP_reg13">DW_OP_reg13</span>
+    <span id="DW_OP_reg14">DW_OP_reg14</span>
+    <span id="DW_OP_reg15">DW_OP_reg15</span>
+    <span id="DW_OP_reg16">DW_OP_reg16</span>
+    <span id="DW_OP_reg17">DW_OP_reg17</span>
+    <span id="DW_OP_reg18">DW_OP_reg18</span>
+    <span id="DW_OP_reg19">DW_OP_reg19</span>
+    <span id="DW_OP_reg20">DW_OP_reg20</span>
+    <span id="DW_OP_reg21">DW_OP_reg21</span>
+    <span id="DW_OP_reg22">DW_OP_reg22</span>
+    <span id="DW_OP_reg23">DW_OP_reg23</span>
+    <span id="DW_OP_reg24">DW_OP_reg24</span>
+    <span id="DW_OP_reg25">DW_OP_reg25</span>
+    <span id="DW_OP_reg26">DW_OP_reg26</span>
+    <span id="DW_OP_reg27">DW_OP_reg27</span>
+    <span id="DW_OP_reg28">DW_OP_reg28</span>
+    <span id="DW_OP_reg29">DW_OP_reg29</span>
+    <span id="DW_OP_reg30">DW_OP_reg30</span>
+    <span id="DW_OP_reg31">DW_OP_reg31</span>
+    <span id="DW_OP_breg0">DW_OP_breg0</span>
+    <span id="DW_OP_breg1">DW_OP_breg1</span>
+    <span id="DW_OP_breg2">DW_OP_breg2</span>
+    <span id="DW_OP_breg3">DW_OP_breg3</span>
+    <span id="DW_OP_breg4">DW_OP_breg4</span>
+    <span id="DW_OP_breg5">DW_OP_breg5</span>
+    <span id="DW_OP_breg6">DW_OP_breg6</span>
+    <span id="DW_OP_breg7">DW_OP_breg7</span>
+    <span id="DW_OP_breg8">DW_OP_breg8</span>
+    <span id="DW_OP_breg9">DW_OP_breg9</span>
+    <span id="DW_OP_breg10">DW_OP_breg10</span>
+    <span id="DW_OP_breg11">DW_OP_breg11</span>
+    <span id="DW_OP_breg12">DW_OP_breg12</span>
+    <span id="DW_OP_breg13">DW_OP_breg13</span>
+    <span id="DW_OP_breg14">DW_OP_breg14</span>
+    <span id="DW_OP_breg15">DW_OP_breg15</span>
+    <span id="DW_OP_breg16">DW_OP_breg16</span>
+    <span id="DW_OP_breg17">DW_OP_breg17</span>
+    <span id="DW_OP_breg18">DW_OP_breg18</span>
+    <span id="DW_OP_breg19">DW_OP_breg19</span>
+    <span id="DW_OP_breg20">DW_OP_breg20</span>
+    <span id="DW_OP_breg21">DW_OP_breg21</span>
+    <span id="DW_OP_breg22">DW_OP_breg22</span>
+    <span id="DW_OP_breg23">DW_OP_breg23</span>
+    <span id="DW_OP_breg24">DW_OP_breg24</span>
+    <span id="DW_OP_breg25">DW_OP_breg25</span>
+    <span id="DW_OP_breg26">DW_OP_breg26</span>
+    <span id="DW_OP_breg27">DW_OP_breg27</span>
+    <span id="DW_OP_breg28">DW_OP_breg28</span>
+    <span id="DW_OP_breg29">DW_OP_breg29</span>
+    <span id="DW_OP_breg30">DW_OP_breg30</span>
+    <span id="DW_OP_breg31">DW_OP_breg31</span>
+    <span id="DW_OP_regx">DW_OP_regx</span>
+    <span id="DW_OP_fbreg">DW_OP_fbreg</span>
+    <span id="DW_OP_bregx">DW_OP_bregx</span>
+    <span id="DW_OP_piece">DW_OP_piece</span>
+    <span id="DW_OP_deref_size">DW_OP_deref_size</span>
+    <span id="DW_OP_xderef_size">DW_OP_xderef_size</span>
+    <span id="DW_OP_nop">DW_OP_nop</span>
+    <span id="DW_OP_push_object_address">DW_OP_push_object_address</span>
+    <span id="DW_OP_call2">DW_OP_call2</span>
+    <span id="DW_OP_call4">DW_OP_call4</span>
+    <span id="DW_OP_call_ref">DW_OP_call_ref</span>
+    <span id="DW_OP_form_tls_address">DW_OP_form_tls_address</span>
+    <span id="DW_OP_call_frame_cfa">DW_OP_call_frame_cfa</span>
+    <span id="DW_OP_bit_piece">DW_OP_bit_piece</span>
+
+    <span id="DW_OP_lo_user">DW_OP_lo_user</span> = 0xe0
+    <span id="DW_OP_hi_user">DW_OP_hi_user</span> = 0xff
+)</pre>
+			
+				<p>
+Instructions used to recreate the table from the .debug_frame data.
+</p>
+
+				<pre>const (
+    <span id="DW_CFA_nop">DW_CFA_nop</span>                = 0x0        <span class="comment">// No ops</span>
+    <span id="DW_CFA_set_loc">DW_CFA_set_loc</span>            = 0x01       <span class="comment">// op1: address</span>
+    <span id="DW_CFA_advance_loc1">DW_CFA_advance_loc1</span>       = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>       <span class="comment">// op1: 1-bytes delta</span>
+    <span id="DW_CFA_advance_loc2">DW_CFA_advance_loc2</span>                    <span class="comment">// op1: 2-byte delta</span>
+    <span id="DW_CFA_advance_loc4">DW_CFA_advance_loc4</span>                    <span class="comment">// op1: 4-byte delta</span>
+    <span id="DW_CFA_offset_extended">DW_CFA_offset_extended</span>                 <span class="comment">// op1: ULEB128 register, op2: ULEB128 offset</span>
+    <span id="DW_CFA_restore_extended">DW_CFA_restore_extended</span>                <span class="comment">// op1: ULEB128 register</span>
+    <span id="DW_CFA_undefined">DW_CFA_undefined</span>                       <span class="comment">// op1: ULEB128 register</span>
+    <span id="DW_CFA_same_value">DW_CFA_same_value</span>                      <span class="comment">// op1: ULEB128 register</span>
+    <span id="DW_CFA_register">DW_CFA_register</span>                        <span class="comment">// op1: ULEB128 register, op2: ULEB128 register</span>
+    <span id="DW_CFA_remember_state">DW_CFA_remember_state</span>                  <span class="comment">// No ops</span>
+    <span id="DW_CFA_restore_state">DW_CFA_restore_state</span>                   <span class="comment">// No ops</span>
+    <span id="DW_CFA_def_cfa">DW_CFA_def_cfa</span>                         <span class="comment">// op1: ULEB128 register, op2: ULEB128 offset</span>
+    <span id="DW_CFA_def_cfa_register">DW_CFA_def_cfa_register</span>                <span class="comment">// op1: ULEB128 register</span>
+    <span id="DW_CFA_def_cfa_offset">DW_CFA_def_cfa_offset</span>                  <span class="comment">// op1: ULEB128 offset</span>
+    <span id="DW_CFA_def_cfa_expression">DW_CFA_def_cfa_expression</span>              <span class="comment">// op1: BLOCK</span>
+    <span id="DW_CFA_expression">DW_CFA_expression</span>                      <span class="comment">// op1: ULEB128 register, op2: BLOCK</span>
+    <span id="DW_CFA_offset_extended_sf">DW_CFA_offset_extended_sf</span>              <span class="comment">// op1: ULEB128 register, op2: SLEB128 BLOCK</span>
+    <span id="DW_CFA_def_cfa_sf">DW_CFA_def_cfa_sf</span>                      <span class="comment">// op1: ULEB128 register, op2: SLEB128 offset</span>
+    <span id="DW_CFA_def_cfa_offset_sf">DW_CFA_def_cfa_offset_sf</span>               <span class="comment">// op1: SLEB128 offset</span>
+    <span id="DW_CFA_val_offset">DW_CFA_val_offset</span>                      <span class="comment">// op1: ULEB128, op2: ULEB128</span>
+    <span id="DW_CFA_val_offset_sf">DW_CFA_val_offset_sf</span>                   <span class="comment">// op1: ULEB128, op2: SLEB128</span>
+    <span id="DW_CFA_val_expression">DW_CFA_val_expression</span>                  <span class="comment">// op1: ULEB128, op2: BLOCK</span>
+    <span id="DW_CFA_lo_user">DW_CFA_lo_user</span>            = 0x1c       <span class="comment">// op1: BLOCK</span>
+    <span id="DW_CFA_hi_user">DW_CFA_hi_user</span>            = 0x3f       <span class="comment">// op1: ULEB128 register, op2: BLOCK</span>
+    <span id="DW_CFA_advance_loc">DW_CFA_advance_loc</span>        = (0x1 &lt;&lt; 6) <span class="comment">// High 2 bits: 0x1, low 6: delta</span>
+    <span id="DW_CFA_offset">DW_CFA_offset</span>             = (0x2 &lt;&lt; 6) <span class="comment">// High 2 bits: 0x2, low 6: register</span>
+    <span id="DW_CFA_restore">DW_CFA_restore</span>            = (0x3 &lt;&lt; 6) <span class="comment">// High 2 bits: 0x3, low 6: register</span>
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="DwarfEndian">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/parser.go?s=3016:3065#L107">DwarfEndian</a>
+				<a class="permalink" href="index.html#DwarfEndian">&#xb6;</a>
+			</h2>
+			<pre>func DwarfEndian(infoSec []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) <a href="http://localhost:8081/pkg/encoding/binary/">binary</a>.<a href="http://localhost:8081/pkg/encoding/binary/#ByteOrder">ByteOrder</a></pre>
+			<p>
+DwarfEndian determines the endianness of the DWARF by using the version number field in the debug_info section
+Trick borrowed from &#34;debug/dwarf&#34;.New()
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="CommonInformationEntry">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=140:416#L1">CommonInformationEntry</a>
+				<a class="permalink" href="index.html#CommonInformationEntry">&#xb6;</a>
+			</h2>
+			<p>
+Represents a Common Information Entry in
+the Dwarf .debug_frame section.
+</p>
+
+			<pre>type CommonInformationEntry struct {
+<span id="CommonInformationEntry.Length"></span>    Length                <a href="http://localhost:8081/pkg/builtin/#uint32">uint32</a>
+<span id="CommonInformationEntry.CIE_id"></span>    CIE_id                <a href="http://localhost:8081/pkg/builtin/#uint32">uint32</a>
+<span id="CommonInformationEntry.Version"></span>    Version               <a href="http://localhost:8081/pkg/builtin/#uint8">uint8</a>
+<span id="CommonInformationEntry.Augmentation"></span>    Augmentation          <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="CommonInformationEntry.CodeAlignmentFactor"></span>    CodeAlignmentFactor   <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="CommonInformationEntry.DataAlignmentFactor"></span>    DataAlignmentFactor   <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="CommonInformationEntry.ReturnAddressRegister"></span>    ReturnAddressRegister <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="CommonInformationEntry.InitialInstructions"></span>    InitialInstructions   []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DWRule">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go?s=110:205#L1">DWRule</a>
+				<a class="permalink" href="index.html#DWRule">&#xb6;</a>
+			</h2>
+			
+			<pre>type DWRule struct {
+<span id="DWRule.Rule"></span>    Rule       <a href="index.html#Rule">Rule</a>
+<span id="DWRule.Offset"></span>    Offset     <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="DWRule.Reg"></span>    Reg        <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+<span id="DWRule.Expression"></span>    Expression []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FrameContext">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go?s=207:565#L8">FrameContext</a>
+				<a class="permalink" href="index.html#FrameContext">&#xb6;</a>
+			</h2>
+			
+			<pre>type FrameContext struct {
+<span id="FrameContext.CFA"></span>    CFA  <a href="index.html#DWRule">DWRule</a>
+<span id="FrameContext.Regs"></span>    Regs map[<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>]<a href="index.html#DWRule">DWRule</a>
+
+<span id="FrameContext.RetAddrReg"></span>    RetAddrReg <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FrameContext.ExecuteDwarfProgram">func (*FrameContext) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go?s=5105:5153#L135">ExecuteDwarfProgram</a>
+					<a class="permalink" href="index.html#FrameContext.ExecuteDwarfProgram">&#xb6;</a>
+				</h3>
+				<pre>func (frame *<a href="index.html#FrameContext">FrameContext</a>) ExecuteDwarfProgram()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="FrameContext.ExecuteUntilPC">func (*FrameContext) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go?s=5253:5315#L142">ExecuteUntilPC</a>
+					<a class="permalink" href="index.html#FrameContext.ExecuteUntilPC">&#xb6;</a>
+				</h3>
+				<pre>func (frame *<a href="index.html#FrameContext">FrameContext</a>) ExecuteUntilPC(instructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>)</pre>
+				<p>
+Execute dwarf instructions.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FrameDescriptionEntries">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1247:1300#L43">FrameDescriptionEntries</a>
+				<a class="permalink" href="index.html#FrameDescriptionEntries">&#xb6;</a>
+			</h2>
+			
+			<pre>type FrameDescriptionEntries []*<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFrameIndex">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1302:1346#L45">NewFrameIndex</a>
+					<a class="permalink" href="index.html#NewFrameIndex">&#xb6;</a>
+				</h3>
+				<pre>func NewFrameIndex() <a href="index.html#FrameDescriptionEntries">FrameDescriptionEntries</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="Parse">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/parser.go?s=624:695#L16">Parse</a>
+					<a class="permalink" href="index.html#Parse">&#xb6;</a>
+				</h3>
+				<pre>func Parse(data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, order <a href="http://localhost:8081/pkg/encoding/binary/">binary</a>.<a href="http://localhost:8081/pkg/encoding/binary/#ByteOrder">ByteOrder</a>) <a href="index.html#FrameDescriptionEntries">FrameDescriptionEntries</a></pre>
+				<p>
+Parse takes in data (a byte slice) and returns a slice of
+commonInformationEntry structures. Each commonInformationEntry
+has a slice of frameDescriptionEntry structures.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="FrameDescriptionEntries.FDEForPC">func (FrameDescriptionEntries) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1609:1696#L58">FDEForPC</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntries.FDEForPC">&#xb6;</a>
+				</h3>
+				<pre>func (fdes <a href="index.html#FrameDescriptionEntries">FrameDescriptionEntries</a>) FDEForPC(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Returns the Frame Description Entry for the given PC.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FrameDescriptionEntry">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=495:664#L14">FrameDescriptionEntry</a>
+				<a class="permalink" href="index.html#FrameDescriptionEntry">&#xb6;</a>
+			</h2>
+			<p>
+Represents a Frame Descriptor Entry in the
+Dwarf .debug_frame section.
+</p>
+
+			<pre>type FrameDescriptionEntry struct {
+<span id="FrameDescriptionEntry.Length"></span>    Length       <a href="http://localhost:8081/pkg/builtin/#uint32">uint32</a>
+<span id="FrameDescriptionEntry.CIE"></span>    CIE          *<a href="index.html#CommonInformationEntry">CommonInformationEntry</a>
+<span id="FrameDescriptionEntry.Instructions"></span>    Instructions []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FrameDescriptionEntry.Begin">func (*FrameDescriptionEntry) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=894:942#L29">Begin</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntry.Begin">&#xb6;</a>
+				</h3>
+				<pre>func (fde *<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>) Begin() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+Address of first location for this frame.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FrameDescriptionEntry.Cover">func (*FrameDescriptionEntry) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=749:806#L24">Cover</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntry.Cover">&#xb6;</a>
+				</h3>
+				<pre>func (fde *<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>) Cover(addr <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Returns whether or not the given address is within the
+bounds of this frame.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FrameDescriptionEntry.End">func (*FrameDescriptionEntry) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1010:1056#L34">End</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntry.End">&#xb6;</a>
+				</h3>
+				<pre>func (fde *<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>) End() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+Address of last location for this frame.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FrameDescriptionEntry.EstablishFrame">func (*FrameDescriptionEntry) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1124:1197#L39">EstablishFrame</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntry.EstablishFrame">&#xb6;</a>
+				</h3>
+				<pre>func (fde *<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>) EstablishFrame(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) *<a href="index.html#FrameContext">FrameContext</a></pre>
+				<p>
+Set up frame for the given PC.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FrameDescriptionEntry.LessThan">func (*FrameDescriptionEntry) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1946:2006#L74">LessThan</a>
+					<a class="permalink" href="index.html#FrameDescriptionEntry.LessThan">&#xb6;</a>
+				</h3>
+				<pre>func (frame *<a href="index.html#FrameDescriptionEntry">FrameDescriptionEntry</a>) LessThan(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="NoFDEForPCError">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1399:1441#L49">NoFDEForPCError</a>
+				<a class="permalink" href="index.html#NoFDEForPCError">&#xb6;</a>
+			</h2>
+			
+			<pre>type NoFDEForPCError struct {
+<span id="NoFDEForPCError.PC"></span>    PC <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="NoFDEForPCError.Error">func (*NoFDEForPCError) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/entries.go?s=1443:1485#L53">Error</a>
+					<a class="permalink" href="index.html#NoFDEForPCError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (err *<a href="index.html#NoFDEForPCError">NoFDEForPCError</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Rule">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/frame/table.go?s=2592:2606#L56">Rule</a>
+				<a class="permalink" href="index.html#Rule">&#xb6;</a>
+			</h2>
+			<p>
+Rules defined for register values.
+</p>
+
+			<pre>type Rule <a href="http://localhost:8081/pkg/builtin/#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="RuleUndefined">RuleUndefined</span> <a href="index.html#Rule">Rule</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="RuleSameVal">RuleSameVal</span>
+    <span id="RuleOffset">RuleOffset</span>
+    <span id="RuleValOffset">RuleValOffset</span>
+    <span id="RuleRegister">RuleRegister</span>
+    <span id="RuleExpression">RuleExpression</span>
+    <span id="RuleValExpression">RuleValExpression</span>
+    <span id="RuleArchitectural">RuleArchitectural</span>
+    <span id="RuleCFA">RuleCFA</span>          <span class="comment">// Value is rule.Reg + rule.Offset</span>
+    <span id="RuleFramePointer">RuleFramePointer</span> <span class="comment">// Value is stored at address rule.Reg + rule.Offset, but only if it&#39;s less than the current CFA, otherwise same value</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

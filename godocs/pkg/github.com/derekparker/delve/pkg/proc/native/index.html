@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>native - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package native
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/proc/native"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="index.html#PtraceAttach">func PtraceAttach(pid int) error</a></dd>
+			
+				
+				<dd><a href="index.html#PtraceCont">func PtraceCont(tid, sig int) error</a></dd>
+			
+				
+				<dd><a href="index.html#PtraceDetach">func PtraceDetach(tid, sig int) error</a></dd>
+			
+				
+				<dd><a href="index.html#PtraceGetRegset">func PtraceGetRegset(tid int) (regset proc.LinuxX86Xstate, err error)</a></dd>
+			
+				
+				<dd><a href="index.html#PtracePeekUser">func PtracePeekUser(tid int, off uintptr) (uintptr, error)</a></dd>
+			
+				
+				<dd><a href="index.html#PtracePokeUser">func PtracePokeUser(tid int, off, addr uintptr) error</a></dd>
+			
+				
+				<dd><a href="index.html#PtraceSingleStep">func PtraceSingleStep(tid int) error</a></dd>
+			
+			
+				
+				<dd><a href="index.html#OSProcessDetails">type OSProcessDetails</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#OSSpecificDetails">type OSSpecificDetails</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Process">type Process</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Attach">func Attach(pid int) (*Process, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Launch">func Launch(cmd []string, wd string) (*Process, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#New">func New(pid int) *Process</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.AllGCache">func (dbp *Process) AllGCache() *[]*proc.G</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.BinInfo">func (dbp *Process) BinInfo() *proc.BinaryInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Breakpoints">func (dbp *Process) Breakpoints() *proc.BreakpointMap</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.CheckAndClearManualStopRequest">func (dbp *Process) CheckAndClearManualStopRequest() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Checkpoint">func (dbp *Process) Checkpoint(string) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Checkpoints">func (dbp *Process) Checkpoints() ([]proc.Checkpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearBreakpoint">func (dbp *Process) ClearBreakpoint(addr uint64) (*proc.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearCheckpoint">func (dbp *Process) ClearCheckpoint(int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ClearInternalBreakpoints">func (dbp *Process) ClearInternalBreakpoints() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ContinueOnce">func (dbp *Process) ContinueOnce() (proc.Thread, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.CurrentThread">func (dbp *Process) CurrentThread() proc.Thread</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Detach">func (dbp *Process) Detach(kill bool) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Direction">func (dbp *Process) Direction(proc.Direction) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Exited">func (dbp *Process) Exited() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.FindBreakpoint">func (dbp *Process) FindBreakpoint(pc uint64) (*proc.Breakpoint, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.FindThread">func (dbp *Process) FindThread(threadID int) (proc.Thread, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Halt">func (dbp *Process) Halt() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Kill">func (dbp *Process) Kill() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.LoadInformation">func (dbp *Process) LoadInformation(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Pid">func (dbp *Process) Pid() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Recorded">func (dbp *Process) Recorded() (bool, string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.RequestManualStop">func (dbp *Process) RequestManualStop() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.Restart">func (dbp *Process) Restart(string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ResumeNotify">func (dbp *Process) ResumeNotify(ch chan&lt;- struct{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SelectedGoroutine">func (dbp *Process) SelectedGoroutine() *proc.G</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SetBreakpoint">func (dbp *Process) SetBreakpoint(addr uint64, kind proc.BreakpointKind, cond ast.Expr) (*proc.Breakpoint, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.StepInstruction">func (dbp *Process) StepInstruction() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SwitchGoroutine">func (dbp *Process) SwitchGoroutine(gid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.SwitchThread">func (dbp *Process) SwitchThread(tid int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.ThreadList">func (dbp *Process) ThreadList() []proc.Thread</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Process.When">func (dbp *Process) When() (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Regs">type Regs</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.BP">func (r *Regs) BP() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.CX">func (r *Regs) CX() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.GAddr">func (r *Regs) GAddr() (uint64, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.Get">func (r *Regs) Get(n int) (uint64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.PC">func (r *Regs) PC() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.SP">func (r *Regs) SP() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.SetPC">func (r *Regs) SetPC(t proc.Thread, pc uint64) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.Slice">func (r *Regs) Slice() []proc.Register</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Regs.TLS">func (r *Regs) TLS() uint64</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Thread">type Thread</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Arch">func (thread *Thread) Arch() proc.Arch</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.BinInfo">func (thread *Thread) BinInfo() *proc.BinaryInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Blocked">func (t *Thread) Blocked() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Breakpoint">func (th *Thread) Breakpoint() proc.BreakpointState</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.ClearBreakpoint">func (thread *Thread) ClearBreakpoint(bp *proc.Breakpoint) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Continue">func (thread *Thread) Continue() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Halt">func (thread *Thread) Halt() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Location">func (thread *Thread) Location() (*proc.Location, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.PC">func (t *Thread) PC() (uint64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.ReadMemory">func (t *Thread) ReadMemory(data []byte, addr uintptr) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Registers">func (t *Thread) Registers(floatingPoint bool) (proc.Registers, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.SetCurrentBreakpoint">func (thread *Thread) SetCurrentBreakpoint() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.SetPC">func (thread *Thread) SetPC(pc uint64) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.StepInstruction">func (thread *Thread) StepInstruction() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.Stopped">func (thread *Thread) Stopped() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.ThreadID">func (th *Thread) ThreadID() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Thread.WriteMemory">func (t *Thread) WriteMemory(addr uintptr, data []byte) (written int, err error)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#WaitStatus">type WaitStatus</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go">proc.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc_linux.go">proc_linux.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go">ptrace_linux.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go">registers_linux_amd64.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go">threads.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go">threads_linux.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Process statuses
+</p>
+
+				<pre>const (
+    <span id="StatusSleeping">StatusSleeping</span>  = &#39;S&#39;
+    <span id="StatusRunning">StatusRunning</span>   = &#39;R&#39;
+    <span id="StatusTraceStop">StatusTraceStop</span> = &#39;t&#39;
+    <span id="StatusZombie">StatusZombie</span>    = &#39;Z&#39;
+
+    <span class="comment">// Kernel 2.6 has TraceStop as T</span>
+    <span class="comment">// TODO(derekparker) Since this means something different based on the</span>
+    <span class="comment">// version of the kernel (&#39;T&#39; is job control stop on modern 3.x+ kernels) we</span>
+    <span class="comment">// may want to differentiate at some point.</span>
+    <span id="StatusTraceStopT">StatusTraceStopT</span> = &#39;T&#39;
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="PtraceAttach">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=173:205#L3">PtraceAttach</a>
+				<a class="permalink" href="index.html#PtraceAttach">&#xb6;</a>
+			</h2>
+			<pre>func PtraceAttach(pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+PtraceAttach executes the sys.PtraceAttach call.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtraceCont">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=528:563#L17">PtraceCont</a>
+				<a class="permalink" href="index.html#PtraceCont">&#xb6;</a>
+			</h2>
+			<pre>func PtraceCont(tid, sig <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+PtraceCont executes ptrace PTRACE_CONT
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtraceDetach">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=286:323#L8">PtraceDetach</a>
+				<a class="permalink" href="index.html#PtraceDetach">&#xb6;</a>
+			</h2>
+			<pre>func PtraceDetach(tid, sig <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+PtraceDetach calls ptrace(PTRACE_DETACH).
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtraceGetRegset">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=1704:1773#L50">PtraceGetRegset</a>
+				<a class="permalink" href="index.html#PtraceGetRegset">&#xb6;</a>
+			</h2>
+			<pre>func PtraceGetRegset(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (regset <a href="../index.html">proc</a>.<a href="../index.html#LinuxX86Xstate">LinuxX86Xstate</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PtraceGetRegset returns floating point registers of the specified thread
+using PTRACE.
+See amd64_linux_fetch_inferior_registers in gdb/amd64-linux-nat.c.html
+and amd64_supply_xsave in gdb/amd64-tdep.c.html
+and Section 13.1 (and following) of Intel® 64 and IA-32 Architectures Software Developer’s Manual, Volume 1: Basic Architecture
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtracePeekUser">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=1065:1123#L36">PtracePeekUser</a>
+				<a class="permalink" href="index.html#PtracePeekUser">&#xb6;</a>
+			</h2>
+			<pre>func PtracePeekUser(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>, off <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>) (<a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PtracePeekUser execute ptrace PTRACE_PEEK_USER.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtracePokeUser">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=785:838#L27">PtracePokeUser</a>
+				<a class="permalink" href="index.html#PtracePokeUser">&#xb6;</a>
+			</h2>
+			<pre>func PtracePokeUser(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>, off, addr <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+PtracePokeUser execute ptrace PTRACE_POKE_USER.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PtraceSingleStep">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/ptrace_linux.go?s=658:694#L22">PtraceSingleStep</a>
+				<a class="permalink" href="index.html#PtraceSingleStep">&#xb6;</a>
+			</h2>
+			<pre>func PtraceSingleStep(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+			<p>
+PtraceSingleStep executes ptrace PTRACE_SINGLE_STEP.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="OSProcessDetails">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc_linux.go?s=673:718#L29">OSProcessDetails</a>
+				<a class="permalink" href="index.html#OSProcessDetails">&#xb6;</a>
+			</h2>
+			<p>
+OSProcessDetails contains Linux specific
+process details.
+</p>
+
+			<pre>type OSProcessDetails struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OSSpecificDetails">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go?s=200:259#L5">OSSpecificDetails</a>
+				<a class="permalink" href="index.html#OSSpecificDetails">&#xb6;</a>
+			</h2>
+			<p>
+OSSpecificDetails hold Linux specific
+process details.
+</p>
+
+			<pre>type OSSpecificDetails struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Process">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=223:1202#L4">Process</a>
+				<a class="permalink" href="index.html#Process">&#xb6;</a>
+			</h2>
+			<p>
+Process represents all of the information the debugger
+is holding onto regarding the process we are debugging.
+</p>
+
+			<pre>type Process struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Attach">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc_linux.go?s=1844:1882#L70">Attach</a>
+					<a class="permalink" href="index.html#Attach">&#xb6;</a>
+				</h3>
+				<pre>func Attach(pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (*<a href="index.html#Process">Process</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Attach to an existing process with the given PID.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Launch">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc_linux.go?s=930:984#L36">Launch</a>
+					<a class="permalink" href="index.html#Launch">&#xb6;</a>
+				</h3>
+				<pre>func Launch(cmd []<a href="http://localhost:8081/pkg/builtin/#string">string</a>, wd <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (*<a href="index.html#Process">Process</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Launch creates and begins debugging a new process. First entry in
+`cmd` is the program to run, and then rest are the arguments
+to be supplied to that process. `wd` is working directory of the program.
+</p>
+
+				
+				
+			
+				
+				<h3 id="New">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=1417:1443#L39">New</a>
+					<a class="permalink" href="index.html#New">&#xb6;</a>
+				</h3>
+				<pre>func New(pid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) *<a href="index.html#Process">Process</a></pre>
+				<p>
+New returns an initialized Process struct. Before returning,
+it will also launch a goroutine in order to handle ptrace(2)
+functions. For more information, see the documentation on
+`handlePtraceFuncs`.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Process.AllGCache">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=11261:11303#L415">AllGCache</a>
+					<a class="permalink" href="index.html#Process.AllGCache">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) AllGCache() *[]*<a href="../index.html">proc</a>.<a href="../index.html#G">G</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.BinInfo">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=1829:1875#L54">BinInfo</a>
+					<a class="permalink" href="index.html#Process.BinInfo">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) BinInfo() *<a href="../index.html">proc</a>.<a href="../index.html#BinaryInfo">BinaryInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Breakpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3866:3919#L138">Breakpoints</a>
+					<a class="permalink" href="index.html#Process.Breakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Breakpoints() *<a href="../index.html">proc</a>.<a href="../index.html#BreakpointMap">BreakpointMap</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.CheckAndClearManualStopRequest">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=4740:4797#L176">CheckAndClearManualStopRequest</a>
+					<a class="permalink" href="index.html#Process.CheckAndClearManualStopRequest">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) CheckAndClearManualStopRequest() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Checkpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2243:2294#L62">Checkpoint</a>
+					<a class="permalink" href="index.html#Process.Checkpoint">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Checkpoint(<a href="http://localhost:8081/pkg/builtin/#string">string</a>) (<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Checkpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2339:2399#L63">Checkpoints</a>
+					<a class="permalink" href="index.html#Process.Checkpoints">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Checkpoints() ([]<a href="../index.html">proc</a>.<a href="../index.html#Checkpoint">Checkpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=5811:5885#L209">ClearBreakpoint</a>
+					<a class="permalink" href="index.html#Process.ClearBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ClearBreakpoint(addr <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ClearBreakpoint clears the breakpoint at addr.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearCheckpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2436:2482#L64">ClearCheckpoint</a>
+					<a class="permalink" href="index.html#Process.ClearCheckpoint">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ClearCheckpoint(<a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ClearInternalBreakpoints">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=10124:10176#L372">ClearInternalBreakpoints</a>
+					<a class="permalink" href="index.html#Process.ClearInternalBreakpoints">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ClearInternalBreakpoints() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ContinueOnce">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=6037:6092#L216">ContinueOnce</a>
+					<a class="permalink" href="index.html#Process.ContinueOnce">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ContinueOnce() (<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.CurrentThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3787:3834#L134">CurrentThread</a>
+					<a class="permalink" href="index.html#Process.CurrentThread">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) CurrentThread() <a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Detach">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2595:2644#L67">Detach</a>
+					<a class="permalink" href="index.html#Process.Detach">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Detach(kill <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Detach from the process being debugged, optionally killing it.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Direction">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2071:2122#L60">Direction</a>
+					<a class="permalink" href="index.html#Process.Direction">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Direction(<a href="../index.html">proc</a>.<a href="../index.html#Direction">Direction</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Exited">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3234:3267#L105">Exited</a>
+					<a class="permalink" href="index.html#Process.Exited">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Exited() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Exited returns whether the debugged
+process has exited.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.FindBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=8842:8912#L331">FindBreakpoint</a>
+					<a class="permalink" href="index.html#Process.FindBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) FindBreakpoint(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+FindBreakpoint finds the breakpoint for the given pc.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.FindThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3669:3733#L129">FindThread</a>
+					<a class="permalink" href="index.html#Process.FindThread">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) FindThread(threadID <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Halt">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=8568:8606#L318">Halt</a>
+					<a class="permalink" href="index.html#Process.Halt">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Halt() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Halt stops all threads.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Kill">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc_linux.go?s=2245:2283#L92">Kill</a>
+					<a class="permalink" href="index.html#Process.Kill">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Kill() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Kill kills the target process.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.LoadInformation">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=4131:4185#L147">LoadInformation</a>
+					<a class="permalink" href="index.html#Process.LoadInformation">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) LoadInformation(path <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+LoadInformation finds the executable and then uses it
+to parse the following information:
+* Dwarf .debug_frame section
+* Dwarf .debug_line section
+* Go symbol table.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Pid">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3371:3400#L113">Pid</a>
+					<a class="permalink" href="index.html#Process.Pid">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Pid() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.Recorded">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=1897:1942#L58">Recorded</a>
+					<a class="permalink" href="index.html#Process.Recorded">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Recorded() (<a href="http://localhost:8081/pkg/builtin/#bool">bool</a>, <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.RequestManualStop">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=4492:4537#L165">RequestManualStop</a>
+					<a class="permalink" href="index.html#Process.RequestManualStop">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) RequestManualStop() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+RequestManualStop sets the `halt` flag and
+sends SIGSTOP to all threads.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.Restart">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=1979:2020#L59">Restart</a>
+					<a class="permalink" href="index.html#Process.Restart">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) Restart(<a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.ResumeNotify">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3292:3344#L109">ResumeNotify</a>
+					<a class="permalink" href="index.html#Process.ResumeNotify">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ResumeNotify(ch chan&lt;- struct{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SelectedGoroutine">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3422:3469#L117">SelectedGoroutine</a>
+					<a class="permalink" href="index.html#Process.SelectedGoroutine">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) SelectedGoroutine() *<a href="../index.html">proc</a>.<a href="../index.html#G">G</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.SetBreakpoint">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=5575:5688#L204">SetBreakpoint</a>
+					<a class="permalink" href="index.html#Process.SetBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) SetBreakpoint(addr <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, kind <a href="../index.html">proc</a>.<a href="../index.html#BreakpointKind">BreakpointKind</a>, cond <a href="http://localhost:8081/pkg/go/ast/">ast</a>.<a href="http://localhost:8081/pkg/go/ast/#Expr">Expr</a>) (*<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SetBreakpoint sets a breakpoint at addr, and stores it in the process wide
+break point table.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.StepInstruction">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=6864:6913#L252">StepInstruction</a>
+					<a class="permalink" href="index.html#Process.StepInstruction">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) StepInstruction() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+StepInstruction will continue the current thread for exactly
+one instruction. This method affects only the thread
+asssociated with the selected goroutine. All other
+threads will remain stopped.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.SwitchGoroutine">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=8148:8198#L298">SwitchGoroutine</a>
+					<a class="permalink" href="index.html#Process.SwitchGoroutine">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) SwitchGoroutine(gid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SwitchGoroutine changes from current thread to the thread
+running the specified goroutine.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.SwitchThread">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=7740:7787#L284">SwitchThread</a>
+					<a class="permalink" href="index.html#Process.SwitchThread">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) SwitchThread(tid <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SwitchThread changes from current thread to the thread specified by `tid`.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Process.ThreadList">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=3505:3551#L121">ThreadList</a>
+					<a class="permalink" href="index.html#Process.ThreadList">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) ThreadList() []<a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Process.When">func (*Process) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/proc.go?s=2163:2205#L61">When</a>
+					<a class="permalink" href="index.html#Process.When">&#xb6;</a>
+				</h3>
+				<pre>func (dbp *<a href="index.html#Process">Process</a>) When() (<a href="http://localhost:8081/pkg/builtin/#string">string</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Regs">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=180:248#L3">Regs</a>
+				<a class="permalink" href="index.html#Regs">&#xb6;</a>
+			</h2>
+			<p>
+Regs is a wrapper for sys.PtraceRegs.
+</p>
+
+			<pre>type Regs struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Regs.BP">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1437:1463#L63">BP</a>
+					<a class="permalink" href="index.html#Regs.BP">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) BP() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Regs.CX">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1529:1555#L68">CX</a>
+					<a class="permalink" href="index.html#Regs.CX">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) CX() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+CX returns the value of RCX register.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regs.GAddr">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1710:1747#L78">GAddr</a>
+					<a class="permalink" href="index.html#Regs.GAddr">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) GAddr() (<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Regs.Get">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=2015:2056#L90">Get</a>
+					<a class="permalink" href="index.html#Regs.Get">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) Get(n <a href="http://localhost:8081/pkg/builtin/#int">int</a>) (<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Regs.PC">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1293:1319#L54">PC</a>
+					<a class="permalink" href="index.html#Regs.PC">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) PC() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+PC returns the value of RIP register.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regs.SP">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1386:1412#L59">SP</a>
+					<a class="permalink" href="index.html#Regs.SP">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) SP() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+SP returns the value of RSP register.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regs.SetPC">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1820:1878#L83">SetPC</a>
+					<a class="permalink" href="index.html#Regs.SetPC">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) SetPC(t <a href="../index.html">proc</a>.<a href="../index.html#Thread">Thread</a>, pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+SetPC sets RIP to the value specified by &#39;pc&#39;.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regs.Slice">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=250:288#L8">Slice</a>
+					<a class="permalink" href="index.html#Regs.Slice">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) Slice() []<a href="../index.html">proc</a>.<a href="../index.html#Register">Register</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Regs.TLS">func (*Regs) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/registers_linux_amd64.go?s=1654:1681#L74">TLS</a>
+					<a class="permalink" href="index.html#Regs.TLS">&#xb6;</a>
+				</h3>
+				<pre>func (r *<a href="index.html#Regs">Regs</a>) TLS() <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a></pre>
+				<p>
+TLS returns the address of the thread
+local storage memory segment.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Thread">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=350:705#L4">Thread</a>
+				<a class="permalink" href="index.html#Thread">&#xb6;</a>
+			</h2>
+			<p>
+Thread represents a single thread in the traced process
+ID represents the thread id or port, Process holds a reference to the
+Process struct that contains info on the process as
+a whole, and Status represents the last result of a `wait` call
+on this thread.
+</p>
+
+			<pre>type Thread struct {
+<span id="Thread.ID"></span>    ID                <a href="http://localhost:8081/pkg/builtin/#int">int</a>                  <span class="comment">// Thread ID or mach port</span>
+<span id="Thread.Status"></span>    Status            *<a href="index.html#WaitStatus">WaitStatus</a>          <span class="comment">// Status returned from last wait call</span>
+<span id="Thread.CurrentBreakpoint"></span>    CurrentBreakpoint <a href="../index.html">proc</a>.<a href="../index.html#BreakpointState">BreakpointState</a> <span class="comment">// Breakpoint thread is currently stopped at</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Thread.Arch">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=2681:2719#L89">Arch</a>
+					<a class="permalink" href="index.html#Thread.Arch">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) Arch() <a href="../index.html">proc</a>.<a href="../index.html#Arch">Arch</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.BinInfo">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=2752:2800#L93">BinInfo</a>
+					<a class="permalink" href="index.html#Thread.BinInfo">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) BinInfo() *<a href="../index.html">proc</a>.<a href="../index.html#BinaryInfo">BinaryInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Blocked">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go?s=1445:1476#L62">Blocked</a>
+					<a class="permalink" href="index.html#Thread.Blocked">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Blocked() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Breakpoint">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=4218:4269#L152">Breakpoint</a>
+					<a class="permalink" href="index.html#Thread.Breakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (th *<a href="index.html#Thread">Thread</a>) Breakpoint() <a href="../index.html">proc</a>.<a href="../index.html#BreakpointState">BreakpointState</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.ClearBreakpoint">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=4408:4472#L161">ClearBreakpoint</a>
+					<a class="permalink" href="index.html#Thread.ClearBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) ClearBreakpoint(bp *<a href="../index.html">proc</a>.<a href="../index.html#Breakpoint">Breakpoint</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+ClearBreakpoint clears the specified breakpoint.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.Continue">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=910:948#L20">Continue</a>
+					<a class="permalink" href="index.html#Thread.Continue">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) Continue() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+Continue the execution of this thread.
+</p>
+<p>
+If we are currently at a breakpoint, we&#39;ll clear it
+first and then resume execution. Thread will continue until
+it hits a breakpoint or is signaled.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.Halt">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=3346:3386#L116">Halt</a>
+					<a class="permalink" href="index.html#Thread.Halt">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) Halt() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Halt stops this thread from executing. Actual
+implementation is OS dependant. Look in OS
+thread file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.Location">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=2455:2511#L80">Location</a>
+					<a class="permalink" href="index.html#Thread.Location">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) Location() (*<a href="../index.html">proc</a>.<a href="../index.html#Location">Location</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Location returns the threads location, including the file:line
+of the corresponding source code, the function we&#39;re in
+and the current instruction address.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.PC">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=4809:4846#L173">PC</a>
+					<a class="permalink" href="index.html#Thread.PC">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) PC() (<a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.ReadMemory">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go?s=2454:2527#L100">ReadMemory</a>
+					<a class="permalink" href="index.html#Thread.ReadMemory">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) ReadMemory(data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, addr <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>) (n <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.Registers">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=4697:4767#L169">Registers</a>
+					<a class="permalink" href="index.html#Thread.Registers">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) Registers(floatingPoint <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>) (<a href="../index.html">proc</a>.<a href="../index.html#Registers">Registers</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Registers obtains register values from the debugged process.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.SetCurrentBreakpoint">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=3654:3704#L131">SetCurrentBreakpoint</a>
+					<a class="permalink" href="index.html#Thread.SetCurrentBreakpoint">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) SetCurrentBreakpoint() <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SetCurrentBreakpoint sets the current breakpoint that this
+thread is stopped at as CurrentBreakpoint on the thread struct.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.SetPC">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=2867:2911#L98">SetPC</a>
+					<a class="permalink" href="index.html#Thread.SetPC">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) SetPC(pc <a href="http://localhost:8081/pkg/builtin/#uint64">uint64</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+SetPC sets the PC for this thread.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.StepInstruction">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=1534:1585#L41">StepInstruction</a>
+					<a class="permalink" href="index.html#Thread.StepInstruction">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) StepInstruction() (err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+StepInstruction steps a single instruction.
+</p>
+<p>
+Executes exactly one instruction and then returns.
+If the thread is at a breakpoint, we first clear it,
+execute the instruction, and then replace the breakpoint.
+Otherwise we simply execute the next instruction.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.Stopped">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=3168:3204#L109">Stopped</a>
+					<a class="permalink" href="index.html#Thread.Stopped">&#xb6;</a>
+				</h3>
+				<pre>func (thread *<a href="index.html#Thread">Thread</a>) Stopped() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Stopped returns whether the thread is stopped at
+the operating system level. Actual implementation
+is OS dependant, look in OS thread file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Thread.ThreadID">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads.go?s=4304:4336#L156">ThreadID</a>
+					<a class="permalink" href="index.html#Thread.ThreadID">&#xb6;</a>
+				</h3>
+				<pre>func (th *<a href="index.html#Thread">Thread</a>) ThreadID() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Thread.WriteMemory">func (*Thread) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go?s=2167:2247#L89">WriteMemory</a>
+					<a class="permalink" href="index.html#Thread.WriteMemory">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#Thread">Thread</a>) WriteMemory(addr <a href="http://localhost:8081/pkg/builtin/#uintptr">uintptr</a>, data []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>) (written <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WaitStatus">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/proc/native/threads_linux.go?s=107:137#L1">WaitStatus</a>
+				<a class="permalink" href="index.html#WaitStatus">&#xb6;</a>
+			</h2>
+			
+			<pre>type WaitStatus <a href="http://localhost:8081/pkg/golang.org/x/sys/unix/">sys</a>.<a href="http://localhost:8081/pkg/golang.org/x/sys/unix/#WaitStatus">WaitStatus</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

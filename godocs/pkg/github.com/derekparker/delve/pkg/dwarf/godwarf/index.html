@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>godwarf - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package godwarf
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/derekparker/delve/pkg/dwarf/godwarf"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="index.html#AddrType">type AddrType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ArrayType">type ArrayType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ArrayType.Size">func (t *ArrayType) Size() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ArrayType.String">func (t *ArrayType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BasicType">type BasicType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BasicType.Basic">func (b *BasicType) Basic() *BasicType</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BasicType.String">func (t *BasicType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BoolType">type BoolType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ChanType">type ChanType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ChanType.String">func (t *ChanType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CharType">type CharType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#CommonType">type CommonType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommonType.Common">func (c *CommonType) Common() *CommonType</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommonType.Size">func (c *CommonType) Size() int64</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ComplexType">type ComplexType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DotDotDotType">type DotDotDotType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DotDotDotType.String">func (t *DotDotDotType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#EnumType">type EnumType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#EnumType.String">func (t *EnumType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#EnumValue">type EnumValue</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FloatType">type FloatType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FuncType">type FuncType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncType.String">func (t *FuncType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#IntType">type IntType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#InterfaceType">type InterfaceType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#InterfaceType.String">func (t *InterfaceType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#MapType">type MapType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#MapType.String">func (t *MapType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#PtrType">type PtrType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#PtrType.String">func (t *PtrType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#QualType">type QualType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#QualType.Size">func (t *QualType) Size() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#QualType.String">func (t *QualType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SliceType">type SliceType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SliceType.String">func (t *SliceType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#StringType">type StringType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StringType.String">func (t *StringType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#StructField">type StructField</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StructType">type StructType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StructType.Defn">func (t *StructType) Defn() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StructType.String">func (t *StructType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Type">type Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ReadType">func ReadType(d *dwarf.Data, off dwarf.Offset, typeCache map[dwarf.Offset]Type) (Type, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#TypedefType">type TypedefType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypedefType.Size">func (t *TypedefType) Size() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypedefType.String">func (t *TypedefType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#UcharType">type UcharType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#UintType">type UintType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#UnspecifiedType">type UnspecifiedType</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#VoidType">type VoidType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#VoidType.String">func (t *VoidType) String() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go">type.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="AttrGoKind">AttrGoKind</span>          <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a> = 0x2900
+    <span id="AttrGoKey">AttrGoKey</span>           <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a> = 0x2901
+    <span id="AttrGoElem">AttrGoElem</span>          <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a> = 0x2902
+    <span id="AttrGoEmbeddedField">AttrGoEmbeddedField</span> <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Attr">Attr</a> = 0x2903
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="AddrType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2753:2788#L110">AddrType</a>
+				<a class="permalink" href="index.html#AddrType">&#xb6;</a>
+			</h2>
+			<p>
+An AddrType represents a machine address type.
+</p>
+
+			<pre>type AddrType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ArrayType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3282:3477#L133">ArrayType</a>
+				<a class="permalink" href="index.html#ArrayType">&#xb6;</a>
+			</h2>
+			<p>
+An ArrayType represents a fixed size array type.
+</p>
+
+			<pre>type ArrayType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="ArrayType.Type"></span>    Type          <a href="index.html#Type">Type</a>
+<span id="ArrayType.StrideBitSize"></span>    StrideBitSize <a href="http://localhost:8081/pkg/builtin/#int64">int64</a> <span class="comment">// if &gt; 0, number of bits to hold each element</span>
+<span id="ArrayType.Count"></span>    Count         <a href="http://localhost:8081/pkg/builtin/#int64">int64</a> <span class="comment">// if == -1, an incomplete array, like char x[].</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ArrayType.Size">func (*ArrayType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3589:3621#L144">Size</a>
+					<a class="permalink" href="index.html#ArrayType.Size">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#ArrayType">ArrayType</a>) Size() <a href="http://localhost:8081/pkg/builtin/#int64">int64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ArrayType.String">func (*ArrayType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3479:3514#L140">String</a>
+					<a class="permalink" href="index.html#ArrayType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#ArrayType">ArrayType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BasicType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1871:1942#L59">BasicType</a>
+				<a class="permalink" href="index.html#BasicType">&#xb6;</a>
+			</h2>
+			<p>
+A BasicType holds fields common to all basic types.
+</p>
+
+			<pre>type BasicType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="BasicType.BitSize"></span>    BitSize   <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="BasicType.BitOffset"></span>    BitOffset <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BasicType.Basic">func (*BasicType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1944:1982#L65">Basic</a>
+					<a class="permalink" href="index.html#BasicType.Basic">&#xb6;</a>
+				</h3>
+				<pre>func (b *<a href="index.html#BasicType">BasicType</a>) Basic() *<a href="index.html#BasicType">BasicType</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BasicType.String">func (*BasicType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1997:2032#L67">String</a>
+					<a class="permalink" href="index.html#BasicType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#BasicType">BasicType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BoolType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2666:2701#L105">BoolType</a>
+				<a class="permalink" href="index.html#BoolType">&#xb6;</a>
+			</h2>
+			<p>
+A BoolType represents a boolean type.
+</p>
+
+			<pre>type BoolType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ChanType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7572:7624#L338">ChanType</a>
+				<a class="permalink" href="index.html#ChanType">&#xb6;</a>
+			</h2>
+			<p>
+A ChanType represents a Go channel type.
+</p>
+
+			<pre>type ChanType struct {
+    <a href="index.html#TypedefType">TypedefType</a>
+<span id="ChanType.ElemType"></span>    ElemType <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ChanType.String">func (*ChanType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7626:7660#L343">String</a>
+					<a class="permalink" href="index.html#ChanType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#ChanType">ChanType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CharType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2138:2173#L75">CharType</a>
+				<a class="permalink" href="index.html#CharType">&#xb6;</a>
+			</h2>
+			<p>
+A CharType represents a signed character type.
+</p>
+
+			<pre>type CharType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CommonType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1398:1685#L45">CommonType</a>
+				<a class="permalink" href="index.html#CommonType">&#xb6;</a>
+			</h2>
+			<p>
+A CommonType holds fields common to multiple types.
+If a field is not known or not applicable for a given type,
+the zero value is used.
+</p>
+
+			<pre>type CommonType struct {
+<span id="CommonType.ByteSize"></span>    ByteSize    <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>        <span class="comment">// size of value of this type, in bytes</span>
+<span id="CommonType.Name"></span>    Name        <a href="http://localhost:8081/pkg/builtin/#string">string</a>       <span class="comment">// name that can be used to refer to type</span>
+<span id="CommonType.ReflectKind"></span>    ReflectKind <a href="http://localhost:8081/pkg/reflect/">reflect</a>.<a href="http://localhost:8081/pkg/reflect/#Kind">Kind</a> <span class="comment">// the reflect kind of the type.</span>
+<span id="CommonType.Offset"></span>    Offset      <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a> <span class="comment">// the offset at which this type was read</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CommonType.Common">func (*CommonType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1687:1728#L52">Common</a>
+					<a class="permalink" href="index.html#CommonType.Common">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#CommonType">CommonType</a>) Common() *<a href="index.html#CommonType">CommonType</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CommonType.Size">func (*CommonType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1743:1776#L54">Size</a>
+					<a class="permalink" href="index.html#CommonType.Size">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#CommonType">CommonType</a>) Size() <a href="http://localhost:8081/pkg/builtin/#int64">int64</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ComplexType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2585:2623#L100">ComplexType</a>
+				<a class="permalink" href="index.html#ComplexType">&#xb6;</a>
+			</h2>
+			<p>
+A ComplexType represents a complex floating point type.
+</p>
+
+			<pre>type ComplexType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DotDotDotType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6873:6914#L306">DotDotDotType</a>
+				<a class="permalink" href="index.html#DotDotDotType">&#xb6;</a>
+			</h2>
+			<p>
+A DotDotDotType represents the variadic ... function parameter.
+</p>
+
+			<pre>type DotDotDotType struct {
+    <a href="index.html#CommonType">CommonType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DotDotDotType.String">func (*DotDotDotType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6916:6955#L310">String</a>
+					<a class="permalink" href="index.html#DotDotDotType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#DotDotDotType">DotDotDotType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EnumType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6038:6114#L255">EnumType</a>
+				<a class="permalink" href="index.html#EnumType">&#xb6;</a>
+			</h2>
+			<p>
+An EnumType represents an enumerated type.
+The only indication of its native integer type is its ByteSize
+(inside CommonType).
+</p>
+
+			<pre>type EnumType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="EnumType.EnumName"></span>    EnumName <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="EnumType.Val"></span>    Val      []*<a href="index.html#EnumValue">EnumValue</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="EnumType.String">func (*EnumType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6223:6257#L267">String</a>
+					<a class="permalink" href="index.html#EnumType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#EnumType">EnumType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EnumValue">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6171:6221#L262">EnumValue</a>
+				<a class="permalink" href="index.html#EnumValue">&#xb6;</a>
+			</h2>
+			<p>
+An EnumValue represents a single enumeration value.
+</p>
+
+			<pre>type EnumValue struct {
+<span id="EnumValue.Name"></span>    Name <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="EnumValue.Val"></span>    Val  <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FloatType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2488:2524#L95">FloatType</a>
+				<a class="permalink" href="index.html#FloatType">&#xb6;</a>
+			</h2>
+			<p>
+A FloatType represents a floating point type.
+</p>
+
+			<pre>type FloatType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FuncType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6510:6582#L284">FuncType</a>
+				<a class="permalink" href="index.html#FuncType">&#xb6;</a>
+			</h2>
+			<p>
+A FuncType represents a function type.
+</p>
+
+			<pre>type FuncType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="FuncType.ReturnType"></span>    ReturnType <a href="index.html#Type">Type</a>
+<span id="FuncType.ParamType"></span>    ParamType  []<a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FuncType.String">func (*FuncType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=6584:6618#L290">String</a>
+					<a class="permalink" href="index.html#FuncType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#FuncType">FuncType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="IntType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2315:2349#L85">IntType</a>
+				<a class="permalink" href="index.html#IntType">&#xb6;</a>
+			</h2>
+			<p>
+An IntType represents a signed integer type.
+</p>
+
+			<pre>type IntType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="InterfaceType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5755:5797#L241">InterfaceType</a>
+				<a class="permalink" href="index.html#InterfaceType">&#xb6;</a>
+			</h2>
+			<p>
+An InterfaceType represents a Go interface.
+</p>
+
+			<pre>type InterfaceType struct {
+    <a href="index.html#TypedefType">TypedefType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InterfaceType.String">func (*InterfaceType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5799:5838#L245">String</a>
+					<a class="permalink" href="index.html#InterfaceType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#InterfaceType">InterfaceType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MapType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7319:7385#L324">MapType</a>
+				<a class="permalink" href="index.html#MapType">&#xb6;</a>
+			</h2>
+			<p>
+A MapType represents a Go map type. It looks like a TypedefType, describing
+the runtime-internal structure, with extra fields.
+</p>
+
+			<pre>type MapType struct {
+    <a href="index.html#TypedefType">TypedefType</a>
+<span id="MapType.KeyType"></span>    KeyType  <a href="index.html#Type">Type</a>
+<span id="MapType.ElemType"></span>    ElemType <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MapType.String">func (*MapType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7387:7420#L330">String</a>
+					<a class="permalink" href="index.html#MapType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#MapType">MapType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PtrType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3832:3878#L154">PtrType</a>
+				<a class="permalink" href="index.html#PtrType">&#xb6;</a>
+			</h2>
+			<p>
+A PtrType represents a pointer type.
+</p>
+
+			<pre>type PtrType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="PtrType.Type"></span>    Type <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PtrType.String">func (*PtrType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3880:3913#L159">String</a>
+					<a class="permalink" href="index.html#PtrType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#PtrType">PtrType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="QualType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3032:3092#L122">QualType</a>
+				<a class="permalink" href="index.html#QualType">&#xb6;</a>
+			</h2>
+			<p>
+A QualType represents a type that has the C/C++ &#34;const&#34;, &#34;restrict&#34;, or &#34;volatile&#34; qualifier.
+</p>
+
+			<pre>type QualType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="QualType.Qual"></span>    Qual <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="QualType.Type"></span>    Type <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="QualType.Size">func (*QualType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3172:3203#L130">Size</a>
+					<a class="permalink" href="index.html#QualType.Size">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#QualType">QualType</a>) Size() <a href="http://localhost:8081/pkg/builtin/#int64">int64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="QualType.String">func (*QualType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3094:3128#L128">String</a>
+					<a class="permalink" href="index.html#QualType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#QualType">QualType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SliceType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5255:5307#L215">SliceType</a>
+				<a class="permalink" href="index.html#SliceType">&#xb6;</a>
+			</h2>
+			<p>
+A SliceType represents a Go slice type. It looks like a StructType, describing
+the runtime-internal structure, with extra fields.
+</p>
+
+			<pre>type SliceType struct {
+    <a href="index.html#StructType">StructType</a>
+<span id="SliceType.ElemType"></span>    ElemType <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SliceType.String">func (*SliceType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5309:5344#L220">String</a>
+					<a class="permalink" href="index.html#SliceType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#SliceType">SliceType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StringType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5571:5609#L229">StringType</a>
+				<a class="permalink" href="index.html#StringType">&#xb6;</a>
+			</h2>
+			<p>
+A StringType represents a Go string type. It looks like a StructType, describing
+the runtime-internal structure, but we wrap it for neatness.
+</p>
+
+			<pre>type StringType struct {
+    <a href="index.html#StructType">StructType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StringType.String">func (*StringType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=5611:5647#L233">String</a>
+					<a class="permalink" href="index.html#StringType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#StringType">StringType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructField">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=4303:4525#L171">StructField</a>
+				<a class="permalink" href="index.html#StructField">&#xb6;</a>
+			</h2>
+			<p>
+A StructField represents a field in a struct, union, or C++ class type.
+</p>
+
+			<pre>type StructField struct {
+<span id="StructField.Name"></span>    Name       <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="StructField.Type"></span>    Type       <a href="index.html#Type">Type</a>
+<span id="StructField.ByteOffset"></span>    ByteOffset <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="StructField.ByteSize"></span>    ByteSize   <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+<span id="StructField.BitOffset"></span>    BitOffset  <a href="http://localhost:8081/pkg/builtin/#int64">int64</a> <span class="comment">// within the ByteSize bytes at ByteOffset</span>
+<span id="StructField.BitSize"></span>    BitSize    <a href="http://localhost:8081/pkg/builtin/#int64">int64</a> <span class="comment">// zero if not a bit field</span>
+<span id="StructField.Embedded"></span>    Embedded   <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StructType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=4011:4226#L162">StructType</a>
+				<a class="permalink" href="index.html#StructType">&#xb6;</a>
+			</h2>
+			<p>
+A StructType represents a struct, union, or C++ class type.
+</p>
+
+			<pre>type StructType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="StructType.StructName"></span>    StructName <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+<span id="StructType.Kind"></span>    Kind       <a href="http://localhost:8081/pkg/builtin/#string">string</a> <span class="comment">// &#34;struct&#34;, &#34;union&#34;, or &#34;class&#34;.</span>
+<span id="StructType.Field"></span>    Field      []*<a href="index.html#StructField">StructField</a>
+<span id="StructType.Incomplete"></span>    Incomplete <a href="http://localhost:8081/pkg/builtin/#bool">bool</a> <span class="comment">// if true, struct, union, class is declared but not defined</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StructType.Defn">func (*StructType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=4651:4685#L188">Defn</a>
+					<a class="permalink" href="index.html#StructType.Defn">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#StructType">StructType</a>) Defn() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="StructType.String">func (*StructType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=4527:4563#L181">String</a>
+					<a class="permalink" href="index.html#StructType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#StructType">StructType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Type">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=1175:1251#L36">Type</a>
+				<a class="permalink" href="index.html#Type">&#xb6;</a>
+			</h2>
+			<p>
+A Type conventionally represents a pointer to any of the
+specific Type structures (CharType, StructType, etc.).
+TODO: remove this use dwarf.Type
+</p>
+
+			<pre>type Type interface {
+    Common() *<a href="index.html#CommonType">CommonType</a>
+    String() <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+    Size() <a href="http://localhost:8081/pkg/builtin/#int64">int64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadType">func <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7803:7896#L351">ReadType</a>
+					<a class="permalink" href="index.html#ReadType">&#xb6;</a>
+				</h3>
+				<pre>func ReadType(d *<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Data">Data</a>, off <a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>, typeCache map[<a href="http://localhost:8081/pkg/debug/dwarf/">dwarf</a>.<a href="http://localhost:8081/pkg/debug/dwarf/#Offset">Offset</a>]<a href="index.html#Type">Type</a>) (<a href="index.html#Type">Type</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Type reads the type at off in the DWARF &ldquo;info&rdquo; section.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="TypedefType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7016:7066#L313">TypedefType</a>
+				<a class="permalink" href="index.html#TypedefType">&#xb6;</a>
+			</h2>
+			<p>
+A TypedefType represents a named type.
+</p>
+
+			<pre>type TypedefType struct {
+    <a href="index.html#CommonType">CommonType</a>
+<span id="TypedefType.Type"></span>    Type <a href="index.html#Type">Type</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypedefType.Size">func (*TypedefType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7125:7159#L320">Size</a>
+					<a class="permalink" href="index.html#TypedefType.Size">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#TypedefType">TypedefType</a>) Size() <a href="http://localhost:8081/pkg/builtin/#int64">int64</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypedefType.String">func (*TypedefType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=7068:7105#L318">String</a>
+					<a class="permalink" href="index.html#TypedefType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#TypedefType">TypedefType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="UcharType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2229:2265#L80">UcharType</a>
+				<a class="permalink" href="index.html#UcharType">&#xb6;</a>
+			</h2>
+			<p>
+A UcharType represents an unsigned character type.
+</p>
+
+			<pre>type UcharType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="UintType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2402:2437#L90">UintType</a>
+				<a class="permalink" href="index.html#UintType">&#xb6;</a>
+			</h2>
+			<p>
+A UintType represents an unsigned integer type.
+</p>
+
+			<pre>type UintType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="UnspecifiedType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=2876:2918#L115">UnspecifiedType</a>
+				<a class="permalink" href="index.html#UnspecifiedType">&#xb6;</a>
+			</h2>
+			<p>
+An UnspecifiedType represents an implicit, unknown, ambiguous or nonexistent type.
+</p>
+
+			<pre>type UnspecifiedType struct {
+    <a href="index.html#BasicType">BasicType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="VoidType">type <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3700:3736#L147">VoidType</a>
+				<a class="permalink" href="index.html#VoidType">&#xb6;</a>
+			</h2>
+			<p>
+A VoidType represents the C void type.
+</p>
+
+			<pre>type VoidType struct {
+    <a href="index.html#CommonType">CommonType</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="VoidType.String">func (*VoidType) <a href="http://localhost:8081/src/github.com/derekparker/delve/pkg/dwarf/godwarf/type.go?s=3738:3772#L151">String</a>
+					<a class="permalink" href="index.html#VoidType.String">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="index.html#VoidType">VoidType</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

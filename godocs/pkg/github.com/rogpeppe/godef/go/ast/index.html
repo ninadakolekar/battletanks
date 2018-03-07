@@ -1,0 +1,4401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>ast - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package ast
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/rogpeppe/godef/go/ast"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package ast declares the types used to represent syntax trees for Go
+packages.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="index.html#FileExports">func FileExports(src *File) bool</a></dd>
+			
+				
+				<dd><a href="index.html#FilterDecl">func FilterDecl(decl Decl, f Filter) bool</a></dd>
+			
+				
+				<dd><a href="index.html#FilterFile">func FilterFile(src *File, f Filter) bool</a></dd>
+			
+				
+				<dd><a href="index.html#FilterPackage">func FilterPackage(pkg *Package, f Filter) bool</a></dd>
+			
+				
+				<dd><a href="index.html#Fprint">func Fprint(w io.Writer, fset *token.FileSet, x interface{}, f FieldFilter) (n int, err error)</a></dd>
+			
+				
+				<dd><a href="index.html#Inspect">func Inspect(node Node, f func(Node) bool)</a></dd>
+			
+				
+				<dd><a href="index.html#IsExported">func IsExported(name string) bool</a></dd>
+			
+				
+				<dd><a href="index.html#NotNilFilter">func NotNilFilter(_ string, v reflect.Value) bool</a></dd>
+			
+				
+				<dd><a href="index.html#PackageExports">func PackageExports(pkg *Package) bool</a></dd>
+			
+				
+				<dd><a href="index.html#Print">func Print(fset *token.FileSet, x interface{}) (int, error)</a></dd>
+			
+				
+				<dd><a href="index.html#Walk">func Walk(v Visitor, node Node)</a></dd>
+			
+			
+				
+				<dd><a href="index.html#ArrayType">type ArrayType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ArrayType.End">func (x *ArrayType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ArrayType.Pos">func (x *ArrayType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#AssignStmt">type AssignStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#AssignStmt.End">func (s *AssignStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#AssignStmt.Pos">func (s *AssignStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BadDecl">type BadDecl</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadDecl.End">func (d *BadDecl) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadDecl.Pos">func (d *BadDecl) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BadExpr">type BadExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadExpr.End">func (x *BadExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadExpr.Pos">func (x *BadExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BadStmt">type BadStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadStmt.End">func (s *BadStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BadStmt.Pos">func (s *BadStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BasicLit">type BasicLit</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BasicLit.End">func (x *BasicLit) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BasicLit.Pos">func (x *BasicLit) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BinaryExpr">type BinaryExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BinaryExpr.End">func (x *BinaryExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BinaryExpr.Pos">func (x *BinaryExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BlockStmt">type BlockStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BlockStmt.End">func (s *BlockStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BlockStmt.Pos">func (s *BlockStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#BranchStmt">type BranchStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BranchStmt.End">func (s *BranchStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#BranchStmt.Pos">func (s *BranchStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CallExpr">type CallExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CallExpr.End">func (x *CallExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CallExpr.Pos">func (x *CallExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CaseClause">type CaseClause</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CaseClause.End">func (s *CaseClause) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CaseClause.Pos">func (s *CaseClause) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ChanDir">type ChanDir</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ChanType">type ChanType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ChanType.End">func (x *ChanType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ChanType.Pos">func (x *ChanType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CommClause">type CommClause</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommClause.End">func (s *CommClause) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommClause.Pos">func (s *CommClause) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Comment">type Comment</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Comment.End">func (c *Comment) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Comment.Pos">func (c *Comment) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CommentGroup">type CommentGroup</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommentGroup.End">func (g *CommentGroup) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CommentGroup.Pos">func (g *CommentGroup) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#CompositeLit">type CompositeLit</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CompositeLit.End">func (x *CompositeLit) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#CompositeLit.Pos">func (x *CompositeLit) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Decl">type Decl</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#DeclStmt">type DeclStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DeclStmt.End">func (s *DeclStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DeclStmt.Pos">func (s *DeclStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#DeferStmt">type DeferStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DeferStmt.End">func (s *DeferStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#DeferStmt.Pos">func (s *DeferStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Ellipsis">type Ellipsis</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ellipsis.End">func (x *Ellipsis) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ellipsis.Pos">func (x *Ellipsis) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#EmptyStmt">type EmptyStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#EmptyStmt.End">func (s *EmptyStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#EmptyStmt.Pos">func (s *EmptyStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Expr">type Expr</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ExprStmt">type ExprStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ExprStmt.End">func (s *ExprStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ExprStmt.Pos">func (s *ExprStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Field">type Field</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Field.End">func (f *Field) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Field.Pos">func (f *Field) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FieldFilter">type FieldFilter</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#FieldList">type FieldList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FieldList.End">func (f *FieldList) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FieldList.NumFields">func (f *FieldList) NumFields() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FieldList.Pos">func (f *FieldList) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#File">type File</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#MergePackageFiles">func MergePackageFiles(pkg *Package, mode MergeMode) *File</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.End">func (f *File) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#File.Pos">func (f *File) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Filter">type Filter</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ForStmt">type ForStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ForStmt.End">func (s *ForStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ForStmt.Pos">func (s *ForStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FuncDecl">type FuncDecl</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncDecl.End">func (d *FuncDecl) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncDecl.Pos">func (d *FuncDecl) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FuncLit">type FuncLit</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncLit.End">func (x *FuncLit) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncLit.Pos">func (x *FuncLit) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#FuncType">type FuncType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncType.End">func (x *FuncType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#FuncType.Pos">func (x *FuncType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#GenDecl">type GenDecl</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GenDecl.End">func (d *GenDecl) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GenDecl.Pos">func (d *GenDecl) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#GoStmt">type GoStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GoStmt.End">func (s *GoStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#GoStmt.Pos">func (s *GoStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Ident">type Ident</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewIdent">func NewIdent(name string) *Ident</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ident.End">func (x *Ident) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ident.IsExported">func (id *Ident) IsExported() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ident.Pos">func (x *Ident) Pos() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Ident.String">func (id *Ident) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#IfStmt">type IfStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IfStmt.End">func (s *IfStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IfStmt.Pos">func (s *IfStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ImportSpec">type ImportSpec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ImportSpec.End">func (s *ImportSpec) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ImportSpec.Pos">func (s *ImportSpec) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Importer">type Importer</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#IncDecStmt">type IncDecStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IncDecStmt.End">func (s *IncDecStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IncDecStmt.Pos">func (s *IncDecStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#IndexExpr">type IndexExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IndexExpr.End">func (x *IndexExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#IndexExpr.Pos">func (x *IndexExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#InterfaceType">type InterfaceType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#InterfaceType.End">func (x *InterfaceType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#InterfaceType.Pos">func (x *InterfaceType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#KeyValueExpr">type KeyValueExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#KeyValueExpr.End">func (x *KeyValueExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#KeyValueExpr.Pos">func (x *KeyValueExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#LabeledStmt">type LabeledStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LabeledStmt.End">func (s *LabeledStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#LabeledStmt.Pos">func (s *LabeledStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#MapType">type MapType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#MapType.End">func (x *MapType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#MapType.Pos">func (x *MapType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#MergeMode">type MergeMode</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#Node">type Node</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ObjKind">type ObjKind</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ObjKind.String">func (kind ObjKind) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Object">type Object</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewObj">func NewObj(kind ObjKind, name string) *Object</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Object.Pos">func (obj *Object) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Package">type Package</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewPackage">func NewPackage(fset *token.FileSet, files map[string]*File, importer Importer, universe *Scope) (*Package, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Package.End">func (p *Package) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Package.Pos">func (p *Package) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ParenExpr">type ParenExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ParenExpr.End">func (x *ParenExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ParenExpr.Pos">func (x *ParenExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#RangeStmt">type RangeStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RangeStmt.End">func (s *RangeStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#RangeStmt.Pos">func (s *RangeStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ReturnStmt">type ReturnStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ReturnStmt.End">func (s *ReturnStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ReturnStmt.Pos">func (s *ReturnStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Scope">type Scope</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#NewScope">func NewScope(outer *Scope) *Scope</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Scope.Insert">func (s *Scope) Insert(obj *Object) (alt *Object)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Scope.Lookup">func (s *Scope) Lookup(name string) *Object</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Scope.String">func (s *Scope) String() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SelectStmt">type SelectStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SelectStmt.End">func (s *SelectStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SelectStmt.Pos">func (s *SelectStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SelectorExpr">type SelectorExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SelectorExpr.End">func (x *SelectorExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SelectorExpr.Pos">func (x *SelectorExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SendStmt">type SendStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SendStmt.End">func (s *SendStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SendStmt.Pos">func (s *SendStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SliceExpr">type SliceExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SliceExpr.End">func (x *SliceExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SliceExpr.Pos">func (x *SliceExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Spec">type Spec</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StarExpr">type StarExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StarExpr.End">func (x *StarExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StarExpr.Pos">func (x *StarExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Stmt">type Stmt</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#StructType">type StructType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StructType.End">func (x *StructType) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#StructType.Pos">func (x *StructType) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#SwitchStmt">type SwitchStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SwitchStmt.End">func (s *SwitchStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#SwitchStmt.Pos">func (s *SwitchStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#TypeAssertExpr">type TypeAssertExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeAssertExpr.End">func (x *TypeAssertExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeAssertExpr.Pos">func (x *TypeAssertExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#TypeSpec">type TypeSpec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeSpec.End">func (s *TypeSpec) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeSpec.Pos">func (s *TypeSpec) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#TypeSwitchStmt">type TypeSwitchStmt</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeSwitchStmt.End">func (s *TypeSwitchStmt) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#TypeSwitchStmt.Pos">func (s *TypeSwitchStmt) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#UnaryExpr">type UnaryExpr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#UnaryExpr.End">func (x *UnaryExpr) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#UnaryExpr.Pos">func (x *UnaryExpr) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ValueSpec">type ValueSpec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ValueSpec.End">func (s *ValueSpec) End() token.Pos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ValueSpec.Pos">func (s *ValueSpec) Pos() token.Pos</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Visitor">type Visitor</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go">ast.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go">filter.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/print.go">print.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/resolve.go">resolve.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go">scope.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/walk.go">walk.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="FileExports">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=3456:3488#L151">FileExports</a>
+				<a class="permalink" href="index.html#FileExports">&#xb6;</a>
+			</h2>
+			<pre>func FileExports(src *<a href="index.html#File">File</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+FileExports trims the AST for a Go source file in place such that only
+exported nodes remain: all top-level identifiers which are not exported
+and their associated information (such as type, initial value, or function
+body) are removed. Non-exported fields and methods of exported types are
+stripped, and the function bodies of exported functions are set to nil.
+The File.comments list is not changed.
+</p>
+<p>
+FileExports returns true if there is an exported declaration; it returns
+false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FilterDecl">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=6002:6043#L271">FilterDecl</a>
+				<a class="permalink" href="index.html#FilterDecl">&#xb6;</a>
+			</h2>
+			<pre>func FilterDecl(decl <a href="index.html#Decl">Decl</a>, f <a href="index.html#Filter">Filter</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+FilterDecl trims the AST for a Go declaration in place by removing
+all names (including struct field and interface method names, but
+not from parameter lists) that don&#39;t pass through the filter f.
+</p>
+<p>
+FilterDecl returns true if there are any declared names left after
+filtering; it returns false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FilterFile">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=6697:6738#L292">FilterFile</a>
+				<a class="permalink" href="index.html#FilterFile">&#xb6;</a>
+			</h2>
+			<pre>func FilterFile(src *<a href="index.html#File">File</a>, f <a href="index.html#Filter">Filter</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+FilterFile trims the AST for a Go file in place by removing all
+names from top-level declarations (including struct field and
+interface method names, but not from parameter lists) that don&#39;t
+pass through the filter f. If the declaration is empty afterwards,
+the declaration is removed from the AST.
+The File.comments list is not changed.
+</p>
+<p>
+FilterFile returns true if there are any top-level declarations
+left after filtering; it returns false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FilterPackage">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=7439:7486#L315">FilterPackage</a>
+				<a class="permalink" href="index.html#FilterPackage">&#xb6;</a>
+			</h2>
+			<pre>func FilterPackage(pkg *<a href="index.html#Package">Package</a>, f <a href="index.html#Filter">Filter</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+FilterPackage trims the AST for a Go package in place by removing all
+names from top-level declarations (including struct field and
+interface method names, but not from parameter lists) that don&#39;t
+pass through the filter f. If the declaration is empty afterwards,
+the declaration is removed from the AST.
+The pkg.Files list is not changed, so that file names and top-level
+package comments don&#39;t get lost.
+</p>
+<p>
+FilterPackage returns true if there are any top-level declarations
+left after filtering; it returns false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Fprint">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/print.go?s=1153:1247#L30">Fprint</a>
+				<a class="permalink" href="index.html#Fprint">&#xb6;</a>
+			</h2>
+			<pre>func Fprint(w <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>, fset *<a href="../token/index.html">token</a>.<a href="../token/index.html#FileSet">FileSet</a>, x interface{}, f <a href="index.html#FieldFilter">FieldFilter</a>) (n <a href="http://localhost:8081/pkg/builtin/#int">int</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+Fprint prints the (sub-)tree starting at AST node x to w.
+If fset != nil, position information is interpreted relative
+to that file set. Otherwise positions are printed as integer
+values (file set specific offsets).
+</p>
+<p>
+A non-nil FieldFilter f may be provided to control the output:
+struct fields for which f(fieldname, fieldvalue) is true are
+are printed; all others are filtered from the output.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Inspect">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/walk.go?s=6290:6332#L375">Inspect</a>
+				<a class="permalink" href="index.html#Inspect">&#xb6;</a>
+			</h2>
+			<pre>func Inspect(node <a href="index.html#Node">Node</a>, f func(<a href="index.html#Node">Node</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>)</pre>
+			<p>
+Inspect traverses an AST in depth-first order: It starts by calling
+f(node); node must not be nil. If f returns true, Inspect invokes f
+for all the non-nil children of node, recursively.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsExported">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=14346:14379#L445">IsExported</a>
+				<a class="permalink" href="index.html#IsExported">&#xb6;</a>
+			</h2>
+			<pre>func IsExported(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+IsExported returns whether name is an exported Go symbol
+(i.e., whether it begins with an uppercase letter).
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NotNilFilter">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/print.go?s=528:577#L13">NotNilFilter</a>
+				<a class="permalink" href="index.html#NotNilFilter">&#xb6;</a>
+			</h2>
+			<pre>func NotNilFilter(_ <a href="http://localhost:8081/pkg/builtin/#string">string</a>, v <a href="http://localhost:8081/pkg/reflect/">reflect</a>.<a href="http://localhost:8081/pkg/reflect/#Value">Value</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+NotNilFilter returns true for field values that are not nil;
+it returns false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PackageExports">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=3939:3977#L170">PackageExports</a>
+				<a class="permalink" href="index.html#PackageExports">&#xb6;</a>
+			</h2>
+			<pre>func PackageExports(pkg *<a href="index.html#Package">Package</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+			<p>
+PackageExports trims the AST for a Go package in place such that only
+exported nodes remain. The pkg.Files list is not changed, so that file
+names and top-level package comments don&#39;t get lost.
+</p>
+<p>
+PackageExports returns true if there is an exported declaration; it
+returns false otherwise.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Print">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/print.go?s=1927:1986#L65">Print</a>
+				<a class="permalink" href="index.html#Print">&#xb6;</a>
+			</h2>
+			<pre>func Print(fset *<a href="../token/index.html">token</a>.<a href="../token/index.html#FileSet">FileSet</a>, x interface{}) (<a href="http://localhost:8081/pkg/builtin/#int">int</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+Print prints x to standard output, skipping nil fields.
+Print(fset, x) is the same as Fprint(os.Stdout, fset, x, NotNilFilter).
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Walk">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/walk.go?s=1311:1342#L41">Walk</a>
+				<a class="permalink" href="index.html#Walk">&#xb6;</a>
+			</h2>
+			<pre>func Walk(v <a href="index.html#Visitor">Visitor</a>, node <a href="index.html#Node">Node</a>)</pre>
+			<p>
+Walk traverses an AST in depth-first order: It starts by calling
+v.Visit(node); node must not be nil. If the visitor w returned by
+v.Visit(node) is not nil, Walk is invoked recursively with visitor
+w for each of the non-nil children of node, followed by a call of
+w.Visit(nil).
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ArrayType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=8598:8772#L293">ArrayType</a>
+				<a class="permalink" href="index.html#ArrayType">&#xb6;</a>
+			</h2>
+			<p>
+An ArrayType node represents an array or slice type.
+</p>
+
+			<pre>type ArrayType struct {
+<span id="ArrayType.Lbrack"></span>    Lbrack <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;[&#34;</span>
+<span id="ArrayType.Len"></span>    Len    <a href="index.html#Expr">Expr</a>      <span class="comment">// Ellipsis node for [...]T array types, nil for slice types</span>
+<span id="ArrayType.Elt"></span>    Elt    <a href="index.html#Expr">Expr</a>      <span class="comment">// element type</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ArrayType.End">func (*ArrayType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12519:12554#L393">End</a>
+					<a class="permalink" href="index.html#ArrayType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ArrayType">ArrayType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ArrayType.Pos">func (*ArrayType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11017:11052#L360">Pos</a>
+					<a class="permalink" href="index.html#ArrayType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ArrayType">ArrayType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="AssignStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=16188:16331#L521">AssignStmt</a>
+				<a class="permalink" href="index.html#AssignStmt">&#xb6;</a>
+			</h2>
+			<p>
+An AssignStmt node represents an assignment or
+a short variable declaration.
+</p>
+
+			<pre>type AssignStmt struct {
+<span id="AssignStmt.Lhs"></span>    Lhs    []<a href="index.html#Expr">Expr</a>
+<span id="AssignStmt.TokPos"></span>    TokPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Tok</span>
+<span id="AssignStmt.Tok"></span>    Tok    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// assignment token, DEFINE</span>
+<span id="AssignStmt.Rhs"></span>    Rhs    []<a href="index.html#Expr">Expr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="AssignStmt.End">func (*AssignStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21306:21342#L664">End</a>
+					<a class="permalink" href="index.html#AssignStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#AssignStmt">AssignStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="AssignStmt.Pos">func (*AssignStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20013:20049#L638">Pos</a>
+					<a class="permalink" href="index.html#AssignStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#AssignStmt">AssignStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BadDecl">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=25787:25864#L807">BadDecl</a>
+				<a class="permalink" href="index.html#BadDecl">&#xb6;</a>
+			</h2>
+			<p>
+A BadDecl node is a placeholder for declarations containing
+syntax errors for which no correct declaration nodes can be
+created.
+</p>
+
+			<pre>type BadDecl struct {
+<span id="BadDecl.From"></span>    From, To <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position range of bad declaration</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BadDecl.End">func (*BadDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27147:27180#L847">End</a>
+					<a class="permalink" href="index.html#BadDecl.End">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#BadDecl">BadDecl</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BadDecl.Pos">func (*BadDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=26979:27012#L843">Pos</a>
+					<a class="permalink" href="index.html#BadDecl.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#BadDecl">BadDecl</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				<p>
+Pos and End implementations for declaration nodes.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BadExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=4582:4658#L153">BadExpr</a>
+				<a class="permalink" href="index.html#BadExpr">&#xb6;</a>
+			</h2>
+			<p>
+A BadExpr node is a placeholder for expressions containing
+syntax errors for which no correct expression nodes can be
+created.
+</p>
+
+			<pre>type BadExpr struct {
+<span id="BadExpr.From"></span>    From, To <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position range of bad expression</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BadExpr.End">func (*BadExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11381:11414#L367">End</a>
+					<a class="permalink" href="index.html#BadExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BadExpr">BadExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BadExpr.Pos">func (*BadExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10012:10045#L339">Pos</a>
+					<a class="permalink" href="index.html#BadExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BadExpr">BadExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				<p>
+Pos and End implementations for expression/type nodes.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BadStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15085:15160#L473">BadStmt</a>
+				<a class="permalink" href="index.html#BadStmt">&#xb6;</a>
+			</h2>
+			<p>
+A BadStmt node is a placeholder for statements containing
+syntax errors for which no correct statement nodes can be
+created.
+</p>
+
+			<pre>type BadStmt struct {
+<span id="BadStmt.From"></span>    From, To <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position range of bad statement</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BadStmt.End">func (*BadStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20855:20888#L653">End</a>
+					<a class="permalink" href="index.html#BadStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BadStmt">BadStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BadStmt.Pos">func (*BadStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19570:19603#L631">Pos</a>
+					<a class="permalink" href="index.html#BadStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BadStmt">BadStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				<p>
+Pos and End implementations for statement nodes.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BasicLit">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=5164:5423#L173">BasicLit</a>
+				<a class="permalink" href="index.html#BasicLit">&#xb6;</a>
+			</h2>
+			<p>
+A BasicLit node represents a literal of basic type.
+</p>
+
+			<pre>type BasicLit struct {
+<span id="BasicLit.ValuePos"></span>    ValuePos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// literal position</span>
+<span id="BasicLit.Kind"></span>    Kind     <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// token.INT, token.FLOAT, token.IMAG, token.CHAR, or token.STRING</span>
+<span id="BasicLit.Value"></span>    Value    <a href="http://localhost:8081/pkg/builtin/#string">string</a>      <span class="comment">// literal string; e.g. 42, 0x7f, 3.14, 1e-9, 2.4i, &#39;a&#39;, &#39;\x7f&#39;, &#34;foo&#34; or `\m\n\o`</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BasicLit.End">func (*BasicLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11635:11669#L375">End</a>
+					<a class="permalink" href="index.html#BasicLit.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BasicLit">BasicLit</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BasicLit.Pos">func (*BasicLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10178:10212#L342">Pos</a>
+					<a class="permalink" href="index.html#BasicLit.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BasicLit">BasicLit</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BinaryExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=7919:8084#L260">BinaryExpr</a>
+				<a class="permalink" href="index.html#BinaryExpr">&#xb6;</a>
+			</h2>
+			<p>
+A BinaryExpr node represents a binary expression.
+</p>
+
+			<pre>type BinaryExpr struct {
+<span id="BinaryExpr.X"></span>    X     <a href="index.html#Expr">Expr</a>        <span class="comment">// left operand</span>
+<span id="BinaryExpr.OpPos"></span>    OpPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Op</span>
+<span id="BinaryExpr.Op"></span>    Op    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// operator</span>
+<span id="BinaryExpr.Y"></span>    Y     <a href="index.html#Expr">Expr</a>        <span class="comment">// right operand</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BinaryExpr.End">func (*BinaryExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12395:12431#L391">End</a>
+					<a class="permalink" href="index.html#BinaryExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BinaryExpr">BinaryExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BinaryExpr.Pos">func (*BinaryExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10891:10927#L358">Pos</a>
+					<a class="permalink" href="index.html#BinaryExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#BinaryExpr">BinaryExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BlockStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=17116:17229#L556">BlockStmt</a>
+				<a class="permalink" href="index.html#BlockStmt">&#xb6;</a>
+			</h2>
+			<p>
+A BlockStmt node represents a braced statement list.
+</p>
+
+			<pre>type BlockStmt struct {
+<span id="BlockStmt.Lbrace"></span>    Lbrace <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;{&#34;</span>
+<span id="BlockStmt.List"></span>    List   []<a href="index.html#Stmt">Stmt</a>
+<span id="BlockStmt.Rbrace"></span>    Rbrace <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;}&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BlockStmt.End">func (*BlockStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21790:21825#L679">End</a>
+					<a class="permalink" href="index.html#BlockStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BlockStmt">BlockStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BlockStmt.Pos">func (*BlockStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20319:20354#L643">Pos</a>
+					<a class="permalink" href="index.html#BlockStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BlockStmt">BlockStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BranchStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=16876:17056#L549">BranchStmt</a>
+				<a class="permalink" href="index.html#BranchStmt">&#xb6;</a>
+			</h2>
+			<p>
+A BranchStmt node represents a break, continue, goto,
+or fallthrough statement.
+</p>
+
+			<pre>type BranchStmt struct {
+<span id="BranchStmt.TokPos"></span>    TokPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Tok</span>
+<span id="BranchStmt.Tok"></span>    Tok    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// keyword token (BREAK, CONTINUE, GOTO, FALLTHROUGH)</span>
+<span id="BranchStmt.Label"></span>    Label  *<a href="index.html#Ident">Ident</a>      <span class="comment">// label name; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BranchStmt.End">func (*BranchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21647:21683#L673">End</a>
+					<a class="permalink" href="index.html#BranchStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BranchStmt">BranchStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BranchStmt.Pos">func (*BranchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20258:20294#L642">Pos</a>
+					<a class="permalink" href="index.html#BranchStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#BranchStmt">BranchStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CallExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=7138:7383#L234">CallExpr</a>
+				<a class="permalink" href="index.html#CallExpr">&#xb6;</a>
+			</h2>
+			<p>
+A CallExpr node represents an expression followed by an argument list.
+</p>
+
+			<pre>type CallExpr struct {
+<span id="CallExpr.Fun"></span>    Fun      <a href="index.html#Expr">Expr</a>      <span class="comment">// function expression</span>
+<span id="CallExpr.Lparen"></span>    Lparen   <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;(&#34;</span>
+<span id="CallExpr.Args"></span>    Args     []<a href="index.html#Expr">Expr</a>    <span class="comment">// function arguments; or nil</span>
+<span id="CallExpr.Ellipsis"></span>    Ellipsis <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;...&#34;, if any</span>
+<span id="CallExpr.Rparen"></span>    Rparen   <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;)&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CallExpr.End">func (*CallExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12212:12246#L388">End</a>
+					<a class="permalink" href="index.html#CallExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#CallExpr">CallExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CallExpr.Pos">func (*CallExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10708:10742#L355">Pos</a>
+					<a class="permalink" href="index.html#CallExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#CallExpr">CallExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CaseClause">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=17559:17797#L572">CaseClause</a>
+				<a class="permalink" href="index.html#CaseClause">&#xb6;</a>
+			</h2>
+			<p>
+A CaseClause represents a case of an expression or type switch statement.
+</p>
+
+			<pre>type CaseClause struct {
+<span id="CaseClause.Case"></span>    Case  <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;case&#34; or &#34;default&#34; keyword</span>
+<span id="CaseClause.List"></span>    List  []<a href="index.html#Expr">Expr</a>    <span class="comment">// list of expressions or types; nil means default case</span>
+<span id="CaseClause.Colon"></span>    Colon <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;:&#34;</span>
+<span id="CaseClause.Body"></span>    Body  []<a href="index.html#Stmt">Stmt</a>    <span class="comment">// statement list; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CaseClause.End">func (*CaseClause) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21953:21989#L686">End</a>
+					<a class="permalink" href="index.html#CaseClause.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#CaseClause">CaseClause</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseClause.Pos">func (*CaseClause) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20437:20473#L645">Pos</a>
+					<a class="permalink" href="index.html#CaseClause.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#CaseClause">CaseClause</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ChanDir">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=8353:8369#L280">ChanDir</a>
+				<a class="permalink" href="index.html#ChanDir">&#xb6;</a>
+			</h2>
+			<p>
+The direction of a channel type is indicated by one
+of the following constants.
+</p>
+
+			<pre>type ChanDir <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="SEND">SEND</span> <a href="index.html#ChanDir">ChanDir</a> = 1 &lt;&lt; <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span id="RECV">RECV</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ChanType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=9776:9947#L330">ChanType</a>
+				<a class="permalink" href="index.html#ChanType">&#xb6;</a>
+			</h2>
+			<p>
+A ChanType node represents a channel type.
+</p>
+
+			<pre>type ChanType struct {
+<span id="ChanType.Begin"></span>    Begin <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;chan&#34; keyword or &#34;&lt;-&#34; (whichever comes first)</span>
+<span id="ChanType.Dir"></span>    Dir   <a href="index.html#ChanDir">ChanDir</a>   <span class="comment">// channel direction</span>
+<span id="ChanType.Value"></span>    Value <a href="index.html#Expr">Expr</a>      <span class="comment">// value type</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ChanType.End">func (*ChanType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12891:12925#L403">End</a>
+					<a class="permalink" href="index.html#ChanType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ChanType">ChanType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ChanType.Pos">func (*ChanType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11320:11354#L365">Pos</a>
+					<a class="permalink" href="index.html#ChanType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ChanType">ChanType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CommClause">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=18436:18671#L596">CommClause</a>
+				<a class="permalink" href="index.html#CommClause">&#xb6;</a>
+			</h2>
+			<p>
+A CommClause node represents a case of a select statement.
+</p>
+
+			<pre>type CommClause struct {
+<span id="CommClause.Case"></span>    Case  <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;case&#34; or &#34;default&#34; keyword</span>
+<span id="CommClause.Comm"></span>    Comm  <a href="index.html#Stmt">Stmt</a>      <span class="comment">// send or receive statement; nil means default case</span>
+<span id="CommClause.Colon"></span>    Colon <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;:&#34;</span>
+<span id="CommClause.Body"></span>    Body  []<a href="index.html#Stmt">Stmt</a>    <span class="comment">// statement list; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CommClause.End">func (*CommClause) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22204:22240#L694">End</a>
+					<a class="permalink" href="index.html#CommClause.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#CommClause">CommClause</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CommClause.Pos">func (*CommClause) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20618:20654#L648">Pos</a>
+					<a class="permalink" href="index.html#CommClause.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#CommClause">CommClause</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Comment">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=1846:1998#L52">Comment</a>
+				<a class="permalink" href="index.html#Comment">&#xb6;</a>
+			</h2>
+			<p>
+A Comment node represents a single //-style or /*-style comment.
+</p>
+
+			<pre>type Comment struct {
+<span id="Comment.Slash"></span>    Slash <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;/&#34; starting the comment</span>
+<span id="Comment.Text"></span>    Text  <a href="http://localhost:8081/pkg/builtin/#string">string</a>    <span class="comment">// comment text (excluding &#39;\n&#39; for //-style comments)</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Comment.End">func (*Comment) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2053:2086#L58">End</a>
+					<a class="permalink" href="index.html#Comment.End">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Comment">Comment</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Comment.Pos">func (*Comment) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2000:2033#L57">Pos</a>
+					<a class="permalink" href="index.html#Comment.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="index.html#Comment">Comment</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CommentGroup">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2244:2306#L63">CommentGroup</a>
+				<a class="permalink" href="index.html#CommentGroup">&#xb6;</a>
+			</h2>
+			<p>
+A CommentGroup represents a sequence of comments
+with no other tokens and no empty lines between.
+</p>
+
+			<pre>type CommentGroup struct {
+<span id="CommentGroup.List"></span>    List []*<a href="index.html#Comment">Comment</a> <span class="comment">// len(List) &gt; 0</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CommentGroup.End">func (*CommentGroup) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2374:2412#L68">End</a>
+					<a class="permalink" href="index.html#CommentGroup.End">&#xb6;</a>
+				</h3>
+				<pre>func (g *<a href="index.html#CommentGroup">CommentGroup</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CommentGroup.Pos">func (*CommentGroup) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2308:2346#L67">Pos</a>
+					<a class="permalink" href="index.html#CommentGroup.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (g *<a href="index.html#CommentGroup">CommentGroup</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CompositeLit">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=5624:5824#L186">CompositeLit</a>
+				<a class="permalink" href="index.html#CompositeLit">&#xb6;</a>
+			</h2>
+			<p>
+A CompositeLit node represents a composite literal.
+</p>
+
+			<pre>type CompositeLit struct {
+<span id="CompositeLit.Type"></span>    Type   <a href="index.html#Expr">Expr</a>      <span class="comment">// literal type; or nil</span>
+<span id="CompositeLit.Lbrace"></span>    Lbrace <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;{&#34;</span>
+<span id="CompositeLit.Elts"></span>    Elts   []<a href="index.html#Expr">Expr</a>    <span class="comment">// list of composite elements; or nil</span>
+<span id="CompositeLit.Rbrace"></span>    Rbrace <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;}&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CompositeLit.End">func (*CompositeLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11790:11828#L377">End</a>
+					<a class="permalink" href="index.html#CompositeLit.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#CompositeLit">CompositeLit</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CompositeLit.Pos">func (*CompositeLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10294:10332#L344">Pos</a>
+					<a class="permalink" href="index.html#CompositeLit.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#CompositeLit">CompositeLit</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Decl">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=1642:1683#L43">Decl</a>
+				<a class="permalink" href="index.html#Decl">&#xb6;</a>
+			</h2>
+			<p>
+All declaration nodes implement the Decl interface.
+</p>
+
+			<pre>type Decl interface {
+    <a href="index.html#Node">Node</a>
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DeclStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15229:15261#L478">DeclStmt</a>
+				<a class="permalink" href="index.html#DeclStmt">&#xb6;</a>
+			</h2>
+			<p>
+A DeclStmt node represents a declaration in a statement list.
+</p>
+
+			<pre>type DeclStmt struct {
+<span id="DeclStmt.Decl"></span>    Decl <a href="index.html#Decl">Decl</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DeclStmt.End">func (*DeclStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20906:20940#L654">End</a>
+					<a class="permalink" href="index.html#DeclStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#DeclStmt">DeclStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DeclStmt.Pos">func (*DeclStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19629:19663#L632">Pos</a>
+					<a class="permalink" href="index.html#DeclStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#DeclStmt">DeclStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DeferStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=16513:16601#L535">DeferStmt</a>
+				<a class="permalink" href="index.html#DeferStmt">&#xb6;</a>
+			</h2>
+			<p>
+A DeferStmt node represents a defer statement.
+</p>
+
+			<pre>type DeferStmt struct {
+<span id="DeferStmt.Defer"></span>    Defer <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;defer&#34; keyword</span>
+<span id="DeferStmt.Call"></span>    Call  *<a href="index.html#CallExpr">CallExpr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DeferStmt.End">func (*DeferStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21441:21476#L666">End</a>
+					<a class="permalink" href="index.html#DeferStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#DeferStmt">DeferStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="DeferStmt.Pos">func (*DeferStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20137:20172#L640">Pos</a>
+					<a class="permalink" href="index.html#DeferStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#DeferStmt">DeferStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Ellipsis">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=4966:5105#L167">Ellipsis</a>
+				<a class="permalink" href="index.html#Ellipsis">&#xb6;</a>
+			</h2>
+			<p>
+An Ellipsis node stands for the &#34;...&#34; type in a
+parameter list or the &#34;...&#34; length in an array type.
+</p>
+
+			<pre>type Ellipsis struct {
+<span id="Ellipsis.Ellipsis"></span>    Ellipsis <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;...&#34;</span>
+<span id="Ellipsis.Elt"></span>    Elt      <a href="index.html#Expr">Expr</a>      <span class="comment">// ellipsis element type (parameter lists only); or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Ellipsis.End">func (*Ellipsis) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11516:11550#L369">End</a>
+					<a class="permalink" href="index.html#Ellipsis.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#Ellipsis">Ellipsis</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Ellipsis.Pos">func (*Ellipsis) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10121:10155#L341">Pos</a>
+					<a class="permalink" href="index.html#Ellipsis.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#Ellipsis">Ellipsis</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EmptyStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15423:15495#L486">EmptyStmt</a>
+				<a class="permalink" href="index.html#EmptyStmt">&#xb6;</a>
+			</h2>
+			<p>
+An EmptyStmt node represents an empty statement.
+The &#34;position&#34; of the empty statement is the position
+of the immediately preceding semicolon.
+</p>
+
+			<pre>type EmptyStmt struct {
+<span id="EmptyStmt.Semicolon"></span>    Semicolon <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of preceding &#34;;&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="EmptyStmt.End">func (*EmptyStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20965:21000#L655">End</a>
+					<a class="permalink" href="index.html#EmptyStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#EmptyStmt">EmptyStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="EmptyStmt.Pos">func (*EmptyStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19694:19729#L633">Pos</a>
+					<a class="permalink" href="index.html#EmptyStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#EmptyStmt">EmptyStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Expr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=1448:1489#L31">Expr</a>
+				<a class="permalink" href="index.html#Expr">&#xb6;</a>
+			</h2>
+			<p>
+All expression nodes implement the Expr interface.
+</p>
+
+			<pre>type Expr interface {
+    <a href="index.html#Node">Node</a>
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ExprStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15732:15775#L500">ExprStmt</a>
+				<a class="permalink" href="index.html#ExprStmt">&#xb6;</a>
+			</h2>
+			<p>
+An ExprStmt node represents a (stand-alone) expression
+in a statement list.
+</p>
+
+			<pre>type ExprStmt struct {
+<span id="ExprStmt.X"></span>    X <a href="index.html#Expr">Expr</a> <span class="comment">// expression</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ExprStmt.End">func (*ExprStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21106:21140#L659">End</a>
+					<a class="permalink" href="index.html#ExprStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ExprStmt">ExprStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ExprStmt.Pos">func (*ExprStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19824:19858#L635">Pos</a>
+					<a class="permalink" href="index.html#ExprStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ExprStmt">ExprStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Field">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=2719:3027#L77">Field</a>
+				<a class="permalink" href="index.html#Field">&#xb6;</a>
+			</h2>
+			<p>
+A Field represents a Field declaration list in a struct type,
+a method list in an interface type, or a parameter/result declaration
+in a signature.
+</p>
+
+			<pre>type Field struct {
+<span id="Field.Doc"></span>    Doc     *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="Field.Names"></span>    Names   []*<a href="index.html#Ident">Ident</a>      <span class="comment">// field/method/parameter names; or nil if anonymous field</span>
+<span id="Field.Type"></span>    Type    <a href="index.html#Expr">Expr</a>          <span class="comment">// field/method/parameter type</span>
+<span id="Field.Tag"></span>    Tag     *<a href="index.html#BasicLit">BasicLit</a>     <span class="comment">// field tag; or nil</span>
+<span id="Field.Comment"></span>    Comment *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// line comments; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Field.End">func (*Field) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=3139:3170#L92">End</a>
+					<a class="permalink" href="index.html#Field.End">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#Field">Field</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Field.Pos">func (*Field) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=3029:3060#L85">Pos</a>
+					<a class="permalink" href="index.html#Field.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#Field">Field</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FieldFilter">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/print.go?s=371:431#L9">FieldFilter</a>
+				<a class="permalink" href="index.html#FieldFilter">&#xb6;</a>
+			</h2>
+			<p>
+A FieldFilter may be provided to Fprint to control the output.
+</p>
+
+			<pre>type FieldFilter func(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>, value <a href="http://localhost:8081/pkg/reflect/">reflect</a>.<a href="http://localhost:8081/pkg/reflect/#Value">Value</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FieldList">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=3319:3521#L100">FieldList</a>
+				<a class="permalink" href="index.html#FieldList">&#xb6;</a>
+			</h2>
+			<p>
+A FieldList represents a list of Fields, enclosed by parentheses or braces.
+</p>
+
+			<pre>type FieldList struct {
+<span id="FieldList.Opening"></span>    Opening <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of opening parenthesis/brace, if any</span>
+<span id="FieldList.List"></span>    List    []*<a href="index.html#Field">Field</a>  <span class="comment">// field list; or nil</span>
+<span id="FieldList.Closing"></span>    Closing <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of closing parenthesis/brace, if any</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FieldList.End">func (*FieldList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=3776:3811#L118">End</a>
+					<a class="permalink" href="index.html#FieldList.End">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#FieldList">FieldList</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="FieldList.NumFields">func (*FieldList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=4123:4158#L131">NumFields</a>
+					<a class="permalink" href="index.html#FieldList.NumFields">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#FieldList">FieldList</a>) NumFields() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+NumFields returns the number of (named and anonymous fields) in a FieldList.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FieldList.Pos">func (*FieldList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=3523:3558#L106">Pos</a>
+					<a class="permalink" href="index.html#FieldList.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#FieldList">FieldList</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27936:28439#L877">File</a>
+				<a class="permalink" href="index.html#File">&#xb6;</a>
+			</h2>
+			<p>
+A File node represents a Go source file.
+</p>
+<p>
+The Comments list contains all comments in the source file in order of
+appearance, including the comments that are pointed to from other nodes
+via Doc and Comment fields.
+</p>
+
+			<pre>type File struct {
+<span id="File.Doc"></span>    Doc        *<a href="index.html#CommentGroup">CommentGroup</a>   <span class="comment">// associated documentation; or nil</span>
+<span id="File.Package"></span>    Package    <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>       <span class="comment">// position of &#34;package&#34; keyword</span>
+<span id="File.Name"></span>    Name       *<a href="index.html#Ident">Ident</a>          <span class="comment">// package name</span>
+<span id="File.Decls"></span>    Decls      []<a href="index.html#Decl">Decl</a>          <span class="comment">// top-level declarations; or nil</span>
+<span id="File.Scope"></span>    Scope      *<a href="index.html#Scope">Scope</a>          <span class="comment">// package scope (this file only)</span>
+<span id="File.Imports"></span>    Imports    []*<a href="index.html#ImportSpec">ImportSpec</a>   <span class="comment">// imports in this file</span>
+<span id="File.Unresolved"></span>    Unresolved []*<a href="index.html#Ident">Ident</a>        <span class="comment">// unresolved identifiers in this file</span>
+<span id="File.Comments"></span>    Comments   []*<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// list of all comments in the source file</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MergePackageFiles">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=8390:8448#L347">MergePackageFiles</a>
+					<a class="permalink" href="index.html#MergePackageFiles">&#xb6;</a>
+				</h3>
+				<pre>func MergePackageFiles(pkg *<a href="index.html#Package">Package</a>, mode <a href="index.html#MergeMode">MergeMode</a>) *<a href="index.html#File">File</a></pre>
+				<p>
+MergePackageFiles creates a file AST by merging the ASTs of the
+files belonging to a package. The mode flags control merging behavior.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="File.End">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=28493:28523#L889">End</a>
+					<a class="permalink" href="index.html#File.End">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.Pos">func (*File) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=28441:28471#L888">Pos</a>
+					<a class="permalink" href="index.html#File.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="index.html#File">File</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Filter">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=4206:4235#L183">Filter</a>
+				<a class="permalink" href="index.html#Filter">&#xb6;</a>
+			</h2>
+			
+			<pre>type Filter func(<a href="http://localhost:8081/pkg/builtin/#string">string</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ForStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=18887:19114#L610">ForStmt</a>
+				<a class="permalink" href="index.html#ForStmt">&#xb6;</a>
+			</h2>
+			<p>
+A ForStmt represents a for statement.
+</p>
+
+			<pre>type ForStmt struct {
+<span id="ForStmt.For"></span>    For  <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;for&#34; keyword</span>
+<span id="ForStmt.Init"></span>    Init <a href="index.html#Stmt">Stmt</a>      <span class="comment">// initialization statement; or nil</span>
+<span id="ForStmt.Cond"></span>    Cond <a href="index.html#Expr">Expr</a>      <span class="comment">// condition; or nil</span>
+<span id="ForStmt.Post"></span>    Post <a href="index.html#Stmt">Stmt</a>      <span class="comment">// post iteration statement; or nil</span>
+<span id="ForStmt.Body"></span>    Body *<a href="index.html#BlockStmt">BlockStmt</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ForStmt.End">func (*ForStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22386:22419#L701">End</a>
+					<a class="permalink" href="index.html#ForStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ForStmt">ForStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ForStmt.Pos">func (*ForStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20738:20771#L650">Pos</a>
+					<a class="permalink" href="index.html#ForStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ForStmt">ForStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FuncDecl">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=26592:26918#L832">FuncDecl</a>
+				<a class="permalink" href="index.html#FuncDecl">&#xb6;</a>
+			</h2>
+			<p>
+A FuncDecl node represents a function declaration.
+</p>
+
+			<pre>type FuncDecl struct {
+<span id="FuncDecl.Doc"></span>    Doc  *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="FuncDecl.Recv"></span>    Recv *<a href="index.html#FieldList">FieldList</a>    <span class="comment">// receiver (methods); or nil (functions)</span>
+<span id="FuncDecl.Name"></span>    Name *<a href="index.html#Ident">Ident</a>        <span class="comment">// function/method name</span>
+<span id="FuncDecl.Type"></span>    Type *<a href="index.html#FuncType">FuncType</a>     <span class="comment">// position of Func keyword, parameters and results</span>
+<span id="FuncDecl.Body"></span>    Body *<a href="index.html#BlockStmt">BlockStmt</a>    <span class="comment">// function body; or nil (forward declaration)</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FuncDecl.End">func (*FuncDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27310:27344#L854">End</a>
+					<a class="permalink" href="index.html#FuncDecl.End">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#FuncDecl">FuncDecl</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="FuncDecl.Pos">func (*FuncDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27087:27121#L845">Pos</a>
+					<a class="permalink" href="index.html#FuncDecl.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#FuncDecl">FuncDecl</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FuncLit">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=5476:5565#L180">FuncLit</a>
+				<a class="permalink" href="index.html#FuncLit">&#xb6;</a>
+			</h2>
+			<p>
+A FuncLit node represents a function literal.
+</p>
+
+			<pre>type FuncLit struct {
+<span id="FuncLit.Type"></span>    Type *<a href="index.html#FuncType">FuncType</a>  <span class="comment">// function type</span>
+<span id="FuncLit.Body"></span>    Body *<a href="index.html#BlockStmt">BlockStmt</a> <span class="comment">// function body</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FuncLit.End">func (*FuncLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11727:11760#L376">End</a>
+					<a class="permalink" href="index.html#FuncLit.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#FuncLit">FuncLit</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="FuncLit.Pos">func (*FuncLit) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10235:10268#L343">Pos</a>
+					<a class="permalink" href="index.html#FuncLit.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#FuncLit">FuncLit</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FuncType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=9143:9319#L309">FuncType</a>
+				<a class="permalink" href="index.html#FuncType">&#xb6;</a>
+			</h2>
+			<p>
+A FuncType node represents a function type.
+</p>
+
+			<pre>type FuncType struct {
+<span id="FuncType.Func"></span>    Func    <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;func&#34; keyword</span>
+<span id="FuncType.Params"></span>    Params  *<a href="index.html#FieldList">FieldList</a> <span class="comment">// (incoming) parameters; or nil</span>
+<span id="FuncType.Results"></span>    Results *<a href="index.html#FieldList">FieldList</a> <span class="comment">// (outgoing) results; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FuncType.End">func (*FuncType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12646:12680#L395">End</a>
+					<a class="permalink" href="index.html#FuncType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#FuncType">FuncType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="FuncType.Pos">func (*FuncType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11139:11173#L362">Pos</a>
+					<a class="permalink" href="index.html#FuncType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#FuncType">FuncType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="GenDecl">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=26251:26534#L822">GenDecl</a>
+				<a class="permalink" href="index.html#GenDecl">&#xb6;</a>
+			</h2>
+			<p>
+A GenDecl node (generic declaration node) represents an import,
+constant, type or variable declaration. A valid Lparen position
+(Lparen.Line &gt; 0) indicates a parenthesized declaration.
+</p>
+<p>
+Relationship between Tok value and Specs element type:
+</p>
+<pre>token.IMPORT  *ImportSpec
+token.CONST   *ValueSpec
+token.TYPE    *TypeSpec
+token.VAR     *ValueSpec
+</pre>
+
+			<pre>type GenDecl struct {
+<span id="GenDecl.Doc"></span>    Doc    *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="GenDecl.TokPos"></span>    TokPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>     <span class="comment">// position of Tok</span>
+<span id="GenDecl.Tok"></span>    Tok    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a>   <span class="comment">// IMPORT, CONST, TYPE, VAR</span>
+<span id="GenDecl.Lparen"></span>    Lparen <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>     <span class="comment">// position of &#39;(&#39;, if any</span>
+<span id="GenDecl.Specs"></span>    Specs  []<a href="index.html#Spec">Spec</a>
+<span id="GenDecl.Rparen"></span>    Rparen <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#39;)&#39;, if any</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="GenDecl.End">func (*GenDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27197:27230#L848">End</a>
+					<a class="permalink" href="index.html#GenDecl.End">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#GenDecl">GenDecl</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="GenDecl.Pos">func (*GenDecl) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=27032:27065#L844">Pos</a>
+					<a class="permalink" href="index.html#GenDecl.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (d *<a href="index.html#GenDecl">GenDecl</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="GoStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=16379:16459#L529">GoStmt</a>
+				<a class="permalink" href="index.html#GoStmt">&#xb6;</a>
+			</h2>
+			<p>
+A GoStmt node represents a go statement.
+</p>
+
+			<pre>type GoStmt struct {
+<span id="GoStmt.Go"></span>    Go   <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;go&#34; keyword</span>
+<span id="GoStmt.Call"></span>    Call *<a href="index.html#CallExpr">CallExpr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="GoStmt.End">func (*GoStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21380:21412#L665">End</a>
+					<a class="permalink" href="index.html#GoStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#GoStmt">GoStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="GoStmt.Pos">func (*GoStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20080:20112#L639">Pos</a>
+					<a class="permalink" href="index.html#GoStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#GoStmt">GoStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Ident">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=4705:4850#L158">Ident</a>
+				<a class="permalink" href="index.html#Ident">&#xb6;</a>
+			</h2>
+			<p>
+An Ident node represents an identifier.
+</p>
+
+			<pre>type Ident struct {
+<span id="Ident.NamePos"></span>    NamePos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// identifier position</span>
+<span id="Ident.Name"></span>    Name    <a href="http://localhost:8081/pkg/builtin/#string">string</a>    <span class="comment">// identifier name</span>
+<span id="Ident.Obj"></span>    Obj     *<a href="index.html#Object">Object</a>   <span class="comment">// denoted object; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewIdent">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=14157:14190#L440">NewIdent</a>
+					<a class="permalink" href="index.html#NewIdent">&#xb6;</a>
+				</h3>
+				<pre>func NewIdent(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) *<a href="index.html#Ident">Ident</a></pre>
+				<p>
+NewIdent creates a new Ident without position.
+Useful for ASTs generated by code other than the Go parser.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Ident.End">func (*Ident) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11431:11462#L368">End</a>
+					<a class="permalink" href="index.html#Ident.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#Ident">Ident</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Ident.IsExported">func (*Ident) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=14569:14603#L453">IsExported</a>
+					<a class="permalink" href="index.html#Ident.IsExported">&#xb6;</a>
+				</h3>
+				<pre>func (id *<a href="index.html#Ident">Ident</a>) IsExported() <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				<p>
+IsExported returns whether id is an exported Go symbol
+(i.e., whether it begins with an uppercase letter).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Ident.Pos">func (*Ident) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10065:10096#L340">Pos</a>
+					<a class="permalink" href="index.html#Ident.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#Ident">Ident</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Ident.String">func (*Ident) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=14636:14668#L455">String</a>
+					<a class="permalink" href="index.html#Ident.String">&#xb6;</a>
+				</h3>
+				<pre>func (id *<a href="index.html#Ident">Ident</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="IfStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=17279:17478#L563">IfStmt</a>
+				<a class="permalink" href="index.html#IfStmt">&#xb6;</a>
+			</h2>
+			<p>
+An IfStmt node represents an if statement.
+</p>
+
+			<pre>type IfStmt struct {
+<span id="IfStmt.If"></span>    If   <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;if&#34; keyword</span>
+<span id="IfStmt.Init"></span>    Init <a href="index.html#Stmt">Stmt</a>      <span class="comment">// initialization statement; or nil</span>
+<span id="IfStmt.Cond"></span>    Cond <a href="index.html#Expr">Expr</a>      <span class="comment">// condition</span>
+<span id="IfStmt.Body"></span>    Body *<a href="index.html#BlockStmt">BlockStmt</a>
+<span id="IfStmt.Else"></span>    Else <a href="index.html#Stmt">Stmt</a> <span class="comment">// else branch; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="IfStmt.End">func (*IfStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21850:21882#L680">End</a>
+					<a class="permalink" href="index.html#IfStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#IfStmt">IfStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="IfStmt.Pos">func (*IfStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20380:20412#L644">Pos</a>
+					<a class="permalink" href="index.html#IfStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#IfStmt">IfStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ImportSpec">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=23806:24046#L743">ImportSpec</a>
+				<a class="permalink" href="index.html#ImportSpec">&#xb6;</a>
+			</h2>
+			<p>
+An ImportSpec node represents a single package import.
+</p>
+
+			<pre>type ImportSpec struct {
+<span id="ImportSpec.Doc"></span>    Doc     *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="ImportSpec.Name"></span>    Name    *<a href="index.html#Ident">Ident</a>        <span class="comment">// local package name (including &#34;.&#34;); or nil</span>
+<span id="ImportSpec.Path"></span>    Path    *<a href="index.html#BasicLit">BasicLit</a>     <span class="comment">// import path</span>
+<span id="ImportSpec.Comment"></span>    Comment *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// line comments; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ImportSpec.End">func (*ImportSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=25066:25102#L781">End</a>
+					<a class="permalink" href="index.html#ImportSpec.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ImportSpec">ImportSpec</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ImportSpec.Pos">func (*ImportSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=24834:24870#L772">Pos</a>
+					<a class="permalink" href="index.html#ImportSpec.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ImportSpec">ImportSpec</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				<p>
+Pos and End implementations for spec nodes.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Importer">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/resolve.go?s=1793:1877#L54">Importer</a>
+				<a class="permalink" href="index.html#Importer">&#xb6;</a>
+			</h2>
+			<p>
+An Importer resolves import paths to package Objects.
+The imports map records the packages already imported,
+indexed by package id (canonical import path).
+An Importer must determine the canonical import path and
+check the map to see if it is already present in the imports map.
+If so, the Importer can return the map entry.  Otherwise, the
+Importer should load the package data for the given path into
+a new *Object (pkg), record pkg in the imports map, and then
+return pkg.
+</p>
+
+			<pre>type Importer func(imports map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#Object">Object</a>, path <a href="http://localhost:8081/pkg/builtin/#string">string</a>) (pkg *<a href="index.html#Object">Object</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="IncDecStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15985:16096#L512">IncDecStmt</a>
+				<a class="permalink" href="index.html#IncDecStmt">&#xb6;</a>
+			</h2>
+			<p>
+An IncDecStmt node represents an increment or decrement statement.
+</p>
+
+			<pre>type IncDecStmt struct {
+<span id="IncDecStmt.X"></span>    X      <a href="index.html#Expr">Expr</a>
+<span id="IncDecStmt.TokPos"></span>    TokPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Tok</span>
+<span id="IncDecStmt.Tok"></span>    Tok    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// INC or DEC</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="IncDecStmt.End">func (*IncDecStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21228:21264#L661">End</a>
+					<a class="permalink" href="index.html#IncDecStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#IncDecStmt">IncDecStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="IncDecStmt.Pos">func (*IncDecStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19951:19987#L637">Pos</a>
+					<a class="permalink" href="index.html#IncDecStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#IncDecStmt">IncDecStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="IndexExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=6261:6430#L207">IndexExpr</a>
+				<a class="permalink" href="index.html#IndexExpr">&#xb6;</a>
+			</h2>
+			<p>
+An IndexExpr node represents an expression followed by an index.
+</p>
+
+			<pre>type IndexExpr struct {
+<span id="IndexExpr.X"></span>    X      <a href="index.html#Expr">Expr</a>      <span class="comment">// expression</span>
+<span id="IndexExpr.Lbrack"></span>    Lbrack <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;[&#34;</span>
+<span id="IndexExpr.Index"></span>    Index  <a href="index.html#Expr">Expr</a>      <span class="comment">// index expression</span>
+<span id="IndexExpr.Rbrack"></span>    Rbrack <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;]&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="IndexExpr.End">func (*IndexExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11978:12013#L380">End</a>
+					<a class="permalink" href="index.html#IndexExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#IndexExpr">IndexExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="IndexExpr.Pos">func (*IndexExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10522:10557#L352">Pos</a>
+					<a class="permalink" href="index.html#IndexExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#IndexExpr">IndexExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="InterfaceType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=9378:9589#L316">InterfaceType</a>
+				<a class="permalink" href="index.html#InterfaceType">&#xb6;</a>
+			</h2>
+			<p>
+An InterfaceType node represents an interface type.
+</p>
+
+			<pre>type InterfaceType struct {
+<span id="InterfaceType.Interface"></span>    Interface  <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;interface&#34; keyword</span>
+<span id="InterfaceType.Methods"></span>    Methods    *<a href="index.html#FieldList">FieldList</a> <span class="comment">// list of methods</span>
+<span id="InterfaceType.Incomplete"></span>    Incomplete <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>       <span class="comment">// true if (source) methods are missing in the Methods list</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InterfaceType.End">func (*InterfaceType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12759:12798#L401">End</a>
+					<a class="permalink" href="index.html#InterfaceType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#InterfaceType">InterfaceType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="InterfaceType.Pos">func (*InterfaceType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11198:11237#L363">Pos</a>
+					<a class="permalink" href="index.html#InterfaceType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#InterfaceType">InterfaceType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="KeyValueExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=8173:8260#L270">KeyValueExpr</a>
+				<a class="permalink" href="index.html#KeyValueExpr">&#xb6;</a>
+			</h2>
+			<p>
+A KeyValueExpr node represents (key : value) pairs
+in composite literals.
+</p>
+
+			<pre>type KeyValueExpr struct {
+<span id="KeyValueExpr.Key"></span>    Key   <a href="index.html#Expr">Expr</a>
+<span id="KeyValueExpr.Colon"></span>    Colon <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;:&#34;</span>
+<span id="KeyValueExpr.Value"></span>    Value <a href="index.html#Expr">Expr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="KeyValueExpr.End">func (*KeyValueExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12455:12493#L392">End</a>
+					<a class="permalink" href="index.html#KeyValueExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#KeyValueExpr">KeyValueExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="KeyValueExpr.Pos">func (*KeyValueExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10953:10991#L359">Pos</a>
+					<a class="permalink" href="index.html#KeyValueExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#KeyValueExpr">KeyValueExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LabeledStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15553:15641#L491">LabeledStmt</a>
+				<a class="permalink" href="index.html#LabeledStmt">&#xb6;</a>
+			</h2>
+			<p>
+A LabeledStmt node represents a labeled statement.
+</p>
+
+			<pre>type LabeledStmt struct {
+<span id="LabeledStmt.Label"></span>    Label *<a href="index.html#Ident">Ident</a>
+<span id="LabeledStmt.Colon"></span>    Colon <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;:&#34;</span>
+<span id="LabeledStmt.Stmt"></span>    Stmt  <a href="index.html#Stmt">Stmt</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LabeledStmt.End">func (*LabeledStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21044:21081#L658">End</a>
+					<a class="permalink" href="index.html#LabeledStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#LabeledStmt">LabeledStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="LabeledStmt.Pos">func (*LabeledStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19758:19795#L634">Pos</a>
+					<a class="permalink" href="index.html#LabeledStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#LabeledStmt">LabeledStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MapType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=9634:9726#L323">MapType</a>
+				<a class="permalink" href="index.html#MapType">&#xb6;</a>
+			</h2>
+			<p>
+A MapType node represents a map type.
+</p>
+
+			<pre>type MapType struct {
+<span id="MapType.Map"></span>    Map   <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;map&#34; keyword</span>
+<span id="MapType.Key"></span>    Key   <a href="index.html#Expr">Expr</a>
+<span id="MapType.Value"></span>    Value <a href="index.html#Expr">Expr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MapType.End">func (*MapType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12826:12859#L402">End</a>
+					<a class="permalink" href="index.html#MapType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#MapType">MapType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="MapType.Pos">func (*MapType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11262:11295#L364">Pos</a>
+					<a class="permalink" href="index.html#MapType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#MapType">MapType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MergeMode">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/filter.go?s=7788:7807#L329">MergeMode</a>
+				<a class="permalink" href="index.html#MergeMode">&#xb6;</a>
+			</h2>
+			<p>
+The MergeMode flags control the behavior of MergePackageFiles.
+</p>
+
+			<pre>type MergeMode <a href="http://localhost:8081/pkg/builtin/#uint">uint</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// If set, duplicate function declarations are excluded.</span>
+    <span id="FilterFuncDuplicates">FilterFuncDuplicates</span> <a href="index.html#MergeMode">MergeMode</a> = 1 &lt;&lt; <a href="http://localhost:8081/pkg/builtin/#iota">iota</a>
+    <span class="comment">// If set, comments that are not associated with a specific</span>
+    <span class="comment">// AST node (as Doc or Comment) are excluded.</span>
+    <span id="FilterUnassociatedComments">FilterUnassociatedComments</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Node">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=1224:1392#L25">Node</a>
+				<a class="permalink" href="index.html#Node">&#xb6;</a>
+			</h2>
+			<p>
+All node types implement the Node interface.
+</p>
+
+			<pre>type Node interface {
+    Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of first character belonging to the node</span>
+    End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of first character immediately after the node</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ObjKind">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=3472:3488#L124">ObjKind</a>
+				<a class="permalink" href="index.html#ObjKind">&#xb6;</a>
+			</h2>
+			<p>
+ObKind describes what an object represents.
+</p>
+
+			<pre>type ObjKind <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+
+			
+				<p>
+The list of possible Object kinds.
+</p>
+
+				<pre>const (
+    <span id="Bad">Bad</span> <a href="index.html#ObjKind">ObjKind</a> = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// for error handling</span>
+    <span id="Pkg">Pkg</span>                <span class="comment">// package</span>
+    <span id="Con">Con</span>                <span class="comment">// constant</span>
+    <span id="Typ">Typ</span>                <span class="comment">// type</span>
+    <span id="Var">Var</span>                <span class="comment">// variable</span>
+    <span id="Fun">Fun</span>                <span class="comment">// function or method</span>
+    <span id="Lbl">Lbl</span>                <span class="comment">// label</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ObjKind.String">func (ObjKind) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=3913:3948#L147">String</a>
+					<a class="permalink" href="index.html#ObjKind.String">&#xb6;</a>
+				</h3>
+				<pre>func (kind <a href="index.html#ObjKind">ObjKind</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Object">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=2185:2457#L71">Object</a>
+				<a class="permalink" href="index.html#Object">&#xb6;</a>
+			</h2>
+			<p>
+An Object describes a named language entity such as a package,
+constant, type, variable, function (incl. methods), or label.
+</p>
+<p>
+The Data fields contains object-specific data:
+</p>
+<pre>Kind    Data type    Data value
+Pkg	*Scope       package scope
+Con     int          iota for the respective declaration
+Con     != nil       constant value
+</pre>
+
+			<pre>type Object struct {
+<span id="Object.Kind"></span>    Kind <a href="index.html#ObjKind">ObjKind</a>
+<span id="Object.Name"></span>    Name <a href="http://localhost:8081/pkg/builtin/#string">string</a>      <span class="comment">// declared name</span>
+<span id="Object.Decl"></span>    Decl interface{} <span class="comment">// corresponding Field, XxxSpec, FuncDecl, or LabeledStmt; or nil</span>
+<span id="Object.Data"></span>    Data interface{} <span class="comment">// object-specific data; or nil</span>
+<span id="Object.Type"></span>    Type interface{} <span class="comment">// place holder for type information; may be nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewObj">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=2516:2562#L80">NewObj</a>
+					<a class="permalink" href="index.html#NewObj">&#xb6;</a>
+				</h3>
+				<pre>func NewObj(kind <a href="index.html#ObjKind">ObjKind</a>, name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) *<a href="index.html#Object">Object</a></pre>
+				<p>
+NewObj creates a new object of a given kind and name.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Object.Pos">func (*Object) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=2789:2823#L87">Pos</a>
+					<a class="permalink" href="index.html#Object.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (obj *<a href="index.html#Object">Object</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				<p>
+Pos computes the source position of the declaration of an object name.
+The result may be an invalid position if it cannot be computed
+(obj.Decl may be nil or not correct).
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Package">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=28705:28960#L899">Package</a>
+				<a class="permalink" href="index.html#Package">&#xb6;</a>
+			</h2>
+			<p>
+A Package node represents a set of source files
+collectively building a Go package.
+</p>
+
+			<pre>type Package struct {
+<span id="Package.Name"></span>    Name    <a href="http://localhost:8081/pkg/builtin/#string">string</a>             <span class="comment">// package name</span>
+<span id="Package.Scope"></span>    Scope   *<a href="index.html#Scope">Scope</a>             <span class="comment">// package scope across all files</span>
+<span id="Package.Imports"></span>    Imports map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#Object">Object</a> <span class="comment">// map of package id -&gt; package object</span>
+<span id="Package.Files"></span>    Files   map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#File">File</a>   <span class="comment">// Go source files by filename</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewPackage">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/resolve.go?s=2487:2601#L65">NewPackage</a>
+					<a class="permalink" href="index.html#NewPackage">&#xb6;</a>
+				</h3>
+				<pre>func NewPackage(fset *<a href="../token/index.html">token</a>.<a href="../token/index.html#FileSet">FileSet</a>, files map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#File">File</a>, importer <a href="index.html#Importer">Importer</a>, universe *<a href="index.html#Scope">Scope</a>) (*<a href="index.html#Package">Package</a>, <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewPackage creates a new Package node from a set of File nodes. It resolves
+unresolved identifiers across files and updates each file&#39;s Unresolved list
+accordingly. If a non-nil importer and universe scope are provided, they are
+used to resolve identifiers not declared in any of the package files. Any
+remaining unresolved identifiers are reported as undeclared. If the files
+belong to different packages, one package name is selected and files with
+different package names are reported and then ignored.
+The result is a package node and a scanner.ErrorList if there were errors.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Package.End">func (*Package) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=29019:29052#L907">End</a>
+					<a class="permalink" href="index.html#Package.End">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Package">Package</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Package.Pos">func (*Package) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=28962:28995#L906">Pos</a>
+					<a class="permalink" href="index.html#Package.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="index.html#Package">Package</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ParenExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=5887:6031#L194">ParenExpr</a>
+				<a class="permalink" href="index.html#ParenExpr">&#xb6;</a>
+			</h2>
+			<p>
+A ParenExpr node represents a parenthesized expression.
+</p>
+
+			<pre>type ParenExpr struct {
+<span id="ParenExpr.Lparen"></span>    Lparen <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;(&#34;</span>
+<span id="ParenExpr.X"></span>    X      <a href="index.html#Expr">Expr</a>      <span class="comment">// parenthesized expression</span>
+<span id="ParenExpr.Rparen"></span>    Rparen <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;)&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ParenExpr.End">func (*ParenExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11853:11888#L378">End</a>
+					<a class="permalink" href="index.html#ParenExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ParenExpr">ParenExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ParenExpr.Pos">func (*ParenExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10399:10434#L350">Pos</a>
+					<a class="permalink" href="index.html#ParenExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#ParenExpr">ParenExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RangeStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19181:19511#L619">RangeStmt</a>
+				<a class="permalink" href="index.html#RangeStmt">&#xb6;</a>
+			</h2>
+			<p>
+A RangeStmt represents a for statement with a range clause.
+</p>
+
+			<pre>type RangeStmt struct {
+<span id="RangeStmt.For"></span>    For        <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of &#34;for&#34; keyword</span>
+<span id="RangeStmt.Key"></span>    Key, Value <a href="index.html#Expr">Expr</a>        <span class="comment">// Key, Value may be nil</span>
+<span id="RangeStmt.TokPos"></span>    TokPos     <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Tok; invalid if Key == nil</span>
+<span id="RangeStmt.Tok"></span>    Tok        <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// ILLEGAL if Key == nil, ASSIGN, DEFINE</span>
+<span id="RangeStmt.X"></span>    X          <a href="index.html#Expr">Expr</a>        <span class="comment">// value to range over</span>
+<span id="RangeStmt.Body"></span>    Body       *<a href="index.html#BlockStmt">BlockStmt</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RangeStmt.End">func (*RangeStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22447:22482#L702">End</a>
+					<a class="permalink" href="index.html#RangeStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RangeStmt">RangeStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="RangeStmt.Pos">func (*RangeStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20796:20831#L651">Pos</a>
+					<a class="permalink" href="index.html#RangeStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#RangeStmt">RangeStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ReturnStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=16657:16781#L541">ReturnStmt</a>
+				<a class="permalink" href="index.html#ReturnStmt">&#xb6;</a>
+			</h2>
+			<p>
+A ReturnStmt node represents a return statement.
+</p>
+
+			<pre>type ReturnStmt struct {
+<span id="ReturnStmt.Return"></span>    Return  <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;return&#34; keyword</span>
+<span id="ReturnStmt.Results"></span>    Results []<a href="index.html#Expr">Expr</a>    <span class="comment">// result expressions; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ReturnStmt.End">func (*ReturnStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21502:21538#L667">End</a>
+					<a class="permalink" href="index.html#ReturnStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ReturnStmt">ReturnStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ReturnStmt.Pos">func (*ReturnStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20197:20233#L641">Pos</a>
+					<a class="permalink" href="index.html#ReturnStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ReturnStmt">ReturnStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Scope">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=446:511#L10">Scope</a>
+				<a class="permalink" href="index.html#Scope">&#xb6;</a>
+			</h2>
+			<p>
+A Scope maintains the set of named language entities declared
+in the scope and a link to the immediately surrounding (outer)
+scope.
+</p>
+
+			<pre>type Scope struct {
+<span id="Scope.Outer"></span>    Outer   *<a href="index.html#Scope">Scope</a>
+<span id="Scope.Objects"></span>    Objects map[<a href="http://localhost:8081/pkg/builtin/#string">string</a>]*<a href="index.html#Object">Object</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewScope">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=572:606#L16">NewScope</a>
+					<a class="permalink" href="index.html#NewScope">&#xb6;</a>
+				</h3>
+				<pre>func NewScope(outer *<a href="index.html#Scope">Scope</a>) *<a href="index.html#Scope">Scope</a></pre>
+				<p>
+NewScope creates a new scope nested in the outer scope.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Scope.Insert">func (*Scope) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=1148:1197#L34">Insert</a>
+					<a class="permalink" href="index.html#Scope.Insert">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#Scope">Scope</a>) Insert(obj *<a href="index.html#Object">Object</a>) (alt *<a href="index.html#Object">Object</a>)</pre>
+				<p>
+Insert attempts to insert a named object obj into the scope s.
+If the scope already contains an object alt with the same name,
+Insert leaves the scope unchanged and returns alt. Otherwise
+it inserts obj and returns nil.&#34;
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scope.Lookup">func (*Scope) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=839:882#L25">Lookup</a>
+					<a class="permalink" href="index.html#Scope.Lookup">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#Scope">Scope</a>) Lookup(name <a href="http://localhost:8081/pkg/builtin/#string">string</a>) *<a href="index.html#Object">Object</a></pre>
+				<p>
+Lookup returns the object with the given name if it is
+found in scope s, otherwise it returns nil. Outer scopes
+are ignored.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scope.String">func (*Scope) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/scope.go?s=1307:1338#L42">String</a>
+					<a class="permalink" href="index.html#Scope.String">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#Scope">Scope</a>) String() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				<p>
+Debugging support
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SelectStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=18728:18842#L604">SelectStmt</a>
+				<a class="permalink" href="index.html#SelectStmt">&#xb6;</a>
+			</h2>
+			<p>
+An SelectStmt node represents a select statement.
+</p>
+
+			<pre>type SelectStmt struct {
+<span id="SelectStmt.Select"></span>    Select <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;select&#34; keyword</span>
+<span id="SelectStmt.Body"></span>    Body   *<a href="index.html#BlockStmt">BlockStmt</a> <span class="comment">// CommClauses only</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SelectStmt.End">func (*SelectStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22325:22361#L700">End</a>
+					<a class="permalink" href="index.html#SelectStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SelectStmt">SelectStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SelectStmt.Pos">func (*SelectStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20677:20713#L649">Pos</a>
+					<a class="permalink" href="index.html#SelectStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SelectStmt">SelectStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SelectorExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=6107:6189#L201">SelectorExpr</a>
+				<a class="permalink" href="index.html#SelectorExpr">&#xb6;</a>
+			</h2>
+			<p>
+A SelectorExpr node represents an expression followed by a selector.
+</p>
+
+			<pre>type SelectorExpr struct {
+<span id="SelectorExpr.X"></span>    X   <a href="index.html#Expr">Expr</a>   <span class="comment">// expression</span>
+<span id="SelectorExpr.Sel"></span>    Sel *<a href="index.html#Ident">Ident</a> <span class="comment">// field selector</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SelectorExpr.End">func (*SelectorExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11916:11954#L379">End</a>
+					<a class="permalink" href="index.html#SelectorExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#SelectorExpr">SelectorExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SelectorExpr.Pos">func (*SelectorExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10460:10498#L351">Pos</a>
+					<a class="permalink" href="index.html#SelectorExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#SelectorExpr">SelectorExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SendStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=15827:15911#L505">SendStmt</a>
+				<a class="permalink" href="index.html#SendStmt">&#xb6;</a>
+			</h2>
+			<p>
+A SendStmt node represents a send statement.
+</p>
+
+			<pre>type SendStmt struct {
+<span id="SendStmt.Chan"></span>    Chan  <a href="index.html#Expr">Expr</a>
+<span id="SendStmt.Arrow"></span>    Arrow <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;&lt;-&#34;</span>
+<span id="SendStmt.Value"></span>    Value <a href="index.html#Expr">Expr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SendStmt.End">func (*SendStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=21165:21199#L660">End</a>
+					<a class="permalink" href="index.html#SendStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SendStmt">SendStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SendStmt.Pos">func (*SendStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=19886:19920#L636">Pos</a>
+					<a class="permalink" href="index.html#SendStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SendStmt">SendStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SliceExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=6506:6855#L215">SliceExpr</a>
+				<a class="permalink" href="index.html#SliceExpr">&#xb6;</a>
+			</h2>
+			<p>
+A SliceExpr node represents an expression followed by slice indices.
+</p>
+
+			<pre>type SliceExpr struct {
+<span id="SliceExpr.X"></span>    X      <a href="index.html#Expr">Expr</a>      <span class="comment">// expression</span>
+<span id="SliceExpr.Lbrack"></span>    Lbrack <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;[&#34;</span>
+<span id="SliceExpr.Low"></span>    Low    <a href="index.html#Expr">Expr</a>      <span class="comment">// begin of slice range; or nil</span>
+<span id="SliceExpr.High"></span>    High   <a href="index.html#Expr">Expr</a>      <span class="comment">// end of slice range; or nil</span>
+<span id="SliceExpr.Max"></span>    Max    <a href="index.html#Expr">Expr</a>      <span class="comment">// maximum capacity of slice; or nil</span>
+<span id="SliceExpr.Slice3"></span>    Slice3 <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>      <span class="comment">// true if 3-index slice (2 colons present)</span>
+<span id="SliceExpr.Rbrack"></span>    Rbrack <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;]&#34;</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SliceExpr.End">func (*SliceExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12041:12076#L381">End</a>
+					<a class="permalink" href="index.html#SliceExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#SliceExpr">SliceExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SliceExpr.Pos">func (*SliceExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10584:10619#L353">Pos</a>
+					<a class="permalink" href="index.html#SliceExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#SliceExpr">SliceExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Spec">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=23705:23744#L737">Spec</a>
+				<a class="permalink" href="index.html#Spec">&#xb6;</a>
+			</h2>
+			<p>
+The Spec type stands for any of *ImportSpec, *ValueSpec, and *TypeSpec.
+</p>
+
+			<pre>type Spec interface {
+    <a href="index.html#Node">Node</a>
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StarExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=7535:7619#L245">StarExpr</a>
+				<a class="permalink" href="index.html#StarExpr">&#xb6;</a>
+			</h2>
+			<p>
+A StarExpr node represents an expression of the form &#34;*&#34; Expression.
+Semantically it could be a unary &#34;*&#34; expression, or a pointer type.
+</p>
+
+			<pre>type StarExpr struct {
+<span id="StarExpr.Star"></span>    Star <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a> <span class="comment">// position of &#34;*&#34;</span>
+<span id="StarExpr.X"></span>    X    <a href="index.html#Expr">Expr</a>      <span class="comment">// operand</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StarExpr.End">func (*StarExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12275:12309#L389">End</a>
+					<a class="permalink" href="index.html#StarExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#StarExpr">StarExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="StarExpr.Pos">func (*StarExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10772:10806#L356">Pos</a>
+					<a class="permalink" href="index.html#StarExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#StarExpr">StarExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Stmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=1544:1585#L37">Stmt</a>
+				<a class="permalink" href="index.html#Stmt">&#xb6;</a>
+			</h2>
+			<p>
+All statement nodes implement the Stmt interface.
+</p>
+
+			<pre>type Stmt interface {
+    <a href="index.html#Node">Node</a>
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StructType">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=8823:9037#L300">StructType</a>
+				<a class="permalink" href="index.html#StructType">&#xb6;</a>
+			</h2>
+			<p>
+A StructType node represents a struct type.
+</p>
+
+			<pre>type StructType struct {
+<span id="StructType.Struct"></span>    Struct     <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;struct&#34; keyword</span>
+<span id="StructType.Fields"></span>    Fields     *<a href="index.html#FieldList">FieldList</a> <span class="comment">// list of field declarations</span>
+<span id="StructType.Incomplete"></span>    Incomplete <a href="http://localhost:8081/pkg/builtin/#bool">bool</a>       <span class="comment">// true if (source) fields are missing in the Fields list</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StructType.End">func (*StructType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12581:12617#L394">End</a>
+					<a class="permalink" href="index.html#StructType.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#StructType">StructType</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="StructType.Pos">func (*StructType) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=11078:11114#L361">Pos</a>
+					<a class="permalink" href="index.html#StructType.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#StructType">StructType</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SwitchStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=17865:18081#L580">SwitchStmt</a>
+				<a class="permalink" href="index.html#SwitchStmt">&#xb6;</a>
+			</h2>
+			<p>
+A SwitchStmt node represents an expression switch statement.
+</p>
+
+			<pre>type SwitchStmt struct {
+<span id="SwitchStmt.Switch"></span>    Switch <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;switch&#34; keyword</span>
+<span id="SwitchStmt.Init"></span>    Init   <a href="index.html#Stmt">Stmt</a>       <span class="comment">// initialization statement; or nil</span>
+<span id="SwitchStmt.Tag"></span>    Tag    <a href="index.html#Expr">Expr</a>       <span class="comment">// tag expression; or nil</span>
+<span id="SwitchStmt.Body"></span>    Body   *<a href="index.html#BlockStmt">BlockStmt</a> <span class="comment">// CaseClauses only</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SwitchStmt.End">func (*SwitchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22074:22110#L692">End</a>
+					<a class="permalink" href="index.html#SwitchStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SwitchStmt">SwitchStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SwitchStmt.Pos">func (*SwitchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20496:20532#L646">Pos</a>
+					<a class="permalink" href="index.html#SwitchStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#SwitchStmt">SwitchStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypeAssertExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=6947:7060#L228">TypeAssertExpr</a>
+				<a class="permalink" href="index.html#TypeAssertExpr">&#xb6;</a>
+			</h2>
+			<p>
+A TypeAssertExpr node represents an expression followed by a
+type assertion.
+</p>
+
+			<pre>type TypeAssertExpr struct {
+<span id="TypeAssertExpr.X"></span>    X    <a href="index.html#Expr">Expr</a> <span class="comment">// expression</span>
+<span id="TypeAssertExpr.Type"></span>    Type <a href="index.html#Expr">Expr</a> <span class="comment">// asserted type; nil means type switch X.(type)</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypeAssertExpr.End">func (*TypeAssertExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12104:12144#L382">End</a>
+					<a class="permalink" href="index.html#TypeAssertExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#TypeAssertExpr">TypeAssertExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypeAssertExpr.Pos">func (*TypeAssertExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10646:10686#L354">Pos</a>
+					<a class="permalink" href="index.html#TypeAssertExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#TypeAssertExpr">TypeAssertExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypeSpec">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=24517:24780#L762">TypeSpec</a>
+				<a class="permalink" href="index.html#TypeSpec">&#xb6;</a>
+			</h2>
+			<p>
+A TypeSpec node represents a type declaration (TypeSpec production).
+</p>
+
+			<pre>type TypeSpec struct {
+<span id="TypeSpec.Doc"></span>    Doc     *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="TypeSpec.Name"></span>    Name    *<a href="index.html#Ident">Ident</a>        <span class="comment">// type name</span>
+<span id="TypeSpec.Type"></span>    Type    <a href="index.html#Expr">Expr</a>          <span class="comment">// *Ident, *ParenExpr, *SelectorExpr, *StarExpr, or any of the *XxxTypes</span>
+<span id="TypeSpec.Comment"></span>    Comment *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// line comments; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypeSpec.End">func (*TypeSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=25314:25348#L791">End</a>
+					<a class="permalink" href="index.html#TypeSpec.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#TypeSpec">TypeSpec</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypeSpec.Pos">func (*TypeSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=25005:25039#L779">Pos</a>
+					<a class="permalink" href="index.html#TypeSpec.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#TypeSpec">TypeSpec</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypeSwitchStmt">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=18147:18370#L588">TypeSwitchStmt</a>
+				<a class="permalink" href="index.html#TypeSwitchStmt">&#xb6;</a>
+			</h2>
+			<p>
+An TypeSwitchStmt node represents a type switch statement.
+</p>
+
+			<pre>type TypeSwitchStmt struct {
+<span id="TypeSwitchStmt.Switch"></span>    Switch <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>  <span class="comment">// position of &#34;switch&#34; keyword</span>
+<span id="TypeSwitchStmt.Init"></span>    Init   <a href="index.html#Stmt">Stmt</a>       <span class="comment">// initialization statement; or nil</span>
+<span id="TypeSwitchStmt.Assign"></span>    Assign <a href="index.html#Stmt">Stmt</a>       <span class="comment">// x := y.(type) or y.(type)</span>
+<span id="TypeSwitchStmt.Body"></span>    Body   *<a href="index.html#BlockStmt">BlockStmt</a> <span class="comment">// CaseClauses only</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypeSwitchStmt.End">func (*TypeSwitchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=22139:22179#L693">End</a>
+					<a class="permalink" href="index.html#TypeSwitchStmt.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#TypeSwitchStmt">TypeSwitchStmt</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypeSwitchStmt.Pos">func (*TypeSwitchStmt) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=20557:20597#L647">Pos</a>
+					<a class="permalink" href="index.html#TypeSwitchStmt.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#TypeSwitchStmt">TypeSwitchStmt</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="UnaryExpr">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=7740:7862#L253">UnaryExpr</a>
+				<a class="permalink" href="index.html#UnaryExpr">&#xb6;</a>
+			</h2>
+			<p>
+A UnaryExpr node represents a unary expression.
+Unary &#34;*&#34; expressions are represented via StarExpr nodes.
+</p>
+
+			<pre>type UnaryExpr struct {
+<span id="UnaryExpr.OpPos"></span>    OpPos <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>   <span class="comment">// position of Op</span>
+<span id="UnaryExpr.Op"></span>    Op    <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a> <span class="comment">// operator</span>
+<span id="UnaryExpr.X"></span>    X     <a href="index.html#Expr">Expr</a>        <span class="comment">// operand</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="UnaryExpr.End">func (*UnaryExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=12335:12370#L390">End</a>
+					<a class="permalink" href="index.html#UnaryExpr.End">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#UnaryExpr">UnaryExpr</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="UnaryExpr.Pos">func (*UnaryExpr) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=10831:10866#L357">Pos</a>
+					<a class="permalink" href="index.html#UnaryExpr.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (x *<a href="index.html#UnaryExpr">UnaryExpr</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueSpec">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=24159:24441#L753">ValueSpec</a>
+				<a class="permalink" href="index.html#ValueSpec">&#xb6;</a>
+			</h2>
+			<p>
+A ValueSpec node represents a constant or variable declaration
+(ConstSpec or VarSpec production).
+</p>
+
+			<pre>type ValueSpec struct {
+<span id="ValueSpec.Doc"></span>    Doc     *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// associated documentation; or nil</span>
+<span id="ValueSpec.Names"></span>    Names   []*<a href="index.html#Ident">Ident</a>      <span class="comment">// value names (len(Names) &gt; 0)</span>
+<span id="ValueSpec.Type"></span>    Type    <a href="index.html#Expr">Expr</a>          <span class="comment">// value type; or nil</span>
+<span id="ValueSpec.Values"></span>    Values  []<a href="index.html#Expr">Expr</a>        <span class="comment">// initial values; or nil</span>
+<span id="ValueSpec.Comment"></span>    Comment *<a href="index.html#CommentGroup">CommentGroup</a> <span class="comment">// line comments; or nil</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueSpec.End">func (*ValueSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=25127:25162#L782">End</a>
+					<a class="permalink" href="index.html#ValueSpec.End">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ValueSpec">ValueSpec</a>) End() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ValueSpec.Pos">func (*ValueSpec) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/ast.go?s=24941:24976#L778">Pos</a>
+					<a class="permalink" href="index.html#ValueSpec.Pos">&#xb6;</a>
+				</h3>
+				<pre>func (s *<a href="index.html#ValueSpec">ValueSpec</a>) Pos() <a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Visitor">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/ast/walk.go?s=400:456#L2">Visitor</a>
+				<a class="permalink" href="index.html#Visitor">&#xb6;</a>
+			</h2>
+			<p>
+A Visitor&#39;s Visit method is invoked for each node encountered by Walk.
+If the result visitor w is not nil, Walk visits each of the children
+of node with the visitor w, followed by a call of w.Visit(nil).
+</p>
+
+			<pre>type Visitor interface {
+    Visit(node <a href="index.html#Node">Node</a>) (w <a href="index.html#Visitor">Visitor</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

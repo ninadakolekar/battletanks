@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>scanner - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:8081/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:8081/">Go</a></div>
+<a href="index.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:8081/search">
+<div id="menu">
+<a href="http://localhost:8081/doc/">Documents</a>
+<a href="../../../../../index.html">Packages</a>
+<a href="http://localhost:8081/project/">The Project</a>
+<a href="http://localhost:8081/help/">Help</a>
+
+<a href="http://localhost:8081/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package scanner
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/rogpeppe/godef/go/scanner"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package scanner implements a scanner for Go source text. Takes a []byte as
+source which can then be tokenized through repeated calls to the Scan
+function. Typical use:
+</p>
+<pre>	var s Scanner
+	fset := token.NewFileSet()  // position information is relative to fset
+     file := fset.AddFile(filename, fset.Base(), len(src))  // register file
+	s.Init(file, src, nil /* no error handler */, 0)
+	for {
+		pos, tok, lit := s.Scan()
+		if tok == token.EOF {
+			break
+		}
+		// do something here with pos, tok, and lit
+	}
+</pre>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="index.html#PrintError">func PrintError(w io.Writer, err error)</a></dd>
+			
+			
+				
+				<dd><a href="index.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Error.Error">func (e *Error) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrorHandler">type ErrorHandler</a></dd>
+				
+				
+			
+				
+				<dd><a href="index.html#ErrorList">type ErrorList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorList.Error">func (p ErrorList) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorList.Len">func (p ErrorList) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorList.Less">func (p ErrorList) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorList.Swap">func (p ErrorList) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="index.html#ErrorVector">type ErrorVector</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorVector.Error">func (h *ErrorVector) Error(pos token.Position, msg string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorVector.ErrorCount">func (h *ErrorVector) ErrorCount() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorVector.GetError">func (h *ErrorVector) GetError(mode int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorVector.GetErrorList">func (h *ErrorVector) GetErrorList(mode int) ErrorList</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#ErrorVector.Reset">func (h *ErrorVector) Reset()</a></dd>
+				
+			
+				
+				<dd><a href="index.html#Scanner">type Scanner</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Scanner.Init">func (S *Scanner) Init(file *token.File, src []byte, err ErrorHandler, mode uint)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Scanner.Scan">func (S *Scanner) Scan() (token.Pos, token.Token, string)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go">errors.go</a>
+			
+				<a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/scanner.go">scanner.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+These constants control the construction of the ErrorList
+returned by GetErrors.
+</p>
+
+				<pre>const (
+    <span id="Raw">Raw</span>         = <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// leave error list unchanged</span>
+    <span id="Sorted">Sorted</span>             <span class="comment">// sort error list by file, line, and column number</span>
+    <span id="NoMultiples">NoMultiples</span>        <span class="comment">// sort error list and leave only the first error per line</span>
+)</pre>
+			
+				<p>
+The mode parameter to the Init function is a set of flags (or 0).
+They control scanner behavior.
+</p>
+
+				<pre>const (
+    <span id="ScanComments">ScanComments</span>      = 1 &lt;&lt; <a href="http://localhost:8081/pkg/builtin/#iota">iota</a> <span class="comment">// return comments as COMMENT tokens</span>
+    <span id="AllowIllegalChars">AllowIllegalChars</span>             <span class="comment">// do not report an error for illegal chars</span>
+    <span id="InsertSemis">InsertSemis</span>                   <span class="comment">// automatically insert semicolons</span>
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="PrintError">func <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=4283:4322#L150">PrintError</a>
+				<a class="permalink" href="index.html#PrintError">&#xb6;</a>
+			</h2>
+			<pre>func PrintError(w <a href="http://localhost:8081/pkg/io/">io</a>.<a href="http://localhost:8081/pkg/io/#Writer">Writer</a>, err <a href="http://localhost:8081/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PrintError is a utility function that prints a list of errors to w,
+one error per line, if the err parameter is an ErrorList. Otherwise
+it prints the err string.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1499:1552#L37">Error</a>
+				<a class="permalink" href="index.html#Error">&#xb6;</a>
+			</h2>
+			<p>
+Within ErrorVector, an error is represented by an Error node. The
+position Pos, if valid, points to the beginning of the offending
+token, and the error condition is described by Msg.
+</p>
+
+			<pre>type Error struct {
+<span id="Error.Pos"></span>    Pos <a href="../token/index.html">token</a>.<a href="../token/index.html#Position">Position</a>
+<span id="Error.Msg"></span>    Msg <a href="http://localhost:8081/pkg/builtin/#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1554:1584#L42">Error</a>
+					<a class="permalink" href="index.html#Error.Error">&#xb6;</a>
+				</h3>
+				<pre>func (e *<a href="index.html#Error">Error</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorHandler">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=510:580#L10">ErrorHandler</a>
+				<a class="permalink" href="index.html#ErrorHandler">&#xb6;</a>
+			</h2>
+			<p>
+An implementation of an ErrorHandler may be provided to the Scanner.
+If a syntax error is encountered and a handler was installed, Error
+is called with a position and an error message. The position points
+to the beginning of the offending token.
+</p>
+
+			<pre>type ErrorHandler interface {
+    Error(pos <a href="../token/index.html">token</a>.<a href="../token/index.html#Position">Position</a>, msg <a href="http://localhost:8081/pkg/builtin/#string">string</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ErrorList">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1845:1868#L52">ErrorList</a>
+				<a class="permalink" href="index.html#ErrorList">&#xb6;</a>
+			</h2>
+			<p>
+An ErrorList is a (possibly sorted) list of Errors.
+</p>
+
+			<pre>type ErrorList []*<a href="index.html#Error">Error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrorList.Error">func (ErrorList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=2462:2495#L78">Error</a>
+					<a class="permalink" href="index.html#ErrorList.Error">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="index.html#ErrorList">ErrorList</a>) Error() <a href="http://localhost:8081/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ErrorList.Len">func (ErrorList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1914:1942#L55">Len</a>
+					<a class="permalink" href="index.html#ErrorList.Len">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="index.html#ErrorList">ErrorList</a>) Len() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+ErrorList implements the sort Interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ErrorList.Less">func (ErrorList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=2029:2067#L58">Less</a>
+					<a class="permalink" href="index.html#ErrorList.Less">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="index.html#ErrorList">ErrorList</a>) Less(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ErrorList.Swap">func (ErrorList) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1966:1999#L56">Swap</a>
+					<a class="permalink" href="index.html#ErrorList.Swap">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="index.html#ErrorList">ErrorList</a>) Swap(i, j <a href="http://localhost:8081/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorVector">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1035:1079#L23">ErrorVector</a>
+				<a class="permalink" href="index.html#ErrorVector">&#xb6;</a>
+			</h2>
+			<p>
+ErrorVector implements the ErrorHandler interface. It maintains a list
+of errors which can be retrieved with GetErrorList and GetError. The
+zero value for an ErrorVector is an empty ErrorVector ready to use.
+</p>
+<p>
+A common usage pattern is to embed an ErrorVector alongside a
+scanner in a data structure that uses the scanner. By passing a
+reference to an ErrorVector to the scanner&#39;s Init call, default
+error handling is obtained.
+</p>
+
+			<pre>type ErrorVector struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrorVector.Error">func (*ErrorVector) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=3997:4056#L142">Error</a>
+					<a class="permalink" href="index.html#ErrorVector.Error">&#xb6;</a>
+				</h3>
+				<pre>func (h *<a href="index.html#ErrorVector">ErrorVector</a>) Error(pos <a href="../token/index.html">token</a>.<a href="../token/index.html#Position">Position</a>, msg <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+ErrorVector implements the ErrorHandler interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ErrorVector.ErrorCount">func (*ErrorVector) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1239:1277#L31">ErrorCount</a>
+					<a class="permalink" href="index.html#ErrorVector.ErrorCount">&#xb6;</a>
+				</h3>
+				<pre>func (h *<a href="index.html#ErrorVector">ErrorVector</a>) ErrorCount() <a href="http://localhost:8081/pkg/builtin/#int">int</a></pre>
+				<p>
+ErrorCount returns the number of errors collected.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ErrorVector.GetError">func (*ErrorVector) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=3820:3866#L133">GetError</a>
+					<a class="permalink" href="index.html#ErrorVector.GetError">&#xb6;</a>
+				</h3>
+				<pre>func (h *<a href="index.html#ErrorVector">ErrorVector</a>) GetError(mode <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="http://localhost:8081/pkg/builtin/#error">error</a></pre>
+				<p>
+GetError is like GetErrorList, but it returns an os.Error instead
+so that a nil result can be assigned to an os.Error variable and
+remains nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ErrorVector.GetErrorList">func (*ErrorVector) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=3167:3221#L101">GetErrorList</a>
+					<a class="permalink" href="index.html#ErrorVector.GetErrorList">&#xb6;</a>
+				</h3>
+				<pre>func (h *<a href="index.html#ErrorVector">ErrorVector</a>) GetErrorList(mode <a href="http://localhost:8081/pkg/builtin/#int">int</a>) <a href="index.html#ErrorList">ErrorList</a></pre>
+				<p>
+GetErrorList returns the list of errors collected by an ErrorVector.
+The construction of the ErrorList returned is controlled by the mode
+parameter. If there are no errors, the result is nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ErrorVector.Reset">func (*ErrorVector) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/errors.go?s=1126:1155#L28">Reset</a>
+					<a class="permalink" href="index.html#ErrorVector.Reset">&#xb6;</a>
+				</h3>
+				<pre>func (h *<a href="index.html#ErrorVector">ErrorVector</a>) Reset()</pre>
+				<p>
+Reset resets an ErrorVector to no errors.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Scanner">type <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/scanner.go?s=1029:1624#L28">Scanner</a>
+				<a class="permalink" href="index.html#Scanner">&#xb6;</a>
+			</h2>
+			<p>
+A Scanner holds the scanner&#39;s internal state while processing
+a given text.  It can be allocated as part of another data
+structure but must be initialized via Init before use.
+</p>
+
+			<pre>type Scanner struct {
+
+    <span class="comment">// public state - ok to modify</span>
+<span id="Scanner.ErrorCount"></span>    ErrorCount <a href="http://localhost:8081/pkg/builtin/#int">int</a> <span class="comment">// number of errors encountered</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Scanner.Init">func (*Scanner) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/scanner.go?s=3436:3517#L104">Init</a>
+					<a class="permalink" href="index.html#Scanner.Init">&#xb6;</a>
+				</h3>
+				<pre>func (S *<a href="index.html#Scanner">Scanner</a>) Init(file *<a href="../token/index.html">token</a>.<a href="../token/index.html#File">File</a>, src []<a href="http://localhost:8081/pkg/builtin/#byte">byte</a>, err <a href="index.html#ErrorHandler">ErrorHandler</a>, mode <a href="http://localhost:8081/pkg/builtin/#uint">uint</a>)</pre>
+				<p>
+Init prepares the scanner S to tokenize the text src by setting the
+scanner at the beginning of src. The scanner uses the file set file
+for position information and it adds line information for each line.
+It is ok to re-use the same file when re-scanning the same file as
+line information which is already present is ignored. Init causes a
+panic if the file size does not match the src size.
+</p>
+<p>
+Calls to Scan will use the error handler err if they encounter a
+syntax error and err is not nil. Also, for each error encountered,
+the Scanner field ErrorCount is incremented by one. The mode parameter
+determines how comments, illegal characters, and semicolons are handled.
+</p>
+<p>
+Note that Init may call err if there is an error in the first character
+of the file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scanner.Scan">func (*Scanner) <a href="http://localhost:8081/src/github.com/rogpeppe/godef/go/scanner/scanner.go?s=11929:11986#L505">Scan</a>
+					<a class="permalink" href="index.html#Scanner.Scan">&#xb6;</a>
+				</h3>
+				<pre>func (S *<a href="index.html#Scanner">Scanner</a>) Scan() (<a href="../token/index.html">token</a>.<a href="../token/index.html#Pos">Pos</a>, <a href="../token/index.html">token</a>.<a href="../token/index.html#Token">Token</a>, <a href="http://localhost:8081/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Scan scans the next token and returns the token position,
+the token, and the literal string corresponding to the
+token. The source end is indicated by token.EOF.
+</p>
+<p>
+If the returned token is token.SEMICOLON, the corresponding
+literal string is &#34;;&#34; if the semicolon was present in the source,
+and &#34;\n&#34; if the semicolon was inserted because of a newline or
+at EOF.
+</p>
+<p>
+For more tolerant parsing, Scan will return a valid token if
+possible even if a syntax error was encountered. Thus, even
+if the resulting token sequence contains no illegal tokens,
+a client may not assume that no error occurred. Instead it
+must check the scanner&#39;s ErrorCount or the number of calls
+of the error handler, if there was one installed.
+</p>
+<p>
+Scan adds line information to the file added to the file
+set with Init. Token positions are relative to that file
+and thus relative to the file set.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.3.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:8081/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:8081/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8.3";</script>
+<script type="text/javascript" src="../../../../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+
