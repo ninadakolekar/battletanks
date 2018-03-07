@@ -210,10 +210,10 @@ function applyUpdate(msg) {
          msg.hitwall =false ;
         }*/
 
-        x_temp = (msg.bullet_x-15+(msg.bullet_x-15)%30)/30;
-    	y_temp = (msg.bullet_y-15+(msg.bullet_y-15)%30)/30;
+        let x_temp = (msg.bullet_x-15+(msg.bullet_x-15)%30)/30;
+    	let y_temp = (msg.bullet_y-15+(msg.bullet_y-15)%30)/30;
 
-    	//console.log("apply "+msg.bullet_direction);
+    	//console.log("apply " + msg.bullet_x + " " + msg.bullet_y + " " + x_temp + " " + y_temp);
 
        if(check_bul_col_update(msg.bullet_direction, x_temp, y_temp, 100*msg.id + msg.bulletCount-1)){
        	//console.log("bullet of P "+msg.id+" collided with wall update");
@@ -229,7 +229,9 @@ function applyUpdate(msg) {
 
     if(msg.tile_index !=-1)
     {
+    	//console.log("broken check1 "+msg.tile_index);
      grid2[msg.tile_index].visible =false;
+     other_ammo[100*msg.id + msg.bulletCount-1].visible = false; 
 
     }
   
@@ -267,6 +269,7 @@ function applyUpdate(msg) {
 
                 for(i=0; i<broken.length; i++){
                   grid2[broken[i]].visible=false;
+                  //console.log("broken check2 "+broken[i]);
                 }
 
                 dungeon.visible =false ;
@@ -330,7 +333,7 @@ left.press = () =>{
                     tank.pivot.set(15,15);
 
                   };
-
+                  
 left.release =() => {
                       console.log("a2");
                       leftflag =false ;
@@ -878,21 +881,21 @@ function check_bul_col_update(c_state, x_t, y_t, index) {
     let u = grid[x_t+(y_t-1)*30].visible || grid2[x_t+(y_t-1)*30].visible;
     //console.log(c_state+" cords"+x+" "+y+" "+midx+" "+midy+" "+l+" "+r+" "+d+" "+u);
 
-    console.log("update check "+c_state+" "+index+" "+x_t+" "+y_t);
+    //console.log("update check "+c_state+" "+index+" "+x_t+" "+y_t);
 
     if(c_state == 38 && u){
 
     hit_wall =true;
     other_ammo[index].visible =false;
-    grid2[x_t+(y_t-1)*30].visible=false;
+    //console.log("broken check3 u "+ x_t+(y_t-1)*30 + " " + x_t + " " + y_t);
     return true;
 
     }
     else if(c_state == 40 && d){
 
     hit_wall =true;
-    other_ammo[index].visible =false;    
-    grid2[x_t+(y_t+1)*30].visible=false;
+    other_ammo[index].visible =false;
+    //console.log("broken check3 d "+ x_t+(y_t+1)*30 + " " + x_t + " " + y_t);
     return true;
 
     }
@@ -900,7 +903,7 @@ function check_bul_col_update(c_state, x_t, y_t, index) {
 
     hit_wall =true;
     other_ammo[index].visible =false;
-    grid2[(x_t-1)+y_t*30].visible=false;
+    //console.log("broken check3 l "+ (x_t-1)+y_t*30 + " " + x_t + " " + y_t);
     return true;
 
     }
@@ -908,7 +911,7 @@ function check_bul_col_update(c_state, x_t, y_t, index) {
 
     hit_wall =true;
     other_ammo[index].visible =false;
-    grid2[x_t+1+y_t*30].visible=false;
+    //console.log("broken check3 r "+ x_t+1+y_t*30 + " " + x_t + " " + y_t);
     return true;
 
     }
