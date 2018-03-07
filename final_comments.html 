@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Battle tanks </title>
+</head>
+
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
+
+<script src="js/sound.js"></script>
+
+<p id="demo"></p>
+
+<script src="graphics/main.js"></script>
+</body>
+
+</html>
+
+
