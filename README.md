@@ -8,10 +8,10 @@ The project was done mainly to understand the concurrency patterns in Go. We hav
 
 ## Gameplay
 
-<img src="screenshots/gameplay.png" /><br>
+<img src="images/gameplay.png" /><br>
 
 ## Contributors
 # Contributors
-Ninad Akolekar (cs16btech11024@iith.ac.in)
-Abhishek Pawar
-Sahil Sirowa
+Ninad Akolekar <br>
+Abhishek Pawar <br>
+Sahil Sirowa 
